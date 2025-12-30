@@ -57,9 +57,8 @@ document.head.appendChild(style);
 // Enhanced Carousel with Parallax
 function initCarousel() {
   const carouselContainer = document.getElementById('carouselContainer');
-  const carouselDots = document.getElementById('carouselDots');
   
-  if (!carouselContainer || !carouselDots) return;
+  if (!carouselContainer) return;
 
   const images = [
     'assets/images/k-field-interface.png',
@@ -81,29 +80,17 @@ function initCarousel() {
     carouselContainer.appendChild(img);
   });
 
-  // Create dots
-  images.forEach((_, index) => {
-    const dot = document.createElement('button');
-    dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
-    dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
-    dot.addEventListener('click', () => goToSlide(index));
-    carouselDots.appendChild(dot);
-  });
-
   function goToSlide(index) {
     if (isTransitioning || index === currentSlide) return;
     isTransitioning = true;
     
     const slides = carouselContainer.querySelectorAll('.carousel-slide');
-    const dots = carouselDots.querySelectorAll('.carousel-dot');
     
     slides[currentSlide].classList.remove('active');
-    dots[currentSlide].classList.remove('active');
     
     currentSlide = index;
     
     slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
     
     resetCarouselInterval();
     
