@@ -223,6 +223,7 @@ header.scrolled {
 .logo img {
   height: clamp(30px, 5vw + 10px, 50px);
   width: auto;
+  aspect-ratio: 3.2 / 1; /* Prevents layout shift */
 }
 
 [data-theme="dark"] .logo img {
@@ -362,6 +363,7 @@ header.scrolled {
   height: clamp(60px, 10vw + 20px, 140px);
   width: auto;
   margin: 0 auto 1rem;
+  aspect-ratio: 4.36 / 1; /* Prevents layout shift */
 }
 
 [data-theme="dark"] .hero-content img {
