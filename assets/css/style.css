@@ -226,7 +226,7 @@ header.scrolled {
 }
 
 [data-theme="dark"] .logo img {
-  content: url('/assets/images/kdynamics_logo_text_light.webp');
+  content: url('/assets/images/kdynamics_logo_text_light.svg');
 }
 
 .logo:hover {
@@ -365,7 +365,7 @@ header.scrolled {
 }
 
 [data-theme="dark"] .hero-content img {
-  content: url('/assets/images/kdynamics_logo_full_light.webp');
+  content: url('/assets/images/kdynamics_logo_full_light.svg');
 }
 
 .hero h1 {
