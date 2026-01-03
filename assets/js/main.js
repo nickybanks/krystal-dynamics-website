@@ -91,13 +91,21 @@ function initCarousel() {
   let carouselInterval;
   let isTransitioning = false;
 
-  // Create slides with preload
+  // Create slides - first one gets fetchpriority="high", no lazy loading
   images.forEach((src, index) => {
     const img = document.createElement('img');
     img.src = src;
     img.alt = `Plugin ${index + 1}`;
     img.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
-    img.loading = 'lazy';
+    
+    // First image: high priority, no lazy loading
+    if (index === 0) {
+      img.fetchPriority = 'high';
+    } else {
+      // Other carousel images: lazy load
+      img.loading = 'lazy';
+    }
+    
     carouselContainer.appendChild(img);
   });
 
