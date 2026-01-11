@@ -161,68 +161,72 @@ function initCarousel() {
   });
 }
 
+// Plugin Detail Page Image Carousel
 // Plugin Detail Page Image Carousel - NEW
 function initPluginDetailCarousel() {
   const carouselContainers = document.querySelectorAll('.plugin-detail-image-carousel');
+  
+  if (!carouselContainers.length) return;
 
   carouselContainers.forEach(carouselContainer => {
-  const imagesData = carouselContainer.getAttribute('data-images');
-  if (!imagesData) return;
+    const imagesData = carouselContainer.getAttribute('data-images');
+    if (!imagesData) return;
 
-  let images;
-  try {
-    images = JSON.parse(imagesData);
-  } catch (e) {
-    console.error('Error parsing carousel images:', e);
-    return;
-  }
-
-  if (!images || images.length === 0) return;
-
-  let currentSlide = 0;
-  let carouselInterval;
-
-  // Create image elements
-  images.forEach((src, index) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = `Plugin interface ${index + 1}`;
-    if (index === 0) {
-      img.classList.add('active');
+    let images;
+    try {
+      images = JSON.parse(imagesData);
+    } catch (e) {
+      console.error('Error parsing carousel images:', e);
+      return;
     }
-    carouselContainer.appendChild(img);
+
+    if (!images || images.length === 0) return;
+
+    let currentSlide = 0;
+    let carouselInterval;
+
+    // Create image elements
+    images.forEach((src, index) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `Plugin interface ${index + 1}`;
+      if (index === 0) {
+        img.classList.add('active');
+      }
+      carouselContainer.appendChild(img);
+    });
+
+    // Only start carousel if there's more than one image
+    if (images.length > 1) {
+      function nextSlide() {
+        const carouselImages = carouselContainer.querySelectorAll('img');
+        
+        // Remove active class from current image
+        carouselImages[currentSlide].classList.remove('active');
+        
+        // Move to next slide
+        currentSlide = (currentSlide + 1) % images.length;
+        
+        // Add active class to new current image
+        carouselImages[currentSlide].classList.add('active');
+      }
+
+      function startCarousel() {
+        carouselInterval = setInterval(nextSlide, 4000); // Change every 4 seconds
+      }
+
+      function stopCarousel() {
+        clearInterval(carouselInterval);
+      }
+
+      // Start the carousel
+      startCarousel();
+
+      // Pause on hover
+      carouselContainer.addEventListener('mouseenter', stopCarousel);
+      carouselContainer.addEventListener('mouseleave', startCarousel);
+    }
   });
-
-  // Only start carousel if there's more than one image
-  if (images.length > 1) {
-    function nextSlide() {
-      const carouselImages = carouselContainer.querySelectorAll('img');
-      
-      // Remove active class from current image
-      carouselImages[currentSlide].classList.remove('active');
-      
-      // Move to next slide
-      currentSlide = (currentSlide + 1) % images.length;
-      
-      // Add active class to new current image
-      carouselImages[currentSlide].classList.add('active');
-    }
-
-    function startCarousel() {
-      carouselInterval = setInterval(nextSlide, 4000); // Change every 4 seconds
-    }
-
-    function stopCarousel() {
-      clearInterval(carouselInterval);
-    }
-
-    // Start the carousel
-    startCarousel();
-
-    // Pause on hover
-    carouselContainer.addEventListener('mouseenter', stopCarousel);
-    carouselContainer.addEventListener('mouseleave', startCarousel);
-  }
 }
 
 // Scroll Animations - SIMPLIFIED for better performance
