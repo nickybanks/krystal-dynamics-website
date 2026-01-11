@@ -163,10 +163,9 @@ function initCarousel() {
 
 // Plugin Detail Page Image Carousel - NEW
 function initPluginDetailCarousel() {
-  const carouselContainer = document.querySelector('.plugin-detail-image-carousel');
-  
-  if (!carouselContainer) return;
+  const carouselContainers = document.querySelectorAll('.plugin-detail-image-carousel');
 
+  carouselContainers.forEach(carouselContainer => {
   const imagesData = carouselContainer.getAttribute('data-images');
   if (!imagesData) return;
 
