@@ -383,9 +383,105 @@ window.addEventListener('scroll', debounce(() => {
   }
 }, 10), { passive: true });
 
+// Plugin Detail Image Carousel
+function initPluginImageCarousel() {
+  const pluginImageContainer = document.querySelector('.plugin-detail-image-carousel');
+  
+  if (!pluginImageContainer) return;
+
+  const images = pluginImageContainer.dataset.images ? JSON.parse(pluginImageContainer.dataset.images) : [];
+  
+  if (images.length === 0) return;
+
+  let currentSlide = 0;
+  let carouselInterval;
+  let isTransitioning = false;
+
+  // Clear container
+  pluginImageContainer.innerHTML = '';
+
+  // Create slides
+  images.forEach((src, index) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = `Plugin Interface ${index + 1}`;
+    img.className = `plugin-carousel-slide ${index === 0 ? 'active' : ''}`;
+    
+    if (index === 0) {
+      img.fetchPriority = 'high';
+    } else {
+      img.loading = 'lazy';
+    }
+    
+    pluginImageContainer.appendChild(img);
+  });
+
+  // Only show navigation if there are multiple images
+  if (images.length > 1) {
+    // Create dots container
+    const dotsContainer = document.createElement('div');
+    dotsContainer.className = 'plugin-carousel-dots';
+    
+    images.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = `plugin-carousel-dot ${index === 0 ? 'active' : ''}`;
+      dot.setAttribute('aria-label', `Go to image ${index + 1}`);
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+    
+    pluginImageContainer.parentElement.appendChild(dotsContainer);
+
+    function goToSlide(index) {
+      if (isTransitioning || index === currentSlide) return;
+      isTransitioning = true;
+      
+      const slides = pluginImageContainer.querySelectorAll('.plugin-carousel-slide');
+      const dots = document.querySelectorAll('.plugin-carousel-dot');
+      
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active');
+      
+      currentSlide = index;
+      
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+      
+      resetCarouselInterval();
+      
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 1000);
+    }
+
+    function nextSlide() {
+      const nextIndex = (currentSlide + 1) % images.length;
+      goToSlide(nextIndex);
+    }
+
+    function startCarousel() {
+      carouselInterval = setInterval(nextSlide, 4000);
+    }
+
+    function resetCarouselInterval() {
+      clearInterval(carouselInterval);
+      startCarousel();
+    }
+
+    startCarousel();
+
+    pluginImageContainer.addEventListener('mouseenter', () => {
+      clearInterval(carouselInterval);
+    });
+
+    pluginImageContainer.addEventListener('mouseleave', startCarousel);
+  }
+}
+
 // Initialize Everything
 document.addEventListener('DOMContentLoaded', () => {
   initCarousel();
+  initPluginImageCarousel();
   initScrollAnimations();
   initButtonEffects();
   initImageLoading();
