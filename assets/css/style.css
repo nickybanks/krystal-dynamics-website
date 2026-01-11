@@ -839,24 +839,26 @@ footer p {
 .plugin-detail-image-carousel {
   position: relative;
   width: 100%;
+  max-width: 100%;
+  margin: 0 auto 2rem;
   border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 10px 30px var(--shadow);
+  overflow: visible;
+  border: none;
+  box-shadow: none;
   transition: all 0.4s ease;
   animation: scaleIn 0.8s ease-out 0.2s both;
 }
 
 @media (min-width: 768px) {
   .plugin-detail-image-carousel {
+    margin-bottom: 3rem;
     border-radius: 16px;
-    box-shadow: 0 20px 60px var(--shadow);
   }
 }
 
 .plugin-detail-image-carousel:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 50px var(--shadow-hover);
+  transform: none;
+  box-shadow: none;
 }
 
 @media (min-width: 1024px) {
@@ -868,11 +870,33 @@ footer p {
 .plugin-carousel-slide {
   width: 100%;
   height: auto;
-  display: none; /* Nascondi tutte per default */
+  display: none;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px var(--shadow);
+  transition: all 0.4s ease;
+}
+
+@media (min-width: 768px) {
+  .plugin-carousel-slide {
+    border-radius: 16px;
+    box-shadow: 0 20px 60px var(--shadow);
+  }
 }
 
 .plugin-carousel-slide.active {
-  display: block; /* Mostra solo quella attiva */
+  display: block;
+}
+
+.plugin-carousel-slide:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px var(--shadow-hover);
+}
+
+@media (min-width: 1024px) {
+  .plugin-carousel-slide:hover {
+    box-shadow: 0 25px 80px var(--shadow-hover);
+  }
 }
 
 .plugin-carousel-dots {
