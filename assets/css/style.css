@@ -839,6 +839,7 @@ footer p {
 .plugin-detail-image-carousel {
   width: 100%;
   margin: 0 auto 2rem;
+  position: relative;
 }
 
 @media (min-width: 768px) {
@@ -852,7 +853,6 @@ footer p {
   height: auto;
   display: none;
   border-radius: 12px;
-  border: 1px solid var(--border-color);
   box-shadow: 0 10px 30px var(--shadow);
   transition: all 0.4s ease;
 }
