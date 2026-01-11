@@ -82,9 +82,9 @@ function initCarousel() {
   if (!carouselContainer) return;
 
   const images = [
-    'assets/images/k-field-interface.png',
-    'assets/images/k-clip-interface.png',
-    'assets/images/k-comp-interface.png'
+    'assets/images/k-field-interface-1.png',
+    'assets/images/k-clip-interface-1.png',
+    'assets/images/k-comp-interface-1.png'
   ];
 
   let currentSlide = 0;
