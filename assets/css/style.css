@@ -511,42 +511,54 @@ header.scrolled {
 .plugin-image {
   width: 100%;
   max-width: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px var(--shadow);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 @media (min-width: 768px) {
   .plugin-image {
     max-width: 100%;
+    border-radius: 16px;
   }
 }
 
+.plugin-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-1);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
 .plugin-item:hover .plugin-image {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 60px var(--shadow-hover);
 }
 
 @media (min-width: 1024px) {
   .plugin-item:hover .plugin-image {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.02);
   }
+}
+
+.plugin-item:hover .plugin-image::before {
+  opacity: 0.1;
 }
 
 .plugin-image img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px var(--shadow);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@media (min-width: 768px) {
-  .plugin-image img {
-    border-radius: 16px;
-  }
-}
-
-.plugin-item:hover .plugin-image img {
-  box-shadow: 0 20px 60px var(--shadow-hover);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Plugin Content - Responsive */
@@ -774,6 +786,38 @@ footer p {
   }
 }
 
+.plugin-detail-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 0 auto 2rem;
+  display: block;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px var(--shadow);
+  transition: all 0.4s ease;
+  animation: scaleIn 0.8s ease-out 0.2s both;
+}
+
+@media (min-width: 768px) {
+  .plugin-detail-image {
+    border-radius: 16px;
+    margin-bottom: 3rem;
+    box-shadow: 0 20px 60px var(--shadow);
+  }
+}
+
+.plugin-detail-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px var(--shadow-hover);
+}
+
+@media (min-width: 1024px) {
+  .plugin-detail-image:hover {
+    box-shadow: 0 25px 80px var(--shadow-hover);
+  }
+}
+
 .plugin-detail-content {
   max-width: 100%;
   margin: 0 auto;
@@ -811,7 +855,7 @@ footer p {
 }
 
 .plugin-detail-content ul li::before {
-  content: '▸';
+  content: 'â–¸';
   position: absolute;
   left: 0;
   color: var(--accent-primary);
@@ -821,87 +865,6 @@ footer p {
 .plugin-detail-content p {
   color: var(--text-secondary);
   line-height: 1.7;
-}
-
-/* Plugin Detail Image Carousel */
-.plugin-detail-image-carousel {
-  margin: 0 0 2rem 0;
-  padding: 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  display: contents;
-}
-
-@media (min-width: 768px) {
-  .plugin-detail-image-carousel {
-    margin-bottom: 3rem;
-  }
-}
-
-.plugin-carousel-slide {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  display: none;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px var(--shadow);
-  transition: all 0.4s ease;
-  object-fit: contain;
-  background: transparent;
-}
-
-@media (min-width: 768px) {
-  .plugin-carousel-slide {
-    border-radius: 16px;
-    box-shadow: 0 20px 60px var(--shadow);
-  }
-}
-
-.plugin-carousel-slide.active {
-  display: block;
-  animation: scaleIn 0.8s ease-out 0.2s both;
-}
-
-.plugin-carousel-slide:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 50px var(--shadow-hover);
-}
-
-@media (min-width: 1024px) {
-  .plugin-carousel-slide:hover {
-    box-shadow: 0 25px 80px var(--shadow-hover);
-  }
-}
-
-.plugin-carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.plugin-carousel-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--border-color);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
-}
-
-.plugin-carousel-dot:hover {
-  background-color: var(--text-secondary);
-  transform: scale(1.2);
-}
-
-.plugin-carousel-dot.active {
-  background-color: var(--accent-primary);
-  width: 24px;
-  border-radius: 5px;
 }
 
 /* Specs List - Responsive */
