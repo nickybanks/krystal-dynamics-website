@@ -507,7 +507,7 @@ header.scrolled {
   }
 }
 
-/* Plugin Image - Responsive */
+/* Plugin Image - Responsive - FIXED */
 .plugin-image {
   width: 100%;
   max-width: 500px;
@@ -516,6 +516,7 @@ header.scrolled {
   box-shadow: 0 10px 40px var(--shadow);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  line-height: 0; /* Removes extra space below image */
 }
 
 @media (min-width: 768px) {
@@ -537,6 +538,7 @@ header.scrolled {
   transition: opacity 0.5s ease;
   z-index: 1;
   mix-blend-mode: overlay;
+  pointer-events: none;
 }
 
 .plugin-item:hover .plugin-image {
@@ -558,7 +560,92 @@ header.scrolled {
   width: 100%;
   height: auto;
   display: block;
+  vertical-align: middle; /* Prevents inline spacing issues */
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Plugin Detail Image Carousel - NEW */
+.plugin-detail-image-carousel {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 0 auto 2rem;
+  display: block;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px var(--shadow);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  aspect-ratio: 16 / 10; /* Prevents layout shift while loading */
+}
+
+@media (min-width: 768px) {
+  .plugin-detail-image-carousel {
+    border-radius: 16px;
+    margin-bottom: 3rem;
+    box-shadow: 0 20px 60px var(--shadow);
+  }
+}
+
+.plugin-detail-image-carousel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px var(--shadow-hover);
+}
+
+@media (min-width: 1024px) {
+  .plugin-detail-image-carousel:hover {
+    box-shadow: 0 25px 80px var(--shadow-hover);
+  }
+}
+
+.plugin-detail-image-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.plugin-detail-image-carousel img.active {
+  opacity: 1;
+}
+
+/* Keep existing .plugin-detail-image for backward compatibility */
+.plugin-detail-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 0 auto 2rem;
+  display: block;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px var(--shadow);
+  transition: all 0.4s ease;
+  animation: scaleIn 0.8s ease-out 0.2s both;
+}
+
+@media (min-width: 768px) {
+  .plugin-detail-image {
+    border-radius: 16px;
+    margin-bottom: 3rem;
+    box-shadow: 0 20px 60px var(--shadow);
+  }
+}
+
+.plugin-detail-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px var(--shadow-hover);
+}
+
+@media (min-width: 1024px) {
+  .plugin-detail-image:hover {
+    box-shadow: 0 25px 80px var(--shadow-hover);
+  }
 }
 
 /* Plugin Content - Responsive */

@@ -75,7 +75,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Carousel with Parallax
+// Hero Carousel with Parallax
 function initCarousel() {
   const carouselContainer = document.getElementById('carouselContainer');
   
@@ -161,6 +161,71 @@ function initCarousel() {
   });
 }
 
+// Plugin Detail Page Image Carousel - NEW
+function initPluginDetailCarousel() {
+  const carouselContainer = document.querySelector('.plugin-detail-image-carousel');
+  
+  if (!carouselContainer) return;
+
+  const imagesData = carouselContainer.getAttribute('data-images');
+  if (!imagesData) return;
+
+  let images;
+  try {
+    images = JSON.parse(imagesData);
+  } catch (e) {
+    console.error('Error parsing carousel images:', e);
+    return;
+  }
+
+  if (!images || images.length === 0) return;
+
+  let currentSlide = 0;
+  let carouselInterval;
+
+  // Create image elements
+  images.forEach((src, index) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = `Plugin interface ${index + 1}`;
+    if (index === 0) {
+      img.classList.add('active');
+    }
+    carouselContainer.appendChild(img);
+  });
+
+  // Only start carousel if there's more than one image
+  if (images.length > 1) {
+    function nextSlide() {
+      const carouselImages = carouselContainer.querySelectorAll('img');
+      
+      // Remove active class from current image
+      carouselImages[currentSlide].classList.remove('active');
+      
+      // Move to next slide
+      currentSlide = (currentSlide + 1) % images.length;
+      
+      // Add active class to new current image
+      carouselImages[currentSlide].classList.add('active');
+    }
+
+    function startCarousel() {
+      carouselInterval = setInterval(nextSlide, 4000); // Change every 4 seconds
+    }
+
+    function stopCarousel() {
+      clearInterval(carouselInterval);
+    }
+
+    // Start the carousel
+    startCarousel();
+
+    // Pause on hover
+    carouselContainer.addEventListener('mouseenter', stopCarousel);
+    carouselContainer.addEventListener('mouseleave', startCarousel);
+  }
+}
+
 // Scroll Animations - SIMPLIFIED for better performance
 function initScrollAnimations() {
   const observerOptions = {
@@ -206,11 +271,6 @@ function initHeaderScroll() {
   });
 }
 
-// Parallax Effect - DISABLED for smoother scrolling
-function initParallax() {
-  // Parallax disabled to improve scroll performance
-}
-
 // Button Hover Effects
 function initButtonEffects() {
   document.querySelectorAll('.btn').forEach(btn => {
@@ -252,59 +312,6 @@ function initImageLoading() {
     
     images.forEach(img => imageObserver.observe(img));
   }
-}
-
-// Cursor Trail Effect (Optional - can be enabled/disabled)
-function initCursorTrail() {
-  let trails = [];
-  const maxTrails = 20;
-  
-  document.addEventListener('mousemove', (e) => {
-    if (window.innerWidth < 768) return; // Disable on mobile
-    
-    const trail = document.createElement('div');
-    trail.className = 'cursor-trail';
-    trail.style.cssText = `
-      position: fixed;
-      width: 8px;
-      height: 8px;
-      background: var(--accent-primary);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.5;
-      left: ${e.clientX}px;
-      top: ${e.clientY}px;
-      transform: translate(-50%, -50%);
-      animation: trail-fade 0.5s ease-out forwards;
-    `;
-    
-    document.body.appendChild(trail);
-    trails.push(trail);
-    
-    if (trails.length > maxTrails) {
-      const oldTrail = trails.shift();
-      oldTrail.remove();
-    }
-    
-    setTimeout(() => trail.remove(), 500);
-  });
-  
-  const trailStyle = document.createElement('style');
-  trailStyle.textContent = `
-    @keyframes trail-fade {
-      to {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(2);
-      }
-    }
-  `;
-  document.head.appendChild(trailStyle);
-}
-
-// Plugin Specs Animation - DISABLED
-function initSpecsAnimation() {
-  // Animation disabled for cleaner experience
 }
 
 // Download Button Analytics (placeholder for tracking)
@@ -383,99 +390,10 @@ window.addEventListener('scroll', debounce(() => {
   }
 }, 10), { passive: true });
 
-// Plugin Detail Image Carousel
-function initPluginImageCarousel() {
-  const pluginImageContainer = document.querySelector('.plugin-detail-image-carousel');
-  
-  if (!pluginImageContainer) return;
-
-  const images = pluginImageContainer.dataset.images ? JSON.parse(pluginImageContainer.dataset.images) : [];
-  
-  if (images.length === 0) return;
-
-  let currentSlide = 0;
-  let carouselInterval;
-
-  // Clear container
-  pluginImageContainer.innerHTML = '';
-
-  // Create slides
-  images.forEach((src, index) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = `Plugin Interface ${index + 1}`;
-    img.className = `plugin-carousel-slide ${index === 0 ? 'active' : ''}`;
-    
-    if (index === 0) {
-      img.fetchPriority = 'high';
-    } else {
-      img.loading = 'lazy';
-    }
-    
-    pluginImageContainer.appendChild(img);
-  });
-
-  // Only show navigation if there are multiple images
-  if (images.length > 1) {
-    // Create dots container
-    const dotsContainer = document.createElement('div');
-    dotsContainer.className = 'plugin-carousel-dots';
-    
-    images.forEach((_, index) => {
-      const dot = document.createElement('button');
-      dot.className = `plugin-carousel-dot ${index === 0 ? 'active' : ''}`;
-      dot.setAttribute('aria-label', `Go to image ${index + 1}`);
-      dot.addEventListener('click', () => goToSlide(index));
-      dotsContainer.appendChild(dot);
-    });
-    
-    pluginImageContainer.insertAdjacentElement('afterend', dotsContainer);
-
-    function goToSlide(index) {
-      if (index === currentSlide) return;
-      
-      const slides = pluginImageContainer.querySelectorAll('.plugin-carousel-slide');
-      const dots = document.querySelectorAll('.plugin-carousel-dot');
-      
-      slides[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('active');
-      
-      currentSlide = index;
-      
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
-      
-      resetCarouselInterval();
-    }
-
-    function nextSlide() {
-      const nextIndex = (currentSlide + 1) % images.length;
-      goToSlide(nextIndex);
-    }
-
-    function startCarousel() {
-      carouselInterval = setInterval(nextSlide, 4000);
-    }
-
-    function resetCarouselInterval() {
-      clearInterval(carouselInterval);
-      startCarousel();
-    }
-
-    startCarousel();
-
-    pluginImageContainer.addEventListener('mouseenter', () => {
-      clearInterval(carouselInterval);
-    });
-
-    pluginImageContainer.addEventListener('mouseleave', startCarousel);
-  }
-}
-
 // Initialize Everything
 document.addEventListener('DOMContentLoaded', () => {
   initCarousel();
-  initPluginImageCarousel();
+  initPluginDetailCarousel();
   initScrollAnimations();
   initButtonEffects();
   initImageLoading();
