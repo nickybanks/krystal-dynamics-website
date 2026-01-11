@@ -395,7 +395,6 @@ function initPluginImageCarousel() {
 
   let currentSlide = 0;
   let carouselInterval;
-  let isTransitioning = false;
 
   // Clear container
   pluginImageContainer.innerHTML = '';
@@ -413,26 +412,8 @@ function initPluginImageCarousel() {
       img.loading = 'lazy';
     }
     
-    // Quando l'immagine si carica, aggiorna l'altezza del container
-    img.addEventListener('load', () => {
-      if (img.classList.contains('active')) {
-        updateContainerHeight();
-      }
-    });
-    
     pluginImageContainer.appendChild(img);
   });
-
-  // Funzione per aggiornare l'altezza del container in base all'immagine attiva
-  function updateContainerHeight() {
-    const activeSlide = pluginImageContainer.querySelector('.plugin-carousel-slide.active');
-    if (activeSlide && activeSlide.complete) {
-      pluginImageContainer.style.height = activeSlide.offsetHeight + 'px';
-    }
-  }
-
-  // Inizializza l'altezza
-  updateContainerHeight();
 
   // Only show navigation if there are multiple images
   if (images.length > 1) {
@@ -451,8 +432,7 @@ function initPluginImageCarousel() {
     pluginImageContainer.parentElement.appendChild(dotsContainer);
 
     function goToSlide(index) {
-      if (isTransitioning || index === currentSlide) return;
-      isTransitioning = true;
+      if (index === currentSlide) return;
       
       const slides = pluginImageContainer.querySelectorAll('.plugin-carousel-slide');
       const dots = document.querySelectorAll('.plugin-carousel-dot');
@@ -465,14 +445,7 @@ function initPluginImageCarousel() {
       slides[currentSlide].classList.add('active');
       dots[currentSlide].classList.add('active');
       
-      // Aggiorna l'altezza del container con transizione fluida
-      updateContainerHeight();
-      
       resetCarouselInterval();
-      
-      setTimeout(() => {
-        isTransitioning = false;
-      }, 1000);
     }
 
     function nextSlide() {
@@ -496,9 +469,6 @@ function initPluginImageCarousel() {
     });
 
     pluginImageContainer.addEventListener('mouseleave', startCarousel);
-    
-    // Aggiorna l'altezza quando si ridimensiona la finestra
-    window.addEventListener('resize', updateContainerHeight);
   }
 }
 

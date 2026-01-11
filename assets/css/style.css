@@ -836,6 +836,7 @@ footer p {
 }
 
 /* Plugin Detail Image Carousel */
+/* Plugin Detail Image Carousel */
 .plugin-detail-image-wrapper {
   position: relative;
   width: 100%;
@@ -856,9 +857,8 @@ footer p {
   overflow: hidden;
   border: 1px solid var(--border-color);
   box-shadow: 0 10px 30px var(--shadow);
-  transition: all 0.4s ease, height 0.6s ease; /* Aggiunta transizione per height */
+  transition: all 0.4s ease;
   animation: scaleIn 0.8s ease-out 0.2s both;
-  min-height: 200px; /* Altezza minima per evitare layout shift */
 }
 
 @media (min-width: 768px) {
@@ -880,19 +880,13 @@ footer p {
 }
 
 .plugin-carousel-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: auto;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  display: block;
+  display: none; /* Nascondi tutte per default */
 }
 
 .plugin-carousel-slide.active {
-  opacity: 1;
-  position: relative; /* L'immagine attiva è relative per dare altezza al container */
+  display: block; /* Mostra solo quella attiva */
 }
 
 .plugin-carousel-dots {
