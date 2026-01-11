@@ -429,7 +429,7 @@ function initPluginImageCarousel() {
       dotsContainer.appendChild(dot);
     });
     
-    pluginImageContainer.parentElement.appendChild(dotsContainer);
+    pluginImageContainer.insertAdjacentElement('afterend', dotsContainer);
 
     function goToSlide(index) {
       if (index === currentSlide) return;

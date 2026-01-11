@@ -836,20 +836,6 @@ footer p {
 }
 
 /* Plugin Detail Image Carousel */
-/* Plugin Detail Image Carousel */
-.plugin-detail-image-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 768px) {
-  .plugin-detail-image-wrapper {
-    margin-bottom: 3rem;
-  }
-}
-
 .plugin-detail-image-carousel {
   position: relative;
   width: 100%;
