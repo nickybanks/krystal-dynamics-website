@@ -511,54 +511,42 @@ header.scrolled {
 .plugin-image {
   width: 100%;
   max-width: 500px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 40px var(--shadow);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
 }
 
 @media (min-width: 768px) {
   .plugin-image {
     max-width: 100%;
-    border-radius: 16px;
   }
 }
 
-.plugin-image::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--gradient-1);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  z-index: 1;
-  mix-blend-mode: overlay;
-}
-
 .plugin-item:hover .plugin-image {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 60px var(--shadow-hover);
+  transform: translateY(-5px);
 }
 
 @media (min-width: 1024px) {
   .plugin-item:hover .plugin-image {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-10px);
   }
-}
-
-.plugin-item:hover .plugin-image::before {
-  opacity: 0.1;
 }
 
 .plugin-image img {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px var(--shadow);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  .plugin-image img {
+    border-radius: 16px;
+  }
+}
+
+.plugin-item:hover .plugin-image img {
+  box-shadow: 0 20px 60px var(--shadow-hover);
 }
 
 /* Plugin Content - Responsive */
