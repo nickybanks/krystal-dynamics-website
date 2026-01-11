@@ -836,34 +836,18 @@ footer p {
 }
 
 /* Plugin Detail Image Carousel */
+/* Plugin Detail Image Carousel */
 .plugin-detail-image-carousel {
   position: relative;
   width: 100%;
   max-width: 100%;
   margin: 0 auto 2rem;
-  border-radius: 12px;
-  overflow: visible;
-  border: none;
-  box-shadow: none;
-  transition: all 0.4s ease;
-  animation: scaleIn 0.8s ease-out 0.2s both;
+  /* Rimossi tutti gli stili visivi dal container */
 }
 
 @media (min-width: 768px) {
   .plugin-detail-image-carousel {
     margin-bottom: 3rem;
-    border-radius: 16px;
-  }
-}
-
-.plugin-detail-image-carousel:hover {
-  transform: none;
-  box-shadow: none;
-}
-
-@media (min-width: 1024px) {
-  .plugin-detail-image-carousel:hover {
-    box-shadow: 0 25px 80px var(--shadow-hover);
   }
 }
 
@@ -886,6 +870,7 @@ footer p {
 
 .plugin-carousel-slide.active {
   display: block;
+  animation: scaleIn 0.8s ease-out 0.2s both;
 }
 
 .plugin-carousel-slide:hover {
@@ -927,7 +912,6 @@ footer p {
   width: 24px;
   border-radius: 5px;
 }
-
 /* Specs List - Responsive */
 .specs {
   display: grid;
