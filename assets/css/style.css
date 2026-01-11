@@ -836,13 +836,9 @@ footer p {
 }
 
 /* Plugin Detail Image Carousel */
-/* Plugin Detail Image Carousel */
 .plugin-detail-image-carousel {
-  position: relative;
   width: 100%;
-  max-width: 100%;
   margin: 0 auto 2rem;
-  /* Rimossi tutti gli stili visivi dal container */
 }
 
 @media (min-width: 768px) {
@@ -889,6 +885,7 @@ footer p {
   justify-content: center;
   gap: 0.5rem;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .plugin-carousel-dot {
@@ -912,6 +909,7 @@ footer p {
   width: 24px;
   border-radius: 5px;
 }
+
 /* Specs List - Responsive */
 .specs {
   display: grid;
