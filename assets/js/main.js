@@ -162,7 +162,6 @@ function initCarousel() {
 }
 
 // Plugin Detail Page Image Carousel
-// Plugin Detail Page Image Carousel - NEW
 function initPluginDetailCarousel() {
   const carouselContainers = document.querySelectorAll('.plugin-detail-image-carousel');
   
@@ -212,7 +211,7 @@ function initPluginDetailCarousel() {
       }
 
       function startCarousel() {
-        carouselInterval = setInterval(nextSlide, 4000); // Change every 4 seconds
+        carouselInterval = setInterval(nextSlide, 3000); // Change every 3 seconds
       }
 
       function stopCarousel() {
@@ -229,7 +228,7 @@ function initPluginDetailCarousel() {
   });
 }
 
-// Scroll Animations - SIMPLIFIED for better performance
+// Scroll Animations
 function initScrollAnimations() {
   const observerOptions = {
     root: null,
@@ -368,7 +367,7 @@ function activateEasterEgg() {
   console.log('🎉 Easter egg activated!');
 }
 
-// Performance Optimization - Simplified
+// Performance Optimization
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
