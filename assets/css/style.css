@@ -1001,8 +1001,6 @@ footer p {
 @media (min-width: 640px) { .specs { grid-template-columns: 150px 1fr; gap: 0.75rem 1.5rem; } }
 @media (min-width: 768px) { .specs { grid-template-columns: 200px 1fr; gap: 1rem 2rem; padding: 2rem; } }
 
-.specs:hover { box-shadow: 0 8px 25px var(--shadow); }
-
 .specs dt {
   font-weight: 700; /* Leggermente più marcato */
   color: var(--text-primary);
