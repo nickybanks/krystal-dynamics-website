@@ -321,10 +321,17 @@ function initDownloadTracking() {
   document.querySelectorAll('.download-section a').forEach(link => {
     link.addEventListener('click', function(e) {
       const pluginName = this.closest('.plugin-detail')?.querySelector('h2')?.textContent || 'Unknown';
-      const platform = this.textContent.includes('Windows') ? 'Windows' : 'macOS';
+      const platform = this.textContent.includes('Windows') ? 'Windows' : 'MacOS';
+      
+      // Traccia con Google Analytics
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'download', {
+          'event_category': 'Plugin Download',
+          'event_label': `${pluginName} - ${platform}`,
+        });
+      }
       
       console.log(`Download tracked: ${pluginName} - ${platform}`);
-      // Add your analytics code here
     });
   });
 }
