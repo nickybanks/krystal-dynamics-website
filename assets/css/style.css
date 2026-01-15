@@ -638,7 +638,6 @@ header.scrolled {
   width: 100%;
   height: auto;
   display: block;
-  vertical-align: middle;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
   padding: 0;
@@ -693,7 +692,6 @@ header.scrolled {
   border: none;
   padding: 0;
   margin: 0;
-  vertical-align: middle;
 }
 
 .plugin-detail-image-carousel img.active {
@@ -892,38 +890,50 @@ header.scrolled {
 
 /* Footer */
 footer {
-  padding: 1.5rem 0;
-  text-align: center;
-  border-top: 1px solid var(--border-color);
-  position: relative;
+    padding: 1.5rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    position: relative;
 }
 
 @media (min-width: 768px) {
-  footer {
-    padding: 2rem 0;
-  }
+    footer {
+        padding: 2rem 0;
+    }
 }
 
 footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 2px;
-  background: var(--gradient-1);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: var(--gradient-1);
 }
 
 footer p {
-  color: var(--text-secondary);
-  font-size: clamp(0.85rem, 1.5vw, 0.9rem);
-  margin: 0;
-  animation: fadeInUp 0.8s ease-out;
+    color: var(--text-secondary);
+    font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+    margin: 0;
+    animation: fadeInUp 0.8s ease-out;
 }
 
+/* Footer Grid Layout - Desktop */
+@media (min-width: 768px) {
+    footer .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+    }
+}
+
+/* Footer Social - Left column on desktop */
 .footer-social {
     margin: 1rem 0;
+    text-align: center;
 }
 
 .footer-social a {
@@ -940,6 +950,18 @@ footer p {
 
 .footer-social svg {
     vertical-align: middle;
+}
+
+/* Copyright - Center column on desktop */
+.footer-copyright {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+/* Support Section - Right column on desktop */
+.footer-support {
+    margin: 1rem 0;
+    text-align: center;
 }
 
 /* Plugin Detail Page */
@@ -1374,8 +1396,264 @@ footer p {
 }
 
 /* Smooth Transitions for Theme Switch */
-* {
+/* {
   transition-property: background-color, border-color, color, fill, stroke;
-  transition-duration: 0.3s;
+  transition-duration: 0.8s;
   transition-timing-function: ease;
+}
+*/
+
+/* Plugin Hero Section */
+.plugin-hero {
+  padding: 3rem 0;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .plugin-hero {
+    padding: 4rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .plugin-hero {
+    padding: 6rem 0;
+  }
+}
+
+.plugin-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
+  opacity: 0.03;
+  animation: pulse 15s ease-in-out infinite;
+}
+
+/* Blue glow animation on hover */
+.plugin-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(75, 159, 255, 0.05), transparent);
+  transition: left 1.5s ease;
+  pointer-events: none;
+}
+
+.plugin-hero:hover::after {
+  left: 100%;
+  transition: left 1.5s ease;
+}
+
+.plugin-hero:not(:hover)::after {
+  transition: none;
+  left: -100%;
+}
+
+.plugin-hero .plugin-grid {
+  position: relative;
+  z-index: 2;
+}
+
+.plugin-hero .plugin-content h1 {
+  font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  position: relative;
+  display: inline-block;
+}
+
+/* Blue line animation on hover - reusing from homepage */
+.plugin-hero .plugin-content h1::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--gradient-1);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.plugin-hero:hover .plugin-content h1::after {
+  width: 100%;
+}
+
+.plugin-tagline {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.plugin-hero .plugin-specs {
+  margin-bottom: 2.5rem;
+}
+
+/* Plugin Overview in Hero */
+.plugin-hero-overview {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.plugin-hero-overview p {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 100%;
+}
+
+.plugin-hero-downloads {
+  margin-top: 1rem;
+}
+
+.plugin-hero-downloads h2 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  position: relative;
+  display: inline-block;
+}
+
+.plugin-hero:hover .plugin-hero-downloads h2::after {
+  width: 100%;
+}
+
+.download-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .download-buttons {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+/* Premium Download Button Style */
+.btn-download {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: white;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .btn-download {
+  background: var(--bg-primary);
+  border-color: var(--border-color);
+}
+
+.btn-download::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-1);
+  opacity: 0;
+  z-index: 0;
+}
+
+.btn-download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--shadow-hover);
+  border-color: var(--accent-primary);
+  color: white;
+}
+
+.btn-download:hover::before {
+  opacity: 1;
+}
+
+.btn-download:active {
+  transform: translateY(0);
+}
+
+.btn-download > * {
+  position: relative;
+  z-index: 1;
+}
+
+.download-icon {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.btn-download:hover .download-icon {
+  transform: translateY(3px);
+}
+
+/* OS Logo Styles */
+.os-logo {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.os-logo svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  transition: fill 0.3s ease;
+}
+
+.download-note {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+/* Adjust plugin-detail section spacing when after hero */
+.plugin-hero + .plugin-detail {
+  padding-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .plugin-hero + .plugin-detail {
+    padding-top: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .plugin-hero + .plugin-detail {
+    padding-top: 5rem;
+  }
+}
+
+/* Remove top border from first h3 in plugin-detail-content */
+.plugin-detail-content > h3:first-of-type {
+  border-top: none;
+  padding-top: 0;
 }
