@@ -1471,7 +1471,7 @@ footer p {
   display: inline-block;
 }
 
-/* Blue line animation on hover - reusing from homepage */
+/* Blue line animation on hover */
 .plugin-hero .plugin-content h1::after {
   content: '';
   position: absolute;
