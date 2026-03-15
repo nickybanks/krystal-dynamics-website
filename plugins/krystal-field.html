@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="max-age=300, must-revalidate">
+    <meta name="description" content="KrystalField - Free mastering compressor with dual compression modes">
+    <title>KrystalField - Krystal Dynamics</title>
+
+    <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Krystal Dynamics" />
+    <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/utilities.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MFT9CY0G1R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MFT9CY0G1R');
+    </script>
+</head>
+<body>
+    <div id="header"></div>
+
+    <main>
+        <section class="plugin-hero">
+            <div class="container">
+                <div class="plugin-grid">
+
+                    <div class="plugin-detail-image-carousel" data-images='[
+                        "../assets/images/k-field-interface-1.png",
+                        "../assets/images/k-field-interface-2.png"
+                    ]'></div>
+
+                    <div class="plugin-content">
+                        <h1>KrystalField</h1>
+
+                        <div class="plugin-hero-overview">
+                            <p>KrystalField is a mastering-grade dynamic processor featuring dual compression
+                               engines for simultaneous downward and upward compression. This approach provides
+                               precise control over mix dynamics, making it suitable for mastering, bus processing,
+                               and final mix polish.</p>
+                        </div>
+
+                        <div class="plugin-hero-downloads">
+                            <h2>Download</h2>
+                            <div class="download-buttons">
+                                <a href="https://github.com/nickybanks/KrystalField/releases/download/v1.0.2/KrystalField-v1.0.2-Windows.zip"
+                                   class="btn-download"
+                                   aria-label="Download KrystalField installer for Windows">
+                                    <span class="os-logo">
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+                                        </svg>
+                                    </span>
+                                    <span>Windows (VST3)</span>
+                                </a>
+                                <a href="https://github.com/nickybanks/KrystalField/releases/download/v1.0.2/KrystalField-v1.0.2-MacOS.zip"
+                                   class="btn-download"
+                                   aria-label="Download KrystalField installer for MacOS">
+                                    <span class="os-logo">
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                        </svg>
+                                    </span>
+                                    <span>macOS (AU/VST3)</span>
+                                </a>
+                            </div>
+                            <p class="download-note">Completely FREE for personal and commercial use</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="plugin-detail">
+            <div class="container">
+                <div class="plugin-detail-content">
+
+                    <!-- Features -->
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Dual dynamic processors for downward and upward compression</li>
+                        <li>Target-based threshold controls</li>
+                        <li>Unified attack and release controls</li>
+                        <li>Independent ratio and knee controls</li>
+                        <li>RMS, Peak, and LOUD detection modes</li>
+                        <li>Auto makeup gain</li>
+                        <li>Mix control for parallel processing</li>
+                        <li>Lookahead delay up to 20ms</li>
+                        <li>Low frequency bias for sidechain filtering</li>
+                        <li>Hard and soft clipping modes</li>
+                        <li>Bypass for A/B comparison</li>
+                        <li>Gain reduction and short-term LUFS metering</li>
+                        <li>Real-time waveform display</li>
+                    </ul>
+
+                    <!-- Technical Specs -->
+                    <h3>Technical Specifications</h3>
+                    <div class="card card--no-hover mt-2 mb-2">
+                        <dl class="specs" style="margin:0; border:none; padding:0; background:transparent;">
+                            <dt>Version</dt>
+                            <dd>1.0.2</dd>
+                            <dt>Formats</dt>
+                            <dd>VST3, AU</dd>
+                            <dt>Operating Systems</dt>
+                            <dd>Windows 10 or later, macOS 10.13 or later</dd>
+                            <dt>Architecture</dt>
+                            <dd>64-bit</dd>
+                            <dt>Latency</dt>
+                            <dd>Variable (depends on Lookahead and Oversampling)</dd>
+                        </dl>
+                    </div>
+
+                    <!-- Installation -->
+                    <h3>Installation</h3>
+                    <div class="installation-guide">
+
+                        <!-- Windows -->
+                        <div class="installation-platform">
+                            <div class="platform-header">
+                                <span class="platform-icon">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+                                    </svg>
+                                </span>
+                                <div class="platform-info">
+                                    <h4>Windows</h4>
+                                    <span class="platform-format">VST3</span>
+                                </div>
+                            </div>
+                            <div class="installation-steps">
+                                <div class="installation-method">
+                                    <div class="method-label">Recommended</div>
+                                    <ol class="step-list">
+                                        <li>Download the <strong>.zip</strong> package and extract it.</li>
+                                        <li>Run <strong>KrystalField-Windows-installer.exe</strong> and follow the on-screen instructions.</li>
+                                        <li>Restart your DAW and rescan plugins if needed.</li>
+                                    </ol>
+                                </div>
+                                <div class="installation-method">
+                                    <div class="method-label">Manual installation (if the installer can't be used)</div>
+                                    <ol class="step-list">
+                                        <li>Copy <strong>KrystalField.vst3</strong> to <code>C:\Program Files\Common Files\VST3</code>.</li>
+                                        <li>Restart your DAW and rescan plugins if needed.</li>
+                                    </ol>
+                                </div>
+                                <p class="installation-note">
+                                    <em>Note:</em> Some systems may show a security warning for unsigned installers.
+                                    If this happens, use the manual method.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- macOS -->
+                        <div class="installation-platform">
+                            <div class="platform-header">
+                                <span class="platform-icon">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                    </svg>
+                                </span>
+                                <div class="platform-info">
+                                    <h4>macOS</h4>
+                                    <span class="platform-format">AU / VST3</span>
+                                </div>
+                            </div>
+                            <div class="installation-steps">
+                                <div class="installation-method">
+                                    <div class="method-label">Recommended</div>
+                                    <ol class="step-list">
+                                        <li>Download the <strong>.zip</strong> package and extract it.</li>
+                                        <li>Open <strong>KrystalField-MacOS-installer.pkg</strong> and follow the on-screen instructions.</li>
+                                        <li>Restart your DAW and rescan plugins if needed.</li>
+                                    </ol>
+                                </div>
+                                <div class="installation-method">
+                                    <div class="method-label">Manual installation (if the installer can't be used)</div>
+                                    <ol class="step-list">
+                                        <li>Copy <strong>KrystalField.component</strong> (AU) to <code>/Library/Audio/Plug-Ins/Components</code>.</li>
+                                        <li>Copy <strong>KrystalField.vst3</strong> (VST3) to <code>/Library/Audio/Plug-Ins/VST3</code>.</li>
+                                        <li>Restart your DAW and rescan plugins if needed.</li>
+                                    </ol>
+                                </div>
+                                <p class="installation-note">
+                                    <em>Note:</em> If macOS blocks the installer, you may need to allow it in
+                                    <strong>System Settings &gt; Privacy &amp; Security</strong>.
+                                    Apple guidance is available <a href="https://support.apple.com/en-us/102445">here</a>.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Version History — Collapsible -->
+                    <h3>Version History</h3>
+
+                    <div class="collapsible is-open">
+                        <div class="collapsible__header">
+                            <span class="collapsible__title">
+                                <span class="changelog-version">1.0.2</span>
+                                <span class="changelog-date text-sm" style="font-weight:300">January 30, 2026</span>
+                                <span class="badge badge--primary badge--small">Current</span>
+                            </span>
+                            <svg class="collapsible__icon" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                        <div class="collapsible__content">
+                            <div class="collapsible__body">
+                                <div class="changelog-content">
+                                    <h4>Improvements</h4>
+                                    <ul>
+                                        <li>Added updates notifications</li>
+                                        <li>Minor bug fixes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collapsible">
+                        <div class="collapsible__header">
+                            <span class="collapsible__title">
+                                <span class="changelog-version">1.0.1</span>
+                                <span class="changelog-date text-sm" style="font-weight:300">January 13, 2026</span>
+                            </span>
+                            <svg class="collapsible__icon" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                        <div class="collapsible__content">
+                            <div class="collapsible__body">
+                                <div class="changelog-content">
+                                    <h4>Improvements</h4>
+                                    <ul>
+                                        <li>The upward knee now shapes the curve to avoid increase of low intensity signals</li>
+                                        <li>Added 8x oversampling</li>
+                                        <li>The display has now three zoom modes from -18 to -72 dB</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collapsible">
+                        <div class="collapsible__header">
+                            <span class="collapsible__title">
+                                <span class="changelog-version">1.0.0</span>
+                                <span class="changelog-date text-sm" style="font-weight:300">January 12, 2026</span>
+                            </span>
+                            <svg class="collapsible__icon" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                        <div class="collapsible__content">
+                            <div class="collapsible__body">
+                                <div class="changelog-content">
+                                    <h4>Initial Release</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- License -->
+                    <h3 class="mt-4">License</h3>
+                    <p class="installation-note mt-2">
+                        KrystalField is free software provided without warranty. You may use this
+                        plugin for personal and commercial projects. Redistribution is not permitted.
+                    </p>
+
+                </div>
+
+                <div class="back-link">
+                    <a href="../index.html">← Back to all plugins</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/components.js"></script>
+</body>
+</html>

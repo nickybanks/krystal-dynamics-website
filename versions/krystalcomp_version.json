@@ -1,0 +1,6 @@
+{
+  "version": "1.1.0",
+  "releaseDate": "2026-03-02",
+  "releaseNotes": "- New Real-time waveform display\n- New Sidechain equalizer display\n- Added automatic loudness matching with informative feedback\n- Added hold parameter for precise control over compression",
+  "downloadUrl": "https://krystaldynamics.com/krystal-comp"
+}

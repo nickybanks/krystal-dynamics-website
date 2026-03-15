@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="max-age=300, must-revalidate">
+    <meta name="description" content="Krystal Dynamics - Free audio plugins for music production">
+    <meta name="keywords" content="audio plugins, VST, free plugins, audio software, music production">
+    <title>Home - Krystal Dynamics</title>
+
+    <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Krystal Dynamics" />
+    <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
+
+    <link rel="preload" as="image" href="assets/images/kdynamics_logo_full_dark.png" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MFT9CY0G1R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MFT9CY0G1R');
+    </script>
+</head>
+<body>
+    <div id="header"></div>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="carousel-container" id="carouselContainer"></div>
+
+            <div class="hero-content">
+                <img src="assets/images/kdynamics_logo_full_dark.png" alt="Krystal Dynamics" fetchpriority="high">
+                <p class="hero-subtitle">High-quality dynamic processing tools for music production</p>
+            </div>
+        </section>
+
+        <section class="plugins" id="plugins">
+            <div class="plugin-list" id="pluginList">
+                <!-- Content from renderPluginList() in main.js -->
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-body">
+
+                    <!-- About text -->
+                    <div class="about-story">
+                        <h2>About Krystal Dynamics</h2>
+                        <p>Hi, I'm Nick - the developer behind Krystal Dynamics.</p>
+
+                        <p>Krystal Dynamics is an independent audio software project focused on building clean, precise and professional tools for modern mixing and mastering.</p>
+
+                        <p>The project started during my graduation in Sound and Music Computing at the University of Milan (UniMI), Italy. As a solo developer, these plugins represent several months of work exploring digital signal processing and have evolved into a suite of practical tools for producers and engineers.</p>
+
+                        <p>Every plugin is designed, developed, tested and maintained entirely by me. I put strong emphasis on sound quality, CPU efficiency and workflow simplicity, avoiding unnecessary complexity while keeping full control over the dynamics.</p>
+                        
+                        <p>I believe that professional tools should be accessible to everyone, which is why all plugins are completely free. However, developing and maintaining audio software requires a significant amount of time, research and continuous improvement.</p>
+
+                        <p>User feedback and community support play a fundamental role in allowing this project to grow and continue evolving.</p>
+
+                    </div>
+
+                    <!-- Support card -->
+                    <div class="about-support-card">
+                        <div class="card support-card-inner">
+                            <span class="support-card-icon" aria-hidden="true">&#9825;</span>
+                            <h3>Support the Project</h3>
+                            <p> 
+                                Krystal Dynamics is developed independently and all plugins are provided free of charge.
+                            <br>
+                                If you find them useful in your workflow, your support helps me continue developing new tools, improving existing ones and keeping everything accessible to the community.
+                            </p>
+
+                            <a href="https://www.patreon.com/cw/Krystal_Dynamics?vanity=Krystal_Dynamics"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="btn-patreon"
+                               aria-label="Support Krystal Dynamics on Patreon">
+                                <span class="btn-patreon-logo" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path d="M15.303125 4.80625c-0.003125 -2.04375 -1.59375 -3.71875 -3.459375 -4.321875C9.525 -0.265625 6.46875 -0.15625 4.253125 0.8875 1.571875 2.153125 0.728125 4.928125 0.696875 7.69375 0.671875 9.96875 0.896875 15.95625 4.278125 16c2.509375 0.03125 2.884375 -3.203125 4.046875 -4.759375 0.825 -1.109375 1.890625 -1.421875 3.2 -1.746875 2.25 -0.55625 3.784375 -2.334375 3.78125 -4.6875z"/>
+                                    </svg>
+                                </span>
+                                <span>Join Patreon</span>
+                            </a>
+                            <p class="support-card-note">Every contribution is greatly appreciated</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/components.js"></script>
+</body>
+</html>

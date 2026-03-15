@@ -1,0 +1,6 @@
+{
+  "version": "1.0.3",
+  "releaseDate": "2026-03-02",
+  "releaseNotes": "- Added delta button to isolate the clipping effect for precise adjustments\n- Added LUFS metering inside the waveform display\n- Improved automatic loudness matching and added informative feedback\n- Improved waveform display and rendering",
+  "downloadUrl": "https://krystaldynamics.com/krystal-clip"
+}
