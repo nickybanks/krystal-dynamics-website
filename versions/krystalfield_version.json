@@ -1,6 +1,6 @@
 {
-  "version": "1.0.2",
-  "releaseDate": "2026-01-30",
-  "releaseNotes": "- Added updates notifications\n- Minor bug fixes",
+  "version": "1.1.0",
+  "releaseDate": "2026-05-01",
+  "releaseNotes": "- Added linking mode for threshold controls\n- Added display settings to manage theme and performance of graphic elements",
   "downloadUrl": "https://krystaldynamics.com/krystal-field"
 }

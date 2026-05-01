@@ -22,6 +22,7 @@ const PLUGINS = [
       'assets/images/k-clip-interface-1.png',
       'assets/images/k-clip-interface-2.png',
       'assets/images/k-clip-interface-3.png',
+      'assets/images/k-clip-interface-4.png',
     ],
     formats: ['VST3', 'AU'],
   },
