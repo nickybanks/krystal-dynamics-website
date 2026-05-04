@@ -9,6 +9,8 @@ const PLUGINS = [
     images: [
       'assets/images/k-field-interface-1.png',
       'assets/images/k-field-interface-2.png',
+      'assets/images/k-field-interface-3.png',
+      'assets/images/k-field-interface-4.png',
     ],
     formats: ['VST3', 'AU'],
   },
@@ -35,6 +37,8 @@ const PLUGINS = [
     images: [
       'assets/images/k-comp-interface-1.png',
       'assets/images/k-comp-interface-2.png',
+      'assets/images/k-comp-interface-3.png',
+      'assets/images/k-comp-interface-4.png',
     ],
     formats: ['VST3', 'AU'],
   },
