@@ -17,7 +17,7 @@ const PLUGINS = [
   {
     id: 'krystal-clip',
     name: 'KrystalClip',
-    description: 'A clipping processor featuring three distinct saturation algorithms for controlled peak limiting. Each mode provides different harmonic characteristics, from transparent loudness control to creative saturation.',
+    description: 'A clipping processor featuring four distinct saturation algorithms for controlled peak limiting. Each mode provides different harmonic characteristics, from transparent loudness control to creative saturation.',
     page: 'plugins/krystal-clip.html',
     versionFile: '/versions/krystalclip_version.json',
     images: [
@@ -42,7 +42,24 @@ const PLUGINS = [
     ],
     formats: ['VST3', 'AU'],
   },
+  {
+    id: 'krystal-peak',
+    name: 'KrystalPeak',
+    description: 'A transparent digital limiter designed to suppress peaks and maximize loudness. Shape transients with precision while maintaining clarity, impact, and mix integrity.',
+    page: 'plugins/krystal-peak.html',
+    versionFile: '/versions/krystalpeak_version.json',
+    images: [
+      'assets/images/k-peak-interface-1.png',
+      'assets/images/k-peak-interface-2.png',
+      'assets/images/k-peak-interface-3.png',
+      'assets/images/k-peak-interface-4.png',
+    ],
+    formats: ['VST3', 'AU'],
+  }
 ];
+
+// ─── Patreon URL (mirrors the link in the About section) ─────────────────────
+const PATREON_URL = 'https://www.patreon.com/cw/Krystal_Dynamics?vanity=Krystal_Dynamics';
 
 // ─── Fetch version data ───────────────────────────────────────────────────────
 async function fetchVersionData(plugin) {
@@ -66,39 +83,84 @@ function sortByDate(plugins) {
   });
 }
 
+// ─── Format a date string for display ────────────────────────────────────────
+function formatReleaseDate(dateStr) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
 // ─── Render homepage plugin list ─────────────────────────────────────────────
 function renderPluginList(plugins) {
   const container = document.getElementById('pluginList');
   if (!container) return;
-  
+
   container.innerHTML = '';
-  
+
   plugins.forEach((plugin, index) => {
-    const isEven = index % 2 === 1;
-    const specsHTML = plugin.formats.map(f => `<li>${f}</li>`).join('');
-    const versionHTML = plugin.version
-      ? `<li>Version ${plugin.version}</li>`
+    const isFeatured    = index === 0;
+    const isEarlyAccess = isFeatured && new Date(plugin.releaseDate) > new Date();
+    const isReversed    = !isFeatured && (index % 2 === 1);
+
+    const specsHTML   = plugin.formats.map(f => `<li>${f}</li>`).join('');
+    const versionHTML = plugin.version ? `<li>Version ${plugin.version}</li>` : '';
+
+    const ctaHTML = isEarlyAccess
+      ? `<div class="plugin-early-access">
+           <a href="${PATREON_URL}" target="_blank" rel="noopener noreferrer"
+              class="btn btn-patreon"
+              aria-label="Join Patreon for early access to ${plugin.name}">
+             <span class="btn-patreon-logo" aria-hidden="true">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                 <path d="M15.303125 4.80625c-0.003125 -2.04375 -1.59375 -3.71875 -3.459375 -4.321875C9.525 -0.265625 6.46875 -0.15625 4.253125 0.8875 1.571875 2.153125 0.728125 4.928125 0.696875 7.69375 0.671875 9.96875 0.896875 15.95625 4.278125 16c2.509375 0.03125 2.884375 -3.203125 4.046875 -4.759375 0.825 -1.109375 1.890625 -1.421875 3.2 -1.746875 2.25 -0.55625 3.784375 -2.334375 3.78125 -4.6875z"/>
+               </svg>
+             </span>
+             <span>Join Patreon for Early Access</span>
+           </a>
+           <p class="plugin-release-hint">Releasing ${formatReleaseDate(plugin.releaseDate)}</p>
+         </div>`
+      : `<a href="${plugin.page}" class="btn btn-primary">View Details</a>`;
+
+    const badgeHTML = isFeatured
+      ? `<div class="plugin-featured-badge${isEarlyAccess ? ' plugin-featured-badge--early' : ''}">
+           ${isEarlyAccess ? 'Early Access' : 'Latest Release'}
+         </div>`
       : '';
-    
+
     const article = document.createElement('article');
-    article.className = 'plugin-item';
+    const classes  = ['plugin-item'];
+    if (isFeatured)    classes.push('plugin-item--featured');
+    if (isEarlyAccess) classes.push('plugin-item--early-access');
+    if (isReversed)    classes.push('plugin-item--reversed');
+    article.className = classes.join(' ');
+
     article.innerHTML = `
+      <div class="plugin-item-bg" style="background-image:url('${plugin.images?.[0] || ''}')" aria-hidden="true"></div>
+      <div class="plugin-item-overlay" aria-hidden="true"></div>
       <div class="container">
-        <div class="plugin-grid${isEven ? ' plugin-grid-reverse' : ''}">
-          <div class="plugin-detail-image-carousel"
-               data-images='${JSON.stringify(plugin.images)}'></div>
+        <div class="plugin-grid${isReversed ? ' plugin-grid-reverse' : ''}">
+          <div class="plugin-image-wrapper">
+            <a href="${isEarlyAccess ? PATREON_URL : plugin.page}"
+              ${isEarlyAccess ? 'target="_blank" rel="noopener noreferrer"' : ''}
+              class="plugin-detail-image-carousel plugin-carousel-link"
+              aria-label="${isEarlyAccess ? 'Join Patreon for early access to ' + plugin.name : 'View details for ' + plugin.name}"
+              data-images='${JSON.stringify(plugin.images)}'></a>
+          </div>
           <div class="plugin-content">
+            <div class="plugin-content-header">
+              <div></div>
+              ${badgeHTML}
+            </div>
             <h3>${plugin.name}</h3>
             <p>${plugin.description}</p>
             <ul class="plugin-specs">${specsHTML}${versionHTML}</ul>
-            <a href="${plugin.page}" class="btn btn-primary">View Details</a>
+            ${ctaHTML}
           </div>
         </div>
       </div>`;
+
     container.appendChild(article);
   });
-  
-  // Init carousels for newly injected elements
+
   initPluginDetailCarousel();
 }
 
@@ -106,12 +168,12 @@ function renderPluginList(plugins) {
 async function loadHomepagePlugins() {
   const container = document.getElementById('pluginList');
   if (!container) return;
-  
+
   const withVersions = await Promise.all(PLUGINS.map(fetchVersionData));
   const sorted = sortByDate(withVersions);
-  
+
   console.log('Loaded plugins:', sorted.map(p => ({ name: p.name, date: p.releaseDate, version: p.version })));
-  
+
   renderPluginList(sorted);
 }
 
@@ -138,10 +200,10 @@ async function loadComponents() {
 function initTheme() {
   const toggle = document.getElementById('themeToggle');
   if (!toggle) return;
-  
+
   const saved = localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', saved);
-  
+
   toggle.addEventListener('click', () => {
     const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
@@ -153,7 +215,7 @@ function initTheme() {
 function initHeaderScroll() {
   const header = document.querySelector('header');
   if (!header) return;
-  
+
   const update = () => header.classList.toggle('scrolled', window.scrollY > 40);
   window.addEventListener('scroll', update, { passive: true });
   update();
@@ -163,7 +225,7 @@ function initHeaderScroll() {
 function initNavHighlight() {
   const sections = document.querySelectorAll('section[id]');
   if (!sections.length) return;
-  
+
   const links = document.querySelectorAll('.nav-link');
   const obs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -174,7 +236,7 @@ function initNavHighlight() {
       }
     });
   }, { threshold: 0.35 });
-  
+
   sections.forEach(s => obs.observe(s));
 }
 
@@ -182,13 +244,14 @@ function initNavHighlight() {
 function initHeroCarousel() {
   const wrap = document.getElementById('carouselContainer');
   if (!wrap) return;
-  
+
   const srcs = [
     'assets/images/k-field-interface-1.png',
     'assets/images/k-clip-interface-1.png',
     'assets/images/k-comp-interface-1.png',
+    'assets/images/k-peak-interface-1.png',
   ];
-  
+
   srcs.forEach((src, i) => {
     const img = document.createElement('img');
     img.src = src;
@@ -197,7 +260,7 @@ function initHeroCarousel() {
     img.loading = i === 0 ? 'eager' : 'lazy';
     wrap.appendChild(img);
   });
-  
+
   let cur = 0;
   setInterval(() => {
     const slides = wrap.querySelectorAll('.carousel-slide');
@@ -212,13 +275,13 @@ function initPluginDetailCarousel() {
   document.querySelectorAll('.plugin-detail-image-carousel').forEach(wrap => {
     if (wrap.dataset.init) return;
     wrap.dataset.init = '1';
-    
+
     let images;
     try { images = JSON.parse(wrap.getAttribute('data-images') || '[]'); }
     catch (e) { return; }
-    
+
     if (!images.length) return;
-    
+
     images.forEach((src, i) => {
       const img = document.createElement('img');
       img.src = src;
@@ -227,9 +290,9 @@ function initPluginDetailCarousel() {
       if (i === 0) img.classList.add('active');
       wrap.appendChild(img);
     });
-    
+
     if (images.length < 2) return;
-    
+
     let cur = 0;
     let timer;
     const next = () => {
@@ -240,7 +303,7 @@ function initPluginDetailCarousel() {
     };
     const start = () => { timer = setInterval(next, 3500); };
     const stop  = () => clearInterval(timer);
-    
+
     start();
     wrap.addEventListener('mouseenter', stop);
     wrap.addEventListener('mouseleave', start);
@@ -257,7 +320,7 @@ function initScrollReveal() {
       }
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-  
+
   document.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
 }
 
@@ -265,7 +328,7 @@ function initScrollReveal() {
 function initEasterEgg() {
   const code = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
   let idx = 0;
-  
+
   document.addEventListener('keydown', e => {
     idx = e.key === code[idx] ? idx + 1 : 0;
     if (idx === code.length) {

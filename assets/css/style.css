@@ -335,7 +335,7 @@ header {
 /* Hero Section */
 .hero {
   position: relative;
-  min-height: 50vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -346,14 +346,14 @@ header {
 
 @media (min-width: 768px) {
   .hero {
-    min-height: 60vh;
+    min-height: 80vh;
     padding: 3rem 0;
   }
 }
 
 @media (min-width: 1024px) {
   .hero {
-    min-height: 70vh;
+    min-height: 90vh;
     padding: 4rem 0;
   }
 }
@@ -367,7 +367,7 @@ header {
   height: 200%;
   background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
   opacity: 0.03;
-  animation: pulse 15s ease-in-out infinite;
+  animation: pulse 5s ease-in-out infinite;
 }
 
 @keyframes pulse {
@@ -433,12 +433,8 @@ header {
   width: 100%;
   height: 100%;
   z-index: 1;
-  opacity: 0.08;
-  overflow: hidden;
-}
-
-[data-theme="dark"] .carousel-container {
   opacity: 0.13;
+  overflow: hidden;
 }
 
 .carousel-slide {
@@ -471,6 +467,7 @@ header {
   padding: 3rem 0;
   position: relative;
   overflow: hidden;
+  --item-bg: var(--bg-primary);
 }
 
 @media (min-width: 768px) {
@@ -485,34 +482,175 @@ header {
   }
 }
 
-.plugin-item::before {
-  content: '';
+.plugin-item:nth-child(odd)  { background: var(--bg-primary);   --item-bg: var(--bg-primary);   }
+/* .plugin-item:nth-child(even) { background: var(--bg-secondary); --item-bg: var(--bg-secondary); } */
+
+/* Elevate the actual content above the bg/overlay layers */
+.plugin-item > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Wallpaper bg: fills the image-column side, edge-to-edge ─────────────── */
+
+.plugin-item-bg {
   position: absolute;
   top: 0;
-  left: -100%;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(42, 92, 255, 0.04), transparent);
-  transition: left 1.5s ease;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.01;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.plugin-item--reversed .plugin-item-bg {
+  left: auto;
+  right: 0;
+}
+
+.plugin-item:nth-child(odd):hover .plugin-item-bg {
+  opacity: 0.5;
+  /* transform: scale(1.2); */
+  transform: translate(-20px)
+}
+
+.plugin-item:nth-child(even):hover .plugin-item-bg {
+  opacity: 0.5;
+  /* transform: scale(1.2); */
+  transform: translate(20px)
+}
+
+/* ── Gradient fade from wallpaper side → text side ───────────────────────── */
+
+.plugin-item-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 10%,
+    var(--item-bg) 66%,
+    var(--item-bg) 100%
+  );
+}
+
+.plugin-item--reversed .plugin-item-overlay {
+  background: linear-gradient(
+    to left,
+    transparent 0%,
+    transparent 10%,
+    var(--item-bg) 66%,
+    var(--item-bg) 100%
+  );
+}
+
+/* ── Mobile: faint watermark behind full-width content ───────────────────── */
+
+@media (max-width: 767px) {
+  .plugin-item-bg      { width: 100%; opacity: 0.05; }
+  .plugin-item-overlay { background: none; }
+}
+
+/* Wrapper immagine — posizione relativa per il badge */
+.plugin-image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* ── Badge ───────────────────────────────────────────────────────────────── */
+.plugin-featured-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1rem;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--accent-primary, #4B9FFF) 12%, transparent);
+  color: var(--accent-primary, #4B9FFF);
+  border: 1px solid color-mix(in srgb, var(--accent-primary, #4B9FFF) 30%, transparent);
+}
+
+/* Dot indicator */
+.plugin-featured-badge::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* "Early Access" variant */
+.plugin-featured-badge--early {
+  background: color-mix(in srgb, #ff424d 12%, transparent);
+  color: #ff424d;
+  border-color: color-mix(in srgb, #ff424d 30%, transparent);
+}
+
+/* Pulse sul dot per early access */
+.plugin-featured-badge--early::before {
+  animation: badge-pulse 1.8s ease-in-out infinite;
+}
+
+/* Badge row inside plugin-content */
+.plugin-content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  min-height: 2rem;
+}
+
+/* Clickable carousel */
+.plugin-carousel-link {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.plugin-carousel-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(75, 159, 255, 0.06);
+  opacity: 0;
+  transition: opacity 0.25s ease;
   pointer-events: none;
 }
 
-.plugin-item:hover::before {
-  left: 100%;
-  transition: left 1.5s ease;
+.plugin-carousel-link:hover::after {
+  opacity: 1;
 }
 
-.plugin-item:not(:hover)::before {
-  transition: none;
-  left: -100%;
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1;   transform: scale(1);    }
+  50%       { opacity: 0.4; transform: scale(0.75); }
 }
 
-.plugin-item:nth-child(odd) {
-  background: var(--bg-primary);
+/* ── Early-access CTA ────────────────────────────────────────────────────── */
+.plugin-early-access {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
 
-.plugin-item:nth-child(even) {
-  background: var(--bg-secondary);
+.plugin-release-hint {
+  font-size: 0.8rem;
+  color: var(--color-muted, #888);
+  margin: 0;
+  letter-spacing: 0.02em;
 }
 
 /* Plugin Grid */
