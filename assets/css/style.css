@@ -588,6 +588,7 @@ header {
   border-radius: 50%;
   background: currentColor;
   flex-shrink: 0;
+  animation: badge-pulse 1.8s ease-in-out infinite;
 }
 
 /* "Early Access" variant */
@@ -595,11 +596,6 @@ header {
   background: color-mix(in srgb, #ff424d 12%, transparent);
   color: #ff424d;
   border-color: color-mix(in srgb, #ff424d 30%, transparent);
-}
-
-/* Pulse sul dot per early access */
-.plugin-featured-badge--early::before {
-  animation: badge-pulse 1.8s ease-in-out infinite;
 }
 
 /* Badge row inside plugin-content */
