@@ -309,7 +309,7 @@ header {
   opacity: 1;
 }
 
-/* SVG icons — fixed 20×20 so sun and moon are identical size on all devices */
+/* SVG icons */
 .theme-toggle .sun-icon,
 .theme-toggle .moon-icon {
   display: block;
@@ -483,7 +483,6 @@ header {
 }
 
 .plugin-item:nth-child(odd)  { background: var(--bg-primary);   --item-bg: var(--bg-primary);   }
-/* .plugin-item:nth-child(even) { background: var(--bg-secondary); --item-bg: var(--bg-secondary); } */
 
 /* Elevate the actual content above the bg/overlay layers */
 .plugin-item > .container {
@@ -523,7 +522,7 @@ header {
   transform: translate(20px)
 }
 
-/* ── Gradient fade from wallpaper side → text side ───────────────────────── */
+/* ── Gradient fade from wallpaper side -> text side ───────────────────────── */
 
 .plugin-item-overlay {
   position: absolute;
@@ -1159,6 +1158,60 @@ header {
   width: 18px;
   height: 18px;
   fill: currentColor;
+}
+
+/* ============================================================
+   PAYPAL BUTTON
+   ============================================================ */
+
+.btn-paypal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2rem;
+  background-color: #0070ba;
+  color: #ffffff;
+  border: 2px solid #0070ba;
+  border-radius: 50px;
+  font-family: 'Syne', sans-serif;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+              transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-paypal:hover {
+  background-color: #003087;
+  border-color: #003087;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 112, 186, 0.3);
+}
+
+.btn-paypal:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-paypal-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.btn-paypal-logo svg {
+  width: 20px;
+  height: 18px;
 }
 
 /* Footer */
