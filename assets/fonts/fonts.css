@@ -1,0 +1,8 @@
+/* Self-hosted fonts: DM Sans and Syne.
+Used to avoid using google fonts and to have better control over font loading and performance. */
+
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 300; font-display: swap; src: url('dm-sans-300.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('dm-sans-400.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('dm-sans-500.woff2') format('woff2'); }
+@font-face { font-family: 'Syne';    font-style: normal; font-weight: 700; font-display: swap; src: url('syne-700.woff2') format('woff2'); }
+@font-face { font-family: 'Syne';    font-style: normal; font-weight: 800; font-display: swap; src: url('syne-800.woff2') format('woff2'); }

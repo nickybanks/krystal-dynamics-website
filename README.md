@@ -11,11 +11,10 @@ Krystal Dynamics is an independent audio software project focused on clean, prec
 This repository is dedicated to:
 
 - Hosting the official website (GitHub Pages)
-- Managing visual assets and branding materials
 - Maintaining update metadata for plugin notifications
 - Archiving legacy distribution files
 
-Plugin binaries are maintained in their respective dedicated repositories.
+Plugin binaries can be downloaded from itch.io through the official website and are also maintained in their respective dedicated repositories.
 
 ---
 
@@ -25,13 +24,20 @@ Krystal Dynamics currently develops the following free audio plugins:
 
 - **KrystalComp** – Transparent digital compressor with Peak/RMS detection and sidechain EQ  
 - **KrystalClip** – Digital clipper with selectable clipping modes and slope control  
-- **KrystalField** – Single-band dynamics processor combining upward and downward compression  
+- **KrystalField** – Single-band dynamics processor combining upward and downward compression
+- **KrystalPeak** – Transparent digital peak limiter with adjustable attack and release times
+- **KrystalShaper** – Advanced transient processor with different modes and controls 
 
 All plugins are free for personal and commercial music production.
 
-For downloads, please refer to:
-- The official website
-- MuseHub
+### How downloads work
+
+Downloads from the official website are handled through **[itch.io](https://krystal-dynamics.itch.io/)**, which uses a **"pay what you want"** model: you can download any plugin for free, or optionally choose to pay an amount of your choice to support the project. The price never affects what you get: every download is the full, unrestricted plugin. You can also support the project through the official **[Patreon](https://www.patreon.com/c/Krystal_Dynamics)**
+
+Plugins can be downloaded from:
+- The [official website](krystaldynamics.com) (each plugin page links to its itch.io download page)
+- [itch.io](https://krystal-dynamics.itch.io/) (pay what you want)
+- [MuseHub](https://www.musehub.com/partner/krystal-dynamics)
 - The dedicated GitHub repositories of each product
 
 ---
@@ -74,20 +80,11 @@ Brand names, logos, product names, and compiled binaries are not covered by this
 
 ---
 
-## Development Focus
-
-Ongoing priorities include:
-
-- Stability and compatibility improvements  
-- Workflow refinements  
-- User-requested quality-of-life features  
-- Documentation and educational content  
-
----
-
 ## Official Links
 
 Website: https://krystaldynamics.com  
+itch.io: https://krystal-dynamics.itch.io/  
+MuseHub: https://www.musehub.com/partner/krystal-dynamics  
 Instagram: https://www.instagram.com/krystal_dynamics  
 
 ---

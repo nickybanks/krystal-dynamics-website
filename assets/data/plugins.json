@@ -1,0 +1,545 @@
+{
+  "plugins": [
+    {
+      "id": "krystal-clip",
+      "name": "KrystalClip",
+      "description": "KrystalClip is a clipping processor featuring three distinct saturation algorithms\n                               for controlled peak limiting. Each mode provides different harmonic characteristics,\n                               from transparent loudness control to creative saturation, making it suitable for\n                               mixing, mastering, and sound design applications.",
+      "catalogDescription": "Four clipping algorithms for everything from transparent peak control to creative saturation.",
+      "page": "/plugins/krystal-clip.html",
+      "museHub": "https://www.musehub.com/plugin/krystalclip",
+      "versionFile": "/versions/krystalclip_version.json",
+      "version": "1.1.0",
+      "releaseDate": "2026-04-28",
+      "images": [
+        "/assets/images/interfaces/k-clip-interface-1.webp",
+        "/assets/images/interfaces/k-clip-interface-2.webp",
+        "/assets/images/interfaces/k-clip-interface-3.webp",
+        "/assets/images/interfaces/k-clip-interface-4.webp"
+      ],
+      "formats": [
+        "VST3",
+        "AU"
+      ],
+      "downloadSlug": "krystalclip",
+      "features": [
+        "Four clipping modes with different harmonic colorations",
+        "Threshold control for clipping point adjustment",
+        "Slope control to shape the clipping curve",
+        "Input and output gain controls",
+        "Oversampling up to 8x",
+        "Mix control for parallel processing",
+        "Bypass for A/B comparison",
+        "Delta mode for precise clipping control",
+        "Automatic loudness matching with informative feedback",
+        "Real-time waveform display with short-term LUFS metering",
+        "Comprehensive input and output metering",
+        "Different themes and performance settings"
+      ],
+      "specifications": [
+        {
+          "label": "Formats",
+          "value": "VST3, AU"
+        },
+        {
+          "label": "Operating Systems",
+          "value": "Windows 10 or later, macOS 10.13 or later"
+        },
+        {
+          "label": "Architecture",
+          "value": "64-bit"
+        },
+        {
+          "label": "Latency",
+          "value": "Variable (depends on Oversampling)"
+        }
+      ],
+      "history": [
+        {
+          "version": "1.1.0",
+          "date": "April 28, 2026",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Added a new clipping mode which introduces tube-like saturation",
+                "Added display settings to manage theme and performance of graphic elements"
+              ]
+            }
+          ]
+        },
+        {
+          "version": "1.0.3",
+          "date": "March 2, 2026",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Added delta button to isolate the clipping effect for precise adjustments",
+                "Added LUFS metering inside the waveform display",
+                "Improved automatic loudness matching and added informative feedback",
+                "Improved waveform display and rendering"
+              ]
+            }
+          ]
+        },
+        {
+          "version": "1.0.2",
+          "date": "January 30, 2026",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Added updates notifications",
+                "Minor graphical updates"
+              ]
+            }
+          ]
+        },
+        {
+          "version": "1.0.1",
+          "date": "January 20, 2026",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Added 8x oversampling and fixed oversampling behaviour",
+                "Warmer mode now has a better clipping curve"
+              ]
+            }
+          ]
+        },
+        {
+          "version": "1.0.0",
+          "date": "January 12, 2026",
+          "groups": [
+            {
+              "title": "Initial Release",
+              "items": []
+            }
+          ]
+        }
+      ],
+      "license": "KrystalClip is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted."
+    },
+    {
+      "id": "krystal-comp",
+      "name": "KrystalComp",
+      "description": "KrystalComp is a precision digital compressor designed for mixing and mastering\n                               workflows. It combines surgical control over dynamics with flexible sidechain\n                               processing, offering both RMS and Peak detection modes for accurate compression\n                               tailored to your source material.",
+      "catalogDescription": "A precision compressor for mix and mastering, with flexible sidechain EQ and Peak or RMS detection.",
+      "page": "/plugins/krystal-comp.html",
+      "museHub": "https://www.musehub.com/plugin/krystalcomp",
+      "versionFile": "/versions/krystalcomp_version.json",
+      "version": "1.1.2",
+      "releaseDate": "2026-05-05",
+      "images": [
+        "/assets/images/interfaces/k-comp-interface-1.webp",
+        "/assets/images/interfaces/k-comp-interface-2.webp",
+        "/assets/images/interfaces/k-comp-interface-3.webp",
+        "/assets/images/interfaces/k-comp-interface-4.webp"
+      ],
+      "formats": [
+        "VST3",
+        "AU"
+      ],
+      "downloadSlug": "krystalcomp",
+      "features": [
+        "Standard compression controls: Threshold, Ratio, Attack, Release",
+        "Variable knee control for compression curve shaping",
+        "Hold parameter for more precise dynamics control",
+        "RMS and Peak detection modes",
+        "Input and makeup gain controls",
+        "Automatic loudness matching with informative feedback",
+        "Mix control for parallel processing",
+        "Real-time waveform display",
+        "Sidechain signal equalizer with LP, HP, and bell filters",
+        "Internal and external sidechain input",
+        "Monitor button for sidechain signal audition",
+        "Comprehensive input, output, and gain reduction metering"
+      ],
+      "specifications": [
+        {
+          "label": "Formats",
+          "value": "VST3, AU"
+        },
+        {
+          "label": "Operating Systems",
+          "value": "Windows 10 or later, macOS 10.13 or later"
+        },
+        {
+          "label": "Architecture",
+          "value": "64-bit"
+        },
+        {
+          "label": "Latency",
+          "value": "Zero-latency"
+        }
+      ],
+      "history": [
+        {
+          "version": "1.1.2",
+          "date": "May 5, 2026",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Fixed a bug that caused unexpected behaviour in mono"
+              ]
+            }
+          ]
+        },
+        {
+          "version": "1.1.1",
+          "date": "May 4, 2026",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Added oversampling up to 4x",
+                "Added display settings to manage theme and performance of graphic elements"
+              ]
+            }
+          ]
+        },
+        {
+          "version": "1.1.0",
+          "date": "March 2, 2026",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "New Real-time waveform display",
+                "New Sidechain equalizer display",
+                "Added automatic loudness matching with informative feedback",
+                "Added hold parameter for precise control over compression"
+              ]
+            }
+          ]
+        },
+        {
+          "version": "1.0.1",
+          "date": "January 30, 2026",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Added updates notifications",
+                "Added bypass button",
+                "Now dual mono compatible"
+              ]
+            }
+          ]
+        },
+        {
+          "version": "1.0.0",
+          "date": "January 12, 2026",
+          "groups": [
+            {
+              "title": "Initial Release",
+              "items": []
+            }
+          ]
+        }
+      ],
+      "license": "KrystalComp is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted."
+    },
+    {
+      "id": "krystal-field",
+      "name": "KrystalField",
+      "description": "KrystalField is a mastering-grade dynamic processor featuring dual compression\n                               engines for simultaneous downward and upward compression. This approach provides\n                               precise control over mix dynamics, making it suitable for mastering, bus processing,\n                               and final mix polish.",
+      "catalogDescription": "A mastering-grade dynamics processor with dual engines for precise upward and downward compression.",
+      "page": "/plugins/krystal-field.html",
+      "museHub": "https://www.musehub.com/plugin/krystalfield",
+      "versionFile": "/versions/krystalfield_version.json",
+      "version": "1.1.0",
+      "releaseDate": "2026-05-01",
+      "images": [
+        "/assets/images/interfaces/k-field-interface-1.webp",
+        "/assets/images/interfaces/k-field-interface-2.webp",
+        "/assets/images/interfaces/k-field-interface-3.webp",
+        "/assets/images/interfaces/k-field-interface-4.webp"
+      ],
+      "formats": [
+        "VST3",
+        "AU"
+      ],
+      "downloadSlug": "krystalfield",
+      "features": [
+        "Dual dynamic processors for downward and upward compression",
+        "Target-based threshold controls",
+        "Unified attack and release controls",
+        "Independent ratio and knee controls",
+        "RMS, Peak, and LOUD detection modes",
+        "Auto makeup gain",
+        "Mix control for parallel processing",
+        "Lookahead delay up to 20ms",
+        "Low frequency bias for sidechain filtering",
+        "Hard and soft clipping modes",
+        "Bypass for A/B comparison",
+        "Gain reduction and short-term LUFS metering",
+        "Real-time waveform display",
+        "Different themes and performance settings"
+      ],
+      "specifications": [
+        {
+          "label": "Formats",
+          "value": "VST3, AU"
+        },
+        {
+          "label": "Operating Systems",
+          "value": "Windows 10 or later, macOS 10.13 or later"
+        },
+        {
+          "label": "Architecture",
+          "value": "64-bit"
+        },
+        {
+          "label": "Latency",
+          "value": "Variable (depends on Lookahead and Oversampling)"
+        }
+      ],
+      "history": [
+        {
+          "version": "1.1.0",
+          "date": "May 1, 2026",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Added linking mode for threshold controls",
+                "Added display settings to manage theme and performance of graphic elements"
+              ]
+            }
+          ]
+        },
+        {
+          "version": "1.0.2",
+          "date": "January 30, 2026",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Added updates notifications",
+                "Minor bug fixes"
+              ]
+            }
+          ]
+        },
+        {
+          "version": "1.0.1",
+          "date": "January 13, 2026",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "The upward knee now shapes the curve to avoid increase of low intensity signals",
+                "Added 8x oversampling",
+                "The display has now three zoom modes from -18 to -72 dB"
+              ]
+            }
+          ]
+        },
+        {
+          "version": "1.0.0",
+          "date": "January 12, 2026",
+          "groups": [
+            {
+              "title": "Initial Release",
+              "items": []
+            }
+          ]
+        }
+      ],
+      "license": "KrystalField is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted."
+    },
+    {
+      "id": "krystal-peak",
+      "name": "KrystalPeak",
+      "description": "KrystalPeak is a transparent digital limiter designed to suppress peaks and maximize loudness. Shape transients with precision while maintaining clarity, impact, and mix integrity.",
+      "catalogDescription": "A transparent peak limiter for shaping transients and maximizing loudness without losing impact.",
+      "page": "/plugins/krystal-peak.html",
+      "museHub": "https://www.musehub.com/plugin/krystalpeak",
+      "versionFile": "/versions/krystalpeak_version.json",
+      "version": "1.0.1",
+      "releaseDate": "2026-05-14",
+      "images": [
+        "/assets/images/interfaces/k-peak-interface-1.webp",
+        "/assets/images/interfaces/k-peak-interface-2.webp",
+        "/assets/images/interfaces/k-peak-interface-3.webp",
+        "/assets/images/interfaces/k-peak-interface-4.webp"
+      ],
+      "formats": [
+        "VST3",
+        "AU"
+      ],
+      "downloadSlug": "krystalpeak",
+      "features": [
+        "Attack control to shape peaks",
+        "Release control with auto-adaptive mode",
+        "Left/Right and Mid/Side stereo linking modes",
+        "Input and output gain controls",
+        "Optional saturation control to add warm saturation to the output",
+        "Oversampling up to 8x",
+        "Bypass for A/B comparison",
+        "Delta mode to listen to the limited signal",
+        "Comprehensive input, output, and gain reduction metering",
+        "Real-time waveform display with short-term LUFS metering",
+        "Different themes and performance settings"
+      ],
+      "specifications": [
+        {
+          "label": "Formats",
+          "value": "VST3, AU"
+        },
+        {
+          "label": "Operating Systems",
+          "value": "Windows 10 or later, macOS 10.13 or later"
+        },
+        {
+          "label": "Architecture",
+          "value": "64-bit"
+        },
+        {
+          "label": "Latency",
+          "value": "Variable (depends on Oversampling)"
+        }
+      ],
+      "history": [
+        {
+          "version": "1.0.1",
+          "date": "May 8, 2026",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Fixed Mid/Side stereo linking behaviour and metering"
+              ]
+            }
+          ]
+        },
+        {
+          "version": "1.0.0",
+          "date": "May 7, 2026",
+          "groups": [
+            {
+              "title": "Early Access Release",
+              "items": []
+            }
+          ]
+        }
+      ],
+      "license": "KrystalPeak is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted."
+    },
+    {
+      "id": "krystal-shaper",
+      "name": "KrystalShaper",
+      "description": "KrystalShaper is an advanced transient processor that allows precise shaping of transient and sustain characteristics. Ideal for enhancing percussive elements, adding punch to drums, and controlling dynamics in complex mixes.",
+      "catalogDescription": "Shape transient and sustain independently to bring punch, definition and control to a mix.",
+      "page": "/plugins/krystal-shaper.html",
+      "museHub": "https://www.musehub.com/plugin/krystalshaper",
+      "versionFile": "/versions/krystalshaper_version.json",
+      "version": "1.0.0",
+      "releaseDate": "2026-10-23",
+      "images": [
+        "/assets/images/interfaces/k-shaper-interface-1.webp",
+        "/assets/images/interfaces/k-shaper-interface-2.webp",
+        "/assets/images/interfaces/k-shaper-interface-3.webp",
+        "/assets/images/interfaces/k-shaper-interface-4.webp"
+      ],
+      "formats": [
+        "VST3",
+        "AU"
+      ],
+      "downloadSlug": "krystalshaper",
+      "features": [
+        "Three shaping modes for different material and workflows",
+        "Independent Transient and Sustain controls",
+        "Pump control to attenuate the signal right after the transient",
+        "Hold and Release controls to shape transient and sustain timing",
+        "Threshold control to set the onset detection range for transients",
+        "Sidechain panel with internal/external input and HP/LP filters",
+        "Independent HP/LP filters for each part to shape the response",
+        "Stereo-linked, Left/Right and Mid/Side channel linking modes",
+        "Hard and soft clipping modes",
+        "Lookahead option adding a short delay, for use on instruments",
+        "Mix control for parallel processing",
+        "Bypass for A/B comparison",
+        "Delta mode to listen to what the plugin is adding or removing",
+        "Automatic loudness matching with informative feedback",
+        "Real-time waveform display",
+        "Comprehensive transient and sustain gain meters",
+        "Different themes and performance settings"
+      ],
+      "specifications": [
+        {
+          "label": "Formats",
+          "value": "VST3, AU"
+        },
+        {
+          "label": "Operating Systems",
+          "value": "Windows 10 or later, macOS 10.13 or later"
+        },
+        {
+          "label": "Architecture",
+          "value": "64-bit"
+        },
+        {
+          "label": "Latency",
+          "value": "0 - 2 ms (depends on Lookahead)"
+        }
+      ],
+      "history": [
+        {
+          "version": "1.0.0",
+          "date": "October 9, 2026",
+          "groups": [
+            {
+              "title": "Early Access Release",
+              "items": []
+            }
+          ]
+        }
+      ],
+      "license": "KrystalShaper is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted."
+    }
+  ],
+  "about": {
+    "home": {
+      "title": "About Krystal Dynamics",
+      "paragraphs": [
+        "Hi, I'm Nick - the developer behind Krystal Dynamics.",
+        "Krystal Dynamics is an independent audio software project focused on building clean, precise and professional tools for modern mixing and mastering.",
+        "The project started during my graduation in Sound and Music Computing at the University of Milan (UniMI), Italy. As a solo developer, these plugins represent several months of work exploring digital signal processing and have evolved into a suite of practical tools for producers and engineers.",
+        "Every plugin is designed, developed, tested and maintained entirely by me. I put strong emphasis on sound quality, CPU efficiency and workflow simplicity, avoiding unnecessary complexity while keeping full control over the dynamics.",
+        "I believe that professional tools should be accessible to everyone, which is why all plugins are completely free. However, developing and maintaining audio software requires a significant amount of time, research and continuous improvement.",
+        "User feedback and community support play a fundamental role in allowing this project to grow and continue evolving."
+      ],
+      "link": {
+        "label": "Learn more",
+        "href": "/about.html"
+      }
+    },
+    "story": [
+      {
+        "title": "Where it started",
+        "paragraphs": [
+          "Krystal Dynamics began as my graduation project in Sound and Music Computing at the University of Milan. What started as an exploration of digital signal processing grew into a suite of practical tools for producers and engineers.",
+          "The original focus was dynamic processing for mixing and mastering. That work continues to shape the design philosophy of the tools I make."
+        ]
+      },
+      {
+        "title": "The process",
+        "paragraphs": [
+          "I design, develop, test and maintain every plugin myself. The work focuses on sound quality, CPU efficiency and a clear workflow that is easy to understand and use.",
+          "Each tool targets a specific aspect of dynamic processing. I analyse every plugin's response myself and fine-tune it until it reaches the intended behaviour."
+        ]
+      },
+      {
+        "title": "Free to use",
+        "paragraphs": [
+          "All plugins are free for personal and commercial use. I maintain the project independently and keep the tools accessible to everyone.",
+          "Feedback from the people who use them helps me debug and shapes the ideas behind the next tools I build."
+        ]
+      }
+    ]
+  }
+}
