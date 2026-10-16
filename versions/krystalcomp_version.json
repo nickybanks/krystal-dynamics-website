@@ -1,6 +1,6 @@
 {
-  "version": "1.1.2",
-  "releaseDate": "2026-05-05",
-  "releaseNotes": "- Fixed a bug that caused unexpected behaviour in mono",
+  "version": "1.2.0",
+  "releaseDate": "2026-10-16",
+  "releaseNotes": "Major update:\n- Upward compression mode\n- Range and Lookahead controls\n- Compression curve visualizer\n- Improved graphics and performance",
   "downloadUrl": "https://krystaldynamics.com/plugins/krystal-comp"
 }

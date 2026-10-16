@@ -124,12 +124,12 @@
     {
       "id": "krystal-comp",
       "name": "KrystalComp",
-      "description": "KrystalComp is a precision digital compressor designed for mixing and mastering\n                               workflows. It combines surgical control over dynamics with flexible sidechain\n                               processing, offering both RMS and Peak detection modes for accurate compression\n                               tailored to your source material.",
-      "catalogDescription": "A precision compressor for mix and mastering, with flexible sidechain EQ and Peak or RMS detection.",
+      "description": "KrystalComp is a precision digital compressor for mixing and mastering. It combines surgical control over dynamics with flexible sidechain processing, offering downward and upward compression with RMS and Peak detection to suit any source material.",
+      "catalogDescription": "A precision compressor for mix and mastering, with downward and upward modes and a flexible sidechain EQ.",
       "page": "/plugins/krystal-comp.html",
       "museHub": "https://www.musehub.com/plugin/krystalcomp",
       "versionFile": "/versions/krystalcomp_version.json",
-      "version": "1.1.2",
+      "version": "1.2.0",
       "releaseDate": "2026-05-05",
       "images": [
         "/assets/images/interfaces/k-comp-interface-1.webp",
@@ -143,18 +143,21 @@
       ],
       "downloadSlug": "krystalcomp",
       "features": [
-        "Standard compression controls: Threshold, Ratio, Attack, Release",
-        "Variable knee control for compression curve shaping",
-        "Hold parameter for more precise dynamics control",
-        "RMS and Peak detection modes",
-        "Input and makeup gain controls",
-        "Automatic loudness matching with informative feedback",
-        "Mix control for parallel processing",
+        "Threshold, Ratio, Attack, Release and variable Knee",
+        "Hold and Range for precise dynamics control",
+        "RMS and Peak detection",
+        "Downward and Upward compression",
+        "Input and Makeup gain",
+        "Auto gain with loudness matching",
+        "Lookahead up to 20 ms",
+        "Mix control for parallel compression",
+        "Oversampling up to 4x",
         "Real-time waveform display",
-        "Sidechain signal equalizer with LP, HP, and bell filters",
-        "Internal and external sidechain input",
-        "Monitor button for sidechain signal audition",
-        "Comprehensive input, output, and gain reduction metering"
+        "Compression curve visualizer",
+        "Sidechain EQ: HP, LP and bell with adjustable slope and Q",
+        "Internal or external sidechain with Mid/Max link",
+        "Sidechain monitor",
+        "Input, output and gain reduction metering"
       ],
       "specifications": [
         {
@@ -171,10 +174,30 @@
         },
         {
           "label": "Latency",
-          "value": "Zero-latency"
+          "value": "Variable (depends on Lookahead and Oversampling)"
         }
       ],
       "history": [
+        {
+          "version": "1.2.0",
+          "date": "October 16, 2026",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Added Upward mode",
+                "Added compression curve visualizer",
+                "Added Range to limit maximum gain reduction",
+                "Added Lookahead for better transient detection",
+                "Added sidechain link mode (Mid or Max)",
+                "Sidechain EQ: drag handles, mouse wheel for Q and slope",
+                "Waveform zoom is now saved between sessions",
+                "Added low graphics mode for low-end systems",
+                "Improved graphics and performance, smaller file size"
+              ]
+            }
+          ]
+        },
         {
           "version": "1.1.2",
           "date": "May 5, 2026",
