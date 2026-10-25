@@ -427,6 +427,23 @@ header {
   border-color: color-mix(in srgb, #ff424d 30%, transparent);
 }
 
+/* "Latest update" variant: cyan accent */
+.plugin-featured-badge--update {
+  background: color-mix(in srgb, var(--accent-secondary, #2DC5F8) 10%, transparent);
+  color: var(--accent-secondary, #2DC5F8);
+  border-color: color-mix(in srgb, var(--accent-secondary, #2DC5F8) 30%, transparent);
+}
+
+.plugin-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.plugin-badges .plugin-featured-badge { margin-top: 0; }
+
 /* Badge row inside plugin-content */
 .plugin-content-header {
   display: flex;
@@ -521,7 +538,10 @@ header {
 .plugin-detail-image-carousel {
   width: 100%;
   max-width: 100%;
+  /* Corners at 2.2% of the width, as for every plugin image on the site;
+     the vertical radius follows the screenshot's proportions (--ar, set by main.js) */
   border-radius: 12px;
+  border-radius: 2.2% / calc(2.2% * var(--ar, 1.7));
   margin: 0 auto 2rem;
   display: block;
   box-shadow: 0 4px 20px var(--shadow);
@@ -536,7 +556,6 @@ header {
 
 @media (min-width: 768px) {
   .plugin-detail-image-carousel {
-    border-radius: 16px;
     margin-bottom: 3rem;
     box-shadow: 0 8px 40px var(--shadow);
   }
@@ -2042,3 +2061,6 @@ footer .footer-support { margin: 0; text-align: center; }
     height: 18px;
     fill: currentColor;
 }
+
+/* Changelog anchor (news links): keep the heading clear of the fixed header */
+#version-history { scroll-margin-top: 6rem; }

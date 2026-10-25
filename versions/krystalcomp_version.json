@@ -1,6 +1,6 @@
 {
   "version": "1.2.0",
   "releaseDate": "2026-10-16",
-  "releaseNotes": "MAJOR UPDATE\n- Upward compression mode\n- Range and Lookahead controls\n- Compression curve visualizer\n- Improved graphics and performance",
+  "releaseNotes": "- Added Upward mode\n- Added compression curve visualizer\n- Added Range to limit maximum gain reduction\n- Added Lookahead for better transient detection\n- Added sidechain link mode (Mid or Max)\n- Sidechain EQ: drag handles, mouse wheel for Q and slope\n- Waveform zoom is now saved between sessions\n- Added low graphics mode for low-end systems\n- Improved graphics and performance",
   "downloadUrl": "https://krystaldynamics.com/plugins/krystal-comp"
 }

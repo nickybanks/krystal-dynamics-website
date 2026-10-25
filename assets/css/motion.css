@@ -1,0 +1,106 @@
+/* Site-wide motion (paired with assets/js/motion.js).
+   Continuous effects are slow and quiet; the stronger ones answer the pointer or the scroll.
+   Transforms set by JS use `transform`; reveals and parallax use the separate `translate`
+   property, so they never fight with the existing hover transforms. */
+
+/* ── Reveal on scroll ─────────────────────────────────────────────────────── */
+.kd-reveal {
+  opacity: 0;
+  translate: 0 16px;
+  transition:
+    opacity 420ms ease var(--kd-delay, 0ms),
+    translate 560ms cubic-bezier(0.2, 0.8, 0.2, 1) var(--kd-delay, 0ms);
+}
+
+.kd-reveal.is-in {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* ── Interface screenshots: slow float + pointer tilt with glare ──────────── */
+.plugin-detail-image-carousel {
+  animation: kd-float 9s ease-in-out infinite;
+}
+
+.plugin-item:nth-child(even) .plugin-detail-image-carousel { animation-delay: -4.5s; }
+
+@keyframes kd-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+
+/* The element's own `transition: all` would make the tilt lag behind the pointer */
+.kd-tilt.kd-tilt {
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  will-change: transform;
+}
+
+.kd-glare {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,0.06), transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+}
+
+.kd-tilt:hover .kd-glare { opacity: 1; }
+
+/* ── Spotlight: light that follows the pointer across cards ───────────────── */
+.kd-spotlight {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(240px circle at var(--mx, -400px) var(--my, -400px), rgba(75,159,255,0.11), transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+:hover > .kd-spotlight { opacity: 1; }
+
+/* ── Parallax photos ─────────────────────────────────────────────────────── */
+.kd-parallax {
+  scale: 1.08;
+  will-change: translate;
+}
+
+/* ── Buttons: a light sweep on hover, and a slow one on the main calls to action ── */
+.btn-primary::after,
+.btn-download::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.32) 50%, transparent 70%);
+  content: '';
+  pointer-events: none;
+  translate: -120% 0;
+}
+
+.btn-primary:hover::after,
+.btn-download:hover::after {
+  translate: 120% 0;
+  transition: translate 750ms ease;
+}
+
+.news-slide.is-active .btn-primary::after,
+.plugin-hero .btn-download::after {
+  animation: kd-sheen 7s ease-in-out infinite 1.5s;
+}
+
+.plugin-hero .btn-download + .btn-download::after { animation-delay: 2s; }
+
+@keyframes kd-sheen {
+  0%, 78% { translate: -120% 0; }
+  100% { translate: 120% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plugin-detail-image-carousel,
+  .news-slide.is-active .btn-primary::after,
+  .plugin-hero .btn-download::after { animation: none; }
+  .btn-primary:hover::after,
+  .btn-download:hover::after { transition: none; }
+}

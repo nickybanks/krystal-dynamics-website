@@ -1,0 +1,49 @@
+{
+  "version": "1.1.0",
+  "releaseDate": "2026-04-28",
+  "releaseNotes": "- Added a new clipping mode which introduces tube-like saturation\n- Added display settings to manage theme and performance of graphic elements",
+  "downloadUrl": "https://krystaldynamics.com/plugins/krystal-clip",
+  "releases": [
+    {
+      "version": "1.1.0",
+      "date": "2026-04-28",
+      "notes": [
+        "Added a new clipping mode which introduces tube-like saturation",
+        "Added display settings to manage theme and performance of graphic elements"
+      ]
+    },
+    {
+      "version": "1.0.3",
+      "date": "2026-03-02",
+      "notes": [
+        "Added delta button to isolate the clipping effect for precise adjustments",
+        "Added LUFS metering inside the waveform display",
+        "Improved automatic loudness matching and added informative feedback",
+        "Improved waveform display and rendering"
+      ]
+    },
+    {
+      "version": "1.0.2",
+      "date": "2026-01-30",
+      "notes": [
+        "Added updates notifications",
+        "Minor graphical updates"
+      ]
+    },
+    {
+      "version": "1.0.1",
+      "date": "2026-01-20",
+      "notes": [
+        "Added 8x oversampling and fixed oversampling behaviour",
+        "Warmer mode now has a better clipping curve"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "date": "2026-01-12",
+      "notes": [
+        "Initial Release"
+      ]
+    }
+  ]
+}

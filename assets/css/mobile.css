@@ -1,0 +1,274 @@
+/* Mobile layout (below 768px), loaded after every other stylesheet.
+   Components with their own mobile form: news hero sized to the screen, compact plugin list,
+   stacked download milestones, compact footer.
+   Desktop is untouched: the mobile-only elements are hidden above the breakpoint. */
+
+@media (max-width: 767px) {
+  /* ── Footer: two compact columns, left aligned ────────────────────────── */
+  footer { padding: 2rem 0 1rem; text-align: left; }
+  footer::before { left: 1.25rem; width: 56px; transform: none; }
+  footer .footer-container { text-align: left; }
+
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    justify-items: stretch;
+    gap: 1.6rem 1rem;
+    padding: 0.5rem 0 1.25rem;
+  }
+
+  .footer-column { align-items: flex-start; gap: 0.45rem; text-align: left; }
+  .footer-column h2 { margin-bottom: 0.2rem; font-size: 0.74rem; }
+  .footer-column a { font-size: 0.82rem; }
+  .footer-download-link { justify-content: flex-start; }
+  .footer-contact { grid-column: 1 / -1; }
+  footer .footer-bottom p { font-size: 0.72rem; text-align: left; }
+
+  /* ── Header: slimmer bar, hamburger menu kept ─────────────────────────── */
+  header { padding: 0.75rem 0; }
+
+  /* Menu: opens inside the header and pushes the page down, instead of a floating popup */
+  .header-content { flex-wrap: wrap; }
+
+  .main-nav {
+    position: static;
+    display: flex;
+    flex-basis: 100%;
+    order: 3;
+    flex-direction: column;
+    gap: 0;
+    min-width: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    visibility: hidden;
+    transition: max-height 320ms cubic-bezier(0.2, 0.8, 0.2, 1), padding 320ms ease, visibility 0s linear 320ms;
+  }
+
+  .main-nav.is-open {
+    max-height: 14rem;
+    padding: 0.6rem 0 0.2rem;
+    visibility: visible;
+    transition: max-height 320ms cubic-bezier(0.2, 0.8, 0.2, 1), padding 320ms ease, visibility 0s;
+  }
+
+  .main-nav .nav-link {
+    align-self: flex-start;
+    padding: 0.8rem 0;
+    border-radius: 0;
+    background: none;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    opacity: 0;
+    translate: 0 -6px;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.25s ease, opacity 260ms ease, translate 320ms ease;
+  }
+
+  .main-nav .nav-link:hover,
+  .main-nav .nav-link:active { background: none; }
+  .main-nav.is-open .nav-link { opacity: 1; translate: 0 0; }
+  .main-nav.is-open .nav-link:nth-child(2) { transition-delay: 0s, 50ms, 50ms; }
+  .main-nav.is-open .nav-link:nth-child(3) { transition-delay: 0s, 100ms, 100ms; }
+
+  /* The whole row is tappable: an invisible extension of the link reaches the right edge
+     (clipped by the menu's overflow), while the underline stays as wide as the label */
+  .main-nav .nav-link::before {
+    position: absolute;
+    top: 0;
+    right: -100vw;
+    bottom: 0;
+    left: 0;
+    content: '';
+  }
+
+  /* Current page: the coloured underline, as on desktop, as wide as the label */
+  .main-nav .nav-link::after { right: 0; bottom: 0.45rem; left: 0; }
+  .main-nav .nav-link.active { color: var(--text-primary); }
+  .main-nav .nav-link.active::after { transform: scaleX(1); }
+  .mobile-menu-toggle { -webkit-tap-highlight-color: transparent; }
+
+  /* ── Plugins page: the shelf fills the space below the header ────────── */
+  .plugin-library { height: calc(100svh - 51px); min-height: 420px; }
+  .plugin-library ~ #footer { margin-top: 0; }
+
+  /* ── Home news: the whole slide, tabs included, fits on screen ──────────── */
+  .hero-news { height: calc(var(--news-screen-h, 100svh) - 51px); min-height: 460px; max-height: 760px; }
+  .hero-news .news-copy { padding: 5.5rem 0 4.75rem; }
+  .hero-news .news-title { margin-top: 0.6rem; font-size: clamp(2.2rem, 10vw, 3.2rem); }
+  .hero-news .news-version { margin: 0.45rem 0 0.6rem; }
+  .hero-news .news-body { margin-bottom: 0.7rem; font-size: 0.9rem; line-height: 1.55; }
+  .hero-news .news-highlight { margin-bottom: 0.9rem; font-size: 0.8rem; }
+  .hero-news .news-notes { gap: 0.3rem; margin-bottom: 0.6rem; }
+  .hero-news .news-notes li { font-size: 0.82rem; }
+  .hero-news .news-notes-more { margin-bottom: 1rem; font-size: 0.78rem; }
+  .hero-news .news-slide--activity .news-title { font-size: clamp(2rem, 9vw, 2.6rem); }
+  .hero-news .news-timeline { margin-bottom: 0.4rem; }
+  .home-news-controls { bottom: 1rem; }
+
+  /* ── Home news: secondary link stays next to the main button, as on desktop ── */
+  .news-copy .news-actions { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.8rem 1rem; }
+  .news-copy .news-actions .btn { flex: 0 0 auto; padding: 0.8rem 1.15rem; font-size: 0.7rem; }
+  .news-copy .news-secondary-link { font-size: 0.68rem; white-space: nowrap; }
+
+  /* ── Home: download milestones as two full-width sections, MuseHub first ─ */
+  .download-milestones .container { width: 100%; max-width: none; padding: 0; }
+  .milestones-grid { grid-template-columns: 1fr; gap: 0; }
+  .milestone { padding: 3rem 1.5rem 2.75rem; }
+  .milestone + .milestone { border-top: 1px solid var(--border-color); border-left: 0; background: var(--bg-secondary); }
+  .milestone-logo { height: 44px; margin-bottom: 1.4rem; }
+  .milestone-number { font-size: min(3.6rem, 14cqi); }
+  .milestone-label { margin-top: 0.6rem; font-size: 0.8rem; letter-spacing: 0.14em; }
+  .milestone-copy { display: block; max-width: 30ch; margin: 0.9rem auto 0; font-size: 0.95rem; line-height: 1.6; }
+
+  /* ── Home: plugin list, tighter spacing and buttons sized for a phone ─── */
+  .plugin-item { padding: 2rem 0; }
+  .plugin-item + .plugin-item { border-top: 1px solid var(--border-color); }
+  .plugin-item .plugin-grid,
+  .plugin-item .plugin-grid-reverse { flex-direction: column; gap: 1.1rem; align-items: stretch; }
+  .plugin-item .plugin-image-wrapper { order: 0; }
+  /* Name and badges share the first row: name on the left, badges on the right */
+  .plugin-item .plugin-content {
+    display: grid;
+    order: 1;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 0.75rem;
+  }
+  .plugin-item .plugin-content > * { grid-column: 1 / -1; }
+  .plugin-item .plugin-detail-image-carousel { margin: 0; animation: none; }
+  .plugin-item .plugin-content > .plugin-content-header { grid-row: 1; grid-column: 2; min-height: 0; margin: 0; }
+  .plugin-item .plugin-content-header > div:empty { display: none; }
+  .plugin-item .plugin-badges { justify-content: flex-end; gap: 0.35rem; }
+  .plugin-item .plugin-featured-badge { padding: 4px 10px; font-size: 0.6rem; }
+  .plugin-item .plugin-content > h3 { grid-row: 1; grid-column: 1; margin: 0; font-size: 1.45rem; }
+  .plugin-item .plugin-content > h3 + p { margin-top: 0.6rem; }
+  .plugin-item .plugin-content p { margin-bottom: 0.9rem; font-size: 0.92rem; line-height: 1.6; }
+  .plugin-item .plugin-specs { gap: 0.4rem; margin: 0 0 1.1rem; }
+  .plugin-item .plugin-specs li { padding: 0.4rem 0.65rem; font-size: 0.6rem; }
+  .plugin-item .plugin-actions { gap: 0.6rem 1rem; }
+  .plugin-item .plugin-actions .btn { padding: 0.8rem 1.4rem; }
+
+  /* Early access: same size as "View details" instead of a full-width bar */
+  .plugin-item .plugin-early-access { gap: 0.5rem; }
+  .plugin-item .btn-patreon {
+    width: auto;
+    gap: 0.5rem;
+    padding: 0.8rem 1.4rem;
+    font-size: 0.68rem;
+  }
+  .plugin-item .plugin-release-hint { font-size: 0.75rem; }
+
+  /* ── Home: about teaser, shortened ────────────────────────────────────── */
+  .about { padding: 2.75rem 0; }
+  .about-body { gap: 2rem; }
+  .about-story h2 { margin-bottom: 1rem; font-size: 1.6rem; }
+  .about-story p { margin-bottom: 0.9rem; font-size: 0.95rem; line-height: 1.7; }
+  #homeAboutCopy p:nth-of-type(n+3) { display: none; }
+
+  .about-learn-more {
+    align-items: center;
+    padding: 0.7rem 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    color: var(--text-primary);
+    font-size: 0.75rem;
+  }
+
+  /* ── Plugin page ───────────────────────────────────────────────────────── */
+  .plugin-hero { padding-top: 1.25rem; padding-bottom: 2rem; }
+  .plugin-hero .plugin-detail-image-carousel { margin-bottom: 1.25rem; }
+  .plugin-hero h1 { margin-bottom: 0.6rem; font-size: 2.2rem; }
+  .plugin-hero-overview p { font-size: 0.95rem; line-height: 1.6; }
+  .plugin-hero-downloads h2 { font-size: 1.1rem; }
+
+  .download-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .btn-download {
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 0.95rem 0.5rem;
+    border-radius: 14px;
+    font-size: 0.64rem;
+  }
+
+  .plugin-detail { padding-top: 1.5rem; padding-bottom: 2rem; }
+  .plugin-detail-content h3 { margin: 2rem 0 0.8rem; font-size: 1.25rem; }
+  .plugin-detail-content > h3:first-of-type { margin-top: 0.5rem; }
+
+  /* Features: a plain checklist instead of boxed rows */
+  .plugin-detail-content > ul { gap: 0; }
+
+  .plugin-detail-content > ul > li {
+    padding: 0.6rem 0 0.6rem 1.7rem;
+    border: 0;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    background: none;
+    font-size: 0.9rem;
+  }
+
+  .plugin-detail-content > ul > li::before { left: 0; font-size: 0.95rem; }
+
+  /* Specifications: label left, value right */
+  .specs {
+    grid-template-columns: auto 1fr;
+    gap: 0.6rem 1rem;
+    margin: 0;
+    padding: 1rem 1.1rem;
+  }
+
+  .specs dt { align-self: center; font-size: 0.6rem; }
+  .specs dd { margin: 0; font-size: 0.86rem; text-align: right; }
+
+  .collapsible__header { padding: 0.95rem 1rem; }
+  .changelog-version { font-size: 1.05rem; }
+
+  /* ── About page ────────────────────────────────────────────────────────── */
+  .about-hero {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding: 0 0 2rem;
+  }
+
+  .about-hero-image {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-position: 70% center;
+    -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  }
+
+  .about-hero::after { display: none; }
+  .about-simple-inner { margin-top: -3rem; }
+  .about-simple-copy p { font-size: 0.95rem; line-height: 1.7; }
+
+  .about-story-intro { padding-top: 2.5rem; }
+  .about-row,
+  .about-cta { padding: 2.25rem 0; }
+  .about-row-inner { gap: 0.9rem; }
+  .about-row .about-row-title { display: flex; align-items: baseline; gap: 0.7rem; }
+  .about-row-title h3,
+  .about-cta h2 { font-size: 1.6rem; }
+  .about-row-copy p { font-size: 0.95rem; line-height: 1.7; }
+}
+
+/* Smallest phones: keep the two news actions on one line */
+@media (max-width: 359px) {
+  .news-copy .news-actions { gap: 0.8rem 0.75rem; }
+  .news-copy .news-actions .btn { padding: 0.75rem 0.95rem; letter-spacing: 0.02em; }
+  .news-copy .news-secondary-link { letter-spacing: 0.02em; }
+  .news-dots { gap: 0.4rem; }
+  .news-tab-label { overflow: hidden; font-size: 0.47rem; letter-spacing: 0; text-overflow: ellipsis; }
+}

@@ -1,0 +1,40 @@
+{
+  "version": "1.1.0",
+  "releaseDate": "2026-05-01",
+  "releaseNotes": "- Added linking mode for threshold controls\n- Added display settings to manage theme and performance of graphic elements",
+  "downloadUrl": "https://krystaldynamics.com/plugins/krystal-field",
+  "releases": [
+    {
+      "version": "1.1.0",
+      "date": "2026-05-01",
+      "notes": [
+        "Added linking mode for threshold controls",
+        "Added display settings to manage theme and performance of graphic elements"
+      ]
+    },
+    {
+      "version": "1.0.2",
+      "date": "2026-01-30",
+      "notes": [
+        "Added updates notifications",
+        "Minor bug fixes"
+      ]
+    },
+    {
+      "version": "1.0.1",
+      "date": "2026-01-13",
+      "notes": [
+        "The upward knee now shapes the curve to avoid increase of low intensity signals",
+        "Added 8x oversampling",
+        "The display has now three zoom modes from -18 to -72 dB"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "date": "2026-01-12",
+      "notes": [
+        "Initial Release"
+      ]
+    }
+  ]
+}

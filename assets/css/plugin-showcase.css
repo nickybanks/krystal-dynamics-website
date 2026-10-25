@@ -1,0 +1,963 @@
+/* ============================================================
+   HOMEPAGE PLUGIN SHOWCASE (paired with assets/js/plugin-showcase.js)
+   Interfaces float in a fanned row over moving sine waves.
+   Hover lights up the plugin's background; click opens the mini-view.
+   Transforms: the row pose and hover push live on .showcase-item (`transform`),
+   the idle float on .showcase-float (`translate` / `rotate`), so they never fight.
+   ============================================================ */
+
+.plugin-showcase {
+  --showcase-base: #121316;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(4.5rem, 8vw, 7rem) 0 clamp(2.5rem, 4vw, 3.5rem);
+  background: #000;
+}
+
+/* ── Background layers: plugin wallpaper (fisheye, WebGL), edge fades, waves ── */
+.showcase-backdrops,
+.showcase-vignette,
+.showcase-waves {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.showcase-backdrops { z-index: 0; }
+
+.showcase-lens {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.showcase-backdrop {
+  position: absolute;
+  inset: -4%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  filter: saturate(0.85);
+  transform: scale(1.1);
+  transition: opacity 0.9s ease, transform 7s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+/* Same idea as the old list: the hovered plugin's interface fades in and drifts slowly.
+   The outgoing wallpaper fades a bit slower than the new one appears: a crossfade, never a cut. */
+.showcase-backdrop.is-active {
+  opacity: 0.36;
+  transform: scale(1.02) translateX(-1.5%);
+  transition: opacity 0.6s ease, transform 7s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.showcase-vignette {
+  z-index: 1;
+  background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 16%, transparent 80%, var(--bg-secondary) 100%);
+}
+
+.showcase-waves {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── Heading and caption ───────────────────────────────────────────────── */
+.showcase-head,
+.showcase-caption {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+.showcase-head h2 { margin-bottom: 0.5rem; }
+
+.showcase-intro {
+  margin: 0 auto;
+  max-width: 46ch;
+  color: var(--text-secondary);
+}
+
+.showcase-caption {
+  min-height: 6.5rem;
+  max-width: 760px;
+}
+
+.showcase-caption-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem 0.9rem;
+  margin: 0 0 0.45rem;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.5rem, 2.3vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.showcase-caption-name:empty { display: none; }
+
+.showcase-caption-badges { display: inline-flex; flex-wrap: wrap; gap: 0.4rem; }
+.showcase-caption-badges .plugin-featured-badge { margin: 0; padding: 4px 11px; font-size: 0.6rem; }
+
+.showcase-caption-text {
+  max-width: 52ch;
+  margin: 0 auto;
+  color: #c3c6cc;
+}
+
+
+
+/* ── The row of floating cards ─────────────────────────────────────────── */
+.showcase-track {
+  --card-w: clamp(180px, 22vw, 370px);
+  --overlap: calc(var(--card-w) * -0.15);
+  --push: calc(var(--card-w) * 0.2);
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: clamp(3.5rem, 6vw, 5rem) 2rem clamp(2.5rem, 4vw, 3.5rem);
+  list-style: none;
+}
+
+.showcase-item {
+  position: relative;
+  z-index: var(--z, 1);
+  flex: 0 0 auto;
+  width: calc(var(--card-w) * var(--w, 1));
+  margin-inline: var(--overlap);
+  transform: translateY(var(--y)) rotate(var(--rot));
+  transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.25, 1.1);
+}
+
+.showcase-card {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.showcase-card:focus { outline: none; }
+
+.showcase-float {
+  position: relative;
+  display: block;
+  container-type: inline-size;   /* lets the corners scale with the card (see --img-round) */
+  animation: showcase-float var(--dur, 9s) ease-in-out var(--delay, 0s) infinite;
+}
+
+/* Glow behind the active card and shade over the others: fixed layers that only fade */
+.showcase-float::before,
+.showcase-float::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  border-radius: 2.2cqi;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.showcase-float::before {
+  z-index: -1;
+  box-shadow: 0 40px 80px -14px rgba(0, 0, 0, 0.6), 0 0 70px -10px rgba(75, 159, 255, 0.4);
+}
+
+.showcase-float::after { background: rgba(12, 13, 15, 0.55); }
+
+.showcase-item.is-active .showcase-float::before { opacity: 1; }
+.plugin-showcase.has-active .showcase-item:not(.is-active) .showcase-float::after { opacity: 1; }
+
+@keyframes showcase-float {
+  0%, 100% { translate: 0 -9px; rotate: -0.7deg; }
+  50%      { translate: 0 9px;  rotate: 0.7deg; }
+}
+
+.showcase-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--ratio, 16 / 10);
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  /* Corners in proportion to the image (2.2% of its width, as in the popup on desktop),
+     so a small card on a phone is not rounder than a big one */
+  border-radius: 10px;
+  border-radius: 2.2cqi;
+  background: var(--bg-secondary);
+  box-shadow:
+    0 28px 56px -12px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(0, 0, 0, 0.35);
+  user-select: none;
+  transition: border-color 0.45s ease, opacity 0.2s ease;
+}
+
+.showcase-flag {
+  position: absolute;
+  top: -0.7rem;
+  left: 0.9rem;
+  padding: 3px 10px;
+  border: 1px solid color-mix(in srgb, #ff424d 40%, transparent);
+  border-radius: 20px;
+  background: #1a0b0d;
+  color: #ff6b73;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Active card: comes forward and straightens; the others step back */
+.showcase-item.is-active {
+  z-index: 50;
+  transform: translateY(calc(var(--y) * 0.3 - 16px)) rotate(0deg) scale(1.14);
+}
+
+.showcase-item.is-active .showcase-image { border-color: color-mix(in srgb, var(--accent-primary) 55%, transparent); }
+
+.showcase-card:focus-visible .showcase-image {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 5px;
+}
+
+/* While its popup is open, the card has "flown" into it */
+.is-lifted .showcase-image,
+.is-lifted .showcase-float::before { opacity: 0; }
+
+/* Desktop: neighbours move aside so the active card has room */
+@media (min-width: 768px) {
+  .plugin-showcase.has-active .showcase-item:not(.is-active) {
+    /* -1 left of the active card, +1 right of it */
+    --dir: clamp(-1, (var(--i) - var(--active)) * 100, 1);
+    transform: translate(calc(var(--dir) * var(--push)), var(--y)) rotate(var(--rot));
+  }
+}
+
+/* Phones: the row scrolls sideways; the card in the middle is the active one */
+@media (max-width: 767px) {
+  .plugin-showcase { padding-top: 4rem; }
+
+  .showcase-track {
+    --card-w: 60vw;
+    --overlap: calc(var(--card-w) * -0.08);
+    justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    /* A sideways scroller also clips vertically: the extra room at the bottom lets the card's
+       shadow fade out completely; the negative margin keeps the caption where it was */
+    padding: 3.5rem 0 6rem;
+    margin-bottom: -3rem;
+  }
+
+  .showcase-track::-webkit-scrollbar { display: none; }
+
+  /* Spacers so the first and last cards can reach the centre */
+  .showcase-track::before,
+  .showcase-track::after {
+    content: '';
+    flex: 0 0 calc(50vw - var(--card-w) / 2 - var(--overlap));
+  }
+
+  .showcase-item {
+    width: var(--card-w);
+    scroll-snap-align: center;
+    transform: translateY(calc(var(--y) * 0.4)) rotate(calc(var(--rot) * 0.6));
+  }
+
+  .showcase-item { transition-duration: 0.5s; transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .showcase-item.is-active { transform: translateY(-6px) rotate(0deg) scale(1.06); }
+
+  /* Shorter shadow and glow on phones */
+  .showcase-image { box-shadow: 0 18px 36px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 0, 0, 0.35); }
+  .showcase-float::before { box-shadow: 0 26px 52px -14px rgba(0, 0, 0, 0.6), 0 0 44px -8px rgba(75, 159, 255, 0.4); }
+
+  .showcase-caption { min-height: 9rem; }
+}
+
+/* ============================================================
+   PLUGIN MINI-VIEW (dialog)
+   ============================================================ */
+
+html.pm-locked { overflow: hidden; }
+html.pm-locked body { padding-right: var(--pm-scrollbar, 0px); }
+
+.plugin-modal {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: clamp(0.75rem, 3vw, 2.5rem);
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.plugin-modal[open] {
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);   /* gives the panel a real height to fit into */
+  place-items: center;
+}
+
+.plugin-modal::backdrop { background: transparent; }
+
+.pm-scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 7, 9, 0.76);
+  -webkit-backdrop-filter: blur(12px) saturate(0.8);
+  backdrop-filter: blur(12px) saturate(0.8);
+  animation: pm-fade-in 0.35s ease both;
+}
+
+/* The panel itself never fades (the interface flies into it); its surface and content do */
+.pm-panel {
+  position: relative;
+  width: min(1180px, 100%);
+  height: min(700px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+}
+
+.pm-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  background: #121316;
+  box-shadow: 0 40px 120px -20px rgba(0, 0, 0, 0.8);
+  animation: pm-surface-in 0.45s cubic-bezier(0.2, 0.85, 0.2, 1) both;
+}
+
+/* Close button */
+.pm-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: rgba(20, 21, 24, 0.75);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.3s ease;
+  animation: pm-fade-in 0.3s ease 0.15s both;
+}
+
+.pm-close svg { width: 18px; height: 18px; }
+.pm-close:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); transform: rotate(90deg); }
+.pm-close:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
+
+/* Left: the interface in front, its screenshots right under it */
+.pm-visual {
+  --pm-reserve: 4.5rem;   /* gap + thumbnails under the image (cqh already excludes the padding) */
+  position: relative;
+  z-index: 1;
+  container-type: size;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  min-height: 0;
+  padding: 3rem clamp(1.75rem, 3vw, 3rem);
+}
+
+.pm-visual-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 20px 0 0 20px;
+  animation: pm-fade-in 0.6s ease 0.1s both;
+}
+
+/* Blurred copy of the current screenshot, kept inside the panel */
+.pm-visual-bg::before {
+  content: '';
+  position: absolute;
+  inset: -40px;
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  filter: blur(24px) saturate(0.9);
+}
+
+.pm-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  animation: showcase-float 10s ease-in-out -2s infinite;
+}
+
+.pm-image {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100cqh - var(--pm-reserve));
+  width: auto;
+  height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  /* Same 2.2% of the width; the vertical radius uses the image's proportions (--ar, set by the script) */
+  border-radius: 12px;
+  border-radius: 2.2% / calc(2.2% * var(--ar, 1.7));
+  box-shadow: 0 36px 70px -16px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+/* Previous screenshot, fading out on top of the new one */
+.pm-image-ghost {
+  position: absolute;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  pointer-events: none;
+}
+
+.pm-thumbs {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  animation: pm-fade-in 0.4s ease 0.3s both;
+}
+
+.pm-thumb {
+  width: 58px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 3px;
+  background: var(--bg-secondary);
+  overflow: hidden;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.pm-thumb img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.pm-thumb:hover { opacity: 0.9; transform: translateY(-2px); }
+.pm-thumb.is-current { opacity: 1; border-color: var(--accent-primary); }
+.pm-thumb:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+
+/* Right: info, with the downloads anchored at the bottom */
+.pm-info {
+  --pm-gutter: clamp(1.75rem, 3vw, 2.75rem);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  animation: pm-info-in 0.5s cubic-bezier(0.2, 0.85, 0.2, 1) 0.12s both;
+}
+
+.pm-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 3.6rem var(--pm-gutter) 2rem;   /* top: the title row starts below the close button */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 2rem), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 2rem), transparent);
+}
+
+.pm-scroll:focus { outline: none; }
+
+/* Name and badges on one line (badges wrap below only when there is no room) */
+.pm-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.pm-title {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+}
+
+.pm-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.pm-badges .plugin-featured-badge { margin: 0; padding: 4px 11px; font-size: 0.62rem; }
+
+.pm-meta {
+  margin: 0 0 1.5rem;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.pm-desc {
+  max-width: 60ch;
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #c8c8c8;
+}
+
+.pm-heading {
+  margin: 2rem 0 0.9rem;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+}
+
+.pm-features {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pm-features li {
+  position: relative;
+  padding-left: 1.2rem;
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #d2d4d8;
+}
+
+.pm-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 10px rgba(75, 159, 255, 0.6);
+}
+
+.pm-specs {
+  display: grid;
+  gap: 0.5rem;
+  margin: 2rem 0 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.pm-specs > div {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.pm-specs dt { color: var(--text-secondary); }
+.pm-specs dd { margin: 0; color: #d2d4d8; }
+
+.pm-more {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, var(--accent-primary) 45%, transparent);
+}
+
+.pm-more:hover { text-decoration-color: currentColor; }
+
+.pm-actions {
+  padding: 1.25rem var(--pm-gutter) 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Both buttons on one row, icon and label side by side, at every width */
+.pm-actions .download-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.pm-actions .btn-download {
+  flex: 1 1 0;
+  flex-direction: row;
+  gap: 0.6rem;
+  min-width: 0;
+  padding: 0.95rem 1rem;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.pm-actions .btn-download small { margin-left: 0.3em; font-size: 0.9em; opacity: 0.65; }
+.pm-actions .pm-patreon { width: 100%; margin-bottom: 0.85rem; }
+
+.pm-note {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+/* ── Open / close motion ─────────────────────────────────────────────── */
+@keyframes pm-fade-in    { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pm-surface-in { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
+@keyframes pm-info-in    { from { opacity: 0; translate: 16px 0; } to { opacity: 1; translate: 0 0; } }
+@keyframes pm-fade-out   { to { opacity: 0; } }
+@keyframes pm-surface-out { to { opacity: 0; transform: scale(0.97); } }
+
+.plugin-modal.is-closing .pm-scrim,
+.plugin-modal.is-closing .pm-close,
+.plugin-modal.is-closing .pm-thumbs,
+.plugin-modal.is-closing .pm-visual-bg,
+.plugin-modal.is-closing .pm-info { animation: pm-fade-out 0.25s ease both; }
+.plugin-modal.is-closing .pm-panel::before { animation: pm-surface-out 0.32s ease both; }
+
+/* ── Smaller screens: interface on top, info below, downloads pinned at the bottom ── */
+@media (max-width: 860px) {
+  .plugin-modal { padding: 0.75rem; }
+
+  .pm-panel {
+    height: 100%;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 40%) minmax(0, 1fr);
+  }
+
+  .pm-visual {
+    --pm-reserve: 2.9rem;
+    gap: 0.9rem;
+    padding: 3.5rem 1.25rem 1rem;
+  }
+
+  .pm-visual-bg { border-radius: 20px 20px 0 0; }
+  .pm-thumb { width: 46px; }
+
+  .pm-info {
+    --pm-gutter: 1.5rem;
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    animation-name: pm-info-in-up;
+  }
+
+  .pm-scroll { padding: 1.5rem var(--pm-gutter) 1.25rem; }
+  .pm-actions { padding: 0.9rem var(--pm-gutter) calc(1rem + env(safe-area-inset-bottom)); }
+  .pm-actions .download-buttons { gap: 0.6rem; margin-bottom: 0.7rem; }
+  .pm-actions .btn-download { gap: 0.5rem; padding: 0.85rem 0.7rem; font-size: 0.66rem; }
+  .pm-actions .os-logo { width: 17px; height: 17px; }
+}
+
+@keyframes pm-info-in-up { from { opacity: 0; translate: 0 14px; } to { opacity: 1; translate: 0 0; } }
+
+@media (max-width: 520px) {
+  .plugin-modal { padding: 0; }
+  .pm-panel::before { border-radius: 0; border: 0; }
+  .pm-visual-bg { border-radius: 0; }
+  .pm-close { top: 0.75rem; right: 0.75rem; }
+  .pm-info { --pm-gutter: 1.25rem; }
+  .pm-title-row { gap: 0.4rem 0.7rem; }
+  .pm-title { font-size: 1.6rem; }
+  .pm-badges .plugin-featured-badge { padding: 3px 9px; font-size: 0.56rem; }
+  .pm-specs > div { grid-template-columns: 7.5rem 1fr; }
+}
+
+/* Very narrow phones: the format tag would not fit next to the OS name */
+@media (max-width: 379px) {
+  .pm-actions .btn-download small { display: none; }
+}
+
+/* ── Reduced motion: no floating, no flights, quick fades only ─────────── */
+@media (prefers-reduced-motion: reduce) {
+  .showcase-float,
+  .pm-stage { animation: none; }
+  .showcase-item { transition-duration: 0.01ms; }
+  .showcase-backdrop, .showcase-backdrop.is-active { transform: scale(1.04); transition: opacity 0.6s ease; }
+  .pm-scrim, .pm-panel::before, .pm-info, .pm-close, .pm-thumbs, .pm-visual-bg { animation-duration: 0.01ms; animation-delay: 0ms; }
+  .showcase-float::before, .showcase-float::after { transition-duration: 0.01ms; }
+}
+
+
+/* ============================================================
+   PLUGINS PAGE: COLUMN GALLERY (plugins.html)
+   The full-height columns of the old library, over one continuous wave field.
+   Each column holds its interface floating in the middle; the hovered column
+   widens, its plugin appears behind it and the details slide up at the bottom.
+   Columns create no stacking context, so the layers interleave across the page:
+   column background (0) < waves (1) < interfaces and text (2).
+   ============================================================ */
+.plugin-gallery {
+  position: relative;
+  isolation: isolate;
+  height: calc(100svh - 76px);   /* 76px: desktop header */
+  min-height: 560px;
+  overflow: hidden;
+  background: radial-gradient(ellipse 80% 70% at 50% 50%, #1b1d21 0%, #15161a 50%, #121316 100%);
+}
+
+.gallery-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.plugin-gallery .showcase-waves { z-index: 1; }
+
+.gallery-shelf {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gallery-col {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  transition: flex-grow 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gallery-col:last-child { border-right: 0; }
+.gallery-col.is-active { flex-grow: 2.4; }
+
+.gallery-card {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-card:hover { color: inherit; }   /* links turn blue on hover elsewhere on the site */
+
+.gallery-card:focus { outline: none; }
+.gallery-card:focus-visible { box-shadow: inset 0 0 0 2px var(--accent-primary); }
+
+/* The plugin's own interface, filling the column behind everything else.
+   The box clips to the column; the image inside it can zoom without spilling into the next one. */
+.gallery-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gallery-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(180deg, rgba(18, 19, 22, 0.55) 0%, rgba(18, 19, 22, 0.1) 30%, rgba(18, 19, 22, 0.35) 60%, rgba(18, 19, 22, 0.96) 100%),
+    var(--img);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  filter: brightness(0.75) saturate(0.3);
+  transform: scale(1.04);
+  transition: opacity 0.6s ease, filter 0.6s ease, transform 6s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.gallery-col.is-active .gallery-bg::before { opacity: 0.6; filter: none; transform: scale(1); }
+.gallery-shelf.has-active .gallery-col:not(.is-active) .gallery-bg::before { opacity: 0.32; }
+
+/* Floating interface: its width follows the column, so it grows as the column opens */
+.gallery-float {
+  position: relative;
+  z-index: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
+  display: block;
+  container-type: inline-size;   /* corners scale with the card, as on the homepage */
+  width: calc(80% * var(--w, 1));
+  max-width: 620px;
+  transform: translateY(var(--y)) rotate(var(--rot));
+  transition:
+    width 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 650ms cubic-bezier(0.2, 0.9, 0.25, 1.1),
+    filter 0.45s ease;
+}
+
+.gallery-float .showcase-image { animation: showcase-float var(--dur, 9s) ease-in-out var(--delay, 0s) infinite; }
+
+.gallery-col.is-active .gallery-float {
+  width: calc(76% * var(--w, 1));
+  transform: translateY(-1.5rem) rotate(0deg);
+}
+
+.gallery-col.is-active .showcase-image {
+  border-color: color-mix(in srgb, var(--accent-primary) 55%, transparent);
+  box-shadow:
+    0 40px 80px -14px rgba(0, 0, 0, 0.85),
+    0 0 70px -10px rgba(75, 159, 255, 0.35);
+}
+
+.gallery-shelf.has-active .gallery-col:not(.is-active) .gallery-float { filter: brightness(0.5) saturate(0.7); }
+.gallery-shelf.has-active .gallery-col:not(.is-active) .gallery-info { opacity: 0.45; }
+
+/* Bottom: name always, details when open */
+.gallery-info {
+  position: relative;
+  z-index: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  min-width: 0;
+  padding: 0 clamp(1rem, 1.8vw, 2rem) clamp(1.5rem, 4.5vh, 2.75rem);
+  transition: opacity 0.35s ease;
+}
+
+.gallery-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.gallery-badges .plugin-featured-badge { margin: 0; padding: 3px 9px; font-size: 0.56rem; }
+
+.gallery-name {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1rem, 1.35vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #d4d6db;
+  white-space: nowrap;
+  transition: font-size 450ms cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+}
+
+.gallery-col.is-active .gallery-name { font-size: clamp(1.8rem, 2.8vw, 2.8rem); color: var(--text-primary); }
+
+/* Height animates from 0 to auto through the grid row */
+.gallery-more {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 450ms cubic-bezier(0.22, 1, 0.36, 1), opacity 300ms ease;
+}
+
+.gallery-more-inner { display: flex; flex-direction: column; gap: 0.6rem; min-height: 0; overflow: hidden; }
+
+.gallery-col.is-active .gallery-more {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition-delay: 120ms;
+}
+
+.gallery-desc {
+  max-width: 40ch;
+  font-size: clamp(0.9rem, 1.1vw, 1.02rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: #c3c6cc;
+}
+
+.gallery-meta { font-size: 0.8rem; color: var(--text-secondary); }
+
+/* Phones: one row per plugin, name on the left, interface on the right; tap opens the overview */
+@media (max-width: 767px) {
+  .plugin-gallery { height: calc(100svh - 51px); min-height: 520px; }   /* 51px: mobile header */
+
+  .gallery-shelf { flex-direction: column; }
+
+  .gallery-col {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .gallery-col:last-child { border-bottom: 0; }
+
+  .gallery-card {
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 48%;
+    align-items: center;
+  }
+
+  .gallery-float {
+    grid-row: 1;
+    grid-column: 2;
+    width: calc(84% * var(--w, 1));
+    transform: translateY(calc(var(--y) * 0.2)) rotate(calc(var(--rot) * 0.6));
+  }
+
+  .gallery-info {
+    grid-row: 1;
+    grid-column: 1;
+    gap: 0.3rem;
+    padding: 0 0.5rem 0 1rem;
+  }
+
+  .gallery-bg::before { transform: none; }
+  .gallery-name { font-size: 1.2rem; }
+  .gallery-more { grid-template-rows: 1fr; opacity: 1; }
+  .gallery-desc { display: none; }
+  .gallery-meta { font-size: 0.72rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-float .showcase-image { animation: none; }
+  .gallery-col, .gallery-float, .gallery-bg::before, .gallery-name, .gallery-more { transition-duration: 0.01ms; }
+}
+
+/* ── Backgrounds drawn by the lens (WebGL): plugins page columns and popup ──
+   Without WebGL these classes are not set and the CSS backgrounds stay as they are. */
+.gallery-lens {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gallery-lens canvas,
+.pm-visual-bg .showcase-lens {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* The columns keep only their shading gradient; the image comes from the lens below */
+.plugin-gallery.has-lens .gallery-bg::before {
+  background-image: linear-gradient(180deg, rgba(18, 19, 22, 0.55) 0%, rgba(18, 19, 22, 0.1) 30%, rgba(18, 19, 22, 0.35) 60%, rgba(18, 19, 22, 0.96) 100%);
+  opacity: 0.6;
+  filter: none;
+  transform: none;
+}
+
+.plugin-gallery.has-lens .gallery-col.is-active .gallery-bg::before { opacity: 0.6; }
+.plugin-gallery.has-lens .gallery-shelf.has-active .gallery-col:not(.is-active) .gallery-bg::before { opacity: 0.6; }
+
+/* Popup: the blurred copy gives way to the lens */
+.pm-visual-bg.has-lens::before { display: none; }

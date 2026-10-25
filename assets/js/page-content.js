@@ -19,8 +19,8 @@
     const shelf = document.querySelector('.library-shelf');
     if (!shelf) return;
 
-    const catalogOrder = ['krystal-comp', 'krystal-clip', 'krystal-field', 'krystal-peak', 'krystal-shaper'];
-    const sorted = [...plugins].sort((a, b) => catalogOrder.indexOf(a.id) - catalogOrder.indexOf(b.id));
+    // Newest plugin first, by public release date (early access plugins use their upcoming date)
+    const sorted = [...plugins].sort((a, b) => b.launchDate.localeCompare(a.launchDate));
     shelf.innerHTML = sorted.map((plugin, index) => `
       <article class="plugin-volume" role="listitem" tabindex="0"
         data-href="${escapeHTML(plugin.page)}"
@@ -139,13 +139,13 @@
   function renderHistory(plugin) {
     if (!plugin.history.length) return '';
     return `
-      <h3>Version History</h3>
+      <h3 id="version-history">Version History</h3>
       ${plugin.history.map((release, index) => `
         <section class="collapsible${index === 0 ? ' is-open' : ''}">
           <button type="button" class="collapsible__header" aria-expanded="${index === 0}">
             <span class="collapsible__title">
               <span class="changelog-version">${escapeHTML(release.version)}</span>
-              ${release.date ? `<span class="changelog-date text-sm">${escapeHTML(release.date)}</span>` : ''}
+              ${release.date ? `<span class="changelog-date text-sm">${escapeHTML(formatReleaseDate(release.date))}</span>` : ''}
               ${index === 0 ? '<span class="badge badge--primary badge--small">Current</span>' : ''}
             </span>
             <svg class="collapsible__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
@@ -160,17 +160,6 @@
         </section>`).join('')}`;
   }
 
-  async function getCurrentPluginData(plugin) {
-    try {
-      const response = await fetch(`${plugin.versionFile}?_=${Date.now()}`, { cache: 'no-store' });
-      if (!response.ok) return plugin;
-      const versionData = await response.json();
-      return { ...plugin, version: versionData.version || plugin.version };
-    } catch {
-      return plugin;
-    }
-  }
-
   function renderPluginDetail(plugin) {
     const target = document.getElementById('pluginDetailPage');
     if (!target) return;
@@ -178,7 +167,7 @@
     const safeImages = escapeHTML(JSON.stringify(plugin.images));
     const downloadUrl = `https://krystal-dynamics.itch.io/${escapeHTML(plugin.downloadSlug)}/purchase`;
 
-    const isEarlyAccess = new Date(plugin.releaseDate) > new Date();
+    const isEarlyAccess = plugin.isEarlyAccess;
 
     const downloadsBlock = isEarlyAccess
       ? `
@@ -191,7 +180,7 @@
             </span>
             <span>JOIN PATREON</span>
           </a>
-          <p class="plugin-release-hint">Public release ${escapeHTML(formatReleaseDate(plugin.releaseDate))}</p>
+          <p class="plugin-release-hint">Public release ${escapeHTML(formatReleaseDate(plugin.launchDate))}</p>
         </div>
       </div>`
       : `
@@ -243,6 +232,22 @@
     if (typeof initCollapsibles === 'function') initCollapsibles();
   }
 
+  // The page is rendered after load, so the browser can't jump to the anchor (e.g. #version-history)
+  // by itself. Jump now, then again once the images above it have loaded and changed the layout,
+  // unless the visitor has started scrolling in the meantime.
+  function jumpToHash() {
+    const target = location.hash && document.getElementById(location.hash.slice(1));
+    if (!target) return;
+    let userScrolled = false;
+    const stop = () => { userScrolled = true; };
+    ['wheel', 'touchmove', 'keydown'].forEach(type => window.addEventListener(type, stop, { once: true, passive: true }));
+    const jump = () => { if (!userScrolled) target.scrollIntoView(); };
+    jump();
+    const images = [...document.querySelectorAll('img')].filter(img => !img.complete);
+    Promise.all(images.map(img => new Promise(done => { img.addEventListener('load', done, { once: true }); img.addEventListener('error', done, { once: true }); })))
+      .then(() => requestAnimationFrame(jump));
+  }
+
   async function bootPageContent() {
     const wantsLibrary = document.querySelector('.library-shelf');
     const detailPage = document.getElementById('pluginDetailPage');
@@ -260,8 +265,8 @@
           detailPage.innerHTML = '<section class="plugin-detail"><div class="container"><p>Plugin not found.</p><a href="/plugins.html">Browse all plugins</a></div></section>';
           return;
         }
-        const current = await getCurrentPluginData(plugin);
-        renderPluginDetail(current);
+        renderPluginDetail(plugin);
+        jumpToHash();
       }
     } catch (error) {
       console.error('Unable to render page content:', error);

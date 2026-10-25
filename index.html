@@ -15,10 +15,13 @@
   <meta name="apple-mobile-web-app-title" content="Krystal Dynamics">
   <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=news-reset-20261008">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261020-2">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/utilities.css">
-  <link rel="stylesheet" href="assets/css/pages.css?v=milestones-20261008">
+  <link rel="stylesheet" href="assets/css/pages.css?v=20261024-2">
+  <link rel="stylesheet" href="assets/css/motion.css?v=20261020-2">
+  <link rel="stylesheet" href="assets/css/mobile.css?v=20261020-2">
+  <link rel="stylesheet" href="assets/css/plugin-showcase.css?v=20261024-17">
 </head>
 <body data-page="index">
   <div id="header"></div>
@@ -60,8 +63,18 @@
         </div>
       </div>
     </section>
-    <section class="plugins">
-      <div class="plugin-list" id="pluginList"></div>
+    <section class="plugin-showcase" id="pluginShowcase" aria-labelledby="pluginShowcaseTitle">
+      <div class="showcase-backdrops" id="pluginShowcaseBackdrops" aria-hidden="true"></div>
+      <div class="showcase-vignette" aria-hidden="true"></div>
+      <canvas class="showcase-waves" id="pluginShowcaseWaves" aria-hidden="true"></canvas>
+      <div class="container showcase-head">
+        <h2 id="pluginShowcaseTitle">PLUGINS</h2>
+      </div>
+      <ul class="showcase-track" id="pluginShowcaseTrack" role="list"></ul>
+      <div class="container showcase-caption" id="pluginShowcaseCaption">
+        <p class="showcase-caption-name"></p>
+        <p class="showcase-caption-text"></p>
+      </div>
     </section>
     <section class="about">
       <div class="container">
@@ -92,8 +105,17 @@
     </section>
   </main>
   <div id="footer"></div>
-  <script src="assets/js/main.js?v=news-reset-20261008"></script>
-  <script src="assets/js/page-content.js?v=content-data-20261008"></script>
+
+  <!-- Plugin mini-view: filled by assets/js/plugin-showcase.js -->
+  <dialog class="plugin-modal" id="pluginModal" aria-labelledby="pluginModalTitle">
+    <div class="pm-scrim" aria-hidden="true"></div>
+    <div class="pm-panel" id="pluginModalPanel"></div>
+  </dialog>
+
+  <script src="assets/js/main.js?v=20261024-4"></script>
+  <script src="assets/js/plugin-showcase.js?v=20261024-18"></script>
+  <script src="assets/js/page-content.js?v=20261020-2"></script>
   <script src="assets/js/components.js"></script>
+  <script src="assets/js/motion.js?v=20261020-2"></script>
 </body>
 </html>

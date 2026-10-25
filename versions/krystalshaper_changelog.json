@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "releaseDate": "2026-10-23",
+  "releaseNotes": "- Early Access Release",
+  "downloadUrl": "https://krystaldynamics.com/plugins/krystal-shaper",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "date": "2026-10-09",
+      "notes": [
+        "Early Access Release"
+      ]
+    }
+  ]
+}

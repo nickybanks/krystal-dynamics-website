@@ -1,0 +1,109 @@
+/* ============================================================
+   PLUGIN DETAIL PAGES – TOP SECTION (paired with assets/js/plugin-page.js)
+   Same style as the plugin popup: the interface floats over moving matter,
+   with a "version, date" line under the name. On phones the download buttons
+   sit on one row and dock at the bottom of the screen while scrolling.
+   Everything below the top section keeps the rules in style.css / mobile.css.
+   ============================================================ */
+
+/* Moving matter (lens, WebGL) behind the whole top section; without WebGL the
+   hover background in style.css stays as it was */
+.pp-lens {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pp-lens canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.plugin-hero.has-lens .plugin-item-bg { display: none; }   /* the lens replaces the hover background */
+
+.plugin-hero .plugin-detail-image-carousel {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 36px 70px -16px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+.pp-meta {
+  margin: 0.9rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.pp-dock { display: none; }
+
+@media (max-width: 767px) {
+  .plugin-hero { padding-top: 0; }
+
+  /* Phones: the matter sits behind the interface only and fades out before the text */
+  .pp-lens {
+    bottom: auto;
+    height: var(--pp-stage, 70vw);
+    -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+  }
+
+  .plugin-hero .plugin-detail-image-carousel { margin: 2.25rem 0 2.25rem; }
+  .plugin-hero .plugin-content h1::after { display: none; }   /* hover underline: stays stuck on touch */
+  .pp-meta { margin: 0.35rem 0 0; font-size: 0.82rem; }
+
+  /* Download buttons: icon and label side by side, both on one row */
+  .plugin-hero .download-buttons,
+  .pp-dock .download-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+  }
+
+  .plugin-hero .btn-download,
+  .pp-dock .btn-download {
+    flex: 1 1 0;
+    flex-direction: row;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0.85rem 0.7rem;
+    border-radius: 12px;
+    font-size: 0.66rem;
+    white-space: nowrap;
+  }
+
+  .plugin-hero .os-logo,
+  .pp-dock .os-logo { width: 17px; height: 17px; }
+
+  /* Download bar docked at the bottom while scrolling */
+  .pp-dock {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 900;
+    padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 10, 10, 0.88);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .pp-dock.is-shown { transform: none; }
+  .pp-dock .download-buttons { margin: 0; }
+  .pp-dock .btn-patreon { width: 100%; }
+}
+
+@media (max-width: 359px) {
+  .plugin-hero .btn-download,
+  .pp-dock .btn-download { padding: 0.8rem 0.5rem; font-size: 0.6rem; gap: 0.4rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-dock { transition: none; }
+}

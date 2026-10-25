@@ -4,11 +4,12 @@ let siteDataPromise;
 
 async function getSiteData() {
   if (!siteDataPromise) {
-    siteDataPromise = fetch('/assets/data/plugins.json')
+    siteDataPromise = fetch('/assets/data/plugins.json', { cache: 'no-cache' })
       .then(response => {
         if (!response.ok) throw new Error(`Content data request failed: ${response.status}`);
         return response.json();
       })
+      .then(data => ({ ...data, plugins: data.plugins.map(withReleaseInfo) }))
       .catch(error => {
         siteDataPromise = null;
         throw error;
@@ -20,17 +21,70 @@ async function getSiteData() {
 // ─── Patreon URL (mirrors the link in the About section) ─────────────────────
 const PATREON_URL = 'https://www.patreon.com/cw/Krystal_Dynamics?vanity=Krystal_Dynamics';
 
-// ─── Fetch version data ───────────────────────────────────────────────────────
-async function fetchVersionData(plugin) {
-  try {
-    const res = await fetch(plugin.versionFile + '?_=' + Date.now());
-    if (!res.ok) throw new Error('fetch failed');
-    const data = await res.json();
-    return { ...plugin, version: data.version, releaseDate: data.releaseDate };
-  } catch (e) {
-    console.warn('Version fetch failed for', plugin.name, e);
-    return { ...plugin, version: null, releaseDate: '1970-01-01' };
-  }
+// ─── Version data (derived from history, same rule as tools/build_versions.py) ─
+function withReleaseInfo(plugin) {
+  const history = plugin.history || [];
+  const latest = history[0];
+  const dates = [latest?.date, plugin.publicRelease].filter(Boolean).sort();
+  // Launch = public release date (or the first version's date); anything after the first version is an update
+  const launchDate = plugin.publicRelease || history.at(-1)?.date || '1970-01-01';
+  return {
+    ...plugin,
+    version: latest?.version || null,
+    releaseDate: dates.pop() || '1970-01-01',
+    launchDate,
+    // Only updates after the public release count (early access fixes are not news for the public)
+    latestUpdate: history.length > 1 && latest.date > launchDate ? latest : null,
+    isEarlyAccess: launchDate > new Date().toISOString().slice(0, 10),
+  };
+}
+
+// Release notes of one history entry as a flat list
+function releaseNotes(release) {
+  return (release?.groups || []).flatMap(group => group.items || []);
+}
+
+// Which plugin is coming soon, which was launched last and which was updated last
+function getReleaseHighlights(plugins) {
+  const newest = (list, key) => list.reduce((best, p) => (!best || key(p) > key(best) ? p : best), null);
+  const launched = plugins.filter(plugin => !plugin.isEarlyAccess);
+  return {
+    upcoming: newest(plugins.filter(plugin => plugin.isEarlyAccess), plugin => -Date.parse(plugin.launchDate)),
+    latestRelease: newest(launched, plugin => plugin.launchDate),
+    latestUpdate: newest(launched.filter(plugin => plugin.latestUpdate), plugin => plugin.latestUpdate.date),
+  };
+}
+
+// Every history entry of every plugin, newest first
+const RELEASE_TYPES = {
+  'early-access': 'Early access',
+  release: 'New plugin',
+  update: 'Update',
+};
+
+function getRecentActivity(plugins, limit) {
+  const today = new Date().toISOString().slice(0, 10);
+  return plugins
+    .flatMap(plugin => {
+      const history = plugin.history;
+      const first = history.at(-1);
+      const hadEarlyAccess = Boolean(plugin.publicRelease) && plugin.publicRelease > first.date;
+      const events = history.map((release, index) => ({
+        plugin,
+        release,
+        date: release.date,
+        type: index < history.length - 1 ? 'update' : hadEarlyAccess ? 'early-access' : 'release',
+      }));
+      if (!hadEarlyAccess || plugin.publicRelease > today) return events;   // still in early access: show its history
+      // Already public: the early access period is hidden, the public release replaces it
+      const release = history.find(entry => entry.date <= plugin.publicRelease) || first;
+      return [
+        ...events.filter(event => event.date > plugin.publicRelease),
+        { plugin, release, date: plugin.publicRelease, type: 'release' },
+      ];
+    })
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, limit);
 }
 
 // ─── Sort newest first ────────────────────────────────────────────────────────
@@ -45,93 +99,12 @@ function sortByDate(plugins) {
 // ─── Format a date string for display ────────────────────────────────────────
 function formatReleaseDate(dateStr) {
   const d = new Date(dateStr);
-  return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-}
-
-// ─── Render homepage plugin list ─────────────────────────────────────────────
-function renderPluginList(plugins) {
-  const container = document.getElementById('pluginList');
-  if (!container) return;
-
-  container.innerHTML = '';
-
-  plugins.forEach((plugin, index) => {
-    const isFeatured    = index === 0;
-    const isEarlyAccess = isFeatured && new Date(plugin.releaseDate) > new Date();
-    const isReversed    = !isFeatured && (index % 2 === 1);
-
-    const specsHTML   = plugin.formats.map(f => `<li>${f}</li>`).join('');
-    const versionHTML = plugin.version ? `<li>Version ${plugin.version}</li>` : '';
-
-    const ctaHTML = isEarlyAccess
-      ? `<div class="plugin-early-access">
-           <a href="${PATREON_URL}" target="_blank" rel="noopener noreferrer"
-              class="btn btn-patreon"
-              aria-label="Join Patreon for early access to ${plugin.name}">
-             <span class="btn-patreon-logo" aria-hidden="true">
-               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                 <path d="M15.303125 4.80625c-0.003125 -2.04375 -1.59375 -3.71875 -3.459375 -4.321875C9.525 -0.265625 6.46875 -0.15625 4.253125 0.8875 1.571875 2.153125 0.728125 4.928125 0.696875 7.69375 0.671875 9.96875 0.896875 15.95625 4.278125 16c2.509375 0.03125 2.884375 -3.203125 4.046875 -4.759375 0.825 -1.109375 1.890625 -1.421875 3.2 -1.746875 2.25 -0.55625 3.784375 -2.334375 3.78125 -4.6875z"/>
-               </svg>
-             </span>
-             <span>Join Patreon for Early Access</span>
-           </a>
-           <p class="plugin-release-hint">Releasing ${formatReleaseDate(plugin.releaseDate)}</p>
-         </div>`
-      : `<div class="plugin-actions">
-           <a href="${plugin.page}" class="btn btn-primary">View Details</a>
-           <a href="${plugin.museHub}" class="plugin-musehub-link" target="_blank" rel="noopener noreferrer">Visit MuseHub</a>
-         </div>`;
-
-    const badgeHTML = isFeatured
-      ? `<div class="plugin-featured-badge${isEarlyAccess ? ' plugin-featured-badge--early' : ''}">
-           ${isEarlyAccess ? 'Early Access' : 'Latest Release'}
-         </div>`
-      : '';
-
-    const article = document.createElement('article');
-    const classes  = ['plugin-item'];
-    if (isFeatured)    classes.push('plugin-item--featured');
-    if (isEarlyAccess) classes.push('plugin-item--early-access');
-    if (isReversed)    classes.push('plugin-item--reversed');
-    article.className = classes.join(' ');
-
-    article.innerHTML = `
-      <div class="plugin-item-bg" aria-hidden="true"></div>
-      <div class="plugin-item-overlay" aria-hidden="true"></div>
-      <div class="container">
-        <div class="plugin-grid${isReversed ? ' plugin-grid-reverse' : ''}">
-          <div class="plugin-image-wrapper">
-            <a href="${isEarlyAccess ? PATREON_URL : plugin.page}"
-              ${isEarlyAccess ? 'target="_blank" rel="noopener noreferrer"' : ''}
-              class="plugin-detail-image-carousel plugin-carousel-link"
-              aria-label="${isEarlyAccess ? 'Join Patreon for early access to ' + plugin.name : 'View details for ' + plugin.name}"
-              data-images='${JSON.stringify(plugin.images)}'></a>
-          </div>
-          <div class="plugin-content">
-            <div class="plugin-content-header">
-              <div></div>
-              ${badgeHTML}
-            </div>
-            <h3>${plugin.name}</h3>
-            <p>${plugin.description}</p>
-            <ul class="plugin-specs">${specsHTML}${versionHTML}</ul>
-            ${ctaHTML}
-          </div>
-        </div>
-      </div>`;
-
-    const background = article.querySelector('.plugin-item-bg');
-    if (plugin.images?.[0]) background.style.backgroundImage = `url("${plugin.images[0]}")`;
-
-    container.appendChild(article);
-  });
-
-  initPluginDetailCarousel();
+  return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 }
 
 // ─── Load homepage plugins ────────────────────────────────────────────────────
 async function loadHomepagePlugins() {
-  const container = document.getElementById('pluginList');
+  const container = document.getElementById('pluginShowcase');
   if (!container) return;
 
   try {
@@ -142,13 +115,12 @@ async function loadHomepagePlugins() {
     return;
   }
 
-  const withVersions = await Promise.all(PLUGINS.map(fetchVersionData));
-  const sorted = sortByDate(withVersions);
+  const sorted = sortByDate(PLUGINS);
 
   console.log('Loaded plugins:', sorted.map(p => ({ name: p.name, date: p.releaseDate, version: p.version })));
 
   renderHomeNews(sorted);
-  renderPluginList(sorted);
+  if (typeof renderPluginShowcase === 'function') renderPluginShowcase(sorted);   // assets/js/plugin-showcase.js
 }
 
 // ─── Load header / footer ─────────────────────────────────────────────────────
@@ -238,160 +210,283 @@ function renderNewsAction(action, primary = false) {
   return `<a class="${primary ? 'btn btn-primary' : 'news-secondary-link'}" href="${href}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>${escapeNewsMarkup(action.label)}</a>`;
 }
 
-function renderHomeNews(plugins) {
-  const carousel = document.getElementById('homeNewsCarousel');
-  const stage = document.getElementById('homeNewsSlides');
-  const controls = document.getElementById('homeNewsControls');
-  const dots = document.getElementById('homeNewsDots');
-  if (!carousel || !stage || !controls || !dots) return;
+const NEWS_INTERVAL_MS = 6500;
 
-  const today = new Date();
-  const datedPlugins = plugins.filter(plugin => plugin.version && Number.isFinite(Date.parse(plugin.releaseDate)));
-  const upcoming = datedPlugins
-    .filter(plugin => new Date(plugin.releaseDate) > today)
-    .sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate))[0];
-  const latest = sortByDate(datedPlugins.filter(plugin => new Date(plugin.releaseDate) <= today))[0];
-  const latestHistory = latest?.history?.find(release => release.version === latest.version);
-  const releaseHighlight = latestHistory?.groups?.flatMap(group => group.items || [])[0];
-  const latestUpdates = datedPlugins
-    .filter(plugin => new Date(plugin.releaseDate) <= today)
-    .map(plugin => {
-      const release = plugin.history?.find(entry => entry.version === plugin.version);
-      const summary = release?.groups?.flatMap(group => group.items || []).find(Boolean);
-      return release && summary ? { plugin, release, summary } : null;
-    })
-    .filter(Boolean)
-    .sort((a, b) => new Date(b.plugin.releaseDate) - new Date(a.plugin.releaseDate))
-    .slice(0, 3);
-  const latestUpdatePlugin = latestUpdates[0]?.plugin || latest;
+function renderNewsNotes(notes, page, max = 4) {
+  if (!notes.length) return '';
+  const extra = notes.length - max;
+  return `
+    <ul class="news-notes">
+      ${notes.slice(0, max).map(note => `<li>${escapeNewsMarkup(note)}</li>`).join('')}
+    </ul>
+    ${extra > 0 ? `<a class="news-notes-more" href="${escapeNewsMarkup(page)}#version-history">${extra} more ${extra === 1 ? 'change' : 'changes'} in the changelog</a>` : ''}`;
+}
 
+function renderNewsTimeline(entries) {
+  return `
+    <ol class="news-timeline">
+      ${entries.map(({ plugin, release, type, date }) => {
+        const note = type === 'update' ? releaseNotes(release)[0] : plugin.catalogDescription;
+        return `
+        <li class="news-timeline-item news-timeline-item--${type}">
+          <a class="news-update-link" href="${escapeNewsMarkup(plugin.page)}#version-history">
+            <time class="news-update-date" datetime="${escapeNewsMarkup(date)}">${escapeNewsMarkup(formatReleaseDate(date))}</time>
+            <span class="news-update-title">${escapeNewsMarkup(plugin.name)} <small>v${escapeNewsMarkup(release.version)}</small></span>
+            <span class="news-update-type">${RELEASE_TYPES[type]}</span>
+            ${note ? `<span class="news-update-note">${escapeNewsMarkup(note)}</span>` : ''}
+          </a>
+        </li>`;
+      }).join('')}
+    </ol>`;
+}
+
+function buildHomeNews(plugins) {
+  const { upcoming, latestRelease, latestUpdate } = getReleaseHighlights(plugins);
+  const activity = getRecentActivity(plugins, 5);
   const news = [];
+
   if (upcoming) {
     news.push({
       variant: 'early-access',
-      kicker: 'Early access - coming soon',
+      tab: 'Early access',
+      tabName: upcoming.name,
+      kicker: 'Early access on Patreon',
       title: upcoming.name,
-      version: `Public release ${formatReleaseDate(upcoming.releaseDate)}`,
+      version: `Public release ${formatReleaseDate(upcoming.launchDate)}`,
       body: upcoming.catalogDescription || upcoming.description,
-      highlight: 'Get early access on Patreon ahead of the public release.',
+      highlight: 'Patreon members can use it now, before the public release.',
       image: upcoming.images?.[0],
       primary: { label: 'Get early access', href: PATREON_URL },
       secondary: { label: 'Plugin details', href: upcoming.page },
     });
   }
 
-  if (latest) {
+  if (latestRelease) {
     news.push({
-      kicker: `Latest release - ${formatReleaseDate(latest.releaseDate)}`,
-      title: latest.name,
-      version: `Version ${latest.version}`,
-      body: latest.catalogDescription || latest.description,
-      highlight: releaseHighlight ? `Latest update: ${releaseHighlight}` : '',
-      image: latest.images?.[0],
-      primary: { label: 'View details', href: latest.page },
-      secondary: { label: 'Visit MuseHub', href: latest.museHub },
+      variant: 'release',
+      tab: 'New plugin',
+      tabName: latestRelease.name,
+      kicker: 'Latest release',
+      title: latestRelease.name,
+      version: `Released ${formatReleaseDate(latestRelease.launchDate)}`,
+      body: latestRelease.catalogDescription || latestRelease.description,
+      image: latestRelease.images?.[0],
+      primary: { label: 'View details', href: latestRelease.page },
+      secondary: { label: 'Visit MuseHub', href: latestRelease.museHub },
     });
   }
 
-  news.push({
-    variant: 'latest-updates',
-    title: 'Latest updates',
-    version: `${latestUpdates.length} recently updated plugins`,
-    body: 'Recent fixes and improvements from across the plugin suite.',
-    updates: latestUpdates,
-    image: latestUpdatePlugin?.images?.[0] || upcoming?.images?.[0] || plugins[0]?.images?.[0] || '',
-    primary: { label: 'View details', href: latestUpdatePlugin?.page || '/plugins.html' },
-    secondary: { label: 'Browse all plugins', href: '/plugins.html' },
+  if (latestUpdate) {
+    const release = latestUpdate.latestUpdate;
+    news.push({
+      variant: 'update',
+      tab: 'Update',
+      tabName: `${latestUpdate.name} ${release.version}`,
+      kicker: 'Latest update',
+      title: latestUpdate.name,
+      version: `Version ${release.version}, ${formatReleaseDate(release.date)}`,
+      notes: renderNewsNotes(releaseNotes(release), latestUpdate.page),
+      image: latestUpdate.images?.[0],
+      primary: { label: 'View details', href: latestUpdate.page },
+      secondary: { label: 'Visit MuseHub', href: latestUpdate.museHub },
+    });
+  }
+
+  if (activity.length) {
+    news.push({
+      variant: 'activity',
+      tab: 'Activity',
+      tabName: 'Recent releases',
+      title: 'Recent releases',
+      body: 'New plugins and updates across the suite, newest first.',
+      timeline: activity,
+      image: activity[0].plugin.images?.[1] || activity[0].plugin.images?.[0],
+    });
+  }
+
+  return news;
+}
+
+// Fixed over every news slide: a small deck of plugin interfaces that links to the catalogue
+function renderPluginDeck(carousel, plugins) {
+  // Random plugins and a random screenshot of each, new on every page load
+  const pick = list => list[Math.floor(Math.random() * list.length)];
+  const pool = plugins.filter(plugin => plugin.images?.length);
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  const cards = pool.slice(0, 4).map(plugin => pick(plugin.images));
+  if (cards.length < 2) return;
+  const deck = document.createElement('a');
+  deck.className = 'news-deck';
+  deck.href = '/plugins.html';
+  deck.style.setProperty('--cards', cards.length);
+  deck.innerHTML = `
+    <span class="news-deck-cards" aria-hidden="true">
+      ${cards.map((image, index) => `
+        <img class="news-deck-card" style="--i: ${index}" src="${escapeNewsMarkup(image)}" alt="">`).join('')}
+    </span>
+    <span class="news-deck-label">Browse all the plugins</span>`;
+  carousel.appendChild(deck);
+
+  // Each interface keeps its own proportions and its size relative to the largest one
+  const images = [...deck.querySelectorAll('.news-deck-card')];
+  Promise.all(images.map(img => img.decode().catch(() => {}))).then(() => {
+    const widest = Math.max(...images.map(img => img.naturalWidth || 0));
+    if (widest) images.forEach(img => img.style.setProperty('--w', (img.naturalWidth || widest) / widest));
+    // Proportions of each interface, so the corners can be the same share of its width at any size
+    images.forEach(img => { if (img.naturalWidth) img.style.setProperty('--ar', (img.naturalWidth / img.naturalHeight).toFixed(4)); });
   });
+}
+
+function renderHomeNews(plugins) {
+  const carousel = document.getElementById('homeNewsCarousel');
+  const stage = document.getElementById('homeNewsSlides');
+  const controls = document.getElementById('homeNewsControls');
+  const tabs = document.getElementById('homeNewsDots');
+  if (!carousel || !stage || !controls || !tabs) return;
+
+  const news = buildHomeNews(plugins);
 
   stage.innerHTML = news.map((item, index) => {
     const heading = index === 0 ? 'h1' : 'h2';
-    const variantClass = item.variant ? ` news-slide--${escapeNewsMarkup(item.variant)}` : '';
-    const highlightMarkup = item.highlight ? `<p class="news-highlight">${escapeNewsMarkup(item.highlight)}</p>` : '';
-    const updatesMarkup = item.updates?.length ? `
-      <ul class="news-update-list">
-        ${item.updates.map(update => `
-          <li>
-            <a class="news-update-link" href="${escapeNewsMarkup(update.plugin.page)}">
-              <span class="news-update-title">${escapeNewsMarkup(update.plugin.name)} <small>v${escapeNewsMarkup(update.release.version)}</small></span>
-              <time class="news-update-date" datetime="${escapeNewsMarkup(update.plugin.releaseDate)}">${escapeNewsMarkup(formatReleaseDate(update.plugin.releaseDate))}</time>
-              <span class="news-update-note">${escapeNewsMarkup(update.summary)}</span>
-            </a>
-          </li>`).join('')}
-      </ul>` : '';
-
     return `
-      <article class="news-slide${variantClass}${index === 0 ? ' is-active' : ''}" role="group" aria-roledescription="slide" aria-label="${index + 1} of ${news.length}" aria-hidden="${index !== 0}">
+      <article class="news-slide news-slide--${item.variant}${index === 0 ? ' is-active' : ''}" id="news-slide-${index}" role="tabpanel" aria-roledescription="slide" aria-label="${index + 1} of ${news.length}" aria-hidden="${index !== 0}">
         <div class="plugin-item-bg news-slide-bg" aria-hidden="true"></div>
         <div class="plugin-item-overlay news-slide-overlay" aria-hidden="true"></div>
         <div class="news-copy">
           ${item.kicker ? `<p class="news-kicker">${escapeNewsMarkup(item.kicker)}</p>` : ''}
           <${heading} class="news-title">${escapeNewsMarkup(item.title)}</${heading}>
-          <p class="news-version">${escapeNewsMarkup(item.version)}</p>
-          <p class="news-body">${escapeNewsMarkup(item.body)}</p>
-          ${updatesMarkup}
-          ${highlightMarkup}
-          <div class="news-actions">
+          ${item.version ? `<p class="news-version">${escapeNewsMarkup(item.version)}</p>` : ''}
+          ${item.body ? `<p class="news-body">${escapeNewsMarkup(item.body)}</p>` : ''}
+          ${item.notes || ''}
+          ${item.timeline ? renderNewsTimeline(item.timeline) : ''}
+          ${item.highlight ? `<p class="news-highlight">${escapeNewsMarkup(item.highlight)}</p>` : ''}
+          ${item.primary ? `<div class="news-actions">
             ${renderNewsAction(item.primary, true)}
-            ${renderNewsAction(item.secondary)}
-          </div>
+            ${item.secondary ? renderNewsAction(item.secondary) : ''}
+          </div>` : ''}
         </div>
       </article>`;
   }).join('');
 
-  dots.innerHTML = news.map((item, index) => `
-    <button class="news-dot${index === 0 ? ' is-active' : ''}" type="button" data-news-index="${index}" aria-label="Show news slide ${index + 1}: ${escapeNewsMarkup(item.title)}" aria-pressed="${index === 0}"></button>`).join('');
+  tabs.innerHTML = news.map((item, index) => `
+    <button class="news-tab news-tab--${item.variant}${index === 0 ? ' is-active' : ''}" type="button" role="tab"
+            aria-controls="news-slide-${index}" aria-selected="${index === 0}">
+      <span class="news-tab-meter" aria-hidden="true"></span>
+      <span class="news-tab-label">${escapeNewsMarkup(item.tab)}</span>
+      <span class="news-tab-name">${escapeNewsMarkup(item.tabName)}</span>
+    </button>`).join('');
+  tabs.setAttribute('role', 'tablist');
+  carousel.style.setProperty('--news-interval', `${NEWS_INTERVAL_MS}ms`);
+
   stage.querySelectorAll('.news-slide').forEach((slide, index) => {
     if (news[index].image) slide.querySelector('.news-slide-bg').style.backgroundImage = `url("${news[index].image}")`;
   });
-  const updatesBackground = stage.querySelector('.news-slide--latest-updates .news-slide-bg');
-  const defaultUpdatesBackground = updatesBackground?.style.backgroundImage || '';
-  stage.querySelectorAll('.news-update-link').forEach((link, index) => {
-    const image = latestUpdates[index]?.plugin.images?.[0];
-    if (!updatesBackground || !image) return;
 
-    // Restart the slide timer and the image drift whenever the hovered/focused update changes.
+  // Activity slide: the background follows the hovered/focused entry
+  const activityIndex = news.findIndex(item => item.variant === 'activity');
+  const activityBackground = stage.querySelector('.news-slide--activity .news-slide-bg');
+  const defaultActivityBackground = activityBackground?.style.backgroundImage || '';
+
+  // Backgrounds through the same lens as the plugin showcase: crossfade, inverse fisheye, slow drift.
+  // Without WebGL (or without plugin-showcase.js) the slides keep their own CSS backgrounds.
+  const lensImages = [...new Set([
+    ...news.map(item => item.image),
+    ...(news[activityIndex]?.timeline || []).map(entry => entry.plugin.images?.[0]),
+  ].filter(Boolean))];
+  const lensHost = document.createElement('div');
+  lensHost.className = 'news-lens';
+  lensHost.setAttribute('aria-hidden', 'true');
+  carousel.prepend(lensHost);
+  const lens = typeof window.KDLens === 'function'
+    ? window.KDLens(lensHost, lensImages, {
+        opacity: 0.78, brightness: 0.82, saturation: 0.88,      // same look as the CSS backgrounds
+        zoom: { shown: 1.04, hidden: 1.09 },
+      })
+    : null;
+  if (lens) {
+    carousel.classList.add('has-lens');
+    carousel.kdShowImage = src => lens.show(lensImages.indexOf(src));
+    carousel.kdSlideImages = news.map(item => item.image);
+    carousel.kdShowImage(news[0]?.image);
+  } else {
+    lensHost.remove();
+  }
+  stage.querySelectorAll('.news-slide--activity .news-update-link').forEach((link, index) => {
+    const image = news[activityIndex].timeline[index]?.plugin.images?.[0];
+    if (!activityBackground || !image) return;
+
     const restartSlideCycle = () => {
-      updatesBackground.classList.add('is-drift-reset'); // snap the drift back to its start position
-      void updatesBackground.offsetWidth;                // commit that state before the transition restarts
-      updatesBackground.classList.remove('is-drift-reset');
+      activityBackground.classList.add('is-drift-reset'); // snap the drift back to its start position
+      void activityBackground.offsetWidth;                // commit that state before the transition restarts
+      activityBackground.classList.remove('is-drift-reset');
       carousel.dispatchEvent(new Event('news-restart-timer'));
     };
-    const showPluginBackground = () => {
-      updatesBackground.style.backgroundImage = `url("${image}")`;
+    const show = () => {
+      if (carousel.kdShowImage) carousel.kdShowImage(image);
+      else activityBackground.style.backgroundImage = `url("${image}")`;
       restartSlideCycle();
     };
-    const restoreUpdatesBackground = () => {
+    const restore = () => {
       if (!link.matches(':hover') && document.activeElement !== link) {
-        updatesBackground.style.backgroundImage = defaultUpdatesBackground;
+        if (carousel.kdShowImage) carousel.kdShowImage(news[activityIndex].image);
+        else activityBackground.style.backgroundImage = defaultActivityBackground;
         restartSlideCycle();
       }
     };
-
-    link.addEventListener('mouseenter', showPluginBackground);
-    link.addEventListener('mouseleave', restoreUpdatesBackground);
-    link.addEventListener('focus', showPluginBackground);
-    link.addEventListener('blur', restoreUpdatesBackground);
+    link.addEventListener('mouseenter', show);
+    link.addEventListener('mouseleave', restore);
+    link.addEventListener('focus', show);
+    link.addEventListener('blur', restore);
   });
+
+  renderPluginDeck(carousel, plugins);
   controls.hidden = news.length < 2;
   carousel.setAttribute('aria-busy', 'false');
+  lockNewsHeight(carousel);
   initHomeNewsCarousel(carousel);
+}
+
+// Mobile browsers resize the viewport while scrolling (address bar hiding/showing):
+// the news hero takes the screen height once and keeps it, updating only when the width changes
+// (rotation), so it never grows or shrinks under the visitor's finger. Used by mobile.css.
+function lockNewsHeight(carousel) {
+  let width = window.innerWidth;
+  const lock = () => carousel.style.setProperty('--news-screen-h', `${window.innerHeight}px`);
+  lock();
+  window.addEventListener('resize', () => {
+    if (window.innerWidth === width) return;
+    width = window.innerWidth;
+    lock();
+  });
 }
 
 function initHomeNewsCarousel(carousel) {
   const slides = [...carousel.querySelectorAll('.news-slide')];
-  const dots = [...carousel.querySelectorAll('.news-dot')];
+  const tabs = [...carousel.querySelectorAll('.news-tab')];
   if (slides.length < 2) return;
 
   let activeIndex = 0;
   let timer = null;
-  let hoveringUpdates = false;
-  const updatesList = carousel.querySelector('.news-update-list');
+  let hoveringList = false;
+  const lists = carousel.querySelectorAll('.news-timeline, .news-notes, .news-deck');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // The active tab's meter fills over one interval; restart it whenever the timer restarts
+  const restartMeter = () => {
+    const meter = tabs[activeIndex]?.querySelector('.news-tab-meter');
+    if (!meter) return;
+    meter.classList.remove('is-running');
+    void meter.offsetWidth;
+    meter.classList.add('is-running');
+  };
 
   const stopRotation = () => {
     if (timer) window.clearInterval(timer);
     timer = null;
+    carousel.classList.add('is-paused');
   };
 
   const showSlide = index => {
@@ -401,30 +496,35 @@ function initHomeNewsCarousel(carousel) {
       slide.classList.toggle('is-active', isActive);
       slide.setAttribute('aria-hidden', String(!isActive));
     });
-    dots.forEach((dot, dotIndex) => {
-      const isActive = dotIndex === activeIndex;
-      dot.classList.toggle('is-active', isActive);
-      dot.setAttribute('aria-pressed', String(isActive));
+    tabs.forEach((tab, tabIndex) => {
+      const isActive = tabIndex === activeIndex;
+      tab.classList.toggle('is-active', isActive);
+      tab.setAttribute('aria-selected', String(isActive));
     });
+    carousel.kdShowImage?.(carousel.kdSlideImages?.[activeIndex]);   // background crossfade (lens)
+    restartMeter();
   };
 
   const startRotation = () => {
     stopRotation();
-    const shouldPause = reducedMotion || hoveringUpdates || carousel.contains(document.activeElement);
-    if (!shouldPause) timer = window.setInterval(() => showSlide(activeIndex + 1), 5500);
+    const shouldPause = reducedMotion || hoveringList || carousel.contains(document.activeElement);
+    if (shouldPause) return;
+    carousel.classList.remove('is-paused');
+    restartMeter();
+    timer = window.setInterval(() => showSlide(activeIndex + 1), NEWS_INTERVAL_MS);
   };
 
-  dots.forEach((dot, index) => dot.addEventListener('click', () => showSlide(index)));
+  tabs.forEach((tab, index) => tab.addEventListener('click', () => showSlide(index)));
 
   carousel.addEventListener('news-restart-timer', startRotation);
   carousel.addEventListener('focusin', stopRotation);
   carousel.addEventListener('focusout', () => window.setTimeout(startRotation, 0));
 
-  // Pause the rotation while the mouse is over the "latest updates" list.
-  if (updatesList) {
-    updatesList.addEventListener('mouseenter', () => { hoveringUpdates = true; stopRotation(); });
-    updatesList.addEventListener('mouseleave', () => { hoveringUpdates = false; startRotation(); });
-  }
+  // Pause while the pointer is over a list (so it can be read) or over the plugin deck
+  lists.forEach(list => {
+    list.addEventListener('mouseenter', () => { hoveringList = true; stopRotation(); });
+    list.addEventListener('mouseleave', () => { hoveringList = false; startRotation(); });
+  });
 
   startRotation();
 }
@@ -475,22 +575,22 @@ function initPluginDetailCarousel() {
       wrap.appendChild(img);
     });
 
+    // Proportions of the screenshots, so the corners can be the same share of the width at any size
+    const first = wrap.querySelector('img');
+    const setRatio = () => { if (first.naturalWidth) wrap.style.setProperty('--ar', (first.naturalWidth / first.naturalHeight).toFixed(4)); };
+    if (first.complete) setRatio(); else first.addEventListener('load', setRatio, { once: true });
+
     if (images.length < 2) return;
 
     let cur = 0;
-    let timer;
     const next = () => {
       const imgs = wrap.querySelectorAll('img');
       imgs[cur].classList.remove('active');
       cur = (cur + 1) % images.length;
       imgs[cur].classList.add('active');
     };
-    const start = () => { timer = setInterval(next, 3500); };
-    const stop  = () => clearInterval(timer);
-
-    start();
-    wrap.addEventListener('mouseenter', stop);
-    wrap.addEventListener('mouseleave', start);
+    // Keeps cycling on hover too
+    setInterval(next, 3500);
   });
 }
 

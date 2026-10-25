@@ -7,9 +7,6 @@
       "catalogDescription": "Four clipping algorithms for everything from transparent peak control to creative saturation.",
       "page": "/plugins/krystal-clip.html",
       "museHub": "https://www.musehub.com/plugin/krystalclip",
-      "versionFile": "/versions/krystalclip_version.json",
-      "version": "1.1.0",
-      "releaseDate": "2026-04-28",
       "images": [
         "/assets/images/interfaces/k-clip-interface-1.webp",
         "/assets/images/interfaces/k-clip-interface-2.webp",
@@ -56,7 +53,7 @@
       "history": [
         {
           "version": "1.1.0",
-          "date": "April 28, 2026",
+          "date": "2026-04-28",
           "groups": [
             {
               "title": "Improvements",
@@ -69,7 +66,7 @@
         },
         {
           "version": "1.0.3",
-          "date": "March 2, 2026",
+          "date": "2026-03-02",
           "groups": [
             {
               "title": "Improvements",
@@ -84,7 +81,7 @@
         },
         {
           "version": "1.0.2",
-          "date": "January 30, 2026",
+          "date": "2026-01-30",
           "groups": [
             {
               "title": "Improvements",
@@ -97,7 +94,7 @@
         },
         {
           "version": "1.0.1",
-          "date": "January 20, 2026",
+          "date": "2026-01-20",
           "groups": [
             {
               "title": "Improvements",
@@ -110,7 +107,7 @@
         },
         {
           "version": "1.0.0",
-          "date": "January 12, 2026",
+          "date": "2026-01-12",
           "groups": [
             {
               "title": "Initial Release",
@@ -128,9 +125,6 @@
       "catalogDescription": "A precision compressor for mix and mastering, with downward and upward modes and a flexible sidechain EQ.",
       "page": "/plugins/krystal-comp.html",
       "museHub": "https://www.musehub.com/plugin/krystalcomp",
-      "versionFile": "/versions/krystalcomp_version.json",
-      "version": "1.2.0",
-      "releaseDate": "2026-05-05",
       "images": [
         "/assets/images/interfaces/k-comp-interface-1.webp",
         "/assets/images/interfaces/k-comp-interface-2.webp",
@@ -180,7 +174,7 @@
       "history": [
         {
           "version": "1.2.0",
-          "date": "October 16, 2026",
+          "date": "2026-10-16",
           "groups": [
             {
               "title": "Improvements",
@@ -200,7 +194,7 @@
         },
         {
           "version": "1.1.2",
-          "date": "May 5, 2026",
+          "date": "2026-05-05",
           "groups": [
             {
               "title": "Improvements",
@@ -212,7 +206,7 @@
         },
         {
           "version": "1.1.1",
-          "date": "May 4, 2026",
+          "date": "2026-05-04",
           "groups": [
             {
               "title": "Improvements",
@@ -225,7 +219,7 @@
         },
         {
           "version": "1.1.0",
-          "date": "March 2, 2026",
+          "date": "2026-03-02",
           "groups": [
             {
               "title": "Improvements",
@@ -240,7 +234,7 @@
         },
         {
           "version": "1.0.1",
-          "date": "January 30, 2026",
+          "date": "2026-01-30",
           "groups": [
             {
               "title": "Improvements",
@@ -254,7 +248,7 @@
         },
         {
           "version": "1.0.0",
-          "date": "January 12, 2026",
+          "date": "2026-01-12",
           "groups": [
             {
               "title": "Initial Release",
@@ -272,9 +266,6 @@
       "catalogDescription": "A mastering-grade dynamics processor with dual engines for precise upward and downward compression.",
       "page": "/plugins/krystal-field.html",
       "museHub": "https://www.musehub.com/plugin/krystalfield",
-      "versionFile": "/versions/krystalfield_version.json",
-      "version": "1.1.0",
-      "releaseDate": "2026-05-01",
       "images": [
         "/assets/images/interfaces/k-field-interface-1.webp",
         "/assets/images/interfaces/k-field-interface-2.webp",
@@ -323,7 +314,7 @@
       "history": [
         {
           "version": "1.1.0",
-          "date": "May 1, 2026",
+          "date": "2026-05-01",
           "groups": [
             {
               "title": "Improvements",
@@ -336,7 +327,7 @@
         },
         {
           "version": "1.0.2",
-          "date": "January 30, 2026",
+          "date": "2026-01-30",
           "groups": [
             {
               "title": "Improvements",
@@ -349,7 +340,7 @@
         },
         {
           "version": "1.0.1",
-          "date": "January 13, 2026",
+          "date": "2026-01-13",
           "groups": [
             {
               "title": "Improvements",
@@ -363,7 +354,7 @@
         },
         {
           "version": "1.0.0",
-          "date": "January 12, 2026",
+          "date": "2026-01-12",
           "groups": [
             {
               "title": "Initial Release",
@@ -381,9 +372,6 @@
       "catalogDescription": "A transparent peak limiter for shaping transients and maximizing loudness without losing impact.",
       "page": "/plugins/krystal-peak.html",
       "museHub": "https://www.musehub.com/plugin/krystalpeak",
-      "versionFile": "/versions/krystalpeak_version.json",
-      "version": "1.0.1",
-      "releaseDate": "2026-05-14",
       "images": [
         "/assets/images/interfaces/k-peak-interface-1.webp",
         "/assets/images/interfaces/k-peak-interface-2.webp",
@@ -426,10 +414,14 @@
           "value": "Variable (depends on Oversampling)"
         }
       ],
+      "publicRelease": "2026-05-14",
+      "versionFileAliases": [
+        "KrystalPeak_version.json"
+      ],
       "history": [
         {
           "version": "1.0.1",
-          "date": "May 8, 2026",
+          "date": "2026-05-08",
           "groups": [
             {
               "title": "Improvements",
@@ -441,7 +433,7 @@
         },
         {
           "version": "1.0.0",
-          "date": "May 7, 2026",
+          "date": "2026-05-07",
           "groups": [
             {
               "title": "Early Access Release",
@@ -459,9 +451,6 @@
       "catalogDescription": "Shape transient and sustain independently to bring punch, definition and control to a mix.",
       "page": "/plugins/krystal-shaper.html",
       "museHub": "https://www.musehub.com/plugin/krystalshaper",
-      "versionFile": "/versions/krystalshaper_version.json",
-      "version": "1.0.0",
-      "releaseDate": "2026-10-23",
       "images": [
         "/assets/images/interfaces/k-shaper-interface-1.webp",
         "/assets/images/interfaces/k-shaper-interface-2.webp",
@@ -510,10 +499,11 @@
           "value": "0 - 2 ms (depends on Lookahead)"
         }
       ],
+      "publicRelease": "2026-10-23",
       "history": [
         {
           "version": "1.0.0",
-          "date": "October 9, 2026",
+          "date": "2026-10-09",
           "groups": [
             {
               "title": "Early Access Release",

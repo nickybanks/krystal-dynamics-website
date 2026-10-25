@@ -1,0 +1,64 @@
+{
+  "version": "1.2.0",
+  "releaseDate": "2026-10-16",
+  "releaseNotes": "- Added Upward mode\n- Added compression curve visualizer\n- Added Range to limit maximum gain reduction\n- Added Lookahead for better transient detection\n- Added sidechain link mode (Mid or Max)\n- Sidechain EQ: drag handles, mouse wheel for Q and slope\n- Waveform zoom is now saved between sessions\n- Added low graphics mode for low-end systems\n- Improved graphics and performance",
+  "downloadUrl": "https://krystaldynamics.com/plugins/krystal-comp",
+  "releases": [
+    {
+      "version": "1.2.0",
+      "date": "2026-10-16",
+      "notes": [
+        "Added Upward mode",
+        "Added compression curve visualizer",
+        "Added Range to limit maximum gain reduction",
+        "Added Lookahead for better transient detection",
+        "Added sidechain link mode (Mid or Max)",
+        "Sidechain EQ: drag handles, mouse wheel for Q and slope",
+        "Waveform zoom is now saved between sessions",
+        "Added low graphics mode for low-end systems",
+        "Improved graphics and performance"
+      ]
+    },
+    {
+      "version": "1.1.2",
+      "date": "2026-05-05",
+      "notes": [
+        "Fixed a bug that caused unexpected behaviour in mono"
+      ]
+    },
+    {
+      "version": "1.1.1",
+      "date": "2026-05-04",
+      "notes": [
+        "Added oversampling up to 4x",
+        "Added display settings to manage theme and performance of graphic elements"
+      ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-03-02",
+      "notes": [
+        "New Real-time waveform display",
+        "New Sidechain equalizer display",
+        "Added automatic loudness matching with informative feedback",
+        "Added hold parameter for precise control over compression"
+      ]
+    },
+    {
+      "version": "1.0.1",
+      "date": "2026-01-30",
+      "notes": [
+        "Added updates notifications",
+        "Added bypass button",
+        "Now dual mono compatible"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "date": "2026-01-12",
+      "notes": [
+        "Initial Release"
+      ]
+    }
+  ]
+}
