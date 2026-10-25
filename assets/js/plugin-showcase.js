@@ -64,7 +64,7 @@
           <button class="showcase-card" type="button" aria-haspopup="dialog"
                   aria-label="${esc(plugin.name)}: open the overview">
             <span class="showcase-float">
-              <img class="showcase-image" src="${esc(plugin.images[0])}" alt="" loading="lazy" decoding="async" draggable="false">
+              <img class="showcase-image" src="${esc(plugin.images[0])}" alt="" decoding="async" draggable="false">
               ${plugin.isEarlyAccess ? '<span class="showcase-flag">Early access</span>' : ''}
             </span>
           </button>
@@ -115,7 +115,7 @@
           <a class="gallery-card" href="${esc(plugin.page)}" aria-label="${esc(plugin.name)}: view details">
             <span class="gallery-bg" style="--img:url('${esc(plugin.images[0])}')" aria-hidden="true"></span>
             <span class="gallery-float">
-              <img class="showcase-image" src="${esc(plugin.images[0])}" alt="" ${index < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" draggable="false">
+              <img class="showcase-image" src="${esc(plugin.images[0])}" alt="" decoding="async" draggable="false">
             </span>
             <span class="gallery-info">
               ${badges.length ? `<span class="gallery-badges">${badgeHTML(badges)}</span>` : ''}
@@ -196,18 +196,41 @@
     initWaves(section);
   }
 
-  // Each interface keeps its real size relative to the widest one (same rule as the "Browse all" deck)
+  // Each interface keeps its real size relative to the widest one (same rule as the "Browse all" deck).
+  // Sizes are read from each image's own load event (works the same in every browser, cached or not);
+  // the cards appear once every interface is measured, so they never show cropped or change size.
   function sizeCardsByInterface(items) {
+    if (!items.length) return;
+    const list = items[0].parentElement;
     const images = items.map(item => item.querySelector('img'));
-    Promise.all(images.map(img => (img.decode ? img.decode() : Promise.resolve()).catch(() => {}))).then(() => {
-      const widest = Math.max(...images.map(img => img.naturalWidth || 0));
-      if (!widest) return;
-      items.forEach((item, i) => {
-        const img = images[i];
-        item.style.setProperty('--w', ((img.naturalWidth || widest) / widest).toFixed(3));
-        if (img.naturalWidth) item.style.setProperty('--ratio', `${img.naturalWidth} / ${img.naturalHeight}`);
-      });
+    const isLoaded = img => img.complete && img.naturalWidth > 0;
+    let revealed = false;
+
+    const apply = () => {
+      const ready = images.filter(isLoaded);
+      if (ready.length) {
+        const widest = Math.max(...ready.map(img => img.naturalWidth));
+        items.forEach((item, i) => {
+          const img = images[i];
+          if (!isLoaded(img)) return;
+          item.style.setProperty('--w', (img.naturalWidth / widest).toFixed(3));
+          item.style.setProperty('--ratio', `${img.naturalWidth} / ${img.naturalHeight}`);
+        });
+      }
+      // Every image has either loaded or failed: show the cards
+      if (!revealed && images.every(img => img.complete)) {
+        revealed = true;
+        list.classList.add('is-sized');
+      }
+    };
+
+    images.forEach(img => {
+      img.addEventListener('load', apply);
+      img.addEventListener('error', apply);
     });
+    apply();
+    // Safety net on very slow connections: never keep the cards hidden for long
+    setTimeout(() => { if (!revealed) { revealed = true; list.classList.add('is-sized'); } }, 6000);
   }
 
   function setActive(index) {
@@ -337,7 +360,7 @@
   const LENS_GRAIN = 0.035;       // animated grain (0 = off)
   const LENS_OPACITY = 0.36;
   const LENS_FADE_IN = 600, LENS_FADE_OUT = 900;   // ms: the outgoing image lingers, so there is never a cut
-
+  
   // options (all optional):
   //   opacity, brightness, saturation   look of the image being shown
   //   goo, wave, bulge, split, grain    strength of each effect
