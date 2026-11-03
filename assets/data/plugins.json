@@ -62,9 +62,6 @@
               "title": "Improvements",
               "items": [
                 "Added Advanced panel with Fold, Normalize and Ceiling controls",
-                "Fold: anti-aliased wavefolding with Tri and Sine shapes",
-                "Normalize: the clipping curve reaches the ceiling exactly at the threshold",
-                "Ceiling: headroom for oversampling filter overshoot",
                 "Added WAVE display view (bipolar waveform) alongside RECT",
                 "Added gain link: input and output move in opposite directions",
                 "Peak hold readouts can now be reset by clicking them",
