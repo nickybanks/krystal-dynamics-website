@@ -678,8 +678,8 @@
     { amp: 0.10, freq: 1.15, speed: 0.38, phase: 0.0, width: 1.1, color: [214, 220, 230], alpha: 0.16 },
     { amp: 0.15, freq: 0.80, speed: -0.27, phase: 1.7, width: 1.0, color: [214, 220, 230], alpha: 0.10 },
     { amp: 0.07, freq: 2.10, speed: 0.55, phase: 3.1, width: 0.9, color: [214, 220, 230], alpha: 0.09 },
-    { amp: 0.12, freq: 1.45, speed: -0.42, phase: 4.4, width: 1.4, color: [75, 159, 255], alpha: 0.30 },
-    { amp: 0.18, freq: 0.62, speed: 0.22, phase: 2.2, width: 1.2, color: [45, 197, 248], alpha: 0.16 },
+    { amp: 0.12, freq: 1.45, speed: -0.42, phase: 4.4, width: 1.4, color: [1, 180, 254], alpha: 0.30 },
+    { amp: 0.18, freq: 0.62, speed: 0.22, phase: 2.2, width: 1.2, color: [150, 231, 255], alpha: 0.16 },
     { amp: 0.05, freq: 3.00, speed: -0.70, phase: 5.3, width: 0.8, color: [214, 220, 230], alpha: 0.07 },
   ];
 

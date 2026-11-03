@@ -87,7 +87,7 @@
 
   /* Current page: the coloured underline, as on desktop, as wide as the label */
   .main-nav .nav-link::after { right: 0; bottom: 0.45rem; left: 0; }
-  .main-nav .nav-link.active { color: var(--text-primary); }
+  .main-nav .nav-link.active { color: var(--accent-tertiary); }
   .main-nav .nav-link.active::after { transform: scaleX(1); }
   .mobile-menu-toggle { -webkit-tap-highlight-color: transparent; }
 

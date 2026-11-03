@@ -211,6 +211,8 @@ function renderNewsAction(action, primary = false) {
 }
 
 const NEWS_INTERVAL_MS = 6500;
+const NEWS_CARD_MS = 3200;   // time each interface stays in the news card before the next one fades in
+const NEWS_MOVE_MS = 700;   // duration of the slide-to-slide movement (also used by pages.css via --news-move)
 
 function renderNewsNotes(notes, page, max = 4) {
   if (!notes.length) return '';
@@ -240,6 +242,22 @@ function renderNewsTimeline(entries) {
     </ol>`;
 }
 
+// Update "grande": cambia la prima o la seconda cifra rispetto alla versione precedente
+function isMajorUpdate(history) {
+  if (history.length < 2) return false;
+  const [a, b] = [history[0].version.split('.'), history[1].version.split('.')];
+  return a[0] !== b[0] || a[1] !== b[1];
+}
+
+// Card del plugin in evidenza (slide early access / release / update): tutte le interfacce, in dissolvenza
+function renderNewsCard(plugin) {
+  if (!plugin.images?.length) return '';
+  return `
+    <a class="news-hero-card" href="${escapeNewsMarkup(plugin.page)}" aria-label="${escapeNewsMarkup(plugin.name)}: view details">
+      ${plugin.images.map((src, index) => `<img src="${escapeNewsMarkup(src)}" alt=""${index === 0 ? ' class="active"' : ' loading="lazy"'} decoding="async">`).join('')}
+    </a>`;
+}
+
 function buildHomeNews(plugins) {
   const { upcoming, latestRelease, latestUpdate } = getReleaseHighlights(plugins);
   const activity = getRecentActivity(plugins, 5);
@@ -248,6 +266,7 @@ function buildHomeNews(plugins) {
   if (upcoming) {
     news.push({
       variant: 'early-access',
+      plugin: upcoming,
       tab: 'Early access',
       tabName: upcoming.name,
       kicker: 'Early access on Patreon',
@@ -261,9 +280,13 @@ function buildHomeNews(plugins) {
     });
   }
 
+  const latest = [];   // release e update, ordinati per data
+
   if (latestRelease) {
-    news.push({
+    latest.push({
+      date: latestRelease.launchDate,
       variant: 'release',
+      plugin: latestRelease,
       tab: 'New plugin',
       tabName: latestRelease.name,
       kicker: 'Latest release',
@@ -278,19 +301,28 @@ function buildHomeNews(plugins) {
 
   if (latestUpdate) {
     const release = latestUpdate.latestUpdate;
-    news.push({
+    const major = isMajorUpdate(latestUpdate.history);
+    latest.push({
+      date: release.date,
       variant: 'update',
+      plugin: latestUpdate,
+      major,
       tab: 'Update',
       tabName: `${latestUpdate.name} ${release.version}`,
-      kicker: 'Latest update',
+      kicker: major ? 'Major update' : 'Latest update',
       title: latestUpdate.name,
-      version: `Version ${release.version}, ${formatReleaseDate(release.date)}`,
+      bigVersion: major ? `v${release.version}` : '',
+      version: major
+        ? `Updated ${formatReleaseDate(release.date)}`
+        : `Version ${release.version}, ${formatReleaseDate(release.date)}`,
       notes: renderNewsNotes(releaseNotes(release), latestUpdate.page),
       image: latestUpdate.images?.[0],
       primary: { label: 'View details', href: latestUpdate.page },
       secondary: { label: 'Visit MuseHub', href: latestUpdate.museHub },
     });
   }
+
+  news.push(...latest.sort((a, b) => b.date.localeCompare(a.date)));
 
   if (activity.length) {
     news.push({
@@ -307,8 +339,8 @@ function buildHomeNews(plugins) {
   return news;
 }
 
-// Fixed over every news slide: a small deck of plugin interfaces that links to the catalogue
-function renderPluginDeck(carousel, plugins) {
+// Sulla slide Activity: un piccolo mazzo di interfacce di plugin che rimanda al catalogo
+function renderPluginDeck(host, plugins) {
   // Random plugins and a random screenshot of each, new on every page load
   const pick = list => list[Math.floor(Math.random() * list.length)];
   const pool = plugins.filter(plugin => plugin.images?.length);
@@ -328,7 +360,7 @@ function renderPluginDeck(carousel, plugins) {
         <img class="news-deck-card" style="--i: ${index}" src="${escapeNewsMarkup(image)}" alt="">`).join('')}
     </span>
     <span class="news-deck-label">Browse all the plugins</span>`;
-  carousel.appendChild(deck);
+  host.appendChild(deck);
 
   // Each interface keeps its own proportions and its size relative to the largest one
   const images = [...deck.querySelectorAll('.news-deck-card')];
@@ -340,6 +372,62 @@ function renderPluginDeck(carousel, plugins) {
   });
 }
 
+// Sfondo della slide Activity: colonne verticali (stile pagina Plugins), una per plugin aggiornato,
+// ognuna con il ritaglio della sua interfaccia. All'hover di una voce si aprono a tutto schermo.
+const COLUMN_LOOKS = {
+  rest: { opacity: 0.55, saturation: 0.5, brightness: 0.8, zoom: 1.04, motion: 0.15 },
+  off:  { opacity: 0 },
+};
+
+function initActivityColumns(slide, entries) {
+  if (typeof window.KDLens !== 'function') return null;
+  const seen = new Set();
+  const plugins = entries.map(entry => entry.plugin)
+    .filter(plugin => plugin.images?.length && !seen.has(plugin.id) && seen.add(plugin.id));
+  if (!plugins.length) return null;
+
+  const wrap = document.createElement('div');
+  wrap.className = 'news-columns';
+  wrap.setAttribute('aria-hidden', 'true');
+  wrap.style.display = 'none';   // il ciclo di rendering parte solo quando la slide è visibile
+  wrap.innerHTML = `
+    <div class="news-columns-lens"></div>
+    <div class="news-columns-grid">${plugins.map(() => '<span class="news-column"></span>').join('')}</div>`;
+  slide.prepend(wrap);
+
+  const columns = [...wrap.querySelectorAll('.news-column')];
+  const lens = window.KDLens(wrap.querySelector('.news-columns-lens'), plugins.map(plugin => plugin.images[0]), {
+    region: index => columns[index]?.getBoundingClientRect(),
+  });
+  if (!lens) { wrap.remove(); return null; }
+
+  let on = false;        // la slide Activity è quella visibile
+  let covered = false;   // un'interfaccia a tutto schermo copre le colonne (hover su una voce)
+  let hideTimer = 0;
+  const apply = () => plugins.forEach((_, index) =>
+    lens.set(index, on && !covered ? COLUMN_LOOKS.rest : COLUMN_LOOKS.off, NEWS_MOVE_MS));
+
+  return {
+    // La slide entra o esce: le colonne sfumano insieme al resto
+    setSlideActive(active) {
+      window.clearTimeout(hideTimer);
+      on = active;
+      covered = false;
+      if (active) {
+        wrap.style.display = '';
+      } else {
+        hideTimer = window.setTimeout(() => { if (!on) wrap.style.display = 'none'; }, NEWS_MOVE_MS + 100);
+      }
+      apply();
+    },
+    // Hover su una voce: le colonne sfumano e al loro posto si apre l'interfaccia a tutto schermo
+    setCovered(value) {
+      covered = value;
+      apply();
+    },
+  };
+}
+
 function renderHomeNews(plugins) {
   const carousel = document.getElementById('homeNewsCarousel');
   const stage = document.getElementById('homeNewsSlides');
@@ -349,24 +437,29 @@ function renderHomeNews(plugins) {
 
   const news = buildHomeNews(plugins);
 
+  // Each slide: background + overlay stay in place and cross-fade; .news-layer (card + text) slides sideways
   stage.innerHTML = news.map((item, index) => {
     const heading = index === 0 ? 'h1' : 'h2';
     return `
       <article class="news-slide news-slide--${item.variant}${index === 0 ? ' is-active' : ''}" id="news-slide-${index}" role="tabpanel" aria-roledescription="slide" aria-label="${index + 1} of ${news.length}" aria-hidden="${index !== 0}">
         <div class="plugin-item-bg news-slide-bg" aria-hidden="true"></div>
         <div class="plugin-item-overlay news-slide-overlay" aria-hidden="true"></div>
-        <div class="news-copy">
-          ${item.kicker ? `<p class="news-kicker">${escapeNewsMarkup(item.kicker)}</p>` : ''}
-          <${heading} class="news-title">${escapeNewsMarkup(item.title)}</${heading}>
-          ${item.version ? `<p class="news-version">${escapeNewsMarkup(item.version)}</p>` : ''}
-          ${item.body ? `<p class="news-body">${escapeNewsMarkup(item.body)}</p>` : ''}
-          ${item.notes || ''}
-          ${item.timeline ? renderNewsTimeline(item.timeline) : ''}
-          ${item.highlight ? `<p class="news-highlight">${escapeNewsMarkup(item.highlight)}</p>` : ''}
-          ${item.primary ? `<div class="news-actions">
-            ${renderNewsAction(item.primary, true)}
-            ${item.secondary ? renderNewsAction(item.secondary) : ''}
-          </div>` : ''}
+        <div class="news-layer">
+          ${item.plugin ? renderNewsCard(item.plugin) : ''}
+          <div class="news-copy">
+            ${item.kicker ? `<p class="news-kicker">${escapeNewsMarkup(item.kicker)}</p>` : ''}
+            <${heading} class="news-title">${escapeNewsMarkup(item.title)}</${heading}>
+            ${item.bigVersion ? `<p class="news-bigversion">${escapeNewsMarkup(item.bigVersion)}</p>` : ''}
+            ${item.version ? `<p class="news-version">${escapeNewsMarkup(item.version)}</p>` : ''}
+            ${item.body ? `<p class="news-body">${escapeNewsMarkup(item.body)}</p>` : ''}
+            ${item.notes || ''}
+            ${item.timeline ? renderNewsTimeline(item.timeline) : ''}
+            ${item.highlight ? `<p class="news-highlight">${escapeNewsMarkup(item.highlight)}</p>` : ''}
+            ${item.primary ? `<div class="news-actions">
+              ${renderNewsAction(item.primary, true)}
+              ${item.secondary ? renderNewsAction(item.secondary) : ''}
+            </div>` : ''}
+          </div>
         </div>
       </article>`;
   }).join('');
@@ -380,6 +473,30 @@ function renderHomeNews(plugins) {
     </button>`).join('');
   tabs.setAttribute('role', 'tablist');
   carousel.style.setProperty('--news-interval', `${NEWS_INTERVAL_MS}ms`);
+  carousel.style.setProperty('--news-move', `${NEWS_MOVE_MS}ms`);
+
+  // Proporzioni delle card, per gli angoli arrotondati in scala con la larghezza
+  stage.querySelectorAll('.news-hero-card img:first-child').forEach(img => {
+    const card = img.parentElement;
+    const setRatio = () => card.style.setProperty('--ar', (img.naturalWidth / img.naturalHeight).toFixed(4));
+    if (img.complete) setRatio(); else img.addEventListener('load', setRatio, { once: true });
+  });
+
+  // The interfaces of each card follow one another while its slide is the visible one
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    stage.querySelectorAll('.news-hero-card').forEach(card => {
+      const images = [...card.querySelectorAll('img')];
+      if (images.length < 2) return;
+      const slide = card.closest('.news-slide');
+      let current = 0;
+      window.setInterval(() => {
+        if (!slide.classList.contains('is-active')) return;
+        images[current].classList.remove('active');
+        current = (current + 1) % images.length;
+        images[current].classList.add('active');
+      }, NEWS_CARD_MS);
+    });
+  }
 
   stage.querySelectorAll('.news-slide').forEach((slide, index) => {
     if (news[index].image) slide.querySelector('.news-slide-bg').style.backgroundImage = `url("${news[index].image}")`;
@@ -406,18 +523,47 @@ function renderHomeNews(plugins) {
         zoom: { shown: 1.04, hidden: 1.09 },
       })
     : null;
+
+  // Activity: vertical crops of the updated plugins instead of a single image
+  const columns = lens && activityIndex >= 0
+    ? initActivityColumns(stage.querySelector('.news-slide--activity'), news[activityIndex].timeline)
+    : null;
+
   if (lens) {
     carousel.classList.add('has-lens');
     carousel.kdShowImage = src => lens.show(lensImages.indexOf(src));
-    carousel.kdSlideImages = news.map(item => item.image);
-    carousel.kdShowImage(news[0]?.image);
+    // With columns the shared lens shows nothing on the Activity slide
+    carousel.kdSlideImages = news.map((item, index) => (columns && index === activityIndex ? null : item.image));
+    carousel.kdOnSlide = index => columns?.setSlideActive(index === activityIndex);
+    carousel.kdShowImage(carousel.kdSlideImages[0]);
+    carousel.kdOnSlide(0);
   } else {
     lensHost.remove();
   }
-  stage.querySelectorAll('.news-slide--activity .news-update-link').forEach((link, index) => {
-    const image = news[activityIndex].timeline[index]?.plugin.images?.[0];
-    if (!activityBackground || !image) return;
 
+  stage.querySelectorAll('.news-slide--activity .news-update-link').forEach((link, index) => {
+    const entry = news[activityIndex].timeline[index];
+    if (!entry) return;
+
+    if (columns) {
+      // The hovered/focused entry opens its plugin full size, in place of the columns
+      const image = entry.plugin.images?.[0];
+      const show = () => { columns.setCovered(true); carousel.kdShowImage(image); };
+      const restore = () => {
+        if (link.matches(':hover') || document.activeElement === link) return;
+        columns.setCovered(false);
+        carousel.kdShowImage(null);
+      };
+      link.addEventListener('mouseenter', show);
+      link.addEventListener('mouseleave', restore);
+      link.addEventListener('focus', show);
+      link.addEventListener('blur', restore);
+      return;
+    }
+
+    // Fallback without WebGL: the CSS background follows the hovered entry
+    const image = entry.plugin.images?.[0];
+    if (!activityBackground || !image) return;
     const restartSlideCycle = () => {
       activityBackground.classList.add('is-drift-reset'); // snap the drift back to its start position
       void activityBackground.offsetWidth;                // commit that state before the transition restarts
@@ -425,14 +571,12 @@ function renderHomeNews(plugins) {
       carousel.dispatchEvent(new Event('news-restart-timer'));
     };
     const show = () => {
-      if (carousel.kdShowImage) carousel.kdShowImage(image);
-      else activityBackground.style.backgroundImage = `url("${image}")`;
+      activityBackground.style.backgroundImage = `url("${image}")`;
       restartSlideCycle();
     };
     const restore = () => {
       if (!link.matches(':hover') && document.activeElement !== link) {
-        if (carousel.kdShowImage) carousel.kdShowImage(news[activityIndex].image);
-        else activityBackground.style.backgroundImage = defaultActivityBackground;
+        activityBackground.style.backgroundImage = defaultActivityBackground;
         restartSlideCycle();
       }
     };
@@ -442,7 +586,8 @@ function renderHomeNews(plugins) {
     link.addEventListener('blur', restore);
   });
 
-  renderPluginDeck(carousel, plugins);
+  // The deck lives inside the slide's layer, so it slides together with the text
+  renderPluginDeck(stage.querySelector('.news-slide--activity .news-layer') || carousel, plugins);
   controls.hidden = news.length < 2;
   carousel.setAttribute('aria-busy', 'false');
   lockNewsHeight(carousel);
@@ -470,6 +615,7 @@ function initHomeNewsCarousel(carousel) {
 
   let activeIndex = 0;
   let timer = null;
+  let leaveTimer = null;
   let hoveringList = false;
   const lists = carousel.querySelectorAll('.news-timeline, .news-notes, .news-deck');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -489,8 +635,23 @@ function initHomeNewsCarousel(carousel) {
     carousel.classList.add('is-paused');
   };
 
-  const showSlide = index => {
-    activeIndex = (index + slides.length) % slides.length;
+  // dir: 1 = new slide enters from the right (content moves left), -1 = from the left.
+  // Background and overlay cross-fade in place; only the content layer travels.
+  const showSlide = (index, dir) => {
+    const next = (index + slides.length) % slides.length;
+    if (next === activeIndex) return;
+    dir = dir || (next > activeIndex ? 1 : -1);
+
+    const leaving = slides[activeIndex];
+    slides.forEach(slide => slide.classList.remove('is-leaving'));
+    leaving.classList.add('is-leaving');
+    window.clearTimeout(leaveTimer);
+    leaveTimer = window.setTimeout(() => leaving.classList.remove('is-leaving'), NEWS_MOVE_MS + 50);
+
+    carousel.style.setProperty('--news-dir', dir);
+    void carousel.offsetWidth;   // the entering layer is placed on the right side before it animates
+
+    activeIndex = next;
     slides.forEach((slide, slideIndex) => {
       const isActive = slideIndex === activeIndex;
       slide.classList.toggle('is-active', isActive);
@@ -502,6 +663,7 @@ function initHomeNewsCarousel(carousel) {
       tab.setAttribute('aria-selected', String(isActive));
     });
     carousel.kdShowImage?.(carousel.kdSlideImages?.[activeIndex]);   // background crossfade (lens)
+    carousel.kdOnSlide?.(activeIndex);                                // Activity columns
     restartMeter();
   };
 
@@ -511,7 +673,8 @@ function initHomeNewsCarousel(carousel) {
     if (shouldPause) return;
     carousel.classList.remove('is-paused');
     restartMeter();
-    timer = window.setInterval(() => showSlide(activeIndex + 1), NEWS_INTERVAL_MS);
+    // Automatic rotation always moves left, also on the wrap-around
+    timer = window.setInterval(() => showSlide(activeIndex + 1, 1), NEWS_INTERVAL_MS);
   };
 
   tabs.forEach((tab, index) => tab.addEventListener('click', () => showSlide(index)));

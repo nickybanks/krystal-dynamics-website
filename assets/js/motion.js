@@ -19,7 +19,7 @@
     '.about-row',
     '.about-cta .container > *',
   ];
-  const TILT = ['.plugin-detail-image-carousel'];
+  const TILT = ['.plugin-detail-image-carousel', '.news-hero-card'];
   // Headings that appear together with the block they introduce, instead of on their own
   const ATTACH = [
     { lead: '.plugin-detail-content > h3', follower: el => el.nextElementSibling },

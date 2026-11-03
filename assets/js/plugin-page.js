@@ -40,7 +40,6 @@
     // so the moving matter never restarts
   }
 
-  // ── "Version 1.2.0, updated October 16, 2026" under the name, as in the popup ──
   async function addMeta(hero) {
     const title = hero.querySelector('.plugin-content h1');
     if (!title || hero.querySelector('.pp-meta') || typeof getSiteData !== 'function') return;

@@ -11,7 +11,7 @@
 }
 
 .eyebrow span { color: var(--accent-primary); padding: 0 0.45rem; }
-.nav-link.active { color: var(--text-primary); }
+.nav-link.active { color: var(--accent-tertiary); }
 .nav-link.active::after { transform: scaleX(1); }
 
 /* Homepage news carousel */
@@ -22,7 +22,7 @@
   min-height: 640px;
   max-height: 960px;
   overflow: hidden;
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   text-align: left;
 }
 
@@ -32,33 +32,31 @@
   min-height: 0;
 }
 
+/* Slides are stacked and transparent: the background and overlay cross-fade in place,
+   the content (.news-layer) travels sideways like a carousel. */
 .news-slide {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: var(--bg-secondary);
-  opacity: 0;
+  background: transparent;
   visibility: hidden;
-  transition: opacity 650ms ease, visibility 0s linear 650ms;
 }
 
-.news-slide.is-active {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 650ms ease, visibility 0s;
-}
+.news-slide.is-active,
+.news-slide.is-leaving { visibility: visible; }
 
+/* CSS background (fallback without WebGL): fade */
 .news-slide .news-slide-bg {
   left: -3%;
   width: 106%;
   z-index: 0;
-  opacity: 0.72;
+  opacity: 0;
   background-position: center center;
   filter: brightness(0.82) saturate(0.88);
   transform: translateX(20px);
-  transition: opacity 650ms ease, transform 8s linear;
+  transition: opacity var(--news-move, 700ms) ease, transform 8s linear;
 }
 
 .news-slide.is-active .news-slide-bg {
@@ -83,12 +81,35 @@
 
 .news-slide .news-slide-overlay {
   background: linear-gradient(90deg, var(--bg-primary) 0%, rgba(10,10,10,0.96) 30%, rgba(10,10,10,0.75) 54%, rgba(10,10,10,0.18) 100%), linear-gradient(0deg, rgba(10,10,10,0.55), transparent 55%);
+  opacity: 0;
+  transition: opacity var(--news-move, 700ms) ease;
 }
+
+.news-slide.is-active .news-slide-overlay { opacity: 1; }
+
+/* Content layer: card, text and deck. --news-dir is 1 (enters from the right) or -1 (from the left) */
+.news-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  transform: translateX(calc(var(--news-dir, 1) * 100%));
+}
+
+.news-slide.is-active .news-layer,
+.news-slide.is-leaving .news-layer {
+  transition: transform var(--news-move, 700ms) cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.news-slide.is-active .news-layer { transform: none; }
+.news-slide.is-leaving .news-layer { transform: translateX(calc(var(--news-dir, 1) * -100%)); }
 
 .news-copy {
   position: relative;
   z-index: 2;
   display: flex;
+  flex: 0 0 auto;
   width: min(1200px, calc(100% - 3rem));
   height: 100%;
   flex-direction: column;
@@ -208,7 +229,7 @@
   border-bottom: 1px solid color-mix(in srgb, var(--accent-secondary) 40%, transparent);
 }
 
-.news-notes-more:hover { color: var(--text-primary); border-bottom-color: var(--text-primary); }
+.news-notes-more:hover { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
 
 /* Activity slide: every release of the suite, newest first */
 .news-timeline {
@@ -371,7 +392,7 @@
 
 .news-tab--early-access { --tab-colour: #ff424d; }
 .news-tab--update { --tab-colour: var(--accent-secondary); }
-.news-tab--activity { --tab-colour: var(--text-primary); }
+.news-tab--activity { --tab-colour: var(--accent-tertiary); }
 
 /* Progress line: fills while the slide is shown */
 .news-tab-meter {
@@ -439,6 +460,7 @@
   }
 
   .news-slide { align-items: flex-end; }
+  .news-layer { align-items: flex-end; }
   .news-slide .plugin-item-bg,
   .news-slide .plugin-item-overlay { display: block; }
   .news-slide .news-slide-bg { background-position: 58% center; }
@@ -488,6 +510,11 @@
   .news-actions .btn { transition: none; }
   .news-kicker::before { animation: none; }
   .news-tab.is-active .news-tab-meter.is-running::after { animation: none; }
+
+  /* No travelling content: a quick fade instead */
+  .news-layer,
+  .news-slide.is-leaving .news-layer { transform: none; opacity: 0; transition: opacity 400ms ease; }
+  .news-slide.is-active .news-layer { opacity: 1; }
 }
 
 /* Full-height plugin library */
@@ -896,7 +923,7 @@
   .plugin-volume, .volume-image, .volume-detail { transition-duration: 0.01ms; }
 }
 
-/* Plugin deck: fixed on the right of the news carousel, links to the catalogue */
+/* Plugin deck: on the Activity slide, links to the catalogue */
 .news-deck {
   --card-w: clamp(220px, 21vw, 300px);
   position: absolute;
@@ -1002,6 +1029,38 @@
   display: block;
 }
 
+/* Activity slide: vertical crops of the updated plugins (drawn by a second lens, see initActivityColumns) */
+.news-columns {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.news-columns-lens,
+.news-columns-grid {
+  position: absolute;
+  inset: 0;
+}
+
+.news-columns-lens canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.news-columns-grid { display: flex; }
+
+.news-column {
+  flex: 1 1 0;
+  min-width: 0;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.news-column:last-child { border-right: 0; }
+
 .hero-news.has-lens { background: var(--bg-secondary); }
 .hero-news.has-lens .news-slide { background: transparent; }
 .hero-news.has-lens .news-slide-bg { display: none; }
@@ -1018,4 +1077,67 @@
 
 @media (prefers-reduced-motion: reduce) {
   .news-deck-card { animation: none; }
+}
+
+/* ── Plugin card on the early access / release / update slides ── */
+.news-hero-card {
+  --card-w: clamp(300px, 34vw, 540px);
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  right: clamp(2rem, 6vw, 7rem);
+  width: var(--card-w);
+  translate: 0 -50%;   /* `transform` è riservato al tilt di motion.js */
+  border-radius: 8px;
+  border-radius: 2.2% / calc(2.2% * var(--ar, 1.7));
+}
+
+.news-hero-card img {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: inherit;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.65), 0 0 80px -20px rgba(var(--kd-blue-rgb),0.35);
+  animation: news-deck-float 8s ease-in-out infinite;
+}
+
+.news-hero-card img { display: block; transition: opacity 1.2s ease-in-out; }
+
+/* The first interface sets the size; the others sit on top of it and cross-fade */
+.news-hero-card img:not(:first-child) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.news-hero-card img:not(.active) { opacity: 0; }
+.news-hero-card img.active { opacity: 1; }
+
+.news-hero-card:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 8px; }
+
+/* ── Version number highlighted for major updates ── */
+.news-bigversion {
+  margin: 0.1rem 0 0.2rem;
+  font-family: 'Syne', sans-serif;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-size: clamp(3.2rem, 8vw, 6.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 1023px) {
+  .news-hero-card { --card-w: 150px; top: 6.5rem; right: 1.25rem; translate: none; }
+}
+
+@media (max-width: 767px) {
+  .news-bigversion { font-size: clamp(2.4rem, 13vw, 3.4rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-hero-card img { animation: none; }
 }

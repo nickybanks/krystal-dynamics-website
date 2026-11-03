@@ -5,12 +5,24 @@
   --bg-secondary: #1a1a1a;
   --text-primary: #ffffff;
   --text-secondary: #aaaaaa;
-  --accent-primary: #4B9FFF;
-  --accent-secondary: #2DC5F8;
   --border-color: #333333;
   --shadow: rgba(0, 0, 0, 0.5);
-  --shadow-hover: rgba(45, 197, 248, 0.3);
-  --gradient-1: linear-gradient(135deg, #4B9FFF 0%, #2DC5F8 100%);
+
+  /* Brand blues, sampled from the plugin UIs (KrystalComp / KrystalField) and the logo */
+  --kd-blue: #01B4FE;       /* plugin meters, value readouts: the main brand blue */
+  --kd-blue-deep: #0095D3;  /* lower meter segment */
+  --kd-blue-soft: #4CBBF7;  /* active button fill in the plugins (MIX, RANGE, KNEE) */
+  --kd-cyan: #33CCFF;       /* knob arcs; middle of the logo gradient */
+  --kd-ice: #96E7FF;        /* top highlight of the logo gradient */
+  --kd-ink: #04131C;        /* dark text on blue fills, as on the plugins' active buttons */
+  --kd-blue-rgb: 1, 180, 254;
+
+  --accent-primary: var(--kd-blue);
+  --accent-secondary: var(--kd-ice);
+  --accent-tertiary: var(--text-primary);  /* white: active nav links, Activity news tab */
+  --shadow-hover: rgba(var(--kd-blue-rgb), 0.3);
+  --gradient-1: linear-gradient(135deg, var(--kd-blue) 0%, var(--kd-cyan) 55%, var(--kd-ice) 100%);
+  --gradient-hover: linear-gradient(135deg, var(--kd-blue) 0%, var(--kd-cyan) 100%);
 }
 
 /* Reset & Base Styles */
@@ -22,6 +34,13 @@
 
 html {
   scroll-behavior: smooth;
+  accent-color: var(--accent-primary);
+}
+
+/* Text selection in the brand blue instead of the browser default */
+::selection {
+  background: rgba(var(--kd-blue-rgb), 0.35);
+  color: var(--text-primary);
 }
 
 body {
@@ -404,9 +423,9 @@ header {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: color-mix(in srgb, var(--accent-primary, #4B9FFF) 12%, transparent);
-  color: var(--accent-primary, #4B9FFF);
-  border: 1px solid color-mix(in srgb, var(--accent-primary, #4B9FFF) 30%, transparent);
+  background: color-mix(in srgb, var(--accent-primary, #01B4FE) 12%, transparent);
+  color: var(--accent-primary, #01B4FE);
+  border: 1px solid color-mix(in srgb, var(--accent-primary, #01B4FE) 30%, transparent);
 }
 
 /* Dot indicator */
@@ -429,9 +448,9 @@ header {
 
 /* "Latest update" variant: cyan accent */
 .plugin-featured-badge--update {
-  background: color-mix(in srgb, var(--accent-secondary, #2DC5F8) 10%, transparent);
-  color: var(--accent-secondary, #2DC5F8);
-  border-color: color-mix(in srgb, var(--accent-secondary, #2DC5F8) 30%, transparent);
+  background: color-mix(in srgb, var(--accent-secondary, #96E7FF) 10%, transparent);
+  color: var(--accent-secondary, #96E7FF);
+  border-color: color-mix(in srgb, var(--accent-secondary, #96E7FF) 30%, transparent);
 }
 
 .plugin-badges {
@@ -465,7 +484,7 @@ header {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: rgba(75, 159, 255, 0.06);
+  background: rgba(var(--kd-blue-rgb), 0.06);
   opacity: 0;
   transition: opacity 0.25s ease;
   pointer-events: none;
@@ -749,19 +768,20 @@ header {
   left: 0;
   width: 0;
   height: 100%;
-  background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+  background: var(--gradient-hover);
   transition: width 0.4s ease;
   z-index: -1;
 }
 
 .btn-primary {
   background: var(--gradient-1);
-  color: white;
+  color: var(--kd-ink);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  color: white;
+  color: var(--kd-ink);
+  box-shadow: 0 8px 20px var(--shadow-hover);
 }
 
 .btn-primary:active {
@@ -1319,7 +1339,7 @@ footer p {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(42, 92, 255, 0.04), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--kd-blue-rgb), 0.04), transparent);
   transition: left 1.5s ease;
   pointer-events: none;
 }
@@ -1453,8 +1473,11 @@ footer p {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px var(--shadow-hover);
   border-color: var(--accent-primary);
-  color: white;
+  color: var(--kd-ink);
 }
+
+.btn-download:hover .os-logo,
+.btn-download:hover svg { color: var(--kd-ink); fill: currentColor; }
 
 .btn-download:hover::before {
   opacity: 1;

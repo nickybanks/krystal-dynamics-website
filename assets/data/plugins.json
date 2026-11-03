@@ -22,13 +22,16 @@
         "Four clipping modes with different harmonic colorations",
         "Threshold control for clipping point adjustment",
         "Slope control to shape the clipping curve",
+        "Anti-aliased Wavefolding with Tri and Sine shapes",
+        "Ceiling offset to leave headroom for oversampling filter overshoot",
         "Input and output gain controls",
         "Oversampling up to 8x",
         "Mix control for parallel processing",
         "Bypass for A/B comparison",
         "Delta mode for precise clipping control",
         "Automatic loudness matching with informative feedback",
-        "Real-time waveform display with short-term LUFS metering",
+        "Real-time display with different views and adjustable time window",
+        "Short-term LUFS metering inside the display",
         "Comprehensive input and output metering",
         "Different themes and performance settings"
       ],
@@ -51,6 +54,29 @@
         }
       ],
       "history": [
+        {
+          "version": "1.2.0",
+          "date": "2026-11-03",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Added Advanced panel with Fold, Normalize and Ceiling controls",
+                "Fold: anti-aliased wavefolding with Tri and Sine shapes",
+                "Normalize: the clipping curve reaches the ceiling exactly at the threshold",
+                "Ceiling: headroom for oversampling filter overshoot",
+                "Added WAVE display view (bipolar waveform) alongside RECT",
+                "Added adjustable display time window (1-5 s)",
+                "Threshold and ceiling lines can now be dragged directly on the display",
+                "Added gain link: input and output move in opposite directions",
+                "Peak hold readouts can now be reset by clicking them",
+                "Added graphics quality setting (Full/Low)",
+                "Parameter changes are now smoothed to avoid zipper noise during automation",
+                "Redesigned interface"
+              ]
+            }
+          ]
+        },
         {
           "version": "1.1.0",
           "date": "2026-04-28",
