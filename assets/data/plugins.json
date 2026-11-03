@@ -66,12 +66,8 @@
                 "Normalize: the clipping curve reaches the ceiling exactly at the threshold",
                 "Ceiling: headroom for oversampling filter overshoot",
                 "Added WAVE display view (bipolar waveform) alongside RECT",
-                "Added adjustable display time window (1-5 s)",
-                "Threshold and ceiling lines can now be dragged directly on the display",
                 "Added gain link: input and output move in opposite directions",
                 "Peak hold readouts can now be reset by clicking them",
-                "Added graphics quality setting (Full/Low)",
-                "Parameter changes are now smoothed to avoid zipper noise during automation",
                 "Redesigned interface"
               ]
             }
