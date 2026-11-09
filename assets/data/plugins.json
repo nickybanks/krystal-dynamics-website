@@ -144,8 +144,8 @@
     {
       "id": "krystal-comp",
       "name": "KrystalComp",
-      "description": "KrystalComp is a precision digital compressor for mixing and mastering. It combines surgical control over dynamics with flexible sidechain processing, offering downward and upward compression with RMS and Peak detection to suit any source material.",
-      "catalogDescription": "A precision compressor for mix and mastering, with downward and upward modes and a flexible sidechain EQ.",
+      "description": "KrystalComp is a compressor for mixing and mastering, with downward compression to tame the peaks and upward compression to bring out the quiet details. A three-band sidechain EQ, external sidechain and up to 20 ms of lookahead give you precise control over what triggers it, while the real-time display and the compression curve show exactly what it is doing.",
+      "catalogDescription": "A downward and upward compressor with a three-band sidechain EQ and a real-time compression curve.",
       "page": "/plugins/krystal-comp.html",
       "museHub": "https://www.musehub.com/plugin/krystalcomp",
       "images": [
@@ -160,21 +160,18 @@
       ],
       "downloadSlug": "krystalcomp",
       "features": [
-        "Threshold, Ratio, Attack, Release and variable Knee",
-        "Hold and Range for precise dynamics control",
-        "RMS and Peak detection",
-        "Downward and Upward compression",
-        "Input and Makeup gain",
-        "Auto gain with loudness matching",
+        "Downward and upward compression, each with its own settings",
+        "Threshold, ratio, knee and range",
+        "Attack, hold and release, with RMS or Peak detection",
         "Lookahead up to 20 ms",
-        "Mix control for parallel compression",
-        "Oversampling up to 4x",
-        "Real-time waveform display",
-        "Compression curve visualizer",
-        "Sidechain EQ: HP, LP and bell with adjustable slope and Q",
-        "Internal or external sidechain with Mid/Max link",
-        "Sidechain monitor",
-        "Input, output and gain reduction metering"
+        "Three-band sidechain EQ with adjustable slopes and bell width",
+        "External sidechain and sidechain monitoring",
+        "Input and makeup gain, and a mix control for parallel compression",
+        "Automatic loudness matching for fair comparisons",
+        "Up to 4× oversampling",
+        "Real-time display with a slide-out compression curve",
+        "Input, gain and output meters with peak hold",
+        "Light and dark themes and a resizable window"
       ],
       "specifications": [
         {
@@ -191,7 +188,7 @@
         },
         {
           "label": "Latency",
-          "value": "Variable (depends on Lookahead and Oversampling)"
+          "value": "None, 20 ms with lookahead, plus oversampling"
         }
       ],
       "history": [
@@ -280,7 +277,13 @@
           ]
         }
       ],
-      "license": "KrystalComp is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted."
+      "license": "KrystalComp is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted.",
+      "guide": {
+        "data": "/assets/data/plugins/krystal-comp.json",
+        "install": "/plugins/krystal-comp/install.html",
+        "manual": "/plugins/krystal-comp/manual.html",
+        "history": "/plugins/krystal-comp/history.html"
+      }
     },
     {
       "id": "krystal-field",
@@ -391,15 +394,14 @@
     {
       "id": "krystal-peak",
       "name": "KrystalPeak",
-      "description": "KrystalPeak is a transparent digital limiter designed to suppress peaks and maximize loudness. Shape transients with precision while maintaining clarity, impact, and mix integrity.",
-      "catalogDescription": "A transparent peak limiter for shaping transients and maximizing loudness without losing impact.",
+      "description": "KrystalPeak is a look-ahead peak limiter for mixing and mastering. Three limiting modes take you from smooth, transparent loudness to tight, punchy peak control, with true peak detection, upward compression and saturation built in. A real-time display shows every peak the limiter catches, while Delta monitoring lets you hear exactly what it takes away.",
+      "catalogDescription": "A look-ahead peak limiter with three limiting modes, from transparent loudness to punchy peak control.",
       "page": "/plugins/krystal-peak.html",
       "museHub": "https://www.musehub.com/plugin/krystalpeak",
       "images": [
         "/assets/images/interfaces/k-peak-interface-1.webp",
         "/assets/images/interfaces/k-peak-interface-2.webp",
-        "/assets/images/interfaces/k-peak-interface-3.webp",
-        "/assets/images/interfaces/k-peak-interface-4.webp"
+        "/assets/images/interfaces/k-peak-interface-3.webp"
       ],
       "formats": [
         "VST3",
@@ -407,17 +409,18 @@
       ],
       "downloadSlug": "krystalpeak",
       "features": [
-        "Attack control to shape peaks",
-        "Release control with auto-adaptive mode",
-        "Left/Right and Mid/Side stereo linking modes",
-        "Input and output gain controls",
-        "Optional saturation control to add warm saturation to the output",
-        "Oversampling up to 8x",
-        "Bypass for A/B comparison",
-        "Delta mode to listen to the limited signal",
-        "Comprehensive input, output, and gain reduction metering",
-        "Real-time waveform display with short-term LUFS metering",
-        "Different themes and performance settings"
+        "Three limiting modes: Clean, Punch and Brick",
+        "Adjustable ceiling, draggable in the display",
+        "True peak detection and metering",
+        "Attack and release controls, with automatic release",
+        "Stereo linking in Left/Right or Mid/Side",
+        "Upward compression to bring up quiet passages",
+        "Saturation for warmth and density",
+        "Up to 8× oversampling with automatic latency compensation",
+        "Delta monitoring to hear exactly what is being removed",
+        "Real-time display with gain reduction, upward gain and loudness",
+        "Gain reduction and output meters with peak hold",
+        "Light and dark themes and a resizable window"
       ],
       "specifications": [
         {
@@ -434,7 +437,7 @@
         },
         {
           "label": "Latency",
-          "value": "Variable (depends on Oversampling)"
+          "value": "23 ms, plus oversampling"
         }
       ],
       "publicRelease": "2026-05-14",
@@ -465,7 +468,13 @@
           ]
         }
       ],
-      "license": "KrystalPeak is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted."
+      "license": "KrystalPeak is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted.",
+      "guide": {
+        "data": "/assets/data/plugins/krystal-peak.json",
+        "install": "/plugins/krystal-peak/install.html",
+        "manual": "/plugins/krystal-peak/manual.html",
+        "history": "/plugins/krystal-peak/history.html"
+      }
     },
     {
       "id": "krystal-shaper",

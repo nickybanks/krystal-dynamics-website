@@ -1,0 +1,2124 @@
+{
+  "aspect": [
+    2366,
+    1294
+  ],
+  "shots": [
+    {
+      "color": "#00B4FF"
+    },
+    {
+      "color": "#FF3B00"
+    },
+    {
+      "color": "#00E5CC"
+    },
+    {
+      "color": "#FFB000"
+    }
+  ],
+  "overview": {
+    "sections": [
+      {
+        "type": "tour",
+        "id": "interface",
+        "title": "Interface",
+        "intro": "KrystalComp keeps the sidechain on the left, the display and the compressor in the centre and the meters and gain on the right. Scroll to go through each part.",
+        "steps": [
+          {
+            "title": "User Interface",
+            "manual": "layout",
+            "image": 0,
+            "focus": null,
+            "text": "The signal the compressor listens to is shaped on the left, in the sidechain EQ. The real-time display sits in the centre, above the compressor controls, while the input, gain and output meters and the input, makeup and mix controls sit on the right. The detector, the compression mode, oversampling and Automatic Loudness Matching are set along the top.",
+            "pins": [
+              {
+                "x": 40.9,
+                "y": 3.6,
+                "label": "Detector and mode",
+                "side": "bottom"
+              },
+              {
+                "x": 23.5,
+                "y": 50,
+                "label": "Sidechain EQ",
+                "side": "right"
+              },
+              {
+                "x": 54.6,
+                "y": 30,
+                "label": "Display",
+                "side": "top"
+              },
+              {
+                "x": 88.4,
+                "y": 30,
+                "label": "Meters",
+                "side": "left"
+              },
+              {
+                "x": 54.6,
+                "y": 77,
+                "label": "Compressor",
+                "side": "top"
+              },
+              {
+                "x": 89.8,
+                "y": 69,
+                "label": "Gain and mix",
+                "side": "left"
+              }
+            ]
+          },
+          {
+            "title": "Detector, Mode and Oversampling",
+            "manual": "mode",
+            "image": 1,
+            "focus": [
+              28.2,
+              0.4,
+              38.8,
+              7.3
+            ],
+            "text": "The MODE button switches between downward compression, which turns the loud parts down, and upward compression, which brings the quiet parts up. DET chooses how the level is read: RMS for a smooth, musical response, PEAK to catch every transient. The interface changes colour with each combination, and OS applies the gain changes at up to 4 times the sample rate for a cleaner result with fast settings.",
+            "specs": [
+              [
+                "Modes",
+                "Downward, upward"
+              ],
+              [
+                "Detector",
+                "RMS, Peak"
+              ],
+              [
+                "Oversampling",
+                "Off, 2×, 4×"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 34.6,
+                "y": 7.2,
+                "label": "Detector",
+                "side": "bottom"
+              },
+              {
+                "x": 48.7,
+                "y": 7.2,
+                "label": "Mode",
+                "side": "bottom"
+              },
+              {
+                "x": 61.7,
+                "y": 7.2,
+                "label": "Oversampling",
+                "side": "bottom"
+              }
+            ]
+          },
+          {
+            "title": "Sidechain EQ",
+            "manual": "sidechain-eq",
+            "image": 3,
+            "focus": [
+              [
+                1.6,
+                10.8,
+                25.8,
+                54.6
+              ],
+              [
+                1.6,
+                67.7,
+                25.8,
+                23.1
+              ]
+            ],
+            "text": "The sidechain EQ shapes what the compressor listens to, without changing the sound itself. Raise the HPF so the low end stops pumping a full mix, or boost the BELL to make the compressor react to one range, as here at 1.2 kHz. The display below shows the sidechain spectrum and the EQ curve, with handles you can drag, and the headphones button lets you hear the sidechain on its own.",
+            "specs": [
+              [
+                "Filters",
+                "HPF, LPF, 12 to 48 dB/oct"
+              ],
+              [
+                "Bell",
+                "±24 dB"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 10.7,
+                "y": 27.3,
+                "label": "Bell",
+                "side": "top"
+              },
+              {
+                "x": 20.2,
+                "y": 31.2,
+                "label": "Gain",
+                "side": "bottom"
+              },
+              {
+                "x": 10.7,
+                "y": 50.4,
+                "label": "HPF",
+                "side": "top"
+              },
+              {
+                "x": 20.2,
+                "y": 54.2,
+                "label": "LPF",
+                "side": "bottom"
+              },
+              {
+                "x": 25.2,
+                "y": 71.5,
+                "label": "Monitoring",
+                "side": "left"
+              }
+            ]
+          },
+          {
+            "title": "Real-Time Display",
+            "manual": "traces",
+            "image": 0,
+            "focus": [
+              29.5,
+              8.1,
+              50,
+              44.2
+            ],
+            "text": "The display shows the last 3 seconds of input, output and gain reduction against the threshold, drawn as a dashed line, so you can see exactly which parts of the signal are being compressed. Click the legend to hide a trace, and the zoom button to switch between −18, −36 and −72 dB. The power button in the corner bypasses the plugin, perfectly in time.",
+            "pins": [
+              {
+                "x": 42,
+                "y": 43.3,
+                "label": "Threshold",
+                "side": "top"
+              },
+              {
+                "x": 31.8,
+                "y": 47.5,
+                "label": "Bypass",
+                "side": "right"
+              },
+              {
+                "x": 56,
+                "y": 49.5,
+                "label": "Legend",
+                "side": "top"
+              },
+              {
+                "x": 76.5,
+                "y": 49.5,
+                "label": "Zoom",
+                "side": "left"
+              }
+            ]
+          },
+          {
+            "title": "Compression Curve",
+            "manual": "curve",
+            "image": 1,
+            "focus": [
+              29.5,
+              8.1,
+              50,
+              44.2
+            ],
+            "text": "Click the CURVE tab to slide out the compression curve over the display: output level against input level, on the same scale. Threshold, ratio, knee and range all show up in its shape as you adjust them, and a dot follows the level the compressor is reacting to right now.",
+            "pins": [
+              {
+                "x": 41.5,
+                "y": 30.2,
+                "label": "Threshold and knee",
+                "side": "bottom"
+              },
+              {
+                "x": 54.8,
+                "y": 30,
+                "label": "CURVE tab",
+                "side": "right"
+              }
+            ]
+          },
+          {
+            "title": "Threshold, Ratio and Knee",
+            "manual": "threshold",
+            "image": 0,
+            "focus": [
+              31.3,
+              58.1,
+              22.2,
+              32.7
+            ],
+            "text": "THRESH sets where compression starts and RATIO how strongly it acts: around 2:1 is gentle, 4:1 to 8:1 is firm, and from 20:1 up it behaves like a limiter. The KNEE slider decides how gradually it starts around the threshold, and RANGE caps how far the gain can change, so the compression never goes beyond what you allow.",
+            "specs": [
+              [
+                "Threshold",
+                "−60 to 0 dB"
+              ],
+              [
+                "Ratio",
+                "1:1 to 100:1"
+              ],
+              [
+                "Knee",
+                "0 to 72 dB"
+              ],
+              [
+                "Range",
+                "0 to 60 dB"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 36.2,
+                "y": 72.5,
+                "label": "Threshold",
+                "side": "top"
+              },
+              {
+                "x": 52.5,
+                "y": 61,
+                "label": "Knee",
+                "side": "right"
+              },
+              {
+                "x": 48.5,
+                "y": 80.2,
+                "label": "Ratio",
+                "side": "top"
+              },
+              {
+                "x": 40.5,
+                "y": 87.3,
+                "label": "Range",
+                "side": "right"
+              }
+            ]
+          },
+          {
+            "title": "Attack, Release, Hold and Lookahead",
+            "manual": "attack",
+            "image": 0,
+            "focus": [
+              55.9,
+              58.1,
+              22.3,
+              32.7
+            ],
+            "text": "ATTACK and RELEASE set how quickly the compressor reacts and lets go: a slower attack lets the transients through for punch, a shorter release makes the compression more energetic. HOLD keeps the gain steady for a moment before the release starts, and LKHD lets the compressor see up to 20 ms ahead, so it catches transients cleanly even with the fastest attack.",
+            "specs": [
+              [
+                "Attack",
+                "0.005 to 250 ms"
+              ],
+              [
+                "Release",
+                "10 to 2500 ms"
+              ],
+              [
+                "Hold",
+                "0 to 500 ms"
+              ],
+              [
+                "Lookahead",
+                "0 to 20 ms"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 60.8,
+                "y": 72.5,
+                "label": "Attack",
+                "side": "top"
+              },
+              {
+                "x": 77.2,
+                "y": 61,
+                "label": "Lookahead",
+                "side": "left"
+              },
+              {
+                "x": 73.3,
+                "y": 80.2,
+                "label": "Release",
+                "side": "top"
+              },
+              {
+                "x": 64.9,
+                "y": 87.3,
+                "label": "Hold",
+                "side": "right"
+              }
+            ]
+          },
+          {
+            "title": "Gain and Mix",
+            "manual": "input",
+            "image": 0,
+            "focus": [
+              81.4,
+              56.3,
+              16.8,
+              32.7
+            ],
+            "text": "The INPUT knob sets the level going into the compressor, the MAKEUP knob the level coming out of it. The MIX slider blends the original signal back in for parallel compression, perfectly in time with the compressed one: the density of heavy compression with the natural dynamics of the original.",
+            "specs": [
+              [
+                "Input, Makeup",
+                "−36 to +36 dB"
+              ],
+              [
+                "Mix",
+                "0 to 100%"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 85.8,
+                "y": 72.1,
+                "label": "Input",
+                "side": "top"
+              },
+              {
+                "x": 93.7,
+                "y": 72.1,
+                "label": "Makeup",
+                "side": "top"
+              },
+              {
+                "x": 94.2,
+                "y": 83.9,
+                "label": "Mix",
+                "side": "left"
+              }
+            ]
+          },
+          {
+            "title": "Input, Gain and Output Meters",
+            "manual": "meters",
+            "image": 2,
+            "focus": [
+              81.9,
+              5,
+              15.7,
+              50.8
+            ],
+            "text": "The input and output meters show the level going in and coming out, with RMS and peak level for each channel. Between them, the gain reduction meters show how much the compressor turns the signal down; in upward mode they become gain increase meters, as here, showing how much it brings the signal up. The readouts below hold the highest values until you click them.",
+            "pins": [
+              {
+                "x": 84.5,
+                "y": 18,
+                "label": "Input",
+                "side": "top"
+              },
+              {
+                "x": 89.8,
+                "y": 34,
+                "label": "Gain increase",
+                "side": "top"
+              },
+              {
+                "x": 95.1,
+                "y": 18,
+                "label": "Output",
+                "side": "top"
+              },
+              {
+                "x": 89.8,
+                "y": 53.2,
+                "label": "Peak hold",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Automatic Loudness Matching",
+            "manual": "auto",
+            "image": 1,
+            "focus": [
+              66.8,
+              0.4,
+              10.2,
+              7.3
+            ],
+            "text": "Compression changes the loudness, and a louder signal almost always sounds better in a comparison. Automatic Loudness Matching measures the loudness before and after the compressor and compensates the difference, so you judge each setting by its sound rather than its level. Turn it on with the AUTO button, which then shows the gain being applied, +4.4 dB here.",
+            "pins": [
+              {
+                "x": 72,
+                "y": 7.2,
+                "label": "Applied gain",
+                "side": "bottom"
+              }
+            ]
+          },
+          {
+            "title": "External Sidechain and Channels",
+            "manual": "external",
+            "image": 2,
+            "focus": [
+              0.5,
+              92.1,
+              28,
+              6.8
+            ],
+            "text": "SIDECHAIN switches the trigger from the signal itself to the sidechain input, so another track can drive the compression, like a kick ducking a bass. CH decides how the two channels are combined: MID listens to their average, STE to whichever is louder. Either way, both channels get the same gain change, so the stereo image never shifts.",
+            "pins": [
+              {
+                "x": 9,
+                "y": 92.5,
+                "label": "Sidechain source",
+                "side": "top"
+              },
+              {
+                "x": 23.5,
+                "y": 92.5,
+                "label": "Channels",
+                "side": "top"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "scope",
+        "id": "curve",
+        "title": "Compression Curve",
+        "scope": "compCurve",
+        "manual": "threshold",
+        "intro": "What each setting does to the level, computed from the plugin’s own gain computer: output level against input level, with the dashed diagonal as the signal left untouched. Try the settings yourself.",
+        "colors": {
+          "DWRD": "#00B4FF",
+          "UWRD": "#00E5CC"
+        },
+        "colorKeys": [
+          "mode"
+        ],
+        "controls": [
+          {
+            "type": "choice",
+            "key": "mode",
+            "label": "Mode",
+            "values": [
+              "DWRD",
+              "UWRD"
+            ]
+          },
+          {
+            "type": "range",
+            "key": "threshold",
+            "label": "Threshold",
+            "min": -60,
+            "max": 0,
+            "step": 0.1,
+            "format": "db"
+          },
+          {
+            "type": "range",
+            "key": "ratio",
+            "label": "Ratio",
+            "min": 1,
+            "max": 100,
+            "step": 0.01,
+            "scale": "log",
+            "format": "ratio",
+            "alt": {
+              "key": "mode",
+              "value": "UWRD",
+              "set": {
+                "max": 16
+              }
+            }
+          },
+          {
+            "type": "range",
+            "key": "knee",
+            "label": "Knee",
+            "min": 0,
+            "max": 72,
+            "step": 0.1,
+            "format": "db",
+            "alt": {
+              "key": "mode",
+              "value": "UWRD",
+              "set": {
+                "max": 36
+              }
+            }
+          },
+          {
+            "type": "range",
+            "key": "range",
+            "label": "Range",
+            "min": 0,
+            "max": 60,
+            "step": 0.1,
+            "format": "db"
+          }
+        ],
+        "steps": [
+          {
+            "title": "Threshold",
+            "state": {
+              "mode": "DWRD",
+              "threshold": -24,
+              "ratio": 4,
+              "knee": 0,
+              "range": 60
+            },
+            "demo": {
+              "sweep": "threshold",
+              "from": -36,
+              "to": -12,
+              "period": 5000
+            },
+            "text": "The threshold is where compression starts. Below it, the curve follows the dashed diagonal and the signal is left untouched; above it, the curve bends down and the signal is turned down. Lower the threshold and more of the signal is compressed."
+          },
+          {
+            "title": "Ratio",
+            "state": {
+              "mode": "DWRD",
+              "threshold": -24,
+              "ratio": 4,
+              "knee": 0,
+              "range": 60
+            },
+            "demo": {
+              "sweep": "ratio",
+              "from": 1.5,
+              "to": 12,
+              "period": 5000
+            },
+            "text": "The ratio sets how flat the curve gets above the threshold. At 4:1, every 4 dB going in above the threshold come out as 1 dB; the higher the ratio, the flatter the curve, until it turns into a limiter."
+          },
+          {
+            "title": "Knee",
+            "state": {
+              "mode": "DWRD",
+              "threshold": -24,
+              "ratio": 4,
+              "knee": 0,
+              "range": 60
+            },
+            "demo": {
+              "sweep": "knee",
+              "from": 0,
+              "to": 30,
+              "period": 5000
+            },
+            "text": "The knee rounds off the corner at the threshold. At 0 dB compression starts abruptly; with a wider knee it fades in gradually over the shaded band around the threshold, for a smoother, less noticeable action."
+          },
+          {
+            "title": "Range",
+            "state": {
+              "mode": "DWRD",
+              "threshold": -24,
+              "ratio": 4,
+              "knee": 0,
+              "range": 6
+            },
+            "demo": {
+              "sweep": "range",
+              "from": 3,
+              "to": 24,
+              "period": 5000
+            },
+            "text": "The range caps how much the gain can change. Once the reduction reaches it, the curve runs parallel to the diagonal again: louder parts are still turned down, but never by more than you allow."
+          },
+          {
+            "title": "Upward Compression",
+            "state": {
+              "mode": "UWRD",
+              "threshold": -30,
+              "ratio": 2,
+              "knee": 5,
+              "range": 18
+            },
+            "demo": {
+              "sweep": "ratio",
+              "from": 1.3,
+              "to": 6,
+              "period": 5000
+            },
+            "text": "In upward mode the curve rises above the diagonal below the threshold: the quiet parts are brought up, while everything above the threshold is left as it is. The range caps the boost, so very quiet material and noise are never raised too far."
+          }
+        ]
+      },
+      {
+        "type": "scope",
+        "id": "timing",
+        "title": "Attack and Release",
+        "scope": "compTime",
+        "manual": "attack",
+        "intro": "How the compressor moves in time, computed from the plugin’s own detector and smoothing: the curve is the gain change as a quiet note gets loud for a quarter of a second and quiet again, with the waveform behind it.",
+        "colors": {
+          "DWRD RMS": "#00B4FF",
+          "DWRD PEAK": "#FF3B00",
+          "UWRD RMS": "#00E5CC",
+          "UWRD PEAK": "#FFB000"
+        },
+        "colorKeys": [
+          "mode",
+          "detector"
+        ],
+        "controls": [
+          {
+            "type": "choice",
+            "key": "mode",
+            "label": "Mode",
+            "values": [
+              "DWRD",
+              "UWRD"
+            ]
+          },
+          {
+            "type": "choice",
+            "key": "detector",
+            "label": "Detector",
+            "values": [
+              "RMS",
+              "PEAK"
+            ]
+          },
+          {
+            "type": "range",
+            "key": "attack",
+            "label": "Attack",
+            "min": 0.005,
+            "max": 250,
+            "step": 0.005,
+            "scale": "log",
+            "format": "msfine",
+            "alt": {
+              "key": "mode",
+              "value": "UWRD",
+              "set": {
+                "max": 50
+              }
+            }
+          },
+          {
+            "type": "range",
+            "key": "release",
+            "label": "Release",
+            "min": 10,
+            "max": 2500,
+            "step": 0.1,
+            "scale": "log",
+            "format": "ms",
+            "alt": {
+              "key": "mode",
+              "value": "UWRD",
+              "set": {
+                "max": 200
+              }
+            }
+          },
+          {
+            "type": "range",
+            "key": "hold",
+            "label": "Hold",
+            "min": 0,
+            "max": 500,
+            "step": 1,
+            "format": "ms",
+            "alt": {
+              "key": "mode",
+              "value": "UWRD",
+              "set": {
+                "max": 100
+              }
+            }
+          },
+          {
+            "type": "range",
+            "key": "lookahead",
+            "label": "Lookahead",
+            "min": 0,
+            "max": 20,
+            "step": 0.1,
+            "format": "msfine"
+          }
+        ],
+        "steps": [
+          {
+            "title": "Attack",
+            "state": {
+              "mode": "DWRD",
+              "detector": "RMS",
+              "threshold": -20,
+              "ratio": 4,
+              "knee": 6,
+              "range": 60,
+              "attack": 5,
+              "hold": 0,
+              "release": 150,
+              "lookahead": 0,
+              "view": "attack"
+            },
+            "demo": {
+              "sweep": "attack",
+              "from": 0.3,
+              "to": 30,
+              "period": 5000
+            },
+            "text": "When the note gets loud, the attack sets how quickly the gain comes down. A fast attack catches the start of the note straight away; a slow one lets it through before the compression takes hold, which keeps the punch of a transient."
+          },
+          {
+            "title": "Release",
+            "state": {
+              "mode": "DWRD",
+              "detector": "RMS",
+              "threshold": -20,
+              "ratio": 4,
+              "knee": 6,
+              "range": 60,
+              "attack": 5,
+              "hold": 0,
+              "release": 150,
+              "lookahead": 0,
+              "view": "release"
+            },
+            "demo": {
+              "sweep": "release",
+              "from": 40,
+              "to": 800,
+              "period": 5200
+            },
+            "text": "When the note gets quiet again, the release sets how quickly the gain comes back. A short release recovers fast and makes the compression more audible and energetic; a long release is smoother, but keeps the level down for longer after every loud part."
+          },
+          {
+            "title": "Hold",
+            "state": {
+              "mode": "DWRD",
+              "detector": "RMS",
+              "threshold": -20,
+              "ratio": 4,
+              "knee": 6,
+              "range": 60,
+              "attack": 5,
+              "hold": 150,
+              "release": 150,
+              "lookahead": 0,
+              "view": "release"
+            },
+            "demo": {
+              "sweep": "hold",
+              "from": 0,
+              "to": 300,
+              "period": 5200
+            },
+            "text": "The hold keeps the gain where it is for a moment before the release starts, as the flat stretch after the loud part shows. It stops the compressor from letting go between closely spaced hits."
+          },
+          {
+            "title": "Detector",
+            "state": {
+              "mode": "DWRD",
+              "detector": "RMS",
+              "threshold": -20,
+              "ratio": 4,
+              "knee": 6,
+              "range": 60,
+              "attack": 0.5,
+              "hold": 0,
+              "release": 150,
+              "lookahead": 0,
+              "view": "attack"
+            },
+            "demo": {
+              "cycle": "detector",
+              "values": [
+                "RMS",
+                "PEAK"
+              ],
+              "every": 2600
+            },
+            "text": "RMS follows the average level over a short window, so the gain comes down smoothly; PEAK follows every peak instantly, for a sharper, faster response. The colour follows the detector, as in the plugin."
+          },
+          {
+            "title": "Lookahead",
+            "state": {
+              "mode": "DWRD",
+              "detector": "RMS",
+              "threshold": -20,
+              "ratio": 4,
+              "knee": 6,
+              "range": 60,
+              "attack": 3,
+              "hold": 0,
+              "release": 150,
+              "lookahead": 10,
+              "view": "attack"
+            },
+            "demo": {
+              "sweep": "lookahead",
+              "from": 0,
+              "to": 20,
+              "period": 5000
+            },
+            "text": "With lookahead, the compressor sees the signal before it plays, so the gain starts coming down before the loud part arrives. Transients are caught cleanly even with a short attack, without the distortion of a sudden gain change."
+          },
+          {
+            "title": "Upward Compression",
+            "state": {
+              "mode": "UWRD",
+              "detector": "RMS",
+              "threshold": -20,
+              "ratio": 2,
+              "knee": 5,
+              "range": 18,
+              "attack": 3,
+              "hold": 0,
+              "release": 45,
+              "lookahead": 0,
+              "view": "release"
+            },
+            "text": "In upward mode the quiet note is brought up. When the loud part arrives, the attack takes the boost away quickly, so the start of the note isn’t pumped up; when it gets quiet again, the release brings the boost back."
+          }
+        ]
+      },
+      {
+        "type": "feature",
+        "id": "sidechain",
+        "title": "Sidechain EQ",
+        "manual": "sidechain-eq",
+        "intro": "Choose what the compressor listens to. The sidechain EQ shapes the signal that triggers the compression, without changing the sound of the track itself.",
+        "focus": [
+          1.6,
+          67.7,
+          25.8,
+          23.1
+        ],
+        "crop": true,
+        "views": [
+          {
+            "label": "HPF",
+            "image": 2,
+            "pins": [
+              {
+                "x": 6.5,
+                "y": 80,
+                "label": "High-pass filter",
+                "side": "right"
+              },
+              {
+                "x": 25.2,
+                "y": 71.5,
+                "label": "Monitoring",
+                "side": "left"
+              }
+            ]
+          },
+          {
+            "label": "BELL",
+            "image": 3,
+            "pins": [
+              {
+                "x": 5.2,
+                "y": 80,
+                "label": "High-pass filter",
+                "side": "top"
+              },
+              {
+                "x": 17,
+                "y": 75,
+                "label": "Bell",
+                "side": "bottom"
+              },
+              {
+                "x": 25.2,
+                "y": 71.5,
+                "label": "Monitoring",
+                "side": "left"
+              }
+            ]
+          }
+        ],
+        "columns": [
+          {
+            "title": "High-Pass Filter",
+            "text": "Keeps kick and bass from driving the compression of a full mix, so the rest of the track stops pumping. From 12 to 48 dB/oct."
+          },
+          {
+            "title": "Bell",
+            "text": "Boosts or cuts one range in the sidechain: boost the sibilance for de-essing, or cut a resonance so it stops setting off the compressor."
+          },
+          {
+            "title": "Low-Pass Filter",
+            "text": "Keeps cymbals and hi-hats from triggering the compression."
+          },
+          {
+            "title": "Monitoring",
+            "text": "Listen to the sidechain on its own while you set the filters, with its spectrum behind the EQ curve."
+          }
+        ],
+        "pair": {
+          "plot": "compSidechain",
+          "left": {
+            "label": "Flat sidechain",
+            "state": {}
+          },
+          "right": {
+            "HPF": {
+              "label": "High-pass at 150 Hz, 24 dB/oct",
+              "state": {
+                "hpf": 150,
+                "hpfSlope": 24
+              }
+            },
+            "BELL": {
+              "label": "High-pass and a 12 dB bell at 6.5 kHz",
+              "state": {
+                "hpf": 150,
+                "hpfSlope": 24,
+                "bell": 6500,
+                "bellGain": 12,
+                "bellQ": 2
+              }
+            }
+          },
+          "caption": "The same mix through the same compressor, computed from the plugin’s own filters: a kick every quarter of a second, a sustained voice and two bursts of sibilance. With a flat sidechain, every kick pulls the gain down and the voice pumps with it. With the high-pass, the compression follows the voice and stays steady; add the bell on the sibilance and it also dips on the two bursts, like a de-esser. Switch between HPF and BELL above to compare."
+        }
+      },
+      {
+        "type": "start",
+        "id": "get-started",
+        "title": "Getting Started",
+        "steps": [
+          {
+            "title": "Download",
+            "text": "Pay what you want on itch.io, or enter 0 to get the full version for free. Free for personal and commercial use.",
+            "action": "download"
+          },
+          {
+            "title": "Install",
+            "text": "Run the installer, or copy the plugin files yourself: VST3 on Windows, AU and VST3 on macOS.",
+            "link": {
+              "label": "Installation guide",
+              "page": "install"
+            }
+          },
+          {
+            "title": "Read the Manual",
+            "text": "Every control in detail, with tips, ranges and defaults.",
+            "link": {
+              "label": "Open the manual",
+              "page": "manual"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "install": {
+    "title": "Install",
+    "intro": "KrystalComp is available on itch.io as pay what you want: enter 0 to download the full version for free. The download contains both the installer and the plugin files, so you can choose how to install it."
+  },
+  "manual": {
+    "title": "Manual",
+    "intro": "KrystalComp is a compressor for mixing and mastering, with downward and upward compression, a three-band sidechain EQ and a real-time display with the compression curve. This manual covers every control, with tips, ranges and defaults.",
+    "chapters": [
+      {
+        "id": "getting-around",
+        "title": "Getting Around",
+        "intro": [
+          "Start here if you are new to KrystalComp. The Quick Start gets you to a good result in a few steps, and the topics that follow explain how the signal moves through the plugin and how to find your way around the plugin window."
+        ],
+        "topics": [
+          {
+            "id": "quick-start",
+            "title": "Quick Start",
+            "body": [
+              "If you just want to start compressing, this is the fastest way to a good result:",
+              {
+                "steps": [
+                  "Leave <strong>MODE</strong> on DWRD for classic downward compression, and lower <strong>THRESH</strong> until the GR meters show a few dB of gain reduction on the loudest parts.",
+                  "Set the <strong>RATIO</strong>: around 2:1 to 4:1 for gentle control, higher for firm, limiting-style compression.",
+                  "Shape the response with <strong>ATTACK</strong> and <strong>RELEASE</strong>: a slower attack lets the transients through, a faster one catches them.",
+                  "Turn on <strong>AUTO</strong> for Automatic Loudness Matching, so you can compare the result with the original at the same level.",
+                  "If the low end drives too much compression, raise <strong>HPF</strong> in the sidechain EQ."
+                ]
+              },
+              "Open the CURVE tab to see the compression curve as you adjust it, and use the MIX slider for parallel compression."
+            ]
+          },
+          {
+            "id": "signal-path",
+            "title": "Signal Path",
+            "body": [
+              "Processing always follows the same order. The dry signal used by the dry/wet mix and by bypass is taken before the input gain.",
+              {
+                "steps": [
+                  "<strong>Input gain</strong> is applied.",
+                  "The <strong>sidechain</strong> is taken from the signal after the input gain, or from the external sidechain input, and goes through the <strong>sidechain EQ</strong>. The channels are combined as set by the CH switch.",
+                  "The <strong>detector</strong> follows the level of the sidechain, in RMS or Peak mode.",
+                  "The gain change is computed from the <strong>threshold</strong>, <strong>ratio</strong>, <strong>knee</strong> and <strong>range</strong>, and smoothed by the <strong>attack</strong>, <strong>hold</strong> and <strong>release</strong>.",
+                  "With <strong>lookahead</strong> on, the audio is delayed so the gain change can start before the signal it reacts to.",
+                  "The gain change is applied to the audio, at a higher sample rate with <strong>oversampling</strong> on.",
+                  "<strong>Makeup gain</strong> is applied, then the gain from <strong>Automatic Loudness Matching</strong>.",
+                  "The <strong>dry/wet mix</strong> blends the result with the dry signal, kept in time with it. The output meters read the final signal."
+                ]
+              },
+              {
+                "note": "The same gain change is applied to both channels, so the stereo image never shifts."
+              }
+            ]
+          },
+          {
+            "id": "layout",
+            "title": "User Interface",
+            "body": [
+              {
+                "figure": {
+                  "image": 0,
+                  "crop": false,
+                  "caption": "The KrystalComp user interface in downward mode with the RMS detector.",
+                  "pins": [
+                    {
+                      "x": 40.9,
+                      "y": 3.6,
+                      "label": "Top",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 23.5,
+                      "y": 50,
+                      "label": "Sidechain EQ",
+                      "side": "right"
+                    },
+                    {
+                      "x": 14.5,
+                      "y": 79,
+                      "label": "EQ display",
+                      "side": "right"
+                    },
+                    {
+                      "x": 54.6,
+                      "y": 30,
+                      "label": "Display",
+                      "side": "top"
+                    },
+                    {
+                      "x": 88.4,
+                      "y": 30,
+                      "label": "Meters",
+                      "side": "left"
+                    },
+                    {
+                      "x": 54.6,
+                      "y": 77,
+                      "label": "Compressor",
+                      "side": "top"
+                    },
+                    {
+                      "x": 89.8,
+                      "y": 69,
+                      "label": "Gain and mix",
+                      "side": "left"
+                    },
+                    {
+                      "x": 17.9,
+                      "y": 95.5,
+                      "label": "Bottom",
+                      "side": "top"
+                    }
+                  ]
+                }
+              },
+              {
+                "table": {
+                  "head": [
+                    "Area",
+                    "What it holds"
+                  ],
+                  "rows": [
+                    [
+                      "Top",
+                      "Detector, mode and oversampling selectors (DET, MODE, OS), the AUTO button for Automatic Loudness Matching and the display settings (gear)"
+                    ],
+                    [
+                      "Sidechain EQ",
+                      "BELL and GAIN, HPF and LPF knobs"
+                    ],
+                    [
+                      "EQ display",
+                      "Sidechain spectrum and EQ curve with draggable handles, sidechain monitoring button (headphones)"
+                    ],
+                    [
+                      "Display",
+                      "Real-time display with the CURVE tab, the bypass button, the legend and the zoom button"
+                    ],
+                    [
+                      "Meters",
+                      "Input meters (IN), gain reduction or gain increase meters (GR or GI) and output meters (OUT), each with a peak hold readout"
+                    ],
+                    [
+                      "Compressor",
+                      "THRESH, RATIO, ATTACK and RELEASE knobs; KNEE, RANGE, HOLD and LKHD sliders"
+                    ],
+                    [
+                      "Gain and mix",
+                      "INPUT and MAKEUP knobs, MIX slider; the Krystal Dynamics logo opens information and updates"
+                    ],
+                    [
+                      "Bottom",
+                      "Sidechain source and channel selectors (SIDECHAIN, CH), help bar"
+                    ]
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "controls",
+            "title": "Adjusting Controls",
+            "body": [
+              "Drag knobs and sliders up and down, or use the mouse wheel. Knobs show their value below: click it to type a new one. The KNEE, RANGE, HOLD, LKHD and MIX sliders fill up with their value and show it in the help bar while you adjust them.",
+              "DET, MODE, OS, SIDECHAIN and CH change with each click, moving to the next value. AUTO, bypass and sidechain monitoring switch on and off."
+            ],
+            "more": [
+              {
+                "title": "What You Can Automate",
+                "body": [
+                  "Every control that affects the sound can be automated from your DAW (see Parameter Reference). The display zoom, the curve panel and the settings belong to the user interface and can’t be automated."
+                ]
+              }
+            ]
+          },
+          {
+            "id": "help-bar",
+            "title": "Help Bar",
+            "body": [
+              "The bar along the bottom of the plugin window gives a short description of whatever control you are hovering over. Otherwise it reads <em>Hover any control for details</em>."
+            ]
+          },
+          {
+            "id": "window-size",
+            "title": "Resizing the Plugin Window",
+            "body": [
+              "Drag the lower-right corner to resize the plugin window, in 5% steps from 75% to 125% of the original 950 × 520. A popup shows the current scale while you drag, and the size is saved with the session."
+            ]
+          },
+          {
+            "id": "latency",
+            "title": "Latency",
+            "body": [
+              "With lookahead and oversampling off, KrystalComp adds no latency. Lookahead adds a fixed 20 ms whatever its value, and oversampling adds the latency of its filters. The total is reported to your DAW and compensated automatically, so KrystalComp stays sample-aligned with the rest of your tracks.",
+              {
+                "note": "When the transport is stopped and the input stays silent for a few seconds, KrystalComp pauses its processing to save CPU, and picks up again as soon as the signal returns."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "compression",
+        "title": "Compression",
+        "intro": [
+          "A compressor changes the gain of the signal depending on its level. In downward mode it turns down whatever goes above the threshold; in upward mode it brings up whatever stays below it. The threshold, ratio, knee and range shape how much, the attack, hold and release how fast."
+        ],
+        "topics": [
+          {
+            "id": "mode",
+            "title": "Downward and Upward Compression",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "DWRD, UWRD"
+                  ],
+                  [
+                    "Default",
+                    "DWRD"
+                  ]
+                ]
+              },
+              "Click the MODE button to switch between the two kinds of compression:",
+              {
+                "table": {
+                  "head": [
+                    "Mode",
+                    "What it does"
+                  ],
+                  "rows": [
+                    [
+                      "Downward (DWRD)",
+                      "Turns down the signal above the threshold. The classic compressor: it tames peaks, evens out a performance and glues a mix together"
+                    ],
+                    [
+                      "Upward (UWRD)",
+                      "Brings up the signal below the threshold, leaving the loud parts as they are. It lifts quiet details, room sound and tails, for a fuller, denser sound without squashing the transients"
+                    ]
+                  ]
+                }
+              },
+              "Each mode remembers its own threshold, ratio, knee, range, attack, hold, release and lookahead, so you can switch back and forth without losing your settings. The first time you switch to upward, it starts from settings made for it: −30 dB threshold, 2:1 ratio and an 18 dB range.",
+              "In upward mode the attack and release knobs swap places, so the first knob is always the one that reacts to the signal rising, and some ranges are narrower, matched to upward compression.",
+              "The colour of the interface follows the mode and the detector: blue for downward with RMS, orange-red for downward with Peak, teal for upward with RMS, amber for upward with Peak."
+            ]
+          },
+          {
+            "id": "threshold",
+            "title": "Threshold",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "−60.0 to 0.0 dB"
+                  ],
+                  [
+                    "Default",
+                    "−18.0 dB in downward, −30.0 dB in upward"
+                  ]
+                ]
+              },
+              "The threshold, set with the THRESH knob, is the level where compression starts. In downward mode, everything above it is turned down; in upward mode, everything below it is brought up. It is drawn as a dashed line in the display, so you can see which parts of the signal cross it."
+            ]
+          },
+          {
+            "id": "ratio",
+            "title": "Ratio",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "1:1 to 100:1, up to 16:1 in upward"
+                  ],
+                  [
+                    "Default",
+                    "4:1 in downward, 2:1 in upward"
+                  ]
+                ]
+              },
+              "The ratio, set with the RATIO knob, decides how strongly the level is changed. In downward mode, at 4:1 a signal 8 dB over the threshold comes out only 2 dB over it. Around 2:1 is gentle, 4:1 to 8:1 is firm, and from 20:1 up the compressor behaves like a limiter.",
+              "In upward mode the ratio works the other way: at 2:1 a signal 10 dB under the threshold comes out only 5 dB under it."
+            ]
+          },
+          {
+            "id": "knee",
+            "title": "Knee",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "0 to 72 dB, up to 36 dB in upward"
+                  ],
+                  [
+                    "Default",
+                    "18 dB in downward, 5 dB in upward"
+                  ]
+                ]
+              },
+              "The knee, set with the KNEE slider, decides how gradually compression starts around the threshold. At 0 dB it starts abruptly, right at the threshold; with a wider knee it fades in over a range of levels around it, for a smoother, less noticeable action. Open the CURVE tab to see the knee on the compression curve."
+            ]
+          },
+          {
+            "id": "range",
+            "title": "Range",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "0 to 60 dB"
+                  ],
+                  [
+                    "Default",
+                    "60 dB in downward, 18 dB in upward"
+                  ]
+                ]
+              },
+              "The range, set with the RANGE slider, is the most gain the compressor can take away in downward mode, or add in upward mode. Lower it to keep the compression in check however loud or quiet the signal gets: in upward mode, it stops very quiet parts and noise from being raised too far."
+            ]
+          },
+          {
+            "id": "attack",
+            "title": "Attack",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "0.005 to 250 ms, up to 50 ms in upward"
+                  ],
+                  [
+                    "Default",
+                    "0.25 ms in downward, 3 ms in upward"
+                  ]
+                ]
+              },
+              "The attack, set with the ATTACK knob, decides how quickly the compressor reacts when the signal rises. In downward mode it is how fast the gain comes down above the threshold: a slower attack lets the start of each transient through, for punch, while a faster one catches it, for tighter control.",
+              "In upward mode it is how fast the added gain is taken away when the signal rises, so a fast attack keeps transients from being boosted."
+            ]
+          },
+          {
+            "id": "release",
+            "title": "Release",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "10 to 2500 ms, up to 200 ms in upward"
+                  ],
+                  [
+                    "Default",
+                    "209.2 ms in downward, 45.1 ms in upward"
+                  ]
+                ]
+              },
+              "The release, set with the RELEASE knob, decides how quickly the compressor lets go when the signal falls. A short release recovers fast and makes the compression more audible and energetic; a long release is smoother but holds the level down for longer. In upward mode it is how fast the gain comes back up in quieter passages."
+            ]
+          },
+          {
+            "id": "hold",
+            "title": "Hold",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "0 to 500 ms, up to 100 ms in upward"
+                  ],
+                  [
+                    "Default",
+                    "0 ms"
+                  ]
+                ]
+              },
+              "The hold, set with the HOLD slider, keeps the gain where it is for a moment after the signal falls, before the release starts. It avoids the compressor letting go between closely spaced hits, and keeps low notes steady."
+            ]
+          },
+          {
+            "id": "detector",
+            "title": "Detector",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "RMS, Peak"
+                  ],
+                  [
+                    "Default",
+                    "RMS"
+                  ]
+                ]
+              },
+              "The DET button chooses how the compressor reads the level:",
+              {
+                "table": {
+                  "head": [
+                    "Detector",
+                    "Character"
+                  ],
+                  "rows": [
+                    [
+                      "RMS",
+                      "Follows the average level, over a short window: a smoother, more musical response that reacts to how loud the signal sounds"
+                    ],
+                    [
+                      "Peak",
+                      "Follows the peaks instantly: a sharper, faster response that catches every transient"
+                    ]
+                  ]
+                }
+              },
+              "In upward mode, the compressor also keeps an eye on the peaks with either detector, so the start of a hit never gets the extra gain meant for the quiet parts."
+            ]
+          },
+          {
+            "id": "lookahead",
+            "title": "Lookahead",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "0 to 20 ms"
+                  ],
+                  [
+                    "Default",
+                    "0 ms in downward, 10 ms in upward"
+                  ]
+                ]
+              },
+              "Lookahead, set with the LKHD slider, lets the compressor react before the signal arrives: the audio is delayed, so the gain change can start up to 20 ms ahead of a peak. Even a fast attack then catches transients cleanly, without distortion.",
+              "Any value above 0 ms adds a fixed 20 ms latency, compensated by your DAW. Changing the value doesn’t change the latency, but switching between 0 ms and any other value does."
+            ]
+          },
+          {
+            "id": "oversampling",
+            "title": "Oversampling",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Off, 2×, 4×"
+                  ],
+                  [
+                    "Default",
+                    "Off"
+                  ]
+                ]
+              },
+              "Fast gain changes create harmonics, and at normal sample rates some of them fold back into the audible range as aliasing. The OS button applies the gain change at 2 or 4 times the session sample rate, so the result stays clean with very fast attack and release times. Higher factors use more CPU and add some latency, compensated automatically."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sidechain",
+        "title": "Sidechain",
+        "intro": [
+          "The sidechain is the signal the compressor listens to. Shaping it with the sidechain EQ, or feeding it from another track, changes what triggers the compression without changing the sound of the signal itself."
+        ],
+        "topics": [
+          {
+            "id": "sidechain-eq",
+            "title": "Sidechain EQ",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "HPF, LPF",
+                    "20 Hz to 20 kHz, off at the ends"
+                  ],
+                  [
+                    "Bell",
+                    "20 Hz to 20 kHz, 1 kHz by default"
+                  ],
+                  [
+                    "Gain",
+                    "±24 dB, 0 dB by default"
+                  ]
+                ]
+              },
+              "The sidechain EQ shapes the signal the compressor listens to, with a high-pass filter, a bell and a low-pass filter:",
+              {
+                "table": {
+                  "head": [
+                    "Band",
+                    "What it does"
+                  ],
+                  "rows": [
+                    [
+                      "HPF",
+                      "Removes the low end from the sidechain, so kick and bass stop driving the compression of a full mix"
+                    ],
+                    [
+                      "BELL and GAIN",
+                      "Boosts or cuts one frequency range: boost it to make the compressor react more to it, for example sibilance for de-essing, or cut it to make it react less"
+                    ],
+                    [
+                      "LPF",
+                      "Removes the top end from the sidechain, so cymbals and hi-hats trigger less compression"
+                    ]
+                  ]
+                }
+              },
+              {
+                "figure": {
+                  "image": 3,
+                  "crop": true,
+                  "focus": [
+                    1.6,
+                    67.7,
+                    25.8,
+                    23.1
+                  ],
+                  "caption": "The EQ display with the high-pass filter at 48 Hz and the bell boosted by 6.7 dB at 1.2 kHz, over the sidechain spectrum."
+                }
+              },
+              "The EQ display below the knobs shows the sidechain spectrum and the EQ curve. Hover over it to show the three handles: drag them to set the frequencies and the bell gain, use the mouse wheel on the HPF and LPF handles to change their slope (12, 24, 36 or 48 dB/oct) and on the bell handle to change its width, and double-click a handle to reset it.",
+              {
+                "note": "The spectrum can be switched off, or set to Low quality to save CPU, from the display settings."
+              }
+            ]
+          },
+          {
+            "id": "monitor",
+            "title": "Sidechain Monitoring",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Off, On"
+                  ],
+                  [
+                    "Default",
+                    "Off"
+                  ]
+                ]
+              },
+              "The headphones button on the EQ display lets you listen to the sidechain after the EQ, the signal the compressor is reacting to. It’s the quickest way to set the filters: listen while you move them, until you hear only the part that should trigger the compression. The sidechain is kept in time with your other tracks."
+            ]
+          },
+          {
+            "id": "external",
+            "title": "External Sidechain",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "INT, EXT"
+                  ],
+                  [
+                    "Default",
+                    "INT"
+                  ]
+                ]
+              },
+              "The SIDECHAIN selector chooses what triggers the compression. INT uses the signal itself, after the input gain. EXT uses the sidechain input of the plugin, so another track can control the compression, for example a kick ducking a bass. Route the other track to the sidechain input in your DAW."
+            ]
+          },
+          {
+            "id": "channels",
+            "title": "Channel Detection",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "MID, STE"
+                  ],
+                  [
+                    "Default",
+                    "MID"
+                  ]
+                ]
+              },
+              "The CH selector decides how the two channels of the sidechain are combined. MID listens to their average, so sounds in the centre count the most. STE listens to whichever channel is louder, so a sound panned to one side triggers the compression as much as one in the centre.",
+              "Either way, the same gain change is applied to both channels."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gain",
+        "title": "Gain and Mix",
+        "intro": [
+          "Input gain sets the level going into the compressor, makeup gain the level coming out. The dry/wet mix blends the original signal back in, and Automatic Loudness Matching keeps the output level matched to the input."
+        ],
+        "topics": [
+          {
+            "id": "input",
+            "title": "Input Gain",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "−36.0 to +36.0 dB"
+                  ],
+                  [
+                    "Default",
+                    "0.0 dB"
+                  ]
+                ]
+              },
+              "Set with the INPUT knob and applied before the compressor and the input meters. With the threshold fixed, more input gain means more compression in downward mode, and less in upward mode."
+            ]
+          },
+          {
+            "id": "makeup",
+            "title": "Makeup Gain",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "−36.0 to +36.0 dB"
+                  ],
+                  [
+                    "Default",
+                    "0.0 dB"
+                  ]
+                ]
+              },
+              "Set with the MAKEUP knob and applied after the compressor, to bring the level back up after downward compression, or down after upward compression."
+            ]
+          },
+          {
+            "id": "mix",
+            "title": "Dry/Wet Mix",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "0 to 100%"
+                  ],
+                  [
+                    "Default",
+                    "100%"
+                  ]
+                ]
+              },
+              "Set with the MIX slider, it blends the compressed signal with the original. Values below 100% give parallel compression: the density of heavy compression with the natural dynamics of the original. The original is kept in time with the compressed signal, so there is no phasing at any setting."
+            ]
+          },
+          {
+            "id": "auto",
+            "title": "Automatic Loudness Matching",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Off, On"
+                  ],
+                  [
+                    "Default",
+                    "Off"
+                  ],
+                  [
+                    "Range of compensation",
+                    "±36 dB"
+                  ]
+                ]
+              },
+              "Compression changes the loudness, and a louder signal tends to win a comparison even when it doesn’t sound better. Automatic Loudness Matching measures the loudness of the input and of the compressed signal and compensates the difference, so you can judge each setting at the same level. Turn it on with the AUTO button, which then shows the gain being applied.",
+              "Because the measurement starts before the input gain, it compensates that too."
+            ],
+            "more": [
+              {
+                "title": "When the Loudness Is Measured",
+                "body": [
+                  "Loudness is measured with K-weighting, the same weighting used for LUFS, over a window of about 1.5 seconds. After you change a parameter that affects loudness, the measurement starts again once the window has been refreshed, and the gain moves smoothly to the new value. Changes to makeup gain, dry/wet mix, oversampling and bypass don’t restart it.",
+                  "The applied gain is saved with the session."
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "monitoring",
+        "title": "Monitoring",
+        "intro": [
+          "Bypass compares the compressed signal with the original, and the meters show the level going in, the gain change and the level coming out."
+        ],
+        "topics": [
+          {
+            "id": "bypass",
+            "title": "Bypass",
+            "body": [
+              "The power button in the lower-left corner of the display bypasses all processing so you hear the original signal. It keeps the same latency, so switching never shifts the timing, and the change is ramped to avoid clicks. While bypassed, the meters, the peak hold readouts, the display and the AUTO value stay frozen until you switch back."
+            ]
+          },
+          {
+            "id": "meters",
+            "title": "Input, Gain and Output Meters",
+            "body": [
+              {
+                "aside": {
+                  "body": [
+                    "The input meters, labelled IN, show the level after the input gain; the output meters, labelled OUT, show the final output. Each has a bar for the left and the right channel: the bar shows the RMS level, with the peak level drawn on top.",
+                    "In the middle, the gain reduction meters, labelled GR, show how much the compressor turns the signal down. In upward mode they become gain increase meters, labelled GI, showing how much it brings the signal up.",
+                    "All the meters follow the zoom of the display."
+                  ],
+                  "figures": [
+                    {
+                      "image": 0,
+                      "crop": true,
+                      "focus": [
+                        81.9,
+                        5.0,
+                        5.2,
+                        50.8
+                      ],
+                      "label": "Input meters"
+                    },
+                    {
+                      "image": 0,
+                      "crop": true,
+                      "focus": [
+                        87.2,
+                        5.0,
+                        5.2,
+                        50.8
+                      ],
+                      "label": "Gain reduction meters"
+                    },
+                    {
+                      "image": 0,
+                      "crop": true,
+                      "focus": [
+                        92.5,
+                        5.0,
+                        5.2,
+                        50.8
+                      ],
+                      "label": "Output meters"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "peak-readouts",
+            "title": "Peak Hold Readouts",
+            "body": [
+              "The readouts below the meters hold the highest value since the last reset: the highest input and output peak, and the largest gain reduction or gain increase. Click a readout to reset it. Output peaks above 0 dB are shown in red."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "display",
+        "title": "Real-Time Display",
+        "intro": [
+          "The real-time display shows the last 3 seconds of signal and gain change against the threshold, and opens the compression curve, so you can see exactly what the compressor is doing while you adjust it."
+        ],
+        "topics": [
+          {
+            "id": "traces",
+            "title": "Display Traces",
+            "body": [
+              {
+                "table": {
+                  "head": [
+                    "Trace",
+                    "What it shows"
+                  ],
+                  "rows": [
+                    [
+                      "Input (IN)",
+                      "The level of the signal after the input gain"
+                    ],
+                    [
+                      "Gain reduction (GR) or gain increase (GI)",
+                      "How much the compressor turns the signal down, drawn from the top, or brings it up, drawn from the bottom"
+                    ],
+                    [
+                      "Output (OUT)",
+                      "The level of the final output"
+                    ]
+                  ]
+                }
+              },
+              "The threshold is drawn as a dashed line. Click an entry in the legend to hide or show its trace."
+            ]
+          },
+          {
+            "id": "curve",
+            "title": "Compression Curve",
+            "body": [
+              {
+                "figure": {
+                  "image": 1,
+                  "crop": true,
+                  "focus": [
+                    29.5,
+                    8.1,
+                    50,
+                    44.2
+                  ],
+                  "caption": "The compression curve open over the display, in downward mode with the Peak detector."
+                }
+              },
+              "Click the CURVE tab on the left of the display to slide out the compression curve: output level against input level, on the same dB scale as the display. It shows the threshold, ratio, knee and range at a glance, with a dot following the level the compressor is reacting to right now. Click the tab again to close it; its state is remembered."
+            ]
+          },
+          {
+            "id": "zoom",
+            "title": "Zoom",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "−18, −36, −72 dB"
+                  ],
+                  [
+                    "Default",
+                    "−36 dB"
+                  ]
+                ]
+              },
+              "The button at the lower right of the display sets how far down the scale goes, and changes with each click. The compression curve and all the meters follow the same scale."
+            ]
+          }
+        ],
+        "after": [
+          {
+            "note": "The display zoom and the state of the curve panel are saved as preferences and with the session."
+          }
+        ]
+      },
+      {
+        "id": "settings",
+        "title": "Settings and Updates",
+        "intro": [
+          "Choose light or dark themes and set how much CPU the user interface uses. The Krystal Dynamics logo gives you the version, updates and credits."
+        ],
+        "topics": [
+          {
+            "id": "display-settings",
+            "title": "Display Settings",
+            "body": [
+              "The gear at the top of the plugin window opens the settings.",
+              {
+                "table": {
+                  "head": [
+                    "Setting",
+                    "Values"
+                  ],
+                  "rows": [
+                    [
+                      "Knobs",
+                      "Light, Dark"
+                    ],
+                    [
+                      "Background",
+                      "Light, Dark"
+                    ],
+                    [
+                      "Display",
+                      "Light, Dark"
+                    ],
+                    [
+                      "GUI FPS",
+                      "60, 30, 20 fps"
+                    ],
+                    [
+                      "FFT Quality",
+                      "Off, Low, High"
+                    ],
+                    [
+                      "Graphics",
+                      "Full, Low"
+                    ]
+                  ]
+                }
+              },
+              "Set the knobs, the background and the display to light or dark independently. If you are short on CPU, a lower frame rate, a lower FFT quality for the sidechain spectrum and Low graphics, which leaves out the shadows, lighten the load of the user interface. The sound is not affected.",
+              {
+                "figures": [
+                  {
+                    "image": 0,
+                    "crop": false,
+                    "caption": "Light, with a dark display"
+                  },
+                  {
+                    "image": 1,
+                    "crop": false,
+                    "caption": "Dark"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "saved",
+            "title": "What Is Saved Where",
+            "body": [
+              {
+                "table": {
+                  "head": [
+                    "Saved with the session",
+                    "Saved as preferences"
+                  ],
+                  "rows": [
+                    [
+                      "All parameters",
+                      "Themes"
+                    ],
+                    [
+                      "The settings of each mode",
+                      "GUI FPS, FFT quality and graphics"
+                    ],
+                    [
+                      "Plugin window size",
+                      "Display zoom"
+                    ],
+                    [
+                      "Automatic Loudness Matching gain",
+                      "Curve panel open or closed"
+                    ]
+                  ]
+                }
+              },
+              "Preferences apply to every instance and are stored in <code>Documents/Krystal Dynamics/KrystalComp/preferences.xml</code>."
+            ]
+          },
+          {
+            "id": "updates",
+            "title": "Updates and Information",
+            "body": [
+              "Click the Krystal Dynamics logo for the version, credits and links. KrystalComp checks the website for new versions: when one is out, the logo lets you know and the plugin window shows what’s new, with a download link. The check only reads the latest version number and sends no personal data."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "parameters",
+        "title": "Parameter Reference",
+        "intro": [
+          "All automatable parameters, in the order they appear in your DAW."
+        ],
+        "after": [
+          {
+            "table": {
+              "head": [
+                "Parameter",
+                "Range",
+                "Default"
+              ],
+              "rows": [
+                [
+                  "Input Level",
+                  "−36.0 to +36.0 dB",
+                  "0.0 dB"
+                ],
+                [
+                  "Mix",
+                  "0 to 100%",
+                  "100%"
+                ],
+                [
+                  "Makeup",
+                  "−36.0 to +36.0 dB",
+                  "0.0 dB"
+                ],
+                [
+                  "Threshold",
+                  "−60.0 to 0.0 dB",
+                  "−18.0 dB"
+                ],
+                [
+                  "Ratio",
+                  "1:1 to 100:1",
+                  "4:1"
+                ],
+                [
+                  "Knee",
+                  "0 to 72 dB",
+                  "18 dB"
+                ],
+                [
+                  "Hold",
+                  "0 to 500 ms",
+                  "0 ms"
+                ],
+                [
+                  "Attack",
+                  "0.005 to 250 ms",
+                  "0.25 ms"
+                ],
+                [
+                  "Release",
+                  "10 to 2500 ms",
+                  "209.2 ms"
+                ],
+                [
+                  "Detector Mode",
+                  "RMS, Peak",
+                  "RMS"
+                ],
+                [
+                  "SC High-Pass Freq",
+                  "20 Hz to 20 kHz",
+                  "20 Hz"
+                ],
+                [
+                  "SC Bell Freq",
+                  "20 Hz to 20 kHz",
+                  "1 kHz"
+                ],
+                [
+                  "SC Bell Gain",
+                  "±24 dB",
+                  "0.0 dB"
+                ],
+                [
+                  "SC Low-Pass Freq",
+                  "20 Hz to 20 kHz",
+                  "20 kHz"
+                ],
+                [
+                  "External SC",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "SC Monitor",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Auto Gain",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Oversampling",
+                  "Off, 2x, 4x",
+                  "Off"
+                ],
+                [
+                  "Bypass",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Range",
+                  "0 to 60 dB",
+                  "60 dB"
+                ],
+                [
+                  "Lookahead",
+                  "0 to 20 ms",
+                  "0 ms"
+                ],
+                [
+                  "Comp Mode",
+                  "Down, Up",
+                  "Down"
+                ],
+                [
+                  "Link",
+                  "AVG (MID), MAX (STE)",
+                  "AVG"
+                ],
+                [
+                  "SC High-Pass Slope",
+                  "12, 24, 36, 48 dB/oct",
+                  "12 dB/oct"
+                ],
+                [
+                  "SC Low-Pass Slope",
+                  "12, 24, 36, 48 dB/oct",
+                  "12 dB/oct"
+                ],
+                [
+                  "SC Bell Q",
+                  "0.1 to 10",
+                  "1.0"
+                ]
+              ]
+            }
+          },
+          {
+            "note": "The defaults are those of downward mode; upward mode has its own, listed in each topic."
+          }
+        ]
+      }
+    ]
+  },
+  "history": {
+    "title": "Version History",
+    "intro": "Everything new in each release. KrystalComp checks for updates on its own and lets you know in the plugin window when a new version is out."
+  }
+}

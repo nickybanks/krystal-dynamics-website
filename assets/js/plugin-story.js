@@ -280,6 +280,180 @@
       </section>`;
   }
 
+  // Scroll-driven plot with its own controls: section.scope names the plot (window.KDScopes), section.controls the
+  // controls above it, and each step sets a state (and may run a demo) while it is the active one.
+  //   controls: { type: 'choice', key, values } | { type: 'range', key, label, min, max, step, scale: 'log', format }
+  //             | { type: 'toggle', key, label, disables }
+  //   A range can narrow in some states: alt: { key, value, set: { min, max } } (KrystalComp's upward mode).
+  //   section.colors + section.colorKeys: the accent follows the state, e.g. { 'UWRD PEAK': '#FFB000' } by mode and detector.
+  const SCOPE_FORMATS = {
+    attack: v => (v < 10 ? 'Fast' : v < 18 ? 'Medium' : 'Slow'),
+    ms: v => `${v < 100 ? v.toFixed(0) : Math.round(v)} ms`,
+    msfine: v => `${v === 0 ? '0' : v < 1 ? v.toFixed(2) : v < 100 ? v.toFixed(1) : Math.round(v)} ms`,
+    pct: v => `${Math.round(v)}%`,
+    db: v => `${v < -0.05 ? '−' : ''}${Math.abs(v).toFixed(1)} dB`,
+    ratio: v => `${v.toFixed(1)}:1`,
+  };
+  const scopeRange = (c, state) => (c.alt && state[c.alt.key] === c.alt.value ? { ...c, ...c.alt.set } : c);
+  const scopeColor = (section, state, fallback) =>
+    (section.colors && section.colors[(section.colorKeys || []).map(k => state[k]).join(' ')]) || fallback;
+  const scopeFormat = (control, v) => (SCOPE_FORMATS[control.format] || (x => String(x)))(Number(v));
+  // Range input position (0-1000) <-> value, linear or logarithmic
+  const toSlider = (c, v) => Math.round(1000 * (c.scale === 'log' ? Math.log(v / c.min) / Math.log(c.max / c.min) : (v - c.min) / (c.max - c.min)));
+  const fromSlider = (c, p) => {
+    const t = p / 1000;
+    const v = c.scale === 'log' ? c.min * Math.pow(c.max / c.min, t) : c.min + t * (c.max - c.min);
+    return c.step ? Math.round(v / c.step) * c.step : v;
+  };
+
+  function renderScope(plugin, data, section, index) {
+    const first = section.steps[0].state || {};
+    const control = c => {
+      if (c.type === 'choice') return `
+        <div class="ks-scope-modes" role="group" aria-label="${esc(c.label || c.key)}" data-control="${esc(c.key)}">
+          ${c.values.map(v => `<button type="button" data-value="${esc(v)}" style="--ks-tab-color:var(--ks-color)" aria-pressed="${v === first[c.key]}"${v === first[c.key] ? ' class="is-active"' : ''}>${esc(v)}</button>`).join('')}
+        </div>`;
+      if (c.type === 'toggle') return `
+        <label class="ks-scope-toggle" data-control="${esc(c.key)}"><input type="checkbox"${first[c.key] ? ' checked' : ''}><span>${esc(c.label)}</span></label>`;
+      return `
+        <label class="ks-scope-slope" data-control="${esc(c.key)}">
+          <span>${esc(c.label)}</span><b class="ks-scope-value">${esc(scopeFormat(c, first[c.key]))}</b>
+          <input type="range" min="0" max="1000" step="1" value="${toSlider(scopeRange(c, first), first[c.key])}" aria-label="${esc(c.label)}">
+        </label>`;
+    };
+    return `
+      <section class="ks ks-curves ks-scope-section" id="${esc(section.id)}" data-ks-scope="${esc(section.scope)}"
+        data-controls="${esc(JSON.stringify(section.controls || []))}" data-colors="${esc(JSON.stringify({ colors: section.colors || null, keys: section.colorKeys || [] }))}"
+        style="--ks-color:${scopeColor(section, first, shotColor(data, 0))}">
+        <div class="container">
+          ${head(section, index, manualLink(plugin, section.manual, 'In the manual'))}
+          <div class="ks-curves-grid">
+            <ol class="ks-curves-steps">
+              ${section.steps.map((step, i) => `
+                <li class="ks-cstep${i === 0 ? ' is-active' : ''}" data-state="${esc(JSON.stringify(step.state || {}))}" data-demo="${esc(JSON.stringify(step.demo || null))}">
+                  <h3>${esc(step.title)}</h3>
+                  <p>${esc(step.text)}</p>
+                </li>`).join('')}
+            </ol>
+            <div class="ks-curves-stage">
+              <div class="ks-curves-sticky">
+                <div class="ks-scope">
+                  <div class="ks-scope-controls">${(section.controls || []).filter(c => c.type !== 'range').map(control).join('')}</div>
+                  <div class="ks-scope-plots"></div>
+                  <div class="ks-scope-sliders">${(section.controls || []).filter(c => c.type === 'range').map(control).join('')}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>`;
+  }
+
+  function initScope(section) {
+    const host = section.querySelector('.ks-scope-plots');
+    const make = window.KDScopes?.[section.dataset.ksScope];
+    if (!host || !make) return;
+    const controls = parse(section.dataset.controls, []);
+    const steps = [...section.querySelectorAll('.ks-cstep')];
+    const el = key => section.querySelector(`[data-control="${key}"]`);
+    const state = { ...parse(steps[0].dataset.state, {}) };
+    const plot = make(host, { ...state });
+    let demo = null;
+
+    const sync = () => controls.forEach(c => {
+      const node = el(c.key);
+      if (!node) return;
+      if (c.type === 'choice') node.querySelectorAll('button').forEach(b => {
+        const on = b.dataset.value === state[c.key];
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on);
+      });
+      else if (c.type === 'toggle') {
+        node.querySelector('input').checked = !!state[c.key];
+        if (c.disables) el(c.disables)?.classList.toggle('is-disabled', !!state[c.key]);
+      } else {
+        node.querySelector('input').value = toSlider(scopeRange(c, state), state[c.key]);
+        node.querySelector('.ks-scope-value').textContent = scopeFormat(c, state[c.key]);
+      }
+    });
+    const colors = parse(section.dataset.colors, { colors: null, keys: [] });
+    const apply = changes => {
+      Object.assign(state, changes);
+      // Values outside a narrower range (upward mode) are brought inside it
+      controls.forEach(c => {
+        if (c.type !== 'range') return;
+        const rg = scopeRange(c, state);
+        state[c.key] = Math.min(rg.max, Math.max(rg.min, state[c.key]));
+      });
+      const color = colors.colors && colors.colors[colors.keys.map(k => state[k]).join(' ')];
+      if (color) section.style.setProperty('--ks-color', color);
+      sync();
+      plot.set({ ...state });
+    };
+    const stopDemo = () => { if (demo) { demo(); demo = null; } };
+
+    // Demos: { sweep: key, from, to, period } moves a value back and forth; { toggle: key, every } flips a switch
+    const runDemo = d => {
+      if (d.sweep) {
+        const t0 = performance.now();
+        let frame = 0, last = 0;
+        const tick = now => {
+          if (now - last > 50) {
+            last = now;
+            const t = 0.5 - 0.5 * Math.cos((now - t0) / (d.period || 3200) * 2 * Math.PI);
+            apply({ [d.sweep]: d.from + (d.to - d.from) * t });
+          }
+          frame = requestAnimationFrame(tick);
+        };
+        frame = requestAnimationFrame(tick);
+        return () => cancelAnimationFrame(frame);
+      }
+      if (d.toggle) {
+        const timer = setInterval(() => apply({ [d.toggle]: !state[d.toggle] }), d.every || 2600);
+        return () => clearInterval(timer);
+      }
+      if (d.cycle) {   // { cycle: key, values, every }: steps through the values of a selector
+        const timer = setInterval(() => {
+          const i = d.values.indexOf(state[d.cycle]);
+          apply({ [d.cycle]: d.values[(i + 1) % d.values.length] });
+        }, d.every || 2600);
+        return () => clearInterval(timer);
+      }
+      return null;
+    };
+
+    let current = -1;
+    onMiddle(steps, i => {
+      if (i === current || i < 0) return;
+      current = i;
+      steps.forEach((s, n) => s.classList.toggle('is-active', n === i));
+      stopDemo();
+      apply(parse(steps[i].dataset.state, {}));
+      const d = parse(steps[i].dataset.demo, null);
+      if (d && !reduceMotion.matches) {
+        const delay = setTimeout(() => { if (current === i) demo = runDemo(d); }, 1300);
+        demo = () => clearTimeout(delay);
+      }
+    });
+
+    controls.forEach(c => {
+      const node = el(c.key);
+      if (!node) return;
+      if (c.type === 'choice') node.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { stopDemo(); apply({ [c.key]: b.dataset.value }); }));
+      else if (c.type === 'toggle') node.querySelector('input').addEventListener('change', e => { stopDemo(); apply({ [c.key]: e.target.checked }); });
+      else node.querySelector('input').addEventListener('input', e => { stopDemo(); apply({ [c.key]: fromSlider(scopeRange(c, state), Number(e.target.value)) }); });
+    });
+    sync();
+
+    new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) stopDemo();
+      else if (!demo && current >= 0 && !reduceMotion.matches) {
+        const d = parse(steps[current].dataset.demo, null);
+        if (d) demo = runDemo(d);
+      }
+    }).observe(section);
+  }
+
   function renderFeature(plugin, data, section, index) {
     const views = section.views || [];
     const first = views[0] || { image: 0 };
@@ -308,6 +482,7 @@
         </div>
         ${section.wave ? renderFoldWaves(section.wave) : ''}
         ${section.compare ? renderDisplayCompare(section.compare) : ''}
+        ${section.pair ? renderPair(section.pair) : ''}
       </section>`;
   }
 
@@ -331,6 +506,19 @@
           <figure data-view="WAVE"><figcaption>Bipolar waveform (WAVE)</figcaption><div class="ks-fold-plot"></div></figure>
           <figure data-view="RECT"><figcaption>Rectified waveform (RECT)</figcaption><div class="ks-fold-plot"></div></figure>
           ${compare.caption ? `<p class="ks-fold-note">${esc(compare.caption)}</p>` : ''}
+        </div>
+      </div>`;
+  }
+
+  // Two plots side by side under a feature: the left one fixed, the right one following the view switch.
+  //   pair: { plot: name in window.KDPanels, left: { label, state }, right: { VIEW: { label, state } }, caption }
+  function renderPair(pair) {
+    return `
+      <div class="container">
+        <div class="ks-fold ks-pair" data-ks-reveal data-pair="${esc(JSON.stringify(pair))}">
+          <figure data-side="left"><figcaption><span class="ks-pair-label"></span><b class="ks-pair-stat"></b></figcaption><div class="ks-fold-plot"></div></figure>
+          <figure data-side="right"><figcaption><span class="ks-pair-label"></span><b class="ks-pair-stat"></b></figcaption><div class="ks-fold-plot"></div></figure>
+          ${pair.caption ? `<p class="ks-fold-note">${esc(pair.caption)}</p>` : ''}
         </div>
       </div>`;
   }
@@ -361,7 +549,7 @@
       </section>`;
   }
 
-  const RENDERERS = { tour: renderTour, curves: renderCurves, feature: renderFeature, start: renderStart };
+  const RENDERERS = { tour: renderTour, curves: renderCurves, scope: renderScope, feature: renderFeature, start: renderStart };
 
   // parts: { action: {href, label}, hero: markup placed between the plugin nav and the sections }
   function render(plugin, data, parts) {
@@ -544,6 +732,23 @@
       });
     }
     const markCompare = label => compare?.querySelectorAll('figure').forEach(fig => fig.classList.toggle('is-active', fig.dataset.view === label));
+    // Two-panel comparison: the right panel follows the selected view
+    const pairEl = section.querySelector('.ks-pair');
+    const pair = pairEl ? parse(pairEl.dataset.pair, null) : null;
+    const drawPanel = (side, spec) => {
+      const make = window.KDPanels?.[pair.plot];
+      if (!make || !spec) return;
+      const fig = pairEl.querySelector(`[data-side="${side}"]`);
+      const res = make(spec.state || {}, { width: 420, height: 200 });
+      fig.querySelector('.ks-fold-plot').innerHTML = res.svg;
+      fig.querySelector('.ks-pair-label').textContent = spec.label || '';
+      fig.querySelector('.ks-pair-stat').textContent = res.stat || '';
+    };
+    const drawPair = label => {
+      if (!pair) return;
+      drawPanel('right', pair.right?.[label] || Object.values(pair.right || {})[0]);
+    };
+    if (pair) { drawPanel('left', pair.left); drawPair(buttons[0]?.textContent.trim()); }
     markCompare(buttons[0]?.textContent.trim());
     if (!shot || buttons.length < 2) return;
     const focus = parse(section.dataset.focus, null);
@@ -560,6 +765,7 @@
       section.style.setProperty('--ks-color', buttons[current].style.getPropertyValue('--ks-tab-color'));
       if (buttons[current].dataset.shape) drawFold(buttons[current].dataset.shape);
       markCompare(buttons[current].textContent.trim());
+      drawPair(buttons[current].textContent.trim());
     };
     buttons.forEach((button, i) => button.addEventListener('click', () => {
       userPicked = true;
@@ -597,6 +803,7 @@
     initReveal(root);
     root.querySelectorAll('[data-ks-tour]').forEach(initTour);
     root.querySelectorAll('[data-ks-curves]').forEach(initCurves);
+    root.querySelectorAll('[data-ks-scope]').forEach(initScope);
     root.querySelectorAll('[data-ks-feature]').forEach(initFeature);
   }
 

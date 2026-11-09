@@ -1,0 +1,1535 @@
+{
+  "aspect": [
+    2636,
+    1320
+  ],
+  "shots": [
+    {
+      "color": "#1ABC9C"
+    },
+    {
+      "color": "#1ABC9C"
+    },
+    {
+      "color": "#1ABC9C"
+    }
+  ],
+  "overview": {
+    "sections": [
+      {
+        "type": "tour",
+        "id": "interface",
+        "title": "Interface",
+        "intro": "KrystalPeak puts the real-time display at the centre, with every control within reach below it. Scroll to go through each part.",
+        "steps": [
+          {
+            "title": "User Interface",
+            "manual": "layout",
+            "image": 0,
+            "focus": null,
+            "text": "The real-time display fills most of the window, so you can always see what the limiter is doing. Below it, three panels hold the controls in the order the signal meets them: input gain and upward compression on the left, attack, release, stereo linking and saturation in the centre, output gain on the right. The limiting mode and the oversampling factor are set along the top, next to bypass, Delta monitoring and the settings, while the gain reduction and output meters run down the right edge.",
+            "pins": [
+              {
+                "x": 34.6,
+                "y": 6.3,
+                "label": "Limiting mode",
+                "side": "bottom"
+              },
+              {
+                "x": 79.6,
+                "y": 3.6,
+                "label": "Monitoring",
+                "side": "bottom"
+              },
+              {
+                "x": 30,
+                "y": 40,
+                "label": "Display",
+                "side": "top"
+              },
+              {
+                "x": 16.6,
+                "y": 70,
+                "label": "Input",
+                "side": "top"
+              },
+              {
+                "x": 46.8,
+                "y": 70,
+                "label": "Limiter",
+                "side": "top"
+              },
+              {
+                "x": 74.2,
+                "y": 70,
+                "label": "Output",
+                "side": "top"
+              },
+              {
+                "x": 93.5,
+                "y": 50,
+                "label": "Meters",
+                "side": "left"
+              }
+            ]
+          },
+          {
+            "title": "Limiting Modes and Oversampling",
+            "manual": "mode",
+            "image": 2,
+            "focus": [
+              25.5,
+              0.4,
+              32,
+              7
+            ],
+            "text": "Three limiting modes decide how each peak is caught: Clean for smooth, transparent limiting, Punch to let more of every transient through, Brick for the tightest control. Click the MODE button to switch between them: they all share the same latency, so you can compare them while the track plays. Next to it, the OVERSAMPLE button runs the limiter at 4 or 8 times the sample rate, for a cleaner top end when you push hard.",
+            "specs": [
+              [
+                "Modes",
+                "Clean, Punch, Brick"
+              ],
+              [
+                "Oversampling",
+                "Off, 4×, 8×"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 34.6,
+                "y": 6.3,
+                "label": "Limiting mode",
+                "side": "bottom"
+              },
+              {
+                "x": 46.5,
+                "y": 6.3,
+                "label": "Oversampling factor",
+                "side": "bottom"
+              }
+            ]
+          },
+          {
+            "title": "Ceiling",
+            "manual": "ceiling",
+            "image": 1,
+            "focus": [
+              20,
+              14.5,
+              50,
+              12
+            ],
+            "text": "The ceiling is the highest level that comes out of KrystalPeak, from −12 to 0 dB. Drag the dashed line or its CEIL handle directly in the display, and watch the gain reduction follow as you move it. Combined with true peak detection, it keeps your master safe from the peaks that hide between samples too.",
+            "specs": [
+              [
+                "Range",
+                "−12 to 0 dB"
+              ],
+              [
+                "Default",
+                "−0.1 dB"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 26,
+                "y": 19.2,
+                "label": "Ceiling line",
+                "side": "bottom"
+              },
+              {
+                "x": 50.6,
+                "y": 21.2,
+                "label": "CEIL handle",
+                "side": "right"
+              }
+            ]
+          },
+          {
+            "title": "Input and Output Gain",
+            "manual": "input",
+            "image": 0,
+            "focus": [
+              [
+                7.6,
+                56.5,
+                17.9,
+                27.1
+              ],
+              [
+                68.4,
+                56.5,
+                11.5,
+                27.1
+              ]
+            ],
+            "text": "The INPUT knob drives the signal into the limiter: the more you raise it, the louder the track gets while the peaks stay at the ceiling. The OUTPUT knob sets the final level after the limiter, useful to compare the result with the original at the same loudness.",
+            "specs": [
+              [
+                "Input, Output",
+                "−36 to +36 dB"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 19.9,
+                "y": 72.4,
+                "label": "Input",
+                "side": "top"
+              },
+              {
+                "x": 74.1,
+                "y": 72.4,
+                "label": "Output",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Upward Compression",
+            "manual": "upward",
+            "image": 0,
+            "focus": [
+              [
+                8,
+                57.6,
+                6.6,
+                25.5
+              ],
+              [
+                1.8,
+                85.2,
+                85,
+                8.4
+              ]
+            ],
+            "text": "Upward compression brings up the quiet passages instead of turning down the loud ones. Raise the UPWARD slider and soft details, reverb tails and quieter sections come forward, while the noise floor stays where it is. The added gain is drawn in yellow along the bottom of the display and of the gain reduction meters, so you always see how much is being lifted.",
+            "specs": [
+              [
+                "Range",
+                "0 to 100%"
+              ],
+              [
+                "Default",
+                "0%"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 10.4,
+                "y": 70.5,
+                "label": "UPWARD",
+                "side": "right"
+              },
+              {
+                "x": 60,
+                "y": 90.5,
+                "label": "Upward gain",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Attack and Release",
+            "manual": "attack",
+            "image": 1,
+            "focus": [
+              27.1,
+              55.5,
+              19.5,
+              27.8
+            ],
+            "text": "The attack decides how quickly the limiter catches a peak: Fast keeps every transient clean, Slow lets the start of each hit run into the ceiling for extra punch and edge. The release sets how quickly the gain recovers afterwards, from 10 ms to 3 seconds. Turn on AUTO, above the RELEASE knob, and the release adapts to the music on its own, as here.",
+            "specs": [
+              [
+                "Attack",
+                "Fast, Medium, Slow"
+              ],
+              [
+                "Release",
+                "10 to 3000 ms"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 31.8,
+                "y": 72,
+                "label": "Attack",
+                "side": "top"
+              },
+              {
+                "x": 45.3,
+                "y": 57.6,
+                "label": "AUTO",
+                "side": "right"
+              },
+              {
+                "x": 41.8,
+                "y": 72.7,
+                "label": "Release",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Stereo Linking and Saturation",
+            "manual": "linking",
+            "image": 0,
+            "focus": [
+              47,
+              58.5,
+              19.6,
+              27
+            ],
+            "text": "Stereo linking sets how much the two channels share their gain reduction: at 100% the stereo image never moves, lower values give more loudness with a freer image. The L/R – M/S switch below lets the limiter work on mid and side instead of left and right. Next to it, SATURATE adds warmth and density as the peaks approach the ceiling, for a fuller, more analogue sound.",
+            "specs": [
+              [
+                "Linking",
+                "0 to 100%"
+              ],
+              [
+                "Saturation",
+                "0 to 100%"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 51.8,
+                "y": 71.3,
+                "label": "Linking",
+                "side": "top"
+              },
+              {
+                "x": 47,
+                "y": 83.1,
+                "label": "L/R – M/S",
+                "side": "left"
+              },
+              {
+                "x": 61.8,
+                "y": 72,
+                "label": "Saturation",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Real-Time Display",
+            "manual": "traces",
+            "image": 0,
+            "focus": [
+              1.8,
+              7.3,
+              85,
+              86.4
+            ],
+            "text": "The display shows the last 5 seconds of input, output, gain reduction, upward gain and loudness, with the loudness value in LU. Click any entry in the legend to hide its trace, and use the zoom button at the lower right to switch between −18, −36 and −72 dB: focus on the peaks, or see the quieter parts of the track.",
+            "pins": [
+              {
+                "x": 5,
+                "y": 50.5,
+                "label": "Legend",
+                "side": "right"
+              },
+              {
+                "x": 34,
+                "y": 17,
+                "label": "Gain reduction",
+                "side": "bottom"
+              },
+              {
+                "x": 79.5,
+                "y": 60.6,
+                "label": "Loudness",
+                "side": "top"
+              },
+              {
+                "x": 83.6,
+                "y": 87.4,
+                "label": "Zoom",
+                "side": "left"
+              }
+            ]
+          },
+          {
+            "title": "Gain Reduction and Output Meters",
+            "manual": "meters",
+            "image": 2,
+            "focus": [
+              [
+                88,
+                1,
+                5.6,
+                98
+              ],
+              [
+                93.9,
+                1.6,
+                4.6,
+                97.6
+              ]
+            ],
+            "text": "The gain reduction meters show how hard the limiter is working on each channel, with the upward gain in yellow from the bottom. The output meters show the final RMS and peak level. Turn on TP for true peak detection: the limiter catches the peaks between samples too, and the output meters switch to true peak, with green peak markers as here. The readouts below hold the highest values until you click them.",
+            "pins": [
+              {
+                "x": 89.6,
+                "y": 4.2,
+                "label": "TP",
+                "side": "left"
+              },
+              {
+                "x": 90.8,
+                "y": 50,
+                "label": "Gain reduction",
+                "side": "left"
+              },
+              {
+                "x": 96.2,
+                "y": 45,
+                "label": "Output",
+                "side": "left"
+              },
+              {
+                "x": 96.2,
+                "y": 96.8,
+                "label": "Peak hold",
+                "side": "left"
+              }
+            ]
+          },
+          {
+            "title": "Bypass and Delta Monitoring",
+            "manual": "bypass",
+            "image": 1,
+            "focus": [
+              75.6,
+              0.2,
+              7.2,
+              7.1
+            ],
+            "text": "The bypass button switches to the original signal, perfectly in time with the processed one, for an instant before-and-after comparison. Delta monitoring, on the headphones button, lets you hear only what the limiter is removing: the quickest way to check that a setting is taming the peaks and taking nothing more.",
+            "pins": [
+              {
+                "x": 77.4,
+                "y": 3.6,
+                "label": "Bypass",
+                "side": "bottom"
+              },
+              {
+                "x": 81.1,
+                "y": 3.6,
+                "label": "Delta",
+                "side": "bottom"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "scope",
+        "id": "modes",
+        "title": "Limiting Modes",
+        "scope": "peakLimiter",
+        "manual": "mode",
+        "intro": "How KrystalPeak catches a peak, computed from the plugin’s own limiter. The curve is the gain reduction over time as a kick drum hits a bass line: how early it starts, how deep it goes and how quickly it recovers. Try the modes, the attack and the release yourself.",
+        "controls": [
+          {
+            "type": "choice",
+            "key": "mode",
+            "label": "Mode",
+            "values": [
+              "Clean",
+              "Punch",
+              "Brick"
+            ]
+          },
+          {
+            "type": "range",
+            "key": "attack",
+            "label": "Attack",
+            "min": 0,
+            "max": 23,
+            "step": 0.1,
+            "format": "attack"
+          },
+          {
+            "type": "range",
+            "key": "release",
+            "label": "Release",
+            "min": 10,
+            "max": 3000,
+            "scale": "log",
+            "format": "ms"
+          },
+          {
+            "type": "toggle",
+            "key": "auto",
+            "label": "Auto",
+            "disables": "release"
+          }
+        ],
+        "steps": [
+          {
+            "title": "Clean",
+            "state": {
+              "mode": "Clean",
+              "attack": 2,
+              "release": 164,
+              "auto": false,
+              "view": "peak"
+            },
+            "text": "The limiter sees every peak 23 ms before it plays, so the reduction starts well ahead of the kick and reaches the level the peak needs right on time. With a fast attack nothing is left for the ceiling to clip: the most transparent choice."
+          },
+          {
+            "title": "Punch",
+            "state": {
+              "mode": "Punch",
+              "attack": 2,
+              "release": 164,
+              "auto": false,
+              "view": "peak"
+            },
+            "text": "With a look-ahead of just 5 ms, the reduction starts right before the kick and everything leading into it is left untouched. The curve arrives a little short of the needed level, so the very tip of the attack, in red, is shaped by the ceiling: a punchier sound at the same peak level."
+          },
+          {
+            "title": "Brick",
+            "state": {
+              "mode": "Brick",
+              "attack": 2,
+              "release": 164,
+              "auto": false,
+              "view": "peak"
+            },
+            "text": "Brick drops the gain in a fraction of a millisecond, right on the peak, and reaches exactly the level it needs: the tightest control, closest to a brickwall. Here the ATTACK knob sets the length of that drop, up to 3 ms."
+          },
+          {
+            "title": "Attack",
+            "state": {
+              "mode": "Clean",
+              "attack": 2,
+              "release": 164,
+              "auto": false,
+              "view": "peak"
+            },
+            "demo": {
+              "sweep": "attack",
+              "from": 0,
+              "to": 23,
+              "period": 4200
+            },
+            "text": "The attack sets how quickly the reduction reaches its full amount. The slower it is, the further the curve is from the needed level when the kick arrives, and the more of the transient is clipped at the ceiling, in red: more punch and edge, at the cost of some distortion."
+          },
+          {
+            "title": "Release",
+            "state": {
+              "mode": "Clean",
+              "attack": 2,
+              "release": 164,
+              "auto": false,
+              "view": "release"
+            },
+            "demo": {
+              "sweep": "release",
+              "from": 30,
+              "to": 900,
+              "period": 5200
+            },
+            "text": "After the kick, the release brings the gain back up. A short release recovers before the next kick and keeps the track loud; a long one keeps the level down between hits, smoother but quieter."
+          },
+          {
+            "title": "Automatic Release",
+            "state": {
+              "mode": "Clean",
+              "attack": 2,
+              "release": 164,
+              "auto": true,
+              "view": "release"
+            },
+            "demo": {
+              "toggle": "auto",
+              "every": 2600
+            },
+            "text": "Turn on AUTO and the release follows the music: fast while the reduction is deep, slower as it gets lighter. The gain recovers quickly after the kick, then settles gently instead of pumping."
+          }
+        ]
+      },
+      {
+        "type": "scope",
+        "id": "upward",
+        "title": "Upward Compression",
+        "scope": "peakUpward",
+        "manual": "upward",
+        "intro": "How the upward stage lifts quiet passages, computed from the plugin’s own curve: output level against input level, with the gain it adds in yellow above the dashed line.",
+        "controls": [
+          {
+            "type": "range",
+            "key": "upward",
+            "label": "Upward",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "format": "pct"
+          }
+        ],
+        "steps": [
+          {
+            "title": "Raising the Quiet Parts",
+            "state": {
+              "upward": 50
+            },
+            "demo": {
+              "sweep": "upward",
+              "from": 0,
+              "to": 100,
+              "period": 5000
+            },
+            "text": "Upward compression adds gain to the quieter parts instead of taking it away from the peaks: the curve rises above the dashed line, which is the signal left untouched. The higher the UPWARD setting, the more the quiet levels come up."
+          },
+          {
+            "title": "Quiet Passages",
+            "state": {
+              "upward": 100
+            },
+            "text": "The most gain goes to the levels around −20 dB, where soft details, reverb tails and quieter sections sit. The loud parts get much less, so the quiet ones come forward and the track sounds denser at the same peak level."
+          },
+          {
+            "title": "Noise Floor",
+            "state": {
+              "upward": 100
+            },
+            "text": "Further down, the curve returns to the dashed line: below about −45 dB nothing is added, so the noise floor and the silence between phrases stay where they are instead of being pulled up with the music."
+          }
+        ]
+      },
+      {
+        "type": "start",
+        "id": "get-started",
+        "title": "Getting Started",
+        "steps": [
+          {
+            "title": "Download",
+            "text": "Pay what you want on itch.io, or enter 0 to get the full version for free. Free for personal and commercial use.",
+            "action": "download"
+          },
+          {
+            "title": "Install",
+            "text": "Run the installer, or copy the plugin files yourself: VST3 on Windows, AU and VST3 on macOS.",
+            "link": {
+              "label": "Installation guide",
+              "page": "install"
+            }
+          },
+          {
+            "title": "Read the Manual",
+            "text": "Every control in detail, with tips, ranges and defaults.",
+            "link": {
+              "label": "Open the manual",
+              "page": "manual"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "install": {
+    "title": "Install",
+    "intro": "KrystalPeak is available on itch.io as pay what you want: enter 0 to download the full version for free. The download contains both the installer and the plugin files, so you can choose how to install it."
+  },
+  "manual": {
+    "title": "Manual",
+    "intro": "KrystalPeak is a look-ahead peak limiter with three limiting modes, from transparent loudness to tight, punchy peak control, plus upward compression and saturation. This manual covers every control, with tips, ranges and defaults.",
+    "chapters": [
+      {
+        "id": "getting-around",
+        "title": "Getting Around",
+        "intro": [
+          "Start here if you are new to KrystalPeak. The Quick Start gets you to a good result in a few steps, and the topics that follow explain how the signal moves through the plugin and how to find your way around the plugin window."
+        ],
+        "topics": [
+          {
+            "id": "quick-start",
+            "title": "Quick Start",
+            "body": [
+              "If you just want to start limiting, this is the fastest way to a good result:",
+              {
+                "steps": [
+                  "Set the <strong>ceiling</strong>: leave it at −0.1 dB, or drag the CEIL line down to −1.0 dB and turn on <strong>TP</strong> when you deliver for streaming.",
+                  "Raise <strong>INPUT</strong> until the gain reduction meters show the amount of limiting you want. The track gets louder while the peaks stay at the ceiling.",
+                  "Pick a <strong>MODE</strong>: start with Clean for transparent limiting, or try Punch to keep more transient energy and Brick for the tightest peak control.",
+                  "Shape the response with <strong>ATTACK</strong> and <strong>RELEASE</strong>, or turn on <strong>AUTO</strong> and let the release follow the music.",
+                  "If dense material or saturation starts to sound harsh, raise <strong>OVERSAMPLE</strong> to 4× or 8×."
+                ]
+              },
+              "Use Delta monitoring to hear exactly what the limiter is removing, and the UPWARD slider to bring up quiet passages before the limiter."
+            ]
+          },
+          {
+            "id": "signal-path",
+            "title": "Signal Path",
+            "body": [
+              "Processing always follows the same order:",
+              {
+                "steps": [
+                  "<strong>Input gain</strong> is applied. The IN trace of the display reads the signal at this point.",
+                  "With <strong>Mid/Side</strong> on, the signal is converted to mid and side channels.",
+                  "<strong>Upward compression</strong> raises quiet passages, on the same channels and with the same linking as the limiter.",
+                  "The limiter looks ahead at the signal and computes the <strong>gain reduction</strong> that keeps every peak at the <strong>ceiling</strong>, shaped by the <strong>limiting mode</strong>, <strong>attack</strong>, <strong>release</strong> and <strong>stereo linking</strong>.",
+                  "With <strong>oversampling</strong> on, the signal is upsampled; the gain reduction, <strong>saturation</strong> and, with <strong>true peak</strong> on, a final hold at the ceiling run at the higher rate.",
+                  "The signal is downsampled, converted back to left and right, and held at the ceiling.",
+                  "With <strong>Delta monitoring</strong> on, you hear the difference between the input and the limited signal.",
+                  "<strong>Output gain</strong> is applied. The output meters and the loudness trace read the final signal."
+                ]
+              },
+              {
+                "note": "Output gain comes after the ceiling, so any output gain above 0 dB raises the peaks past the ceiling."
+              }
+            ]
+          },
+          {
+            "id": "layout",
+            "title": "User Interface",
+            "body": [
+              {
+                "figure": {
+                  "image": 0,
+                  "crop": false,
+                  "caption": "The KrystalPeak user interface in Clean mode.",
+                  "pins": [
+                    {
+                      "x": 38.9,
+                      "y": 3.6,
+                      "label": "Top",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 79.6,
+                      "y": 3.6,
+                      "label": "Buttons",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 30,
+                      "y": 40,
+                      "label": "Display",
+                      "side": "top"
+                    },
+                    {
+                      "x": 16.6,
+                      "y": 70,
+                      "label": "Left panel",
+                      "side": "top"
+                    },
+                    {
+                      "x": 46.8,
+                      "y": 70,
+                      "label": "Centre panel",
+                      "side": "top"
+                    },
+                    {
+                      "x": 74.2,
+                      "y": 70,
+                      "label": "Right panel",
+                      "side": "top"
+                    },
+                    {
+                      "x": 93.5,
+                      "y": 50,
+                      "label": "Meters",
+                      "side": "left"
+                    },
+                    {
+                      "x": 45,
+                      "y": 96.9,
+                      "label": "Bottom",
+                      "side": "top"
+                    }
+                  ]
+                }
+              },
+              {
+                "table": {
+                  "head": [
+                    "Area",
+                    "What it holds"
+                  ],
+                  "rows": [
+                    [
+                      "Top",
+                      "Limiting mode and oversampling selectors (MODE, OVERSAMPLE)"
+                    ],
+                    [
+                      "Buttons",
+                      "Bypass, Delta monitoring and display settings (gear); the TP button for true peak detection sits above the meters"
+                    ],
+                    [
+                      "Display",
+                      "Real-time display with the ceiling line and its CEIL handle, the legend and the zoom button"
+                    ],
+                    [
+                      "Left panel",
+                      "UPWARD slider and INPUT knob"
+                    ],
+                    [
+                      "Centre panel",
+                      "ATTACK knob, RELEASE knob with the AUTO button, LINKING knob with the L/R – M/S switch, SATURATE knob"
+                    ],
+                    [
+                      "Right panel",
+                      "OUTPUT knob"
+                    ],
+                    [
+                      "Meters",
+                      "Gain reduction meters (GR) and output meters (OUT), each with a peak hold readout"
+                    ],
+                    [
+                      "Bottom",
+                      "Krystal Dynamics logo for information and updates, help bar"
+                    ]
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "controls",
+            "title": "Adjusting Controls",
+            "body": [
+              "Drag knobs and sliders up and down, or use the mouse wheel. INPUT, RELEASE, LINKING, SATURATE and OUTPUT show their value below the knob: click it to type a new one. ATTACK reads Fast, Medium or Slow, and the UPWARD value appears in the help bar while you adjust it.",
+              "MODE and OVERSAMPLE change with each click: they move to the next value and wrap around after the last one. AUTO, L/R – M/S, TP, bypass and Delta monitoring switch on and off."
+            ],
+            "more": [
+              {
+                "title": "What You Can Automate",
+                "body": [
+                  "Every control that affects the sound can be automated from your DAW (see Parameter Reference). The display zoom and the settings belong to the user interface and can’t be automated."
+                ]
+              }
+            ]
+          },
+          {
+            "id": "help-bar",
+            "title": "Help Bar",
+            "body": [
+              "The bar along the bottom of the plugin window gives a short description of whatever control you are hovering over. Otherwise it reads <em>Hover any control for details</em>."
+            ]
+          },
+          {
+            "id": "window-size",
+            "title": "Resizing the Plugin Window",
+            "body": [
+              "Drag the lower-right corner to resize the plugin window, in 5% steps from 75% to 125% of the original 1100 × 550. A popup shows the current scale while you drag, and the size is saved with the session."
+            ]
+          },
+          {
+            "id": "latency",
+            "title": "Latency",
+            "body": [
+              "To catch every peak before it happens, KrystalPeak looks 23 ms ahead, in every limiting mode. With oversampling on, the latency of the oversampling filters is added. The total is reported to your DAW and compensated automatically, so KrystalPeak stays sample-aligned with the rest of your tracks, and switching mode never changes it."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "limiting",
+        "title": "Limiting",
+        "intro": [
+          "A limiter keeps every peak below a set level while letting you push the overall loudness up. The ceiling sets that level, the limiting mode and the attack decide how peaks are caught, and the release how quickly the gain recovers afterwards."
+        ],
+        "topics": [
+          {
+            "id": "ceiling",
+            "title": "Ceiling",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "−12.0 to 0.0 dB"
+                  ],
+                  [
+                    "Step",
+                    "0.1 dB"
+                  ],
+                  [
+                    "Default",
+                    "−0.1 dB"
+                  ]
+                ]
+              },
+              "The ceiling is the highest level the limiter lets through. Whatever mode and timing you choose, the limited signal never goes above it, and the last stage holds it there even on the fastest transients.",
+              {
+                "figure": {
+                  "image": 1,
+                  "crop": true,
+                  "focus": [
+                    24,
+                    9.8,
+                    48,
+                    24
+                  ],
+                  "caption": "The ceiling line and its CEIL handle in the display, at −1.4 dB."
+                }
+              },
+              "Set the ceiling by dragging the dashed line, or its CEIL handle, up and down in the display. Double-click the handle to return to −0.1 dB.",
+              {
+                "note": "For streaming, a ceiling of −1.0 dB with true peak detection on leaves room for the peaks that appear when the file is converted to a lossy format."
+              }
+            ]
+          },
+          {
+            "id": "mode",
+            "title": "Limiting Modes",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Clean, Punch, Brick"
+                  ],
+                  [
+                    "Default",
+                    "Clean"
+                  ]
+                ]
+              },
+              "Click the MODE button to cycle through the three limiting modes. They differ in how early the limiter starts reducing the gain before a peak, which changes how transients sound:",
+              {
+                "table": {
+                  "head": [
+                    "Mode",
+                    "Character"
+                  ],
+                  "rows": [
+                    [
+                      "Clean",
+                      "Long look-ahead: the gain comes down smoothly well before each peak. The most transparent choice, for mastering and full mixes"
+                    ],
+                    [
+                      "Punch",
+                      "Shorter look-ahead: more of the transient gets through before the limiter acts, for drums and material that should keep its snap"
+                    ],
+                    [
+                      "Brick",
+                      "A very short ramp that reaches full reduction exactly on the peak: the tightest peak control, closest to a brickwall"
+                    ]
+                  ]
+                }
+              },
+              "Punch and Brick also hold the gain reduction briefly on steady low-frequency material, so the gain doesn’t flutter with every cycle of a bass note.",
+              {
+                "note": "All three modes have the same latency, so you can switch freely during playback."
+              }
+            ]
+          },
+          {
+            "id": "attack",
+            "title": "Attack",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Fast, Medium, Slow"
+                  ],
+                  [
+                    "Default",
+                    "Fast"
+                  ]
+                ]
+              },
+              "The attack sets how quickly the gain reduction reaches its full amount, and the ATTACK knob reads Fast, Medium or Slow. A fast attack catches each peak cleanly and preserves its shape. A slower attack lets the start of the transient run into the ceiling, where it is clipped: this adds punch and edge, at the cost of some distortion.",
+              "In Punch, the shorter look-ahead also limits how slow the attack can be. In Brick, ATTACK sets the length of the ramp into the peak, from very short to a few milliseconds."
+            ]
+          },
+          {
+            "id": "release",
+            "title": "Release",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "10 to 3000 ms"
+                  ],
+                  [
+                    "Default",
+                    "164 ms"
+                  ],
+                  [
+                    "Automatic release",
+                    "AUTO button, off by default"
+                  ]
+                ]
+              },
+              "The release sets how quickly the gain recovers after a peak, with the RELEASE knob. A short release keeps the track loud and dense but can pump on sustained material; a long release is smoother but holds the level down for longer after each peak.",
+              "Turn on AUTO, above the knob, for automatic release: the limiter recovers quickly when the gain reduction is deep and slowly when it is light, so it adapts to the music on its own. While AUTO is on, the RELEASE knob is dimmed."
+            ]
+          },
+          {
+            "id": "linking",
+            "title": "Stereo Linking",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "0 to 100%"
+                  ],
+                  [
+                    "Default",
+                    "50%"
+                  ],
+                  [
+                    "Channels",
+                    "L/R or M/S, L/R by default"
+                  ]
+                ]
+              },
+              "Stereo linking sets how much the two channels share their gain reduction, with the LINKING knob. At 100% both channels are always reduced by the same amount, so the stereo image never moves. At 0% each channel is limited on its own, which allows more loudness but can make the image shift when a peak hits one side. Values in between blend the two.",
+              "The L/R – M/S switch below the knob chooses which channels the limiter works on. In Mid/Side, the limiter treats the centre and the sides separately, and LINKING sets how much they share their gain reduction. The gain reduction meters then show mid and side instead of left and right."
+            ]
+          },
+          {
+            "id": "saturation",
+            "title": "Saturation",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "0 to 100%"
+                  ],
+                  [
+                    "Default",
+                    "0%"
+                  ]
+                ]
+              },
+              "Saturation adds warmth and density after the limiter, with the SATURATE knob. It rounds off the peaks as they approach the ceiling, for a fuller, more analogue sound. The effect grows gradually: most of it happens in the upper part of the range. The output still never goes past the ceiling.",
+              "Saturation adds harmonics, so it benefits from oversampling."
+            ]
+          },
+          {
+            "id": "oversampling",
+            "title": "Oversampling",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Off, 4×, 8×"
+                  ],
+                  [
+                    "Default",
+                    "Off"
+                  ]
+                ]
+              },
+              "Fast gain changes and saturation create high harmonics, and at normal sample rates some of them fold back into the audible range as aliasing, heard as harshness. The OVERSAMPLE button runs the gain reduction and the saturation at 4 or 8 times the session sample rate, so they can be filtered out cleanly. Higher factors sound cleaner but use more CPU and add some latency, compensated automatically.",
+              {
+                "note": "With Delta monitoring on, the limiter always runs without oversampling."
+              }
+            ]
+          },
+          {
+            "id": "true-peak",
+            "title": "True Peak",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Off, On"
+                  ],
+                  [
+                    "Default",
+                    "Off"
+                  ]
+                ]
+              },
+              "Between two samples, the reconstructed analogue waveform can rise higher than either of them. These inter-sample peaks don’t show on a standard peak meter, but they can clip in a converter or after lossy encoding. Turn on the TP button, above the meters, and the limiter detects the peaks between samples too, so it reduces the gain for them as well.",
+              "With true peak on, the output meters and their readout show the true peak level, and the peak markers turn green."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gain",
+        "title": "Gain and Upward Compression",
+        "intro": [
+          "Input gain drives the signal into the limiter, output gain sets the final level. Upward compression brings up quiet passages before the limiter, for a denser, more even result."
+        ],
+        "topics": [
+          {
+            "id": "input",
+            "title": "Input Gain",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "−36.0 to +36.0 dB"
+                  ],
+                  [
+                    "Step",
+                    "0.1 dB"
+                  ],
+                  [
+                    "Default",
+                    "0.0 dB"
+                  ]
+                ]
+              },
+              "Set with the INPUT knob and applied before the limiter. With the ceiling fixed, more input gain means more gain reduction and a louder result: raise it until the gain reduction meters show the amount of limiting you want."
+            ]
+          },
+          {
+            "id": "output",
+            "title": "Output Gain",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "−36.0 to +36.0 dB"
+                  ],
+                  [
+                    "Step",
+                    "0.1 dB"
+                  ],
+                  [
+                    "Default",
+                    "0.0 dB"
+                  ]
+                ]
+              },
+              "Set with the OUTPUT knob and applied after the limiter. Use it to lower the final level, for example to compare with the original at the same loudness. Any output gain above 0 dB raises the peaks past the ceiling: keep an eye on the output meters."
+            ]
+          },
+          {
+            "id": "upward",
+            "title": "Upward Compression",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "0 to 100%"
+                  ],
+                  [
+                    "Default",
+                    "0%"
+                  ]
+                ]
+              },
+              "Upward compression raises the quiet passages instead of turning down the loud ones, with the UPWARD slider next to INPUT. Soft details, reverb tails and quieter sections come up, while the loud parts are left as they are, so the limiter has less work to do for the same loudness. Higher values raise the quiet parts more.",
+              "The gain rises slowly in quiet passages and drops quickly as soon as the signal gets louder, so transients aren’t boosted. Very quiet signals are raised much less, so the noise floor and silence don’t come up with the music.",
+              "Upward compression works on the same channels as the limiter, left and right or mid and side, with the same stereo linking. The added gain is shown in yellow, labelled GI, in the display and at the bottom of the gain reduction meters. At 0% it is switched off completely."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "monitoring",
+        "title": "Monitoring",
+        "intro": [
+          "Bypass and Delta monitoring let you compare the limited signal with the original, and the meters show how much the limiter is working and the level coming out."
+        ],
+        "topics": [
+          {
+            "id": "bypass",
+            "title": "Bypass",
+            "body": [
+              "The power button bypasses all processing so you hear the original signal. It keeps the same latency, so switching never shifts the timing, and the change is ramped to avoid clicks. While bypassed, the meters, the peak hold readouts and the display stay frozen until you switch back."
+            ]
+          },
+          {
+            "id": "delta",
+            "title": "Delta Monitoring",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Off, On"
+                  ],
+                  [
+                    "Default",
+                    "Off"
+                  ]
+                ]
+              },
+              "Delta monitoring lets you hear only what the limiter is removing: the difference between the signal after the input gain and the processed signal. With OUTPUT at 0 dB and UPWARD at 0%, that is the limiting alone. It’s the quickest way to hear whether a setting is taking away more than the peaks. Turn it on with the headphones button.",
+              "During Delta monitoring the limiter runs without oversampling. The result stays in time with the rest of your tracks."
+            ]
+          },
+          {
+            "id": "meters",
+            "title": "Gain Reduction and Output Meters",
+            "body": [
+              {
+                "aside": {
+                  "body": [
+                    "The gain reduction meters, labelled GR, show how much the limiter is turning the signal down, from the top, for the left and right channel, or mid and side in Mid/Side. The gain added by upward compression is drawn in yellow from the bottom.",
+                    "The output meters, labelled OUT, show the final level of each channel: the bar is the RMS level, with the peak level drawn on top. With true peak on, they show the true peak level and the peak markers turn green.",
+                    "Both meters follow the zoom of the display."
+                  ],
+                  "figures": [
+                    {
+                      "image": 0,
+                      "crop": true,
+                      "focus": [
+                        88.6,
+                        7.6,
+                        4.8,
+                        91.6
+                      ],
+                      "label": "Gain reduction meters"
+                    },
+                    {
+                      "image": 0,
+                      "crop": true,
+                      "focus": [
+                        93.8,
+                        1.6,
+                        4.8,
+                        97.6
+                      ],
+                      "label": "Output meters"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "peak-readouts",
+            "title": "Peak Hold Readouts",
+            "body": [
+              "The readouts below the meters hold the highest value since the last reset: the largest gain reduction under GR, the highest output peak under OUT. Click a readout to reset it. Output peaks above 0 dB are shown in red."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "display",
+        "title": "Real-Time Display",
+        "intro": [
+          "The real-time display shows the last 5 seconds of signal, gain reduction and loudness, so you can see exactly what the limiter is doing while you adjust it."
+        ],
+        "topics": [
+          {
+            "id": "traces",
+            "title": "Display Traces",
+            "body": [
+              {
+                "figure": {
+                  "image": 0,
+                  "crop": false,
+                  "caption": "The display in Clean mode, with upward compression.",
+                  "pins": [
+                    {
+                      "x": 5,
+                      "y": 50.5,
+                      "label": "Legend",
+                      "side": "right"
+                    },
+                    {
+                      "x": 34,
+                      "y": 17,
+                      "label": "Gain reduction",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 60,
+                      "y": 90.5,
+                      "label": "Upward gain",
+                      "side": "top"
+                    },
+                    {
+                      "x": 79.5,
+                      "y": 60.6,
+                      "label": "Loudness value",
+                      "side": "top"
+                    },
+                    {
+                      "x": 83.6,
+                      "y": 87.4,
+                      "label": "Zoom",
+                      "side": "left"
+                    }
+                  ]
+                }
+              },
+              {
+                "table": {
+                  "head": [
+                    "Trace",
+                    "What it shows"
+                  ],
+                  "rows": [
+                    [
+                      "Input (IN)",
+                      "The level of the signal after the input gain"
+                    ],
+                    [
+                      "Gain reduction (GR)",
+                      "How much the limiter turns the signal down, drawn from the top, in red"
+                    ],
+                    [
+                      "Loudness (LUFS)",
+                      "The loudness of the final output, with its value in LU"
+                    ],
+                    [
+                      "Upward gain (GI)",
+                      "The gain added by upward compression, drawn from the bottom, in yellow"
+                    ],
+                    [
+                      "Output (OUT)",
+                      "The level of the final output"
+                    ]
+                  ]
+                }
+              },
+              "Click an entry in the legend to hide or show its trace."
+            ]
+          },
+          {
+            "id": "zoom",
+            "title": "Zoom",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "−18, −36, −72 dB"
+                  ],
+                  [
+                    "Default",
+                    "−18 dB"
+                  ]
+                ]
+              },
+              "The button at the lower right of the display sets how far down the scale goes, and changes with each click. −18 dB shows the top of the range in detail, for limiting; −36 and −72 dB show quieter material and the effect of upward compression. The gain reduction and output meters follow the same scale."
+            ]
+          },
+          {
+            "id": "ceiling-line",
+            "title": "Ceiling Line",
+            "body": [
+              "The ceiling is a dashed line across the display, with a CEIL handle showing its value. Drag the line or the handle to change the ceiling, and double-click the handle to return to −0.1 dB."
+            ]
+          },
+          {
+            "id": "loudness",
+            "title": "Loudness Trace",
+            "body": [
+              "The loudness trace measures the final output with K-weighting, the same weighting used for LUFS, over about 3 seconds, like short-term loudness. Its value is shown in LU next to the end of the trace."
+            ]
+          }
+        ],
+        "after": [
+          {
+            "note": "The display zoom is saved as a preference and with the session."
+          }
+        ]
+      },
+      {
+        "id": "settings",
+        "title": "Settings and Updates",
+        "intro": [
+          "Choose light or dark themes and set how much CPU the user interface uses. The Krystal Dynamics logo gives you the version, updates and credits."
+        ],
+        "topics": [
+          {
+            "id": "display-settings",
+            "title": "Display Settings",
+            "body": [
+              "The gear at the top of the plugin window opens the settings.",
+              {
+                "table": {
+                  "head": [
+                    "Setting",
+                    "Values"
+                  ],
+                  "rows": [
+                    [
+                      "Knobs",
+                      "Light, Dark"
+                    ],
+                    [
+                      "Background",
+                      "Light, Dark"
+                    ],
+                    [
+                      "Display",
+                      "Light, Dark"
+                    ],
+                    [
+                      "GUI FPS",
+                      "60, 30, 20 fps"
+                    ],
+                    [
+                      "Graphics",
+                      "Full, Low"
+                    ]
+                  ]
+                }
+              },
+              "Set the knobs, the background and the display to light or dark independently. If you are short on CPU, a lower frame rate and Low graphics, which leaves out shadows and the vignette, lighten the load of the user interface. The sound is not affected.",
+              {
+                "figures": [
+                  {
+                    "image": 0,
+                    "crop": false,
+                    "caption": "Light, with a dark display"
+                  },
+                  {
+                    "image": 1,
+                    "crop": false,
+                    "caption": "Dark"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "saved",
+            "title": "What Is Saved Where",
+            "body": [
+              {
+                "table": {
+                  "head": [
+                    "Saved with the session",
+                    "Saved as preferences"
+                  ],
+                  "rows": [
+                    [
+                      "All parameters",
+                      "Themes"
+                    ],
+                    [
+                      "Plugin window size",
+                      "GUI FPS and graphics"
+                    ],
+                    [
+                      "",
+                      "Display zoom"
+                    ]
+                  ]
+                }
+              },
+              "Preferences apply to every instance and are stored in <code>Documents/Krystal Dynamics/KrystalPeak/preferences.xml</code>."
+            ]
+          },
+          {
+            "id": "updates",
+            "title": "Updates and Information",
+            "body": [
+              "Click the Krystal Dynamics logo for the version, credits and links. KrystalPeak checks the website for new versions: when one is out, the logo lets you know and the plugin window shows what’s new, with a download link. The check only reads the latest version number and sends no personal data."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "parameters",
+        "title": "Parameter Reference",
+        "intro": [
+          "All automatable parameters, in the order they appear in your DAW."
+        ],
+        "after": [
+          {
+            "table": {
+              "head": [
+                "Parameter",
+                "Range",
+                "Default"
+              ],
+              "rows": [
+                [
+                  "Input Gain",
+                  "−36.0 to +36.0 dB",
+                  "0.0 dB"
+                ],
+                [
+                  "Output Gain",
+                  "−36.0 to +36.0 dB",
+                  "0.0 dB"
+                ],
+                [
+                  "Attack",
+                  "Fast, Medium, Slow",
+                  "Fast"
+                ],
+                [
+                  "Release",
+                  "10 to 3000 ms",
+                  "164 ms"
+                ],
+                [
+                  "Stereo Link",
+                  "0 to 100%",
+                  "50%"
+                ],
+                [
+                  "Oversampling",
+                  "Off, 4x, 8x",
+                  "Off"
+                ],
+                [
+                  "Saturation",
+                  "0 to 100%",
+                  "0%"
+                ],
+                [
+                  "Auto Release",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "M/S Mode",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "True Peak",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Bypass",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Delta",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Ceiling",
+                  "−12.0 to 0.0 dB",
+                  "−0.1 dB"
+                ],
+                [
+                  "Upward",
+                  "0 to 100%",
+                  "0%"
+                ],
+                [
+                  "Mode",
+                  "Clean, Punch, Brick",
+                  "Clean"
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "history": {
+    "title": "Version History",
+    "intro": "Everything new in each release. KrystalPeak checks for updates on its own and lets you know in the plugin window when a new version is out."
+  }
+}
