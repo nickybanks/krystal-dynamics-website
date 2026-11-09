@@ -3,8 +3,8 @@
     {
       "id": "krystal-clip",
       "name": "KrystalClip",
-      "description": "KrystalClip is a clipping processor featuring three distinct saturation algorithms\n                               for controlled peak limiting. Each mode provides different harmonic characteristics,\n                               from transparent loudness control to creative saturation, making it suitable for\n                               mixing, mastering, and sound design applications.",
-      "catalogDescription": "Four clipping algorithms for everything from transparent peak control to creative saturation.",
+      "description": "KrystalClip is a clipping and saturation plugin for mixing, mastering and sound design. Four clipping modes take you from transparent peak control to warm, characterful distortion, with an adjustable knee, up to 8× oversampling and anti-aliased wavefolding. A real-time display shows exactly what is being clipped, while Delta monitoring and automatic loudness matching let you judge every setting by ear.",
+      "catalogDescription": "Four clipping modes, from transparent peak control to rich saturation.",
       "page": "/plugins/krystal-clip.html",
       "museHub": "https://www.musehub.com/plugin/krystalclip",
       "images": [
@@ -19,21 +19,19 @@
       ],
       "downloadSlug": "krystalclip",
       "features": [
-        "Four clipping modes with different harmonic colorations",
-        "Threshold control for clipping point adjustment",
-        "Slope control to shape the clipping curve",
-        "Anti-aliased Wavefolding with Tri and Sine shapes",
-        "Ceiling offset to leave headroom for oversampling filter overshoot",
-        "Input and output gain controls",
-        "Oversampling up to 8x",
-        "Mix control for parallel processing",
-        "Bypass for A/B comparison",
-        "Delta mode for precise clipping control",
-        "Automatic loudness matching with informative feedback",
-        "Real-time display with different views and adjustable time window",
-        "Short-term LUFS metering inside the display",
-        "Comprehensive input and output metering",
-        "Different themes and performance settings"
+        "Four clipping modes, from transparent peak control to heavy saturation",
+        "Adjustable knee, from hard and tight to soft and gradual",
+        "Anti-aliased wavefolding with triangle and sine shapes",
+        "Up to 8× oversampling with automatic latency compensation",
+        "Normalize to bring the softer modes up to full level",
+        "Ceiling control for oversampling overshoot",
+        "Linked input and output gain to drive the clipper at the same level",
+        "Mix control for parallel clipping",
+        "Delta monitoring to hear exactly what is being removed",
+        "Automatic loudness matching for fair comparisons",
+        "Real-time waveform and peak display with a loudness trace",
+        "Input and output meters with peak hold",
+        "Light and dark themes and a resizable window"
       ],
       "specifications": [
         {
@@ -135,7 +133,13 @@
           ]
         }
       ],
-      "license": "KrystalClip is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted."
+      "license": "KrystalClip is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted.",
+      "guide": {
+        "data": "/assets/data/plugins/krystal-clip.json",
+        "install": "/plugins/krystal-clip/install.html",
+        "manual": "/plugins/krystal-clip/manual.html",
+        "history": "/plugins/krystal-clip/history.html"
+      }
     },
     {
       "id": "krystal-comp",

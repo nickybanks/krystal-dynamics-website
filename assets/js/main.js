@@ -214,14 +214,19 @@ const NEWS_INTERVAL_MS = 6500;
 const NEWS_CARD_MS = 3200;   // time each interface stays in the news card before the next one fades in
 const NEWS_MOVE_MS = 700;   // duration of the slide-to-slide movement (also used by pages.css via --news-move)
 
-function renderNewsNotes(notes, page, max = 4) {
+// Where a plugin's version history lives: its own page for plugins with a guide, otherwise the plugin page
+function changelogUrl(plugin) {
+  return plugin.guide?.history || `${plugin.page}#version-history`;
+}
+
+function renderNewsNotes(notes, changelog, max = 4) {
   if (!notes.length) return '';
   const extra = notes.length - max;
   return `
     <ul class="news-notes">
       ${notes.slice(0, max).map(note => `<li>${escapeNewsMarkup(note)}</li>`).join('')}
     </ul>
-    ${extra > 0 ? `<a class="news-notes-more" href="${escapeNewsMarkup(page)}#version-history">${extra} more ${extra === 1 ? 'change' : 'changes'} in the changelog</a>` : ''}`;
+    ${extra > 0 ? `<a class="news-notes-more" href="${escapeNewsMarkup(changelog)}">${extra} more ${extra === 1 ? 'change' : 'changes'} in the changelog</a>` : ''}`;
 }
 
 function renderNewsTimeline(entries) {
@@ -231,7 +236,7 @@ function renderNewsTimeline(entries) {
         const note = type === 'update' ? releaseNotes(release)[0] : plugin.catalogDescription;
         return `
         <li class="news-timeline-item news-timeline-item--${type}">
-          <a class="news-update-link" href="${escapeNewsMarkup(plugin.page)}#version-history">
+          <a class="news-update-link" href="${escapeNewsMarkup(changelogUrl(plugin))}">
             <time class="news-update-date" datetime="${escapeNewsMarkup(date)}">${escapeNewsMarkup(formatReleaseDate(date))}</time>
             <span class="news-update-title">${escapeNewsMarkup(plugin.name)} <small>v${escapeNewsMarkup(release.version)}</small></span>
             <span class="news-update-type">${RELEASE_TYPES[type]}</span>
@@ -315,7 +320,7 @@ function buildHomeNews(plugins) {
       version: major
         ? `Updated ${formatReleaseDate(release.date)}`
         : `Version ${release.version}, ${formatReleaseDate(release.date)}`,
-      notes: renderNewsNotes(releaseNotes(release), latestUpdate.page),
+      notes: renderNewsNotes(releaseNotes(release), changelogUrl(latestUpdate)),
       image: latestUpdate.images?.[0],
       primary: { label: 'View details', href: latestUpdate.page },
       secondary: { label: 'Visit MuseHub', href: latestUpdate.museHub },

@@ -80,59 +80,64 @@
     </dl>`;
   }
 
-  function renderInstallation(plugin) {
+  // Installation steps per platform (HTML strings), shared by both page layouts
+  function installationGuide(plugin) {
     const name = escapeHTML(plugin.name);
+    return [
+      {
+        id: 'windows', name: 'Windows', format: 'VST3', icon: WINDOWS_ICON,
+        recommended: [
+          'Download the <strong>.zip</strong> package and extract it.',
+          `Run <strong>${name}-Windows-installer.exe</strong> and follow the on-screen instructions.`,
+          'Restart your DAW and rescan plugins if needed.',
+        ],
+        manual: [
+          `Copy <strong>${name}.vst3</strong> to <code>C:\\Program Files\\Common Files\\VST3</code>.`,
+          'Restart your DAW and rescan plugins if needed.',
+        ],
+        note: 'Some systems may show a security warning for unsigned installers. If this happens, use the manual method.',
+      },
+      {
+        id: 'macos', name: 'macOS', format: 'AU / VST3', icon: APPLE_ICON,
+        recommended: [
+          'Download the <strong>.zip</strong> package and extract it.',
+          `Open <strong>${name}-MacOS-installer.pkg</strong> and follow the on-screen instructions.`,
+          'Restart your DAW and rescan plugins if needed.',
+        ],
+        manual: [
+          `Copy <strong>${name}.component</strong> (AU) to <code>/Library/Audio/Plug-Ins/Components</code>.`,
+          `Copy <strong>${name}.vst3</strong> (VST3) to <code>/Library/Audio/Plug-Ins/VST3</code>.`,
+          'Restart your DAW and rescan plugins if needed.',
+        ],
+        note: 'If macOS blocks the installer, you may need to allow it in <strong>System Settings &gt; Privacy &amp; Security</strong>. Apple guidance is available <a href="https://support.apple.com/en-us/102445" target="_blank" rel="noopener noreferrer">here</a>.',
+      },
+    ];
+  }
+
+  function renderInstallation(plugin) {
+    const steps = items => items.map(item => `
+                <li>${item}</li>`).join('');
     return `
-      <div class="installation-guide">
-        <section class="installation-platform" aria-labelledby="install-windows-title">
+      <div class="installation-guide">${installationGuide(plugin).map(platform => `
+        <section class="installation-platform" aria-labelledby="install-${platform.id}-title">
           <div class="platform-header">
-            <span class="platform-icon">${WINDOWS_ICON}</span>
-            <div class="platform-info"><h4 id="install-windows-title">Windows</h4><span class="platform-format">VST3</span></div>
+            <span class="platform-icon">${platform.icon}</span>
+            <div class="platform-info"><h4 id="install-${platform.id}-title">${platform.name}</h4><span class="platform-format">${platform.format}</span></div>
           </div>
           <div class="installation-steps">
             <div class="installation-method">
               <div class="method-label">Recommended</div>
-              <ol class="step-list">
-                <li>Download the <strong>.zip</strong> package and extract it.</li>
-                <li>Run <strong>${name}-Windows-installer.exe</strong> and follow the on-screen instructions.</li>
-                <li>Restart your DAW and rescan plugins if needed.</li>
+              <ol class="step-list">${steps(platform.recommended)}
               </ol>
             </div>
             <div class="installation-method">
               <div class="method-label">Manual installation (if the installer can't be used)</div>
-              <ol class="step-list">
-                <li>Copy <strong>${name}.vst3</strong> to <code>C:\\Program Files\\Common Files\\VST3</code>.</li>
-                <li>Restart your DAW and rescan plugins if needed.</li>
+              <ol class="step-list">${steps(platform.manual)}
               </ol>
             </div>
-            <p class="installation-note"><em>Note:</em> Some systems may show a security warning for unsigned installers. If this happens, use the manual method.</p>
+            <p class="installation-note"><em>Note:</em> ${platform.note}</p>
           </div>
-        </section>
-        <section class="installation-platform" aria-labelledby="install-macos-title">
-          <div class="platform-header">
-            <span class="platform-icon">${APPLE_ICON}</span>
-            <div class="platform-info"><h4 id="install-macos-title">macOS</h4><span class="platform-format">AU / VST3</span></div>
-          </div>
-          <div class="installation-steps">
-            <div class="installation-method">
-              <div class="method-label">Recommended</div>
-              <ol class="step-list">
-                <li>Download the <strong>.zip</strong> package and extract it.</li>
-                <li>Open <strong>${name}-MacOS-installer.pkg</strong> and follow the on-screen instructions.</li>
-                <li>Restart your DAW and rescan plugins if needed.</li>
-              </ol>
-            </div>
-            <div class="installation-method">
-              <div class="method-label">Manual installation (if the installer can't be used)</div>
-              <ol class="step-list">
-                <li>Copy <strong>${name}.component</strong> (AU) to <code>/Library/Audio/Plug-Ins/Components</code>.</li>
-                <li>Copy <strong>${name}.vst3</strong> (VST3) to <code>/Library/Audio/Plug-Ins/VST3</code>.</li>
-                <li>Restart your DAW and rescan plugins if needed.</li>
-              </ol>
-            </div>
-            <p class="installation-note"><em>Note:</em> If macOS blocks the installer, you may need to allow it in <strong>System Settings &gt; Privacy &amp; Security</strong>. Apple guidance is available <a href="https://support.apple.com/en-us/102445" target="_blank" rel="noopener noreferrer">here</a>.</p>
-          </div>
-        </section>
+        </section>`).join('')}
       </div>`;
   }
 
@@ -160,7 +165,14 @@
         </section>`).join('')}`;
   }
 
-  function renderPluginDetail(plugin) {
+  // Where the main download button of a plugin leads (Patreon while in early access)
+  function downloadAction(plugin) {
+    return plugin.isEarlyAccess
+      ? { href: PATREON_URL, label: 'Join Patreon' }
+      : { href: `https://krystal-dynamics.itch.io/${encodeURIComponent(plugin.downloadSlug)}/purchase`, label: 'Download' };
+  }
+
+  async function renderPluginDetail(plugin) {
     const target = document.getElementById('pluginDetailPage');
     if (!target) return;
     const safeName = escapeHTML(plugin.name);
@@ -197,8 +209,8 @@
         <p class="download-note">Completely FREE for personal and commercial use</p>
       </div>`;
 
-    target.innerHTML = `
-      <section class="plugin-hero">
+    const hero = `
+      <section class="plugin-hero" id="top">
         <div class="container">
           <div class="plugin-grid">
             <div class="plugin-detail-image-carousel" data-images='${safeImages}' aria-label="${safeName} interface screenshots"></div>
@@ -209,7 +221,24 @@
             </div>
           </div>
         </div>
-      </section>
+      </section>`;
+
+    // Long-form page (plugin-story.js) when the plugin has its own guide content.
+    // If that content can't be loaded, the standard page below is shown instead.
+    if (plugin.guide && window.KDStory) {
+      try {
+        const guide = await window.KDStory.load(plugin);
+        target.innerHTML = window.KDStory.render(plugin, guide, { action: downloadAction(plugin), hero });
+        window.KDStory.init(target, plugin);
+        if (typeof initPluginHeroBackground === 'function') initPluginHeroBackground();
+        if (typeof initPluginDetailCarousel === 'function') initPluginDetailCarousel();
+        return;
+      } catch (error) {
+        console.error('Unable to load the plugin guide:', error);
+      }
+    }
+
+    target.innerHTML = hero + `
       <section class="plugin-detail">
         <div class="container">
           <div class="plugin-detail-content">
@@ -265,7 +294,7 @@
           detailPage.innerHTML = '<section class="plugin-detail"><div class="container"><p>Plugin not found.</p><a href="/plugins.html">Browse all plugins</a></div></section>';
           return;
         }
-        renderPluginDetail(plugin);
+        await renderPluginDetail(plugin);
         jumpToHash();
       }
     } catch (error) {
@@ -273,6 +302,9 @@
       if (detailPage) detailPage.innerHTML = '<section class="plugin-detail"><div class="container"><p>Plugin information could not be loaded. Please try again later.</p></div></section>';
     }
   }
+
+  // Shared with the installation and manual pages (plugin-guide.js)
+  window.KDPageContent = { installationGuide, downloadAction, jumpToHash, WINDOWS_ICON, APPLE_ICON };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', bootPageContent, { once: true });
