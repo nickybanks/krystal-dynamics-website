@@ -451,6 +451,21 @@
       ],
       "history": [
         {
+          "version": "1.1.0",
+          "date": "2026-11-10",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Redesigned interface, with the same look and feel as KrystalClip 1.2.0",
+                "Added Upward mode to bring up quiet passages",
+                "Added Ceiling control, draggable in the display",
+                "Added three limiting modes: Clean, Punch and Brick"
+              ]
+            }
+          ]
+        },
+        {
           "version": "1.0.1",
           "date": "2026-05-08",
           "groups": [
