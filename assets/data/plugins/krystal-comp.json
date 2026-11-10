@@ -23,14 +23,14 @@
         "type": "tour",
         "id": "interface",
         "title": "Interface",
-        "intro": "KrystalComp keeps the sidechain on the left, the display and the compressor in the centre and the meters and gain on the right. Scroll to go through each part.",
+        "intro": "KrystalComp’s user interface has a sidechain eq on the left, the main controls along the display in the center and the gain stage on the right. Here is a breakdown of each section:",
         "steps": [
           {
             "title": "User Interface",
             "manual": "layout",
             "image": 0,
             "focus": null,
-            "text": "The signal the compressor listens to is shaped on the left, in the sidechain EQ. The real-time display sits in the centre, above the compressor controls, while the input, gain and output meters and the input, makeup and mix controls sit on the right. The detector, the compression mode, oversampling and Automatic Loudness Matching are set along the top.",
+            "text": "The signal the compressor listens to is shaped on the left, in the sidechain EQ. The real-time display sits in the centre, above the compressor controls, while the meters and the gain stage controls sit on the right. The detector, the compression mode, oversampling and Automatic Loudness Matching are set along the top.",
             "pins": [
               {
                 "x": 40.9,
@@ -1733,7 +1733,7 @@
                       "crop": true,
                       "focus": [
                         81.9,
-                        5.0,
+                        5,
                         5.2,
                         50.8
                       ],
@@ -1744,7 +1744,7 @@
                       "crop": true,
                       "focus": [
                         87.2,
-                        5.0,
+                        5,
                         5.2,
                         50.8
                       ],
@@ -1755,7 +1755,7 @@
                       "crop": true,
                       "focus": [
                         92.5,
-                        5.0,
+                        5,
                         5.2,
                         50.8
                       ],

@@ -23,7 +23,7 @@
         "type": "tour",
         "id": "interface",
         "title": "Interface",
-        "intro": "KrystalClip’s user interface is arranged in the order the signal passes through it. Scroll to go through each part.",
+        "intro": "KrystalClip’s user interface has been designed to be simple and straightforward. Here is a breakdown of each section:",
         "steps": [
           {
             "title": "User Interface",
@@ -107,7 +107,7 @@
             ]
           },
           {
-            "title": "Clipping Modes and Oversampling",
+            "title": "Clipping Mode and Oversampling",
             "manual": "mode",
             "image": 0,
             "focus": [
@@ -116,7 +116,7 @@
               54.4,
               9.2
             ],
-            "text": "Four clipping modes give KrystalClip four different characters, from transparent peak control to heavy, tube-like saturation. Click the MODE button to cycle through them: the whole interface takes on the colour of the active mode, so you always know which one you are hearing. Next to it, the OVERSAMPLE button runs the clipper at 2, 4 or 8 times the sample rate for a cleaner top end when you push hard, and your DAW compensates the added latency automatically.",
+            "text": "Four clipping algorithms give KrystalClip four different characters, from transparent peak control to heavy, tube-like saturation. Click the MODE button to cycle through them: the whole interface takes on the colour of the active mode, so you always know which one you are hearing. Next to it, the OVERSAMPLE button runs the clipper at 2, 4 or 8 times the sample rate for a cleaner top end when you push hard, and your DAW compensates the added latency automatically.",
             "specs": [
               [
                 "Modes",
@@ -152,7 +152,7 @@
               25.2,
               42.5
             ],
-            "text": "The knee is the transition between the untouched signal and full clipping. With the SLOPE knob you decide how softly the clipper takes hold: low values leave the signal intact until the last moment and then catch the peaks firmly, high values start earlier and round them off gradually. The knob face draws the resulting curve in real time, and the label below it reads Hard, Medium or Soft.",
+            "text": "The knee is the transition between the untouched signal and full clipping. With the SLOPE knob you decide how softly the clipper takes hold: low values leave the signal intact until the last moment and then catch the peaks firmly, high values start earlier and round them off gradually. The knob face draws the resulting curve in real time, and the label below shows its value as Hard, Medium or Soft.",
             "specs": [
               [
                 "Range",
@@ -173,7 +173,7 @@
               {
                 "x": 79,
                 "y": 50,
-                "label": "Hard, Medium, Soft",
+                "label": "Slope Value",
                 "side": "left"
               }
             ]
@@ -188,11 +188,11 @@
               41.6,
               76.4
             ],
-            "text": "The rectified waveform view, selected with RECT, flips the negative half of the signal upward and draws it on a dB scale. Every peak is measured against a single threshold, so you can read at a glance how much is being clipped. The clipped area is filled in the colour of the mode, the output is drawn as a line on top, and a loudness trace with its LU value runs along the bottom.",
+            "text": "The rectified waveform view, selected with RECT, flips the negative half of the signal upward and draws it on a dB scale. Every peak is measured against a single threshold, so you can read at a glance how much is being clipped.",
             "pins": [
               {
                 "x": 36,
-                "y": 33.0,
+                "y": 33,
                 "label": "Threshold",
                 "side": "bottom"
               },
@@ -296,7 +296,7 @@
               23.6,
               34
             ],
-            "text": "The INPUT knob sets how hard you drive the clipper, the OUTPUT knob the level that comes out of it. Link the two and they move in opposite directions, as here with +6.3 dB in and −6.3 dB out: you get more clipping while the overall level stays about the same. The MIX slider blends the dry signal back in for parallel clipping, perfectly in time with the processed one.",
+            "text": "The INPUT knob sets how hard you drive the clipper, the OUTPUT knob the level that comes out of it. Link the two and they move in opposite directions, so you trigger clipping while the overall level stays about the same. The MIX slider blends the dry signal back in for parallel clipping.",
             "specs": [
               [
                 "Input, Output",
@@ -342,17 +342,17 @@
               [
                 0,
                 12.52,
-                8.0,
+                8,
                 79.41
               ],
               [
-                92.0,
+                92,
                 12.52,
-                8.0,
+                8,
                 79.41
               ]
             ],
-            "text": "The input meters on the left show the level going into the clipper, the output meters on the right the level coming out, each with RMS and peak level for the left and right channel. Below each pair, a peak hold readout keeps the highest peak until you click it, and turns red as soon as the signal goes over 0 dB.",
+            "text": "The input meters on the left show the level going into the clipper, the output meters on the right the level coming out, each with RMS and Peak level for the left and right channel. Below each pair, a peak hold readout keeps the highest peak until you click it, and turns red as soon as the signal goes over 0 dB.",
             "pins": [
               {
                 "x": 4.2,
@@ -384,7 +384,7 @@
               12.5,
               10.5
             ],
-            "text": "The bypass button switches to the original signal, perfectly in time with the processed one, for an instant before-and-after comparison. Delta monitoring, on the headphones button, lets you hear only what the clipper is removing. It is the quickest way to check that a setting is taming the peaks and taking nothing more than you want.",
+            "text": "The bypass button switches to the original signal for A/B comparison, while delta monitoring through the headphones button lets you hear only what the clipper is removing. It is the quickest way to check that a setting is taming the peaks and taking nothing more than you want.",
             "pins": [
               {
                 "x": 4,
@@ -410,7 +410,7 @@
               15,
               10.5
             ],
-            "text": "Clipping makes a signal louder, and a louder signal almost always sounds better in a comparison. Automatic Loudness Matching measures the loudness before and after the clipper and compensates the difference on the output, so you judge each setting by its sound rather than its level. Turn it on with the AUTO button, which then shows the gain being applied, −1.9 dB here.",
+            "text": "Clipping makes a signal louder, and a louder signal almost always sounds better in a comparison. Automatic Loudness Matching measures the loudness before and after the clipper and compensates the difference on the output, so you judge each setting by its sound rather than its level. Turn it on with the AUTO button, which then shows the gain being applied.",
             "specs": [
               [
                 "Compensation",
@@ -458,19 +458,19 @@
             "mode": "Darker",
             "slope": 0.5,
             "title": "Darker",
-            "text": "Clips the bottom of the wave harder than the top. The asymmetry adds even harmonics, the lighter bars in the spectrum, for a heavier, tube-like tone."
+            "text": "Clips the bottom of the wave harder than the top. The asymmetry adds even harmonics for a heavier, tube-like tone."
           },
           {
             "mode": "Softer",
-            "slope": 1.0,
-            "title": "Clipping Knee",
+            "slope": 1,
+            "title": "Slope",
             "text": "Here the curve is drawn in dB, input against output. Along the diagonal the signal passes untouched, and the marker shows where the knee begins. Turning SLOPE up moves that point lower, from −3.1 dB to −14 dB on Softer, for a gentler transition into clipping.",
             "view": "db",
             "demo": "sweep"
           },
           {
             "mode": "Softer",
-            "slope": 1.0,
+            "slope": 1,
             "normalize": false,
             "title": "Normalization",
             "text": "The softer curves come out slightly below the threshold when the input reaches it: 1.84 dB short on Softer with the softest knee. Normalization raises the whole curve by that amount, so it reaches full level without changing shape. Turn it on with the NORMALIZE button in the Advanced panel; the dashed line is the curve without it.",
@@ -483,7 +483,7 @@
         "type": "feature",
         "id": "display",
         "title": "Real-Time Display",
-        "intro": "The real-time display shows what the clipper is doing as it happens, as a rectified or a bipolar waveform. Drag the threshold and ceiling lines directly, and hide any trace from the legend.",
+        "intro": "The real-time display shows what the clipper is doing as it happens, as a rectified or a bipolar waveform. Drag the threshold and ceiling lines directly inside the display, and hide any unnecessary trace using the legend buttons.",
         "manual": "views",
         "focus": [
           23.8,
@@ -499,7 +499,7 @@
             "pins": [
               {
                 "x": 36,
-                "y": 33.0,
+                "y": 33,
                 "label": "Threshold",
                 "side": "bottom"
               },
@@ -546,18 +546,18 @@
             "text": "The waveform as it is, with the threshold on both sides. Selected with WAVE."
           },
           {
-            "title": "Traces",
+            "title": "Legend Buttons",
             "text": "The clipped area, the output and its loudness, listed as CLIP, OUT and LUFS in the legend. Click an entry to hide it."
           },
           {
-            "title": "Time Window",
-            "text": "From 1 to 5 seconds. The view and the time window carry over to every new instance."
+            "title": "Time Window Slider",
+            "text": "Move the slider to select between 1 to 5 seconds of audio to show inside the display."
           }
         ],
         "compare": {
           "mode": "Harder",
           "slope": 0.3,
-          "caption": "The same clipped signal in the two views. The bipolar waveform shows it as it is, with a threshold above and below zero. The rectified waveform flips the negative half upward, so every peak, positive or negative, is measured against a single threshold and you can read the amount of clipping at a glance. In the plugin, the rectified view is drawn on a dB scale."
+          "caption": "The same clipped signal in the two views. The bipolar waveform shows it as it is, with a threshold above and below zero. The rectified waveform flips the negative half upward, so every peak, positive or negative, is measured against a single threshold and you can read the amount of clipping at a glance."
         }
       },
       {
@@ -629,15 +629,15 @@
         "columns": [
           {
             "title": "Wavefolding",
-            "text": "Folds the peaks back toward zero instead of cutting them, for a bright, aggressive edge. The folded part is anti-aliased."
+            "text": "Folds the peaks back toward zero instead of cutting them, for a bright, aggressive edge and detail preserving clipping. The folded part is anti-aliased."
           },
           {
             "title": "Fold Shape",
-            "text": "A triangle fold for sharp corners and a brighter sound, a sine fold for a rounder one."
+            "text": "Choose between a triangle fold for sharp corners and a brighter sound or a sine fold for a rounder one."
           },
           {
-            "title": "Ceiling",
-            "text": "With oversampling on, lets peaks rise up to 3 dB past the threshold instead of clipping them a second time. Never above 0 dBFS."
+            "title": "Ceiling Slider",
+            "text": "Only enabled with oversampling on, lets peaks rise up to 3 dB past the threshold instead of clipping them a second time."
           },
           {
             "title": "Normalization",
@@ -648,7 +648,7 @@
           "mode": "Harder",
           "slope": 0.1,
           "drive": 1.78,
-          "caption": "A sine wave 5 dB over the threshold in Harder mode. With the FOLD knob at 0% the peaks are cut; at 100% they fold back toward zero. Switch between TRI and SINE above to compare the two fold shapes."
+          "caption": "A sine wave 5 dB over the threshold in Harder mode. With the FOLD knob at 0% the peaks are cut; at 100% they fold back toward zero. Switch between TRI and SINE above to compare the fold shapes."
         }
       },
       {
@@ -693,7 +693,7 @@
         "id": "getting-around",
         "title": "Getting Around",
         "intro": [
-          "Start here if you are new to KrystalClip. The Quick Start gets you to a good result in a few steps, and the topics that follow explain how the signal moves through the plugin and how to find your way around the plugin window."
+          "Start here if you are new to KrystalClip, this quick start guide gets you to a good result in a few steps. The topics that follow explain how the signal moves through the plugin and how to find your way around the plugin window."
         ],
         "topics": [
           {
@@ -704,13 +704,13 @@
               {
                 "steps": [
                   "Lower <strong>THRESHOLD</strong> until the clipped area appears on the loudest peaks in the display.",
-                  "Pick a <strong>MODE</strong>: start with Softer for a transparent result, or try Harder or Darker for a more obvious, distorted character.",
+                  "Pick a <strong>MODE</strong>: start with Softer for a transparent result, or try Harder or Darker for a more distorted character.",
                   "Adjust <strong>SLOPE</strong> to taste: lower values clip harder and add more harmonics, higher values are smoother.",
                   "Turn on <strong>AUTO</strong> for Automatic Loudness Matching, so you can compare the result with the original at the same level.",
-                  "If you hear harshness, especially in Harder or Darker, raise <strong>OVERSAMPLE</strong> up to 8×."
+                  "If you hear harshness or just want to avoid aliasing, especially in Harder or Darker, raise <strong>OVERSAMPLE</strong> up to 8×."
                 ]
               },
-              "Use Delta monitoring to hear exactly what is being removed, and the MIX slider to blend some of the original back in if the effect is too strong."
+              "Use Delta monitoring to hear exactly what is being removed, and the MIX slider to blend some of the original signal back in if the effect is too strong."
             ]
           },
           {
@@ -1138,14 +1138,14 @@
                   "series": [
                     {
                       "mode": "Softer",
-                      "slope": 1.0,
+                      "slope": 1,
                       "color": "#8A96A3",
                       "label": "Normalize off",
                       "dashed": true
                     },
                     {
                       "mode": "Softer",
-                      "slope": 1.0,
+                      "slope": 1,
                       "normalize": true,
                       "color": "#1FD2F2",
                       "label": "Normalize on"
@@ -1590,7 +1590,7 @@
                       "focus": [
                         0,
                         12.52,
-                        8.0,
+                        8,
                         79.41
                       ],
                       "label": "Input meters"
@@ -1599,9 +1599,9 @@
                       "image": 0,
                       "crop": true,
                       "focus": [
-                        92.0,
+                        92,
                         12.52,
-                        8.0,
+                        8,
                         79.41
                       ],
                       "label": "Output meters"

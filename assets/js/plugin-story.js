@@ -291,6 +291,8 @@
     ms: v => `${v < 100 ? v.toFixed(0) : Math.round(v)} ms`,
     msfine: v => `${v === 0 ? '0' : v < 1 ? v.toFixed(2) : v < 100 ? v.toFixed(1) : Math.round(v)} ms`,
     pct: v => `${Math.round(v)}%`,
+    pctsigned: v => `${Math.round(v) > 0 ? '+' : Math.round(v) < 0 ? '−' : ''}${Math.abs(Math.round(v))}%`,
+    hz: v => (v < 1000 ? `${Math.round(v)} Hz` : `${(v / 1000).toFixed(1)} kHz`),
     db: v => `${v < -0.05 ? '−' : ''}${Math.abs(v).toFixed(1)} dB`,
     ratio: v => `${v.toFixed(1)}:1`,
   };
@@ -359,6 +361,21 @@
     const state = { ...parse(steps[0].dataset.state, {}) };
     const plot = make(host, { ...state });
     let demo = null;
+
+    // Phones: only the plot stays pinned while the steps scroll; the sliders move below the steps
+    const sliders = section.querySelector('.ks-scope-sliders');
+    if (sliders && sliders.children.length) {
+      const home = sliders.parentNode, dock = document.createElement('div');
+      dock.className = 'ks-scope-dock';
+      dock.innerHTML = '<p class="ks-scope-dock-title">Adjust the settings</p>';
+      section.querySelector('.ks-curves-grid').appendChild(dock);
+      const narrow = window.matchMedia('(max-width: 959px)');
+      const place = () => (narrow.matches ? dock : home).appendChild(sliders);
+      place();
+      narrow.addEventListener('change', place);
+      // Reaching the sliders hands the plot over to the reader: the step demo stops
+      new IntersectionObserver(([entry]) => { if (entry.isIntersecting && narrow.matches) stopDemo(); }, { threshold: 0.5 }).observe(dock);
+    }
 
     const sync = () => controls.forEach(c => {
       const node = el(c.key);
@@ -554,8 +571,14 @@
   // parts: { action: {href, label}, hero: markup placed between the plugin nav and the sections }
   function render(plugin, data, parts) {
     const sections = (data.overview?.sections || []).filter(section => RENDERERS[section.type]);
+    let side = 0;
     const html = sections.map((section, i) => {
-      const markup = RENDERERS[section.type](plugin, data, section, i + 1, parts);
+      // Two-column sections alternate: the visual on the right, then on the left, and so on
+      const twoColumn = ['tour', 'curves', 'scope', 'feature'].includes(section.type);
+      const left = twoColumn && side++ % 2 === 1;
+      const spec = section.type === 'feature' ? { ...section, reverse: !left } : section;
+      let markup = RENDERERS[section.type](plugin, data, spec, i + 1, parts);
+      if (left && section.type !== 'feature') markup = markup.replace('class="ks ', 'class="ks is-flip ');
       // Alternate the background from one section to the next, as on the About page
       return i % 2 ? markup.replace('class="ks ', 'class="ks ks--alt ') : markup;
     }).join('');

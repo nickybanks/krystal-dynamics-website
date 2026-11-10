@@ -230,6 +230,8 @@
 }
 
 .news-notes-more:hover { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
+.news-more-phone,
+.news-notes-more.is-phone-only { display: none; }
 
 /* Activity slide: every release of the suite, newest first */
 .news-timeline {
@@ -481,7 +483,7 @@
   .news-update-link { grid-template-columns: minmax(0, 1fr) auto; gap: 0.15rem 0.6rem; padding: 0.5rem 0; }
   .news-update-date { grid-column: 1 / -1; }
   .news-update-note { grid-column: 1 / -1; }
-  .news-timeline-item:nth-child(n+4) { display: none; }
+  .news-timeline-item:nth-child(n+3) { display: none; }
   .news-timeline::before, .news-timeline-item::before { top: 0.75rem; }
   .news-notes li { font-size: 0.86rem; }
   .news-update-title { font-size: 0.78rem; }

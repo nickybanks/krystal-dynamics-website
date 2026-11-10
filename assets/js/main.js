@@ -219,14 +219,20 @@ function changelogUrl(plugin) {
   return plugin.guide?.history || `${plugin.page}#version-history`;
 }
 
+// Phones show fewer notes, so the plugin card above them keeps its room (mobile.css)
+const NEWS_PHONE_NOTES = 2;
+
 function renderNewsNotes(notes, changelog, max = 4) {
   if (!notes.length) return '';
-  const extra = notes.length - max;
+  const more = count => `${count} more ${count === 1 ? 'change' : 'changes'} in the changelog`;
+  const extra = notes.length - max, extraPhone = notes.length - Math.min(max, NEWS_PHONE_NOTES);
   return `
     <ul class="news-notes">
-      ${notes.slice(0, max).map(note => `<li>${escapeNewsMarkup(note)}</li>`).join('')}
+      ${notes.slice(0, max).map((note, i) => `<li${i >= NEWS_PHONE_NOTES ? ' class="news-note--wide"' : ''}>${escapeNewsMarkup(note)}</li>`).join('')}
     </ul>
-    ${extra > 0 ? `<a class="news-notes-more" href="${escapeNewsMarkup(changelog)}">${extra} more ${extra === 1 ? 'change' : 'changes'} in the changelog</a>` : ''}`;
+    ${extraPhone > 0 ? `<a class="news-notes-more${extra > 0 ? '' : ' is-phone-only'}" href="${escapeNewsMarkup(changelog)}">
+      ${extra > 0 ? `<span class="news-more-wide">${more(extra)}</span>` : ''}<span class="news-more-phone">${more(extraPhone)}</span>
+    </a>` : ''}`;
 }
 
 function renderNewsTimeline(entries) {

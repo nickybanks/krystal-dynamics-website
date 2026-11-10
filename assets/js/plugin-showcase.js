@@ -55,7 +55,10 @@
     const highlights = getReleaseHighlights(list);
     const mid = (list.length - 1) / 2;
 
-    track.innerHTML = list.map((plugin, index) => {
+    // Phones: real spacers at both ends let the first and last cards reach the centre of the scroller
+    // (empty pseudo-elements are left out of the scrollable area by some mobile browsers)
+    const spacer = '<li class="showcase-spacer" aria-hidden="true" role="presentation"></li>';
+    track.innerHTML = spacer + list.map((plugin, index) => {
       const pose = POSES[index % POSES.length];
       const z = Math.round(list.length - Math.abs(index - mid) * 2);   // the middle card sits on top, like a fanned hand
       return `
@@ -69,7 +72,7 @@
             </span>
           </button>
         </li>`;
-    }).join('');
+    }).join('') + spacer;
 
     const wallpapers = list.map(plugin => plugin.images[0]);
     const lens = initLensBackdrop(backdropLayer, wallpapers);

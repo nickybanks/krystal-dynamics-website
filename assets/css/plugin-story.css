@@ -655,11 +655,18 @@ body.has-pp-dock .ks-details { padding-bottom: 7rem; }
 
 /* ── Additions for the three-page layout ──────────────────────────────────── */
 
-/* Feature with the screenshot on the right */
+/* Feature with the screenshot on the right; tour and plots with the visual on the left */
 @media (min-width: 960px) {
   .ks-feature.is-reverse .ks-feature-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
   .ks-feature.is-reverse .ks-feature-shot { order: 2; }
+  .ks-tour.is-flip .ks-tour-grid { grid-template-columns: minmax(0, 7.6fr) minmax(0, 4.4fr); }
+  .ks-tour.is-flip .ks-tour-stage { order: -1; }
+  .ks-curves.is-flip .ks-curves-grid { grid-template-columns: minmax(0, 7.8fr) minmax(0, 4.2fr); }
+  .ks-curves.is-flip .ks-curves-stage { order: -1; }
 }
+
+/* The sliders of a plot, docked below the steps on phones */
+.ks-scope-dock { display: none; }
 
 .visually-hidden {
   position: absolute !important;
@@ -852,7 +859,9 @@ body.has-plugin-nav #header { position: relative; }
 /* KrystalPeak plots (peak-plots.js): gain reduction in red, upward gain in yellow, as in the plugin */
 .kp-peak { margin: 0; }
 .kp-peak svg { display: block; width: 100%; height: auto; overflow: visible; }
-.kp-peak figcaption { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.78rem; }
+/* Readouts in fixed columns: a value getting longer never moves the others or the plot */
+.kp-peak figcaption { display: grid; grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr)); gap: 0.25rem 1.25rem; margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.78rem; }
+.kp-peak figcaption > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .kp-peak figcaption b { color: var(--text-primary); font-weight: 500; font-variant-numeric: tabular-nums; }
 .kp-gr { fill: none; stroke: #ff1744; stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
 .kp-gr-fill { fill: rgba(255, 23, 68, 0.07); }
@@ -886,6 +895,25 @@ body.has-plugin-nav #header { position: relative; }
 .kp-time-fill { fill: rgba(255, 195, 0, 0.07); }
 .kp-time-fill.is-up { fill: rgba(230, 255, 0, 0.07); }
 .kp-knee-band { fill: rgba(255, 255, 255, 0.05); }
+/* KrystalField plots (field-plots.js): reduction in purple and increase in green, as in the plugin's display */
+.kp-field-down { fill: rgba(170, 85, 255, 0.24); }
+.kp-field-up { fill: rgba(85, 255, 170, 0.2); }
+.kp-field-gain { fill: none; stroke: rgba(255, 255, 255, 0.85); stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
+.kp-window-band { fill: rgba(255, 255, 255, 0.045); }
+.kp-noise-band { fill: rgba(255, 255, 255, 0.05); }
+/* KrystalShaper: transient in lime, sustain in amber, as in the plugin's display */
+.kp-shp-in { fill: rgba(255, 255, 255, 0.07); }
+.kp-shp-out { fill: color-mix(in srgb, var(--ks-color) 30%, transparent); }
+.kp-shp-tr { fill: rgba(196, 255, 77, 0.26); }
+.kp-shp-su { fill: rgba(240, 192, 64, 0.24); }
+.kp-shp-band { fill-opacity: 0.6; }
+.kp-shp-trline { fill: none; stroke: #c4ff4d; stroke-width: 2.2; stroke-linejoin: round; }
+.kp-shp-suline { fill: none; stroke: #f0c040; stroke-width: 2.2; stroke-linejoin: round; }
+.kp-shp-w { fill: rgba(196, 255, 77, 0.18); }
+.kp-shp-wline { fill: none; stroke: #c4ff4d; stroke-width: 1.8; stroke-linejoin: round; }
+.kp-hit { fill: none; stroke: rgba(255, 255, 255, 0.4); stroke-width: 1.5; }
+.kp-hit.is-on { fill: #c4ff4d; stroke: none; }
+.kp-extra { stroke: #ff5a4d; stroke-width: 2; stroke-linecap: round; }
 .kp-sc-wave { fill: none; stroke: color-mix(in srgb, var(--ks-color) 55%, transparent); stroke-width: 1; }
 .ks-pair figcaption { display: grid; gap: 0.15rem; }
 .ks-pair-label { color: var(--text-primary); }
@@ -920,7 +948,9 @@ body.has-plugin-nav #header { position: relative; }
 .kp-legend span.is-dashed::before { background: repeating-linear-gradient(90deg, var(--kp-color) 0 4px, transparent 4px 7px); }
 
 @media (max-width: 959px) {
-  .ks-curves-grid { display: flex; flex-direction: column-reverse; gap: 0; }
+  .ks-curves-grid { display: flex; flex-direction: column; gap: 0; }
+  .ks-curves-stage { order: -1; }
+  .ks-curves-steps { order: 0; }
   .ks-curves .ks-head { margin-bottom: 2rem; }
 
   /* The stage stays at the top while the descriptions scroll underneath */
@@ -941,4 +971,25 @@ body.has-plugin-nav #header { position: relative; }
   .kp-cell figcaption.kp-readouts { gap: 0.1rem 0.8rem; font-size: 0.72rem; }
   .ks-curves-steps { padding: 2rem 0 0; }
   .ks-cstep { min-height: 46vh; }
+
+  /* Only the plot is pinned: compact controls and readouts, square plots kept short */
+  .ks-scope-controls:empty { display: none; }
+  .ks-curves-stage .kp-peak--square { max-width: min(100%, 30vh); }
+  .ks-curves-stage .kp-peak figcaption { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.1rem 0.8rem; margin-top: 0.35rem; font-size: 0.7rem; }
+  .ks-curves-stage .kp-peak figcaption > span { white-space: normal; }   /* labels wrap; values keep a fixed width */
+  .ks-scope-dock {
+    display: block;
+    order: 1;
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .ks-scope-dock-title { margin: 0 0 0.2rem; color: var(--text-primary); font-size: 0.9rem; font-weight: 500; }
+  .ks-scope-dock .ks-scope-sliders { margin-top: 0.6rem; padding-top: 0; border-top: 0; }
+}
+
+@media (max-width: 767px) {
+  .ks-fold { grid-template-columns: minmax(0, 1fr); }
 }

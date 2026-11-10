@@ -210,7 +210,7 @@
     return S().nav(plugin, 'history', window.KDPageContent.downloadAction(plugin)) + `
       <div class="kg-page">
         ${hero(guide.history?.title || 'Version History', guide.history?.intro, `
-          <p class="kg-meta kg-hero-meta" data-ks-reveal style="--d:200ms">${releases.length} releases since ${esc(date(releases.at(-1)?.date))}</p>`)}
+          <p class="kg-meta kg-hero-meta" data-ks-reveal style="--d:200ms">${releases.length === 1 ? `First released ${esc(date(releases[0]?.date))}` : `${releases.length} releases since ${esc(date(releases.at(-1)?.date))}`}</p>`)}
         <section class="kg-section">
           <div class="container">
             <ol class="kg-releases">

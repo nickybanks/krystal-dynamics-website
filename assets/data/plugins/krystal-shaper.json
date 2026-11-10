@@ -1,0 +1,2192 @@
+{
+  "aspect": [
+    2336,
+    1376
+  ],
+  "shots": [
+    {
+      "color": "#FF9D00"
+    },
+    {
+      "color": "#FFD600"
+    },
+    {
+      "color": "#FF3B00"
+    },
+    {
+      "color": "#FF9D00"
+    }
+  ],
+  "overview": {
+    "sections": [
+      {
+        "type": "tour",
+        "id": "interface",
+        "title": "Interface",
+        "intro": "KrystalShaper puts a wide real-time display on top and the shaping controls in a single row below it, between the input and the output. Two panels slide out over the display for the advanced settings and the sidechain. Scroll to go through each part.",
+        "steps": [
+          {
+            "title": "User Interface",
+            "manual": "layout",
+            "image": 0,
+            "focus": null,
+            "text": "The display fills the top half, with the ADVANCED tab on its left edge and the SIDECHAIN tab on its right. Below it, the five shaping controls sit in the middle, between the transient and sustain meters, with input gain and mix on the left and output gain and Automatic Loudness Matching on the right. MODE, LINK, CLIP and LKHD run along the top.",
+            "pins": [
+              {
+                "x": 60,
+                "y": 5.5,
+                "label": "Top bar",
+                "side": "bottom"
+              },
+              {
+                "x": 30,
+                "y": 30,
+                "label": "Display",
+                "side": "top"
+              },
+              {
+                "x": 2.6,
+                "y": 29.3,
+                "label": "Advanced",
+                "side": "right"
+              },
+              {
+                "x": 97.4,
+                "y": 29.3,
+                "label": "Sidechain",
+                "side": "left"
+              },
+              {
+                "x": 6.3,
+                "y": 72.6,
+                "label": "Input",
+                "side": "top"
+              },
+              {
+                "x": 49.7,
+                "y": 70.7,
+                "label": "Shaping",
+                "side": "top"
+              },
+              {
+                "x": 93.5,
+                "y": 72.6,
+                "label": "Output",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Mode, Link, Clipper and Lookahead",
+            "manual": "mode",
+            "image": 2,
+            "focus": [
+              34,
+              0,
+              49,
+              6.5
+            ],
+            "text": "MODE sets how quickly the transients are detected and how the gain moves: SHARP for snappy drums, MEDIUM for most material, SMOOTH for a rounder result, with the colour of the controls following it. LINK processes both channels together, left and right, or mid and side separately. CLIP keeps the output below 0 dB, and LKHD lets the gain change land right on the start of each hit.",
+            "specs": [
+              [
+                "Mode",
+                "Sharp, Medium, Smooth"
+              ],
+              [
+                "Link",
+                "On, L/R, M/S"
+              ],
+              [
+                "Clipper",
+                "Off, Soft, Hard"
+              ],
+              [
+                "Lookahead",
+                "Off, On (2 ms)"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 45.4,
+                "y": 3.2,
+                "label": "Mode",
+                "side": "bottom"
+              },
+              {
+                "x": 57.7,
+                "y": 3.2,
+                "label": "Link",
+                "side": "bottom"
+              },
+              {
+                "x": 68.3,
+                "y": 3.2,
+                "label": "Clipper",
+                "side": "bottom"
+              },
+              {
+                "x": 79.7,
+                "y": 3.2,
+                "label": "Lookahead",
+                "side": "bottom"
+              }
+            ]
+          },
+          {
+            "title": "Transient and Sustain",
+            "manual": "transient",
+            "image": 0,
+            "focus": [
+              20.4,
+              55.9,
+              59.2,
+              35.4
+            ],
+            "text": "The two large knobs are the heart of KrystalShaper. TRANSIENT turns the attack of each hit up for more punch, or down to soften it; SUSTAIN does the same for everything that follows, the body, the tail and the room. The curve on each knob shows the shape you are giving the sound.",
+            "specs": [
+              [
+                "Transient",
+                "−100 to +100%"
+              ],
+              [
+                "Sustain",
+                "−100 to +100%"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 27.9,
+                "y": 73.7,
+                "label": "Transient",
+                "side": "top"
+              },
+              {
+                "x": 72.8,
+                "y": 73.7,
+                "label": "Sustain",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Hold, Pump and Release",
+            "manual": "hold",
+            "image": 2,
+            "focus": [
+              20.4,
+              55.9,
+              59.2,
+              35.4
+            ],
+            "text": "HOLD sets how long the attack lasts at full strength, and RELEASE how gradually it hands over to the sustain. PUMP, in the middle, dips the signal right at that handover, for the breathing feel of a hard-compressed drum bus.",
+            "specs": [
+              [
+                "Hold",
+                "0 to 200 ms"
+              ],
+              [
+                "Release",
+                "20 to 500 ms"
+              ],
+              [
+                "Pump",
+                "0 to 100%"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 39.6,
+                "y": 77.1,
+                "label": "Hold",
+                "side": "top"
+              },
+              {
+                "x": 49.7,
+                "y": 70.7,
+                "label": "Pump",
+                "side": "top"
+              },
+              {
+                "x": 60.7,
+                "y": 77.1,
+                "label": "Release",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Real-Time Display",
+            "manual": "traces",
+            "image": 0,
+            "focus": [
+              0,
+              6.1,
+              100,
+              47.8
+            ],
+            "text": "The display shows the last 3 seconds of signal, input and output, with the transient and sustain curves on top: the transient curve jumps up at every hit KrystalShaper detects, and the sustain curve takes over as it falls. Click the legend to hide or show each trace.",
+            "pins": [
+              {
+                "x": 17.6,
+                "y": 20,
+                "label": "Transient",
+                "side": "top"
+              },
+              {
+                "x": 38,
+                "y": 8.4,
+                "label": "Sustain",
+                "side": "bottom"
+              },
+              {
+                "x": 26,
+                "y": 24.5,
+                "label": "Waveform",
+                "side": "bottom"
+              },
+              {
+                "x": 50,
+                "y": 49.8,
+                "label": "Legend",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Advanced Panel",
+            "manual": "advanced-panel",
+            "image": 2,
+            "focus": [
+              0,
+              12,
+              63.6,
+              36.2
+            ],
+            "text": "The ADVANCED tab opens the threshold, which sets how sharply the level must rise to count as a transient, and the filters that decide which frequencies the transient and sustain changes affect. The headphones let you listen to each part on its own. Here the attack is softened only below 440 Hz, and the sustain lifted only above 3.6 kHz.",
+            "specs": [
+              [
+                "Threshold",
+                "1 to 12 dB"
+              ],
+              [
+                "Filters",
+                "20 Hz to 20 kHz"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 5.3,
+                "y": 31.3,
+                "label": "Threshold",
+                "side": "right"
+              },
+              {
+                "x": 22.3,
+                "y": 31.8,
+                "label": "Transient filters",
+                "side": "bottom"
+              },
+              {
+                "x": 47.4,
+                "y": 31.8,
+                "label": "Sustain filters",
+                "side": "bottom"
+              },
+              {
+                "x": 28.4,
+                "y": 17.2,
+                "label": "Listen",
+                "side": "bottom"
+              },
+              {
+                "x": 52.1,
+                "y": 17.2,
+                "label": "Listen",
+                "side": "bottom"
+              }
+            ]
+          },
+          {
+            "title": "Sidechain Panel",
+            "manual": "sidechain-panel",
+            "image": 3,
+            "focus": [
+              71.5,
+              12,
+              28.5,
+              36.2
+            ],
+            "text": "The SIDECHAIN tab decides what the detector listens to: the track itself, or another one routed to the sidechain input, through a high-pass and a low-pass filter. Here only the top end of the drums triggers the shaping. The headphones let you hear what the detector hears.",
+            "specs": [
+              [
+                "Source",
+                "INT, EXT"
+              ],
+              [
+                "HPF, LPF",
+                "20 Hz to 20 kHz"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 89.4,
+                "y": 16.7,
+                "label": "Source",
+                "side": "left"
+              },
+              {
+                "x": 94,
+                "y": 16.7,
+                "label": "Listen",
+                "side": "bottom"
+              },
+              {
+                "x": 81.8,
+                "y": 31.8,
+                "label": "HPF",
+                "side": "bottom"
+              },
+              {
+                "x": 93.3,
+                "y": 31.8,
+                "label": "LPF",
+                "side": "bottom"
+              }
+            ]
+          },
+          {
+            "title": "Input, Mix and Transient Meters",
+            "manual": "input",
+            "image": 1,
+            "focus": [
+              [
+                0,
+                57.5,
+                13.2,
+                37
+              ],
+              [
+                13.9,
+                57.6,
+                5.6,
+                34.8
+              ]
+            ],
+            "text": "INPUT sets the level going into KrystalShaper, and the MIX slider blends the original back in for parallel processing. The transient meters next to them show the gain change on the attacks, a bar going up for a boost and down for a cut.",
+            "specs": [
+              [
+                "Input",
+                "−36 to +36 dB"
+              ],
+              [
+                "Mix",
+                "0 to 100%"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 6.3,
+                "y": 72.6,
+                "label": "Input",
+                "side": "right"
+              },
+              {
+                "x": 6.3,
+                "y": 88.6,
+                "label": "Mix",
+                "side": "right"
+              },
+              {
+                "x": 16.7,
+                "y": 63,
+                "label": "Transient meters",
+                "side": "right"
+              }
+            ]
+          },
+          {
+            "title": "Output, Loudness Matching and Sustain Meters",
+            "manual": "auto",
+            "image": 3,
+            "focus": [
+              [
+                80.8,
+                57.6,
+                5.6,
+                34.8
+              ],
+              [
+                86.4,
+                57.5,
+                13.6,
+                37
+              ]
+            ],
+            "text": "The sustain meters show the gain change on the sustain. OUTPUT sets the level coming out, and AUTO turns on Automatic Loudness Matching, which keeps the output as loud as the input so you judge every setting by its sound, and shows the gain it applies, +0.1 dB here.",
+            "specs": [
+              [
+                "Output",
+                "−36 to +36 dB"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 83.5,
+                "y": 63,
+                "label": "Sustain meters",
+                "side": "left"
+              },
+              {
+                "x": 93.5,
+                "y": 72.6,
+                "label": "Output",
+                "side": "left"
+              },
+              {
+                "x": 93.6,
+                "y": 88.7,
+                "label": "Auto",
+                "side": "left"
+              }
+            ]
+          },
+          {
+            "title": "Bypass and Delta",
+            "manual": "delta",
+            "image": 0,
+            "focus": [
+              0,
+              43.5,
+              12,
+              10.4
+            ],
+            "text": "The power button bypasses the plugin, perfectly in time. The headphones next to it turn on Delta monitoring, so you hear only what KrystalShaper is adding or taking away.",
+            "pins": [
+              {
+                "x": 2.8,
+                "y": 49.8,
+                "label": "Bypass",
+                "side": "top"
+              },
+              {
+                "x": 7.4,
+                "y": 49.8,
+                "label": "Delta",
+                "side": "top"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "scope",
+        "id": "shaping",
+        "title": "Transient and Sustain",
+        "scope": "shaperTime",
+        "manual": "transient",
+        "intro": "Two snare hits through KrystalShaper, computed from the plugin’s own detector and gain curves. The waveform of the result sits behind, the original fainter around it; the white line is the gain change, split into the transient part, in green, and the sustain part, in amber.",
+        "colors": {
+          "SHARP": "#FF3B00",
+          "MEDIUM": "#FF9D00",
+          "SMOOTH": "#FFD600"
+        },
+        "colorKeys": [
+          "mode"
+        ],
+        "controls": [
+          {
+            "type": "choice",
+            "key": "mode",
+            "label": "Mode",
+            "values": [
+              "SHARP",
+              "MEDIUM",
+              "SMOOTH"
+            ]
+          },
+          {
+            "type": "toggle",
+            "key": "lookahead",
+            "label": "Lookahead"
+          },
+          {
+            "type": "range",
+            "key": "transient",
+            "label": "Transient",
+            "min": -100,
+            "max": 100,
+            "step": 1,
+            "format": "pctsigned"
+          },
+          {
+            "type": "range",
+            "key": "sustain",
+            "label": "Sustain",
+            "min": -100,
+            "max": 100,
+            "step": 1,
+            "format": "pctsigned"
+          },
+          {
+            "type": "range",
+            "key": "hold",
+            "label": "Hold",
+            "min": 0,
+            "max": 200,
+            "step": 0.1,
+            "format": "msfine"
+          },
+          {
+            "type": "range",
+            "key": "release",
+            "label": "Release",
+            "min": 20,
+            "max": 500,
+            "step": 0.1,
+            "scale": "log",
+            "format": "ms"
+          },
+          {
+            "type": "range",
+            "key": "pump",
+            "label": "Pump",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "format": "pct"
+          }
+        ],
+        "steps": [
+          {
+            "title": "Transient",
+            "state": {
+              "mode": "MEDIUM",
+              "transient": 60,
+              "sustain": 0,
+              "hold": 20,
+              "release": 100,
+              "pump": 0,
+              "lookahead": false
+            },
+            "demo": {
+              "sweep": "transient",
+              "from": -100,
+              "to": 100,
+              "period": 5600
+            },
+            "text": "TRANSIENT turns the attack of each hit up or down, by up to 15 dB, and leaves the rest of the sound as it is. Up, the hit jumps out of the mix; down, it softens and sits further back. Watch the output peak: at +60% the attack is 9 dB louder and the peak goes over 0 dB, which is why a clipper is often the next step."
+          },
+          {
+            "title": "Sustain",
+            "state": {
+              "mode": "MEDIUM",
+              "transient": 0,
+              "sustain": 60,
+              "hold": 20,
+              "release": 100,
+              "pump": 0,
+              "lookahead": false
+            },
+            "demo": {
+              "sweep": "sustain",
+              "from": -100,
+              "to": 100,
+              "period": 5600
+            },
+            "text": "SUSTAIN does the same for everything after the attack. Turn it up to bring out the body, the tail and the room; turn it down for a tighter, drier hit. The attack itself stays where it is."
+          },
+          {
+            "title": "Hold and Release",
+            "state": {
+              "mode": "MEDIUM",
+              "transient": 60,
+              "sustain": -40,
+              "hold": 20,
+              "release": 100,
+              "pump": 0,
+              "lookahead": false
+            },
+            "demo": {
+              "sweep": "release",
+              "from": 30,
+              "to": 400,
+              "period": 5600
+            },
+            "text": "HOLD keeps the transient part at full strength for a moment, and RELEASE sets how gradually it hands over to the sustain. Short values touch only the click of the hit; longer ones reach into its body."
+          },
+          {
+            "title": "Pump",
+            "state": {
+              "mode": "MEDIUM",
+              "transient": 0,
+              "sustain": 0,
+              "hold": 20,
+              "release": 100,
+              "pump": 50,
+              "lookahead": false
+            },
+            "demo": {
+              "sweep": "pump",
+              "from": 0,
+              "to": 100,
+              "period": 5200
+            },
+            "text": "PUMP digs a dip right where the attack hands over to the sustain, up to 12 dB deep, and lets the sustain come back after it. The attack is untouched, so each hit stands out more from what follows, with the breathing feel of a hard-compressed drum bus."
+          },
+          {
+            "title": "Mode",
+            "state": {
+              "mode": "MEDIUM",
+              "transient": 60,
+              "sustain": -40,
+              "hold": 20,
+              "release": 100,
+              "pump": 0,
+              "lookahead": false
+            },
+            "demo": {
+              "cycle": "mode",
+              "values": [
+                "SHARP",
+                "MEDIUM",
+                "SMOOTH"
+              ],
+              "every": 2600
+            },
+            "text": "The mode changes how quickly the gain moves. SHARP boosts the very first peak of the hit, taking the output to +1.8 dBFS here; SMOOTH eases into it, for a rounder attack that peaks at −0.6 dBFS with the same settings."
+          },
+          {
+            "title": "Lookahead",
+            "state": {
+              "mode": "MEDIUM",
+              "transient": 60,
+              "sustain": -40,
+              "hold": 20,
+              "release": 100,
+              "pump": 0,
+              "lookahead": false
+            },
+            "demo": {
+              "toggle": "lookahead",
+              "every": 2600
+            },
+            "text": "Without lookahead, the gain change starts a fraction after the hit. With LKHD on, the audio is delayed by 2 ms so the boost lands right on the start of the attack, and even MEDIUM catches the first peak: the output peak rises from +0.7 to +1.7 dBFS."
+          }
+        ]
+      },
+      {
+        "type": "scope",
+        "id": "detection",
+        "title": "Threshold and Detection",
+        "scope": "shaperDetect",
+        "manual": "threshold",
+        "intro": "Nine hits, loud and soft, some landing on the tail of the one before, through the plugin’s own detector. The green curve on top is the transient part. Below, a filled dot marks each hit detected as a transient, an empty dot a missed one, and a red mark an extra trigger inside a tail.",
+        "colors": {
+          "SHARP": "#FF3B00",
+          "MEDIUM": "#FF9D00",
+          "SMOOTH": "#FFD600"
+        },
+        "colorKeys": [
+          "mode"
+        ],
+        "controls": [
+          {
+            "type": "choice",
+            "key": "mode",
+            "label": "Mode",
+            "values": [
+              "SHARP",
+              "MEDIUM",
+              "SMOOTH"
+            ]
+          },
+          {
+            "type": "range",
+            "key": "threshold",
+            "label": "Threshold",
+            "min": 1,
+            "max": 12,
+            "step": 0.1,
+            "format": "db"
+          },
+          {
+            "type": "range",
+            "key": "input",
+            "label": "Input level",
+            "min": -24,
+            "max": 6,
+            "step": 0.1,
+            "format": "db"
+          }
+        ],
+        "steps": [
+          {
+            "title": "Loud and Soft Alike",
+            "state": {
+              "mode": "MEDIUM",
+              "threshold": 4,
+              "input": 0
+            },
+            "demo": {
+              "sweep": "input",
+              "from": -24,
+              "to": 6,
+              "period": 5600
+            },
+            "text": "KrystalShaper reacts to how sharply the level rises, not to the level itself. Turn the whole phrase up or down by 30 dB and the same hits are detected, so you never need to reset anything when the level of a track changes."
+          },
+          {
+            "title": "Threshold",
+            "state": {
+              "mode": "MEDIUM",
+              "threshold": 4,
+              "input": 0
+            },
+            "demo": {
+              "sweep": "threshold",
+              "from": 1,
+              "to": 10,
+              "period": 6000
+            },
+            "text": "At the default 4 dB, seven of the nine hits are detected: the two soft ones landing on a louder tail are left alone. Lower the threshold to catch them too, but from about 2 dB down the detector also starts triggering inside the tails. Raise it and only the strongest hits are shaped."
+          },
+          {
+            "title": "Mode",
+            "state": {
+              "mode": "MEDIUM",
+              "threshold": 3,
+              "input": 0
+            },
+            "demo": {
+              "cycle": "mode",
+              "values": [
+                "SHARP",
+                "MEDIUM",
+                "SMOOTH"
+              ],
+              "every": 2600
+            },
+            "text": "The mode changes the detection too. At the same threshold, SHARP reacts to more, extra triggers in the tails included, while SMOOTH only reacts to the clearest hits: five of the nine here."
+          }
+        ]
+      },
+      {
+        "type": "scope",
+        "id": "filters",
+        "title": "Transient and Sustain Filters",
+        "scope": "shaperBands",
+        "manual": "filters",
+        "intro": "How much each part is changed at each frequency, computed from the plugin’s own filters: the transient change in green, the sustain change in amber, with the readouts at 100 Hz for the lows and 8 kHz for the highs. With the filters in the ADVANCED panel, you choose which frequencies each change affects; outside them the sound passes untouched.",
+        "controls": [
+          {
+            "type": "range",
+            "key": "transient",
+            "label": "Transient",
+            "min": -100,
+            "max": 100,
+            "step": 1,
+            "format": "pctsigned"
+          },
+          {
+            "type": "range",
+            "key": "sustain",
+            "label": "Sustain",
+            "min": -100,
+            "max": 100,
+            "step": 1,
+            "format": "pctsigned"
+          },
+          {
+            "type": "range",
+            "key": "trHpf",
+            "label": "Transient HPF",
+            "min": 20,
+            "max": 20000,
+            "step": 1,
+            "scale": "log",
+            "format": "hz"
+          },
+          {
+            "type": "range",
+            "key": "trLpf",
+            "label": "Transient LPF",
+            "min": 20,
+            "max": 20000,
+            "step": 1,
+            "scale": "log",
+            "format": "hz"
+          },
+          {
+            "type": "range",
+            "key": "suHpf",
+            "label": "Sustain HPF",
+            "min": 20,
+            "max": 20000,
+            "step": 1,
+            "scale": "log",
+            "format": "hz"
+          },
+          {
+            "type": "range",
+            "key": "suLpf",
+            "label": "Sustain LPF",
+            "min": 20,
+            "max": 20000,
+            "step": 1,
+            "scale": "log",
+            "format": "hz"
+          }
+        ],
+        "steps": [
+          {
+            "title": "Full Range",
+            "state": {
+              "transient": 60,
+              "sustain": -40,
+              "trHpf": 20,
+              "trLpf": 20000,
+              "suHpf": 20,
+              "suLpf": 20000
+            },
+            "demo": {
+              "sweep": "transient",
+              "from": -100,
+              "to": 100,
+              "period": 5600
+            },
+            "text": "With the filters open, as they are by default, each part is changed by the same amount at every frequency: boost the attack of a kick and its click and its boom come up together."
+          },
+          {
+            "title": "Transient Filters",
+            "state": {
+              "transient": 60,
+              "sustain": -40,
+              "trHpf": 1500,
+              "trLpf": 20000,
+              "suHpf": 20,
+              "suLpf": 20000
+            },
+            "demo": {
+              "sweep": "trHpf",
+              "from": 20,
+              "to": 5000,
+              "period": 5600
+            },
+            "text": "Raise the transient HPF and only the top of the attack is boosted: more click on a kick, with no more boom, or more stick on a snare without more thud."
+          },
+          {
+            "title": "Sustain Filters",
+            "state": {
+              "transient": 0,
+              "sustain": -60,
+              "trHpf": 20,
+              "trLpf": 20000,
+              "suHpf": 2000,
+              "suLpf": 20000
+            },
+            "demo": {
+              "sweep": "suHpf",
+              "from": 20,
+              "to": 8000,
+              "period": 5600
+            },
+            "text": "The same works on the sustain. Here it is turned down only above the sustain HPF: less cymbal wash and room in the highs, with the low end of the tail untouched."
+          },
+          {
+            "title": "Both Together",
+            "state": {
+              "transient": -100,
+              "sustain": 51,
+              "trHpf": 20,
+              "trLpf": 440,
+              "suHpf": 3600,
+              "suLpf": 20000
+            },
+            "text": "The settings in the ADVANCED panel of the interface tour: the attack is softened only below 440 Hz, taking the edge off the low thump, while the sustain is lifted only above 3.6 kHz, for more air in the tail."
+          }
+        ]
+      },
+      {
+        "type": "start",
+        "id": "get-started",
+        "title": "Getting Started",
+        "steps": [
+          {
+            "title": "Download",
+            "text": "Pay what you want on itch.io, or enter 0 to get the full version for free. Free for personal and commercial use.",
+            "action": "download"
+          },
+          {
+            "title": "Install",
+            "text": "Run the installer, or copy the plugin files yourself: VST3 on Windows, AU and VST3 on macOS.",
+            "link": {
+              "label": "Installation guide",
+              "page": "install"
+            }
+          },
+          {
+            "title": "Read the Manual",
+            "text": "Every control in detail, with tips, ranges and defaults.",
+            "link": {
+              "label": "Open the manual",
+              "page": "manual"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "install": {
+    "title": "Install",
+    "intro": "KrystalShaper is available on itch.io as pay what you want: enter 0 to download the full version for free. The download contains both the installer and the plugin files, so you can choose how to install it."
+  },
+  "manual": {
+    "title": "Manual",
+    "intro": "KrystalShaper is a transient shaper: it lets you bring out or soften the attack of a sound and its sustain, independently. This manual covers every control, with tips, ranges and defaults.",
+    "chapters": [
+      {
+        "id": "getting-around",
+        "title": "Getting Around",
+        "intro": [
+          "Start here if you are new to KrystalShaper. The Quick Start gets you to a good result in a few steps, and the topics that follow explain how the signal moves through the plugin and how to find your way around the plugin window."
+        ],
+        "topics": [
+          {
+            "id": "quick-start",
+            "title": "Quick Start",
+            "body": [
+              "If you just want to start shaping your sounds, this is the fastest way to a good result:",
+              {
+                "steps": [
+                  "Choose a <strong>MODE</strong> in the top bar: SHARP for snappy drums and percussion, MEDIUM for most material, SMOOTH for a gentler, rounder result.",
+                  "Turn <strong>TRANSIENT</strong> up for more attack and punch, or down to soften the hits.",
+                  "Turn <strong>SUSTAIN</strong> up for more body and room, or down for a tighter, drier sound.",
+                  "Set <strong>HOLD</strong> and <strong>RELEASE</strong> to decide how long the attack lasts and how quickly it gives way to the sustain. The curves in the display show both parts as you play.",
+                  "Turn on <strong>AUTO</strong> for Automatic Loudness Matching, and set <strong>CLIP</strong> to SOFT or HARD to keep the boosted peaks below 0 dB."
+                ]
+              },
+              "If KrystalShaper catches too many hits or too few, open the ADVANCED panel on the left of the display and adjust THRESH."
+            ]
+          },
+          {
+            "id": "signal-path",
+            "title": "Signal Path",
+            "body": [
+              "Processing always follows the same order:",
+              {
+                "steps": [
+                  "The dry signal for the mix is taken, and the <strong>input gain</strong> is applied.",
+                  "The <strong>detector</strong> listens to the signal, or to an <strong>external sidechain</strong>, through the <strong>sidechain filters</strong>, and marks where each transient starts.",
+                  "Each hit is split into a <strong>transient</strong> part and a <strong>sustain</strong> part, timed by <strong>hold</strong> and <strong>release</strong>. TRANSIENT and SUSTAIN set the gain of each part, <strong>pump</strong> dips the signal where one hands over to the other, and the <strong>transient and sustain filters</strong> decide which frequencies each gain change affects.",
+                  "With <strong>lookahead</strong> on, the audio is delayed by 2 ms, so the gain change lands right on the start of the hit.",
+                  "The <strong>output gain</strong> and the gain from <strong>Automatic Loudness Matching</strong> are applied, then the <strong>dry/wet mix</strong>, then the <strong>clipper</strong>."
+                ]
+              },
+              {
+                "note": "With LINK set to ON, the same gain change is applied to both channels, so the stereo image never shifts."
+              }
+            ]
+          },
+          {
+            "id": "layout",
+            "title": "User Interface",
+            "body": [
+              {
+                "figure": {
+                  "image": 0,
+                  "crop": false,
+                  "caption": "The KrystalShaper user interface.",
+                  "pins": [
+                    {
+                      "x": 60,
+                      "y": 5.5,
+                      "label": "Top bar",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 30,
+                      "y": 30,
+                      "label": "Display",
+                      "side": "top"
+                    },
+                    {
+                      "x": 2.6,
+                      "y": 29.3,
+                      "label": "Advanced panel",
+                      "side": "right"
+                    },
+                    {
+                      "x": 97.4,
+                      "y": 29.3,
+                      "label": "Sidechain panel",
+                      "side": "left"
+                    },
+                    {
+                      "x": 6.3,
+                      "y": 72.6,
+                      "label": "Input",
+                      "side": "top"
+                    },
+                    {
+                      "x": 49.7,
+                      "y": 70.7,
+                      "label": "Shaping",
+                      "side": "top"
+                    },
+                    {
+                      "x": 93.5,
+                      "y": 72.6,
+                      "label": "Output",
+                      "side": "top"
+                    },
+                    {
+                      "x": 50,
+                      "y": 95.9,
+                      "label": "Help bar",
+                      "side": "top"
+                    }
+                  ]
+                }
+              },
+              {
+                "table": {
+                  "head": [
+                    "Area",
+                    "What it holds"
+                  ],
+                  "rows": [
+                    [
+                      "Top bar",
+                      "MODE, LINK, CLIP and LKHD selectors, and the Krystal Dynamics logo for information and updates"
+                    ],
+                    [
+                      "Display",
+                      "Real-time waveform with the transient and sustain curves and the legend, the bypass and Delta buttons in the lower-left corner and the settings (gear) in the lower-right corner"
+                    ],
+                    [
+                      "Side tabs",
+                      "ADVANCED on the left edge of the display and SIDECHAIN on the right edge: each slides its panel open over the display"
+                    ],
+                    [
+                      "Left",
+                      "INPUT knob and MIX slider, then the transient meters"
+                    ],
+                    [
+                      "Centre",
+                      "TRANSIENT, HOLD, PUMP, RELEASE and SUSTAIN"
+                    ],
+                    [
+                      "Right",
+                      "The sustain meters, then the OUTPUT knob and the AUTO button"
+                    ],
+                    [
+                      "Bottom",
+                      "Help bar"
+                    ]
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "controls",
+            "title": "Adjusting Controls",
+            "body": [
+              "Drag knobs and sliders up and down, or use the mouse wheel. Knobs show their value below: click it to type a new one. The MIX slider fills up with its value and shows it while you hover over it.",
+              "MODE, LINK and CLIP change with each click, moving to the next value. LKHD, DETECT, AUTO, bypass, Delta and the monitoring buttons switch on and off. The ADVANCED and SIDECHAIN tabs open and close their panels."
+            ],
+            "more": [
+              {
+                "title": "What You Can Automate",
+                "body": [
+                  "Every control that affects the sound can be automated from your DAW, monitoring included (see Parameter Reference). The panels, the legend and the settings belong to the user interface and can’t be automated."
+                ]
+              }
+            ]
+          },
+          {
+            "id": "help-bar",
+            "title": "Help Bar",
+            "body": [
+              "The bar along the bottom of the plugin window gives a short description of whatever control you are hovering over, and for the selectors of their current value. Otherwise it reads <em>Hover any control for details</em>."
+            ]
+          },
+          {
+            "id": "window-size",
+            "title": "Resizing the Plugin Window",
+            "body": [
+              "Drag the lower-right corner to resize the plugin window, in 5% steps from 75% to 150% of the original 780 × 460. A popup shows the current scale while you drag, and the size is saved with the session."
+            ]
+          },
+          {
+            "id": "latency",
+            "title": "Latency",
+            "body": [
+              "With lookahead off, KrystalShaper adds no latency. With lookahead on, it adds 2 ms, reported to your DAW and compensated automatically, so KrystalShaper stays sample-aligned with the rest of your tracks."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "shaping",
+        "title": "Shaping",
+        "intro": [
+          "KrystalShaper follows the level of the signal with two detectors, a fast one and a slow one. When the fast one jumps above the slow one, a transient starts: the hit is split into a transient part, held for the HOLD time, and a sustain part, which takes over during the RELEASE time. TRANSIENT and SUSTAIN then turn each part up or down.",
+          "Because it reacts to how quickly the level rises rather than to the level itself, KrystalShaper treats loud and soft hits alike, and keeps working the same way when the level of the track changes."
+        ],
+        "topics": [
+          {
+            "id": "transient",
+            "title": "Transient and Sustain",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "−100 to +100%"
+                  ],
+                  [
+                    "Default",
+                    "0%"
+                  ],
+                  [
+                    "Maximum change",
+                    "±15 dB"
+                  ]
+                ]
+              },
+              "TRANSIENT boosts or cuts the attack of each hit: turn it up for more punch and definition, down to soften hits that are too sharp or to push a sound further back in the mix. SUSTAIN does the same for everything that follows: turn it up to bring out the body, the tail and the room, down for a tighter, drier sound. At 0% each part passes unchanged.",
+              {
+                "figure": {
+                  "image": 0,
+                  "crop": true,
+                  "focus": [
+                    20.4,
+                    55.9,
+                    59.2,
+                    35.4
+                  ],
+                  "caption": "The shaping controls: TRANSIENT, HOLD, PUMP, RELEASE and SUSTAIN.",
+                  "pins": [
+                    {
+                      "x": 27.9,
+                      "y": 73.7,
+                      "label": "Transient",
+                      "side": "top"
+                    },
+                    {
+                      "x": 39.6,
+                      "y": 77.1,
+                      "label": "Hold",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 49.7,
+                      "y": 70.7,
+                      "label": "Pump",
+                      "side": "top"
+                    },
+                    {
+                      "x": 60.7,
+                      "y": 77.1,
+                      "label": "Release",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 72.8,
+                      "y": 73.7,
+                      "label": "Sustain",
+                      "side": "top"
+                    }
+                  ]
+                }
+              },
+              "The curve on each knob shows the shape you are giving the sound. The two work independently, so you can, for example, sharpen the attack of a snare and shorten its ring at the same time.",
+              {
+                "note": "Boosting transients raises the peaks quickly: set CLIP to SOFT or HARD to keep them below 0 dB."
+              }
+            ]
+          },
+          {
+            "id": "hold",
+            "title": "Hold and Release",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Hold",
+                    "0 to 200 ms, 20 ms by default"
+                  ],
+                  [
+                    "Release",
+                    "20 to 500 ms, 100 ms by default"
+                  ]
+                ]
+              },
+              "HOLD sets how long the transient part lasts at full strength after a hit is detected. RELEASE sets how long it takes to hand over to the sustain part: a short release gives a sharp, clicky attack, a long one a fuller, rounder hit.",
+              "Together they decide how much of the sound counts as attack. For a kick or a snare, start with a short hold and a release around 50 to 100 ms; for slower sounds such as piano or guitar, lengthen both. The transient and sustain curves in the display show the result as you play."
+            ]
+          },
+          {
+            "id": "pump",
+            "title": "Pump",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "0 to 100%"
+                  ],
+                  [
+                    "Default",
+                    "0%"
+                  ],
+                  [
+                    "Maximum dip",
+                    "12 dB"
+                  ]
+                ]
+              },
+              "PUMP turns the signal down right after each transient, where the transient part hands over to the sustain part. The dip makes each hit stand out from what follows and gives the breathing, pumping feel of a hard-compressed drum bus, without touching the attack. Its timing follows HOLD and RELEASE, and you can see it as a dip in the sustain curve of the display."
+            ]
+          },
+          {
+            "id": "mode",
+            "title": "Shaping Mode",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "SHARP, MEDIUM, SMOOTH"
+                  ],
+                  [
+                    "Default",
+                    "MEDIUM"
+                  ]
+                ]
+              },
+              "The MODE selector in the top bar sets how quickly KrystalShaper detects the transients and how the gain moves between the two parts:",
+              {
+                "table": {
+                  "head": [
+                    "Mode",
+                    "Character"
+                  ],
+                  "rows": [
+                    [
+                      "SHARP",
+                      "Fast detection and tight gain changes: catches every hit, for snappy drums and percussion"
+                    ],
+                    [
+                      "MEDIUM",
+                      "Balanced detection and gain changes: works on most material"
+                    ],
+                    [
+                      "SMOOTH",
+                      "Slower detection and rounded gain changes: gentler, for full mixes, bass, guitars and vocals"
+                    ]
+                  ]
+                }
+              },
+              "The colour of the controls follows the mode: red-orange for SHARP, orange for MEDIUM and yellow for SMOOTH, so you can tell the mode at a glance."
+            ]
+          },
+          {
+            "id": "link",
+            "title": "Channel Link",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "ON, L/R, M/S"
+                  ],
+                  [
+                    "Default",
+                    "ON"
+                  ]
+                ]
+              },
+              "The LINK selector decides how the two channels are processed:",
+              {
+                "table": {
+                  "head": [
+                    "Mode",
+                    "What it does"
+                  ],
+                  "rows": [
+                    [
+                      "ON",
+                      "Both channels follow the louder one and get the same gain change, so the stereo image stays put"
+                    ],
+                    [
+                      "L/R",
+                      "The left and right channels are detected and shaped independently"
+                    ],
+                    [
+                      "M/S",
+                      "The mid and side are detected and shaped independently: for example, add punch to the drums in the centre while leaving the room on the sides as it is"
+                    ]
+                  ]
+                }
+              },
+              "The transient and sustain meters follow the link mode, with one bar for each channel."
+            ]
+          },
+          {
+            "id": "lookahead",
+            "title": "Lookahead",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "OFF, ON"
+                  ],
+                  [
+                    "Default",
+                    "OFF"
+                  ],
+                  [
+                    "Latency",
+                    "2 ms"
+                  ]
+                ]
+              },
+              "Without lookahead, the gain change starts a fraction after the hit it reacts to. With LKHD on, the audio is delayed by 2 ms, so the gain change lands right on the start of the transient and the very first milliseconds of the attack are shaped too. The 2 ms are compensated by your DAW."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "advanced",
+        "title": "Advanced Panel",
+        "intro": [
+          "The ADVANCED tab on the left edge of the display opens a panel with the detection threshold, the filters that decide which frequencies the transient and sustain changes affect, and the buttons to listen to each part on its own."
+        ],
+        "topics": [
+          {
+            "id": "advanced-panel",
+            "title": "The Panel",
+            "body": [
+              {
+                "figure": {
+                  "image": 2,
+                  "crop": true,
+                  "focus": [
+                    0,
+                    12,
+                    63.6,
+                    36.2
+                  ],
+                  "caption": "The ADVANCED panel, with the transient change kept below 440 Hz and the sustain change above 3.6 kHz.",
+                  "pins": [
+                    {
+                      "x": 5.3,
+                      "y": 31.3,
+                      "label": "Threshold",
+                      "side": "right"
+                    },
+                    {
+                      "x": 28.4,
+                      "y": 17.2,
+                      "label": "Transient monitoring",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 22.3,
+                      "y": 31.8,
+                      "label": "Transient filters",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 47.4,
+                      "y": 31.8,
+                      "label": "Sustain filters",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 52.1,
+                      "y": 17.2,
+                      "label": "Sustain monitoring",
+                      "side": "bottom"
+                    }
+                  ]
+                }
+              },
+              "Click the tab again to close the panel. Closing it also switches off transient and sustain monitoring."
+            ]
+          },
+          {
+            "id": "threshold",
+            "title": "Threshold",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "1 to 12 dB"
+                  ],
+                  [
+                    "Default",
+                    "4 dB"
+                  ]
+                ]
+              },
+              "THRESH sets how sharply the level must rise to count as a transient. Lower values detect more transients, softer hits and ghost notes included; higher values only the strongest hits. If a sound is shaped where it shouldn’t be, raise it; if some hits are missed, lower it.",
+              "After a transient, a new one is detected only once the level has settled back, so a single hit is never counted twice. Very quiet signals, below −60 dB, never trigger a transient."
+            ]
+          },
+          {
+            "id": "filters",
+            "title": "Transient and Sustain Filters",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "HPF, LPF",
+                    "20 Hz to 20 kHz, off at the ends"
+                  ],
+                  [
+                    "Slope",
+                    "12 dB/oct"
+                  ]
+                ]
+              },
+              "The HPF and LPF knobs under TRANSIENT and SUSTAIN decide which frequencies each gain change affects; everything outside the range passes untouched. With all four knobs at the ends, the whole signal is shaped.",
+              {
+                "table": {
+                  "head": [
+                    "Example",
+                    "Setting"
+                  ],
+                  "rows": [
+                    [
+                      "More click on a kick, without more boom",
+                      "TRANSIENT up, transient HPF around 2 kHz"
+                    ],
+                    [
+                      "Softer low thump, same click",
+                      "TRANSIENT down, transient LPF around 200 Hz"
+                    ],
+                    [
+                      "More body, without more hiss or room",
+                      "SUSTAIN up, sustain LPF around 1 kHz"
+                    ],
+                    [
+                      "Less cymbal wash and room in the highs",
+                      "SUSTAIN down, sustain HPF around 4 kHz"
+                    ]
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "monitor",
+            "title": "Transient and Sustain Monitoring",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Off, On"
+                  ],
+                  [
+                    "Default",
+                    "Off"
+                  ]
+                ]
+              },
+              "The headphones buttons next to TRANSIENT and SUSTAIN let you hear each part on its own, within its filter range and with its gain: turn on one to hear only the attacks or only the sustain, or both to hear the two parts together. It’s the quickest way to set HOLD, RELEASE and the filters.",
+              "While you monitor, the dry/wet mix, the clipper and Automatic Loudness Matching are paused. Monitoring switches off when you close the panel and when you reopen the session."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sidechain",
+        "title": "Sidechain",
+        "intro": [
+          "The sidechain is the signal the detector listens to. The SIDECHAIN tab on the right edge of the display opens a panel to choose it, filter it and listen to it, without changing the sound of the signal itself."
+        ],
+        "topics": [
+          {
+            "id": "sidechain-panel",
+            "title": "Detection Source",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "INT, EXT"
+                  ],
+                  [
+                    "Default",
+                    "INT"
+                  ]
+                ]
+              },
+              {
+                "figure": {
+                  "image": 3,
+                  "crop": true,
+                  "focus": [
+                    71.5,
+                    12,
+                    28.5,
+                    36.2
+                  ],
+                  "caption": "The SIDECHAIN panel, with the detector listening between 4.3 and 11.4 kHz.",
+                  "pins": [
+                    {
+                      "x": 89.4,
+                      "y": 16.7,
+                      "label": "Detection source",
+                      "side": "left"
+                    },
+                    {
+                      "x": 94,
+                      "y": 16.7,
+                      "label": "Monitoring",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 81.8,
+                      "y": 31.8,
+                      "label": "HPF",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 93.3,
+                      "y": 31.8,
+                      "label": "LPF",
+                      "side": "bottom"
+                    }
+                  ]
+                }
+              },
+              "DETECT sets where the transients are detected. With INT, KrystalShaper listens to the signal it processes. With EXT, it listens to the sidechain input instead, so another track decides when the transients are shaped: route that track to the sidechain input of KrystalShaper in your DAW.",
+              "Click the tab again to close the panel. Closing it also switches off sidechain monitoring."
+            ]
+          },
+          {
+            "id": "sidechain-filters",
+            "title": "Sidechain Filters",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "HPF, LPF",
+                    "20 Hz to 20 kHz, off at the ends"
+                  ],
+                  [
+                    "Slope",
+                    "12 dB/oct"
+                  ]
+                ]
+              },
+              "The HPF and LPF knobs filter the signal the detector listens to. Use them to make KrystalShaper react to one instrument in a mix: on a drum bus, a high-pass filter keeps the kick from triggering the shaping of the snare, and a low-pass filter keeps the cymbals out."
+            ]
+          },
+          {
+            "id": "sidechain-monitor",
+            "title": "Sidechain Monitoring",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Off, On"
+                  ],
+                  [
+                    "Default",
+                    "Off"
+                  ]
+                ]
+              },
+              "The headphones button lets you listen to the sidechain after the filters, the signal the detector is reacting to. Listen while you set the filters, until you hear only the part that should trigger the shaping."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gain",
+        "title": "Gain, Mix and Clipper",
+        "intro": [
+          "Input gain sets the level going into KrystalShaper, output gain the level coming out. The dry/wet mix blends the original back in, Automatic Loudness Matching keeps the output matched to the input, and the clipper keeps it below 0 dB."
+        ],
+        "topics": [
+          {
+            "id": "input",
+            "title": "Input Gain",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "−36.0 to +36.0 dB"
+                  ],
+                  [
+                    "Default",
+                    "0.0 dB"
+                  ]
+                ]
+              },
+              "Set with the INPUT knob, before the processing. Since KrystalShaper reacts to how quickly the level rises rather than to the level itself, input gain hardly changes the detection: use it to drive the clipper harder, or to set the level of the processed signal against the dry one in the mix. The dry signal used by the mix is taken before the input gain."
+            ]
+          },
+          {
+            "id": "output",
+            "title": "Output Gain",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "−36.0 to +36.0 dB"
+                  ],
+                  [
+                    "Default",
+                    "0.0 dB"
+                  ]
+                ]
+              },
+              "Set with the OUTPUT knob and applied after the processing, before the dry/wet mix and the clipper."
+            ]
+          },
+          {
+            "id": "mix",
+            "title": "Dry/Wet Mix",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "0 to 100%"
+                  ],
+                  [
+                    "Default",
+                    "100%"
+                  ]
+                ]
+              },
+              "Set with the MIX slider, it blends the processed signal with the original. Values below 100% give parallel processing: the extra punch of the shaped signal with the natural sound of the original. The original is kept in time with the processed signal, so there is no phasing at any setting."
+            ]
+          },
+          {
+            "id": "auto",
+            "title": "Automatic Loudness Matching",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Off, On"
+                  ],
+                  [
+                    "Default",
+                    "Off"
+                  ],
+                  [
+                    "Range of compensation",
+                    "±36 dB"
+                  ]
+                ]
+              },
+              "Shaping changes the loudness, and a louder signal tends to win a comparison even when it doesn’t sound better. Automatic Loudness Matching measures the loudness of the input and of the shaped signal and compensates the difference, so you can judge each setting at the same level. Turn it on with the AUTO button, which then shows the gain being applied.",
+              "Because the measurement starts before the input gain, it compensates that too."
+            ],
+            "more": [
+              {
+                "title": "When the Loudness Is Measured",
+                "body": [
+                  "Loudness is measured with K-weighting, the same weighting used for LUFS, and not continuously: after you change a parameter that affects the shaping, it is measured for under a second and then the gain is held. Changes to output gain, dry/wet mix, the clipper and bypass don’t restart it, and it is paused while you monitor.",
+                  "Silence and very quiet passages (below −60 dBFS RMS), such as a stopped transport, are ignored. The applied gain is saved with the session."
+                ]
+              }
+            ]
+          },
+          {
+            "id": "clipper",
+            "title": "Clipper",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "OFF, SOFT, HARD"
+                  ],
+                  [
+                    "Default",
+                    "OFF"
+                  ]
+                ]
+              },
+              "The CLIP selector keeps the output below 0 dB, after the output gain and the dry/wet mix:",
+              {
+                "table": {
+                  "head": [
+                    "Mode",
+                    "What it does"
+                  ],
+                  "rows": [
+                    [
+                      "OFF",
+                      "No clipping: the output can go above 0 dB"
+                    ],
+                    [
+                      "SOFT",
+                      "Rounds the peaks off smoothly as they approach 0 dB, with a touch of saturation"
+                    ],
+                    [
+                      "HARD",
+                      "Cuts everything above 0 dB cleanly"
+                    ]
+                  ]
+                }
+              },
+              {
+                "note": "With TRANSIENT turned up, a soft clipper is a good partner: the shaper brings out the attack, and the clipper rounds off the few peaks that go too far."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "monitoring",
+        "title": "Monitoring",
+        "intro": [
+          "The meters show how much each part is being turned up or down, Delta monitoring lets you hear what KrystalShaper is changing, and bypass compares the result with the original."
+        ],
+        "topics": [
+          {
+            "id": "meters",
+            "title": "Transient and Sustain Meters",
+            "body": [
+              {
+                "aside": {
+                  "body": [
+                    "The transient meters, on the left of the shaping controls, show the gain change applied to the transients; the sustain meters, on the right, the gain change applied to the sustain. Both start from the centre line: a bar going up is a boost, one going down a cut, up to 15 dB either way.",
+                    "Each has a bar for each channel: left and right with LINK set to L/R, mid and side with M/S, and two identical bars with ON. Hover over a bar to see which channel it shows in the help bar. The sustain meters show the sustain change only, without the pump."
+                  ],
+                  "figures": [
+                    {
+                      "image": 0,
+                      "crop": true,
+                      "focus": [
+                        13.9,
+                        57.6,
+                        5.6,
+                        34.8
+                      ],
+                      "label": "Transient meters"
+                    },
+                    {
+                      "image": 0,
+                      "crop": true,
+                      "focus": [
+                        80.8,
+                        57.6,
+                        5.6,
+                        34.8
+                      ],
+                      "label": "Sustain meters"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "delta",
+            "title": "Delta Monitoring",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Off, On"
+                  ],
+                  [
+                    "Default",
+                    "Off"
+                  ]
+                ]
+              },
+              "Delta monitoring lets you hear only what KrystalShaper is changing: the difference between the signal after the input gain and the shaped signal. Boosted attacks, a softened sustain or the dip of the pump come through on their own, so you can check that a setting does what you want and no more. Turn it on with the headphones button in the lower-left corner of the display.",
+              "While Delta monitoring is on, the dry/wet mix, the clipper and Automatic Loudness Matching are paused, since they would make the difference misleading. The output gain still applies.",
+              {
+                "figure": {
+                  "image": 0,
+                  "crop": true,
+                  "focus": [
+                    0,
+                    43.5,
+                    12,
+                    10.4
+                  ],
+                  "caption": "The bypass (power) and Delta monitoring (headphones) buttons.",
+                  "pins": [
+                    {
+                      "x": 2.8,
+                      "y": 49.8,
+                      "label": "Bypass",
+                      "side": "top"
+                    },
+                    {
+                      "x": 7.4,
+                      "y": 49.8,
+                      "label": "Delta",
+                      "side": "top"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "bypass",
+            "title": "Bypass",
+            "body": [
+              "The power button in the lower-left corner of the display bypasses all processing so you hear the original signal. It keeps the same latency, so switching never shifts the timing, and the change is ramped to avoid clicks. While bypassed, the meters, the display and the AUTO value stay frozen until you switch back."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "display",
+        "title": "Real-Time Display",
+        "intro": [
+          "The real-time display shows the last 3 seconds of signal, with the transient and sustain curves on top, so you can see exactly which hits KrystalShaper detects and how each one is split."
+        ],
+        "topics": [
+          {
+            "id": "traces",
+            "title": "Display Traces",
+            "body": [
+              {
+                "figure": {
+                  "image": 0,
+                  "crop": true,
+                  "focus": [
+                    0,
+                    6.1,
+                    100,
+                    47.8
+                  ],
+                  "caption": "The display with LINK set to L/R.",
+                  "pins": [
+                    {
+                      "x": 17.6,
+                      "y": 20,
+                      "label": "Transient",
+                      "side": "top"
+                    },
+                    {
+                      "x": 38,
+                      "y": 8.4,
+                      "label": "Sustain",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 26,
+                      "y": 24.5,
+                      "label": "Waveform",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 50,
+                      "y": 49.8,
+                      "label": "Legend",
+                      "side": "top"
+                    }
+                  ]
+                }
+              },
+              {
+                "table": {
+                  "head": [
+                    "Trace",
+                    "What it shows"
+                  ],
+                  "rows": [
+                    [
+                      "Input",
+                      "The level of the signal after the input gain, drawn as a mirrored waveform"
+                    ],
+                    [
+                      "Transient",
+                      "A curve that jumps up at each detected transient, stays up for the HOLD time and falls back during the RELEASE time"
+                    ],
+                    [
+                      "Sustain",
+                      "The opposite curve: it drops at each transient and rises back as the sustain takes over, with a dip where the pump turns the signal down"
+                    ],
+                    [
+                      "Output",
+                      "The level of the final output, drawn over the input"
+                    ]
+                  ]
+                }
+              },
+              "The scale goes down to −48 dB, with lines at 0, −12, −24 and −36 dB. Click an entry in the legend at the bottom of the display to hide or show its trace."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "settings",
+        "title": "Settings and Updates",
+        "intro": [
+          "Choose light or dark themes and set how much CPU the user interface uses. The Krystal Dynamics logo gives you the version, updates and credits."
+        ],
+        "topics": [
+          {
+            "id": "display-settings",
+            "title": "Display Settings",
+            "body": [
+              "The gear in the lower-right corner of the display opens the settings.",
+              {
+                "table": {
+                  "head": [
+                    "Setting",
+                    "Values"
+                  ],
+                  "rows": [
+                    [
+                      "Knobs",
+                      "Light, Dark"
+                    ],
+                    [
+                      "Background",
+                      "Light, Dark"
+                    ],
+                    [
+                      "Display",
+                      "Light, Dark"
+                    ],
+                    [
+                      "GUI FPS",
+                      "60, 30, 20 fps"
+                    ],
+                    [
+                      "Graphics",
+                      "Full, Low"
+                    ]
+                  ]
+                }
+              },
+              "Set the knobs, the background and the display to light or dark independently. If you are short on CPU, a lower frame rate and Low graphics, which leaves out the shadows and gradients, lighten the load of the user interface. The sound is not affected.",
+              {
+                "figures": [
+                  {
+                    "image": 0,
+                    "crop": false,
+                    "caption": "Light, with a dark display"
+                  },
+                  {
+                    "image": 1,
+                    "crop": false,
+                    "caption": "Dark"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "saved",
+            "title": "What Is Saved Where",
+            "body": [
+              {
+                "table": {
+                  "head": [
+                    "Saved with the session",
+                    "Saved as preferences"
+                  ],
+                  "rows": [
+                    [
+                      "All parameters",
+                      "Themes"
+                    ],
+                    [
+                      "Plugin window size",
+                      "GUI FPS and graphics"
+                    ],
+                    [
+                      "Automatic Loudness Matching gain",
+                      ""
+                    ]
+                  ]
+                }
+              },
+              "Monitoring always starts switched off when you reopen a session, with the ADVANCED and SIDECHAIN panels closed. Preferences apply to every instance and are stored in <code>Documents/Krystal Dynamics/KrystalShaper/preferences.xml</code>."
+            ]
+          },
+          {
+            "id": "updates",
+            "title": "Updates and Information",
+            "body": [
+              "Click the Krystal Dynamics logo in the top-right corner for the version, credits and links. KrystalShaper checks the website for new versions: when one is out, the logo lets you know and the plugin window shows what’s new, with a download link. The check only reads the latest version number and sends no personal data."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "parameters",
+        "title": "Parameter Reference",
+        "intro": [
+          "All automatable parameters, in the order they appear in your DAW."
+        ],
+        "after": [
+          {
+            "table": {
+              "head": [
+                "Parameter",
+                "Range",
+                "Default"
+              ],
+              "rows": [
+                [
+                  "Input",
+                  "−36.0 to +36.0 dB",
+                  "0.0 dB"
+                ],
+                [
+                  "Output",
+                  "−36.0 to +36.0 dB",
+                  "0.0 dB"
+                ],
+                [
+                  "Transient",
+                  "−100 to +100%",
+                  "0%"
+                ],
+                [
+                  "Hold",
+                  "0 to 200 ms",
+                  "20 ms"
+                ],
+                [
+                  "Release",
+                  "20 to 500 ms",
+                  "100 ms"
+                ],
+                [
+                  "Threshold",
+                  "1 to 12 dB",
+                  "4 dB"
+                ],
+                [
+                  "Sustain",
+                  "−100 to +100%",
+                  "0%"
+                ],
+                [
+                  "Mix",
+                  "0 to 100%",
+                  "100%"
+                ],
+                [
+                  "Bypass",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Auto Gain",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Monitor Transient",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Monitor Sustain",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Delta",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Clip",
+                  "Off, Soft, Hard",
+                  "Off"
+                ],
+                [
+                  "External SC",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "SC HPF",
+                  "20 Hz to 20 kHz",
+                  "20 Hz"
+                ],
+                [
+                  "SC LPF",
+                  "20 Hz to 20 kHz",
+                  "20 kHz"
+                ],
+                [
+                  "Monitor SC",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Link",
+                  "On, L/R, M/S",
+                  "On"
+                ],
+                [
+                  "Mode",
+                  "Sharp, Medium, Smooth",
+                  "Medium"
+                ],
+                [
+                  "Pump",
+                  "0 to 100%",
+                  "0%"
+                ],
+                [
+                  "Transient HPF",
+                  "20 Hz to 20 kHz",
+                  "20 Hz"
+                ],
+                [
+                  "Transient LPF",
+                  "20 Hz to 20 kHz",
+                  "20 kHz"
+                ],
+                [
+                  "Sustain HPF",
+                  "20 Hz to 20 kHz",
+                  "20 Hz"
+                ],
+                [
+                  "Sustain LPF",
+                  "20 Hz to 20 kHz",
+                  "20 kHz"
+                ],
+                [
+                  "Lookahead",
+                  "Off, On",
+                  "Off"
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "history": {
+    "title": "Version History",
+    "intro": "Everything new in each release. KrystalShaper checks for updates on its own and lets you know in the plugin window when a new version is out."
+  }
+}

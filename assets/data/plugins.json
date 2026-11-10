@@ -3,7 +3,7 @@
     {
       "id": "krystal-clip",
       "name": "KrystalClip",
-      "description": "KrystalClip is a clipping and saturation plugin for mixing, mastering and sound design. Four clipping modes take you from transparent peak control to warm, characterful distortion, with an adjustable knee, up to 8× oversampling and anti-aliased wavefolding. A real-time display shows exactly what is being clipped, while Delta monitoring and automatic loudness matching let you judge every setting by ear.",
+      "description": "KrystalClip is a clipping processor featuring four clipping modes, from transparent peak control to warm, characterful distortion, with an adjustable knee, up to 8× oversampling and anti-aliased wavefolding. A real-time display shows exactly what is being clipped, while delta monitoring and automatic loudness matching let you judge every setting by ear.",
       "catalogDescription": "Four clipping modes, from transparent peak control to rich saturation.",
       "page": "/plugins/krystal-clip.html",
       "museHub": "https://www.musehub.com/plugin/krystalclip",
@@ -288,8 +288,8 @@
     {
       "id": "krystal-field",
       "name": "KrystalField",
-      "description": "KrystalField is a mastering-grade dynamic processor featuring dual compression\n                               engines for simultaneous downward and upward compression. This approach provides\n                               precise control over mix dynamics, making it suitable for mastering, bus processing,\n                               and final mix polish.",
-      "catalogDescription": "A mastering-grade dynamics processor with dual engines for precise upward and downward compression.",
+      "description": "KrystalField keeps a track inside the level window you choose: it turns the loud parts down and brings the quiet parts up at the same time, for mastering, bus processing and vocals. Set a target and a range, shape each side with its own ratio and knee, and watch both at work in a real-time display, with presets, lookahead, a clipper and automatic loudness matching built in.",
+      "catalogDescription": "Downward and upward compression in one, keeping a track inside the level window you choose.",
       "page": "/plugins/krystal-field.html",
       "museHub": "https://www.musehub.com/plugin/krystalfield",
       "images": [
@@ -304,20 +304,19 @@
       ],
       "downloadSlug": "krystalfield",
       "features": [
-        "Dual dynamic processors for downward and upward compression",
-        "Target-based threshold controls",
-        "Unified attack and release controls",
-        "Independent ratio and knee controls",
-        "RMS, Peak, and LOUD detection modes",
-        "Auto makeup gain",
+        "Downward and upward compression at the same time",
+        "Target and range, or separate upper and lower thresholds",
+        "Independent ratio and knee for each side",
+        "Shared attack and release, with lookahead up to 20 ms",
+        "RMS, Peak and loudness-based detection",
+        "LF bias to keep the low end from driving the processing",
+        "Soft and hard clipping to stay below 0 dB",
         "Mix control for parallel processing",
-        "Lookahead delay up to 20ms",
-        "Low frequency bias for sidechain filtering",
-        "Hard and soft clipping modes",
-        "Bypass for A/B comparison",
-        "Gain reduction and short-term LUFS metering",
-        "Real-time waveform display",
-        "Different themes and performance settings"
+        "Automatic loudness matching for fair comparisons",
+        "Up to 8× oversampling",
+        "Eight factory presets and your own",
+        "Real-time display with gain reduction, gain increase and loudness",
+        "Light and dark themes and a resizable window"
       ],
       "specifications": [
         {
@@ -334,7 +333,7 @@
         },
         {
           "label": "Latency",
-          "value": "Variable (depends on Lookahead and Oversampling)"
+          "value": "None, 20 ms with lookahead, plus oversampling"
         }
       ],
       "history": [
@@ -389,12 +388,18 @@
           ]
         }
       ],
-      "license": "KrystalField is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted."
+      "license": "KrystalField is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted.",
+      "guide": {
+        "data": "/assets/data/plugins/krystal-field.json",
+        "install": "/plugins/krystal-field/install.html",
+        "manual": "/plugins/krystal-field/manual.html",
+        "history": "/plugins/krystal-field/history.html"
+      }
     },
     {
       "id": "krystal-peak",
       "name": "KrystalPeak",
-      "description": "KrystalPeak is a look-ahead peak limiter for mixing and mastering. Three limiting modes take you from smooth, transparent loudness to tight, punchy peak control, with true peak detection, upward compression and saturation built in. A real-time display shows every peak the limiter catches, while Delta monitoring lets you hear exactly what it takes away.",
+      "description": "KrystalPeak is a transparent digital limiter designed to suppress peaks and maximize loudness. Three limiting modes take you from smooth, transparent loudness to tight, punchy peak control, with true peak detection, upward compression and saturation built in.",
       "catalogDescription": "A look-ahead peak limiter with three limiting modes, from transparent loudness to punchy peak control.",
       "page": "/plugins/krystal-peak.html",
       "museHub": "https://www.musehub.com/plugin/krystalpeak",
@@ -479,8 +484,8 @@
     {
       "id": "krystal-shaper",
       "name": "KrystalShaper",
-      "description": "KrystalShaper is an advanced transient processor that allows precise shaping of transient and sustain characteristics. Ideal for enhancing percussive elements, adding punch to drums, and controlling dynamics in complex mixes.",
-      "catalogDescription": "Shape transient and sustain independently to bring punch, definition and control to a mix.",
+      "description": "KrystalShaper is a transient shaper that lets you bring out or soften the attack of a sound and its sustain, independently. Add punch to a kick, tighten a snare, bring out the body of a guitar or push the room back, with hold, release and pump to shape the timing, filters to choose which frequencies are affected, and a real-time display that shows every hit it detects.",
+      "catalogDescription": "Bring out or soften the attack and the sustain of any sound, independently.",
       "page": "/plugins/krystal-shaper.html",
       "museHub": "https://www.musehub.com/plugin/krystalshaper",
       "images": [
@@ -495,23 +500,21 @@
       ],
       "downloadSlug": "krystalshaper",
       "features": [
-        "Three shaping modes for different material and workflows",
-        "Independent Transient and Sustain controls",
-        "Pump control to attenuate the signal right after the transient",
-        "Hold and Release controls to shape transient and sustain timing",
-        "Threshold control to set the onset detection range for transients",
-        "Sidechain panel with internal/external input and HP/LP filters",
-        "Independent HP/LP filters for each part to shape the response",
-        "Stereo-linked, Left/Right and Mid/Side channel linking modes",
-        "Hard and soft clipping modes",
-        "Lookahead option adding a short delay, for use on instruments",
+        "Independent transient and sustain control, up to ±15 dB each",
+        "Hold and release to set how long the attack lasts",
+        "Pump to dip the signal right after each hit",
+        "Sharp, Medium and Smooth shaping modes",
+        "Level-independent detection with an adjustable threshold",
+        "High-pass and low-pass filters for the transient and the sustain",
+        "Sidechain filters, external sidechain and sidechain monitoring",
+        "Linked, left/right and mid/side processing",
+        "Transient, sustain and Delta monitoring",
+        "2 ms lookahead",
+        "Soft and hard clipping to stay below 0 dB",
         "Mix control for parallel processing",
-        "Bypass for A/B comparison",
-        "Delta mode to listen to what the plugin is adding or removing",
-        "Automatic loudness matching with informative feedback",
-        "Real-time waveform display",
-        "Comprehensive transient and sustain gain meters",
-        "Different themes and performance settings"
+        "Automatic loudness matching for fair comparisons",
+        "Real-time display with transient and sustain curves",
+        "Light and dark themes and a resizable window"
       ],
       "specifications": [
         {
@@ -528,7 +531,7 @@
         },
         {
           "label": "Latency",
-          "value": "0 - 2 ms (depends on Lookahead)"
+          "value": "None, 2 ms with lookahead"
         }
       ],
       "publicRelease": "2026-10-23",
@@ -544,7 +547,13 @@
           ]
         }
       ],
-      "license": "KrystalShaper is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted."
+      "license": "KrystalShaper is free software provided without warranty. You may use this\n                        plugin for personal and commercial projects. Redistribution is not permitted.",
+      "guide": {
+        "data": "/assets/data/plugins/krystal-shaper.json",
+        "install": "/plugins/krystal-shaper/install.html",
+        "manual": "/plugins/krystal-shaper/manual.html",
+        "history": "/plugins/krystal-shaper/history.html"
+      }
     }
   ],
   "about": {

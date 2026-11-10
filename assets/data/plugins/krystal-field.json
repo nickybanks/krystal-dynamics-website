@@ -1,0 +1,2086 @@
+{
+  "aspect": [
+    2202,
+    1650
+  ],
+  "shots": [
+    {
+      "color": "#00B4FF"
+    },
+    {
+      "color": "#00B4FF"
+    },
+    {
+      "color": "#00B4FF"
+    },
+    {
+      "color": "#00B4FF"
+    }
+  ],
+  "overview": {
+    "sections": [
+      {
+        "type": "tour",
+        "id": "interface",
+        "title": "Interface",
+        "intro": "KrystalField puts a wide real-time display on top and its two compressors side by side below it, around the controls that set the level window. Scroll to go through each part.",
+        "steps": [
+          {
+            "title": "User Interface",
+            "manual": "layout",
+            "image": 0,
+            "focus": null,
+            "text": "The display fills the top half, with the preset bar along its bottom edge. Below it, the DOWN-WARD and UP-WARD sections sit on either side of the controls for the level window and the timing, between the input and output meters. Input gain and mix are on the left, makeup and Automatic Loudness Matching on the right, while the detector, the clipper, oversampling and the GR, LU and GI readouts run along the top.",
+            "pins": [
+              {
+                "x": 45,
+                "y": 5.6,
+                "label": "Top bar",
+                "side": "bottom"
+              },
+              {
+                "x": 62,
+                "y": 28,
+                "label": "Display",
+                "side": "top"
+              },
+              {
+                "x": 6,
+                "y": 72,
+                "label": "Input",
+                "side": "top"
+              },
+              {
+                "x": 27.3,
+                "y": 62,
+                "label": "Downward",
+                "side": "top"
+              },
+              {
+                "x": 50,
+                "y": 62,
+                "label": "Level window",
+                "side": "top"
+              },
+              {
+                "x": 72.5,
+                "y": 62,
+                "label": "Upward",
+                "side": "top"
+              },
+              {
+                "x": 94,
+                "y": 72,
+                "label": "Makeup",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Detector, Clipper and Oversampling",
+            "manual": "detector",
+            "image": 2,
+            "focus": [
+              28.3,
+              0,
+              32.5,
+              4.3
+            ],
+            "text": "MODE chooses how KrystalField reads the level: RMS for a smooth response, PEAK to catch every transient, LOUD to follow the loudness you actually hear. CLIP keeps the output below 0 dB, with a soft or a hard clipper, and OS runs the processing at up to 8 times the sample rate for a cleaner result with fast settings.",
+            "specs": [
+              [
+                "Detector",
+                "RMS, Peak, Loud"
+              ],
+              [
+                "Clipper",
+                "Off, Soft, Hard"
+              ],
+              [
+                "Oversampling",
+                "Off, 2×, 4×, 8×"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 34.7,
+                "y": 4.2,
+                "label": "Detector",
+                "side": "bottom"
+              },
+              {
+                "x": 46.2,
+                "y": 4.2,
+                "label": "Clipper",
+                "side": "bottom"
+              },
+              {
+                "x": 56.2,
+                "y": 4.2,
+                "label": "Oversampling",
+                "side": "bottom"
+              }
+            ]
+          },
+          {
+            "title": "Target and Range",
+            "manual": "target",
+            "image": 0,
+            "focus": [
+              36.7,
+              53.3,
+              26.4,
+              20.4
+            ],
+            "text": "TARGET sets the level you want the track to sit around, RANGE how far it may move around it. Together they draw a window: the loud parts above it are turned down, the quiet parts below it are brought up, and everything inside passes untouched. Click the link between the knobs to set the upper and lower threshold separately instead.",
+            "specs": [
+              [
+                "Target",
+                "Upper threshold −30 to 0 dB"
+              ],
+              [
+                "Range",
+                "3 to 60 dB"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 42.9,
+                "y": 65,
+                "label": "Target",
+                "side": "top"
+              },
+              {
+                "x": 49.9,
+                "y": 64.5,
+                "label": "Link",
+                "side": "bottom"
+              },
+              {
+                "x": 56.9,
+                "y": 65,
+                "label": "Range",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Downward Compression",
+            "manual": "downward",
+            "image": 2,
+            "focus": [
+              19,
+              52.8,
+              16.7,
+              40.8
+            ],
+            "text": "The DOWN-WARD section turns down everything above the window. RATIO sets how firmly it holds the loud parts, up to a limiter-like 100:1 as in the Maximizer preset here, and KNEE how gradually it starts, from Hard to Soft.",
+            "specs": [
+              [
+                "Ratio",
+                "1:1 to 100:1"
+              ],
+              [
+                "Knee",
+                "Hard, Medium, Soft"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 29,
+                "y": 65,
+                "label": "Ratio",
+                "side": "right"
+              },
+              {
+                "x": 29,
+                "y": 84.7,
+                "label": "Knee",
+                "side": "right"
+              }
+            ]
+          },
+          {
+            "title": "Upward Compression",
+            "manual": "upward",
+            "image": 3,
+            "focus": [
+              64.1,
+              52.8,
+              16.9,
+              40.8
+            ],
+            "text": "The UP-WARD section brings up everything below the window: quiet details, room sound and tails come forward without touching the loud parts. RATIO sets how much they are lifted, and KNEE how gradually, and also how much the very quiet parts, such as noise, are left alone.",
+            "specs": [
+              [
+                "Ratio",
+                "1:1 to 16:1"
+              ],
+              [
+                "Knee",
+                "Hard, Medium, Soft"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 70.85,
+                "y": 65,
+                "label": "Ratio",
+                "side": "left"
+              },
+              {
+                "x": 70.85,
+                "y": 84.7,
+                "label": "Knee",
+                "side": "left"
+              }
+            ]
+          },
+          {
+            "title": "Attack and Release",
+            "manual": "attack",
+            "image": 0,
+            "focus": [
+              36.7,
+              74.4,
+              26.4,
+              19.6
+            ],
+            "text": "Both sections share a single gain change, so one attack and one release time them both. ATTACK sets how quickly the gain comes down, when a loud part arrives; RELEASE how quickly it comes back up, when the loud part ends or a quiet part needs lifting.",
+            "specs": [
+              [
+                "Attack",
+                "0.005 to 250 ms"
+              ],
+              [
+                "Release",
+                "10 to 2500 ms"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 42.9,
+                "y": 84.7,
+                "label": "Attack",
+                "side": "top"
+              },
+              {
+                "x": 56.9,
+                "y": 84.7,
+                "label": "Release",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Real-Time Display",
+            "manual": "traces",
+            "image": 1,
+            "focus": [
+              0,
+              5.8,
+              100,
+              44.6
+            ],
+            "text": "The display shows the last 6 seconds of signal against the two thresholds, drawn as dashed lines with the target between them. The gain reduction of the downward section hangs from the top in purple, the gain increase of the upward section rises from the bottom in green, and the loudness runs across with its value in LU.",
+            "pins": [
+              {
+                "x": 75,
+                "y": 18.5,
+                "label": "Upper threshold",
+                "side": "bottom"
+              },
+              {
+                "x": 45,
+                "y": 36,
+                "label": "Lower threshold",
+                "side": "top"
+              },
+              {
+                "x": 30,
+                "y": 9,
+                "label": "Gain reduction",
+                "side": "bottom"
+              },
+              {
+                "x": 70,
+                "y": 46.5,
+                "label": "Gain increase",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Presets",
+            "manual": "factory",
+            "image": 1,
+            "focus": [
+              21,
+              45.2,
+              58,
+              4.6
+            ],
+            "text": "Eight factory presets cover mastering, drums, vocals and parallel processing, and you can save your own. Open the list to search it, step through the presets with the arrows, and save or delete your own from the same bar.",
+            "pins": [
+              {
+                "x": 26.5,
+                "y": 47.2,
+                "label": "Save",
+                "side": "top"
+              },
+              {
+                "x": 58,
+                "y": 47.2,
+                "label": "Preset list",
+                "side": "top"
+              },
+              {
+                "x": 73.5,
+                "y": 47.2,
+                "label": "Delete",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Input, Mix and Lookahead",
+            "manual": "input",
+            "image": 3,
+            "focus": [
+              [
+                0,
+                58,
+                12.1,
+                30
+              ],
+              [
+                2.5,
+                94.8,
+                22.5,
+                4.8
+              ]
+            ],
+            "text": "The INPUT knob sets the level going into the processing. The MIX slider blends the original back in for parallel processing, at 60% here, and the LOOKAHEAD slider lets KrystalField see up to 20 ms ahead, so it catches transients cleanly even with a fast attack.",
+            "specs": [
+              [
+                "Input",
+                "−36 to +36 dB"
+              ],
+              [
+                "Mix",
+                "0 to 100%"
+              ],
+              [
+                "Lookahead",
+                "0 to 20 ms"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 6.1,
+                "y": 71.5,
+                "label": "Input",
+                "side": "right"
+              },
+              {
+                "x": 9.6,
+                "y": 81,
+                "label": "Mix",
+                "side": "right"
+              },
+              {
+                "x": 16.2,
+                "y": 96.3,
+                "label": "Lookahead",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "Makeup, Loudness Matching and LF Bias",
+            "manual": "auto",
+            "image": 3,
+            "focus": [
+              [
+                87.9,
+                58,
+                12.1,
+                30
+              ],
+              [
+                74,
+                94.8,
+                22,
+                4.8
+              ]
+            ],
+            "text": "MAKEUP sets the level coming out. AUTO turns on Automatic Loudness Matching, which keeps the output as loud as the input so you judge every setting by its sound, and shows the gain it applies below the button. LF BIAS keeps the low end from driving the processing, so kick and bass don’t pump a full mix.",
+            "specs": [
+              [
+                "Makeup",
+                "−36 to +36 dB"
+              ],
+              [
+                "LF Bias",
+                "20 to 250 Hz"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 94,
+                "y": 71.5,
+                "label": "Makeup",
+                "side": "left"
+              },
+              {
+                "x": 97.8,
+                "y": 81,
+                "label": "Auto",
+                "side": "left"
+              },
+              {
+                "x": 94.8,
+                "y": 96.3,
+                "label": "LF bias",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "title": "GR, LU and GI Readouts",
+            "manual": "readouts",
+            "image": 3,
+            "focus": [
+              60.8,
+              0,
+              22.2,
+              4.3
+            ],
+            "text": "The readouts along the top show at a glance how hard each section is working: GR for the gain reduction of the downward section, GI for the gain increase of the upward section, and LU for the short-term loudness of the output. They turn orange and then red when the processing or the loudness gets heavy, as the 9.1 dB of gain increase here.",
+            "pins": [
+              {
+                "x": 64.5,
+                "y": 4.2,
+                "label": "Gain reduction",
+                "side": "bottom"
+              },
+              {
+                "x": 72.1,
+                "y": 4.2,
+                "label": "Loudness",
+                "side": "bottom"
+              },
+              {
+                "x": 79.5,
+                "y": 4.2,
+                "label": "Gain increase",
+                "side": "bottom"
+              }
+            ]
+          },
+          {
+            "title": "Input and Output Meters",
+            "manual": "meters",
+            "image": 0,
+            "focus": [
+              [
+                12.4,
+                54,
+                6.5,
+                39.8
+              ],
+              [
+                81.2,
+                54,
+                6.5,
+                39.8
+              ]
+            ],
+            "text": "The input and output meters show the level going in and coming out, with RMS and peak level for each channel, and the readouts below hold the highest peak until you click them. The power button in the top bar bypasses the plugin, perfectly in time.",
+            "pins": [
+              {
+                "x": 15.6,
+                "y": 62,
+                "label": "Input",
+                "side": "right"
+              },
+              {
+                "x": 84.4,
+                "y": 62,
+                "label": "Output",
+                "side": "left"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "scope",
+        "id": "window",
+        "title": "Target and Range",
+        "scope": "fieldCurve",
+        "manual": "target",
+        "intro": "How KrystalField shapes the level, computed from the plugin’s own gain computers: output level against input level. Above the window the loud parts are turned down, in purple; below it the quiet parts are brought up, in green; inside it the signal follows the dashed diagonal, untouched.",
+        "controls": [
+          {
+            "type": "range",
+            "key": "target",
+            "label": "Target",
+            "min": -45,
+            "max": -1.5,
+            "step": 0.1,
+            "format": "db"
+          },
+          {
+            "type": "range",
+            "key": "range",
+            "label": "Range",
+            "min": 3,
+            "max": 60,
+            "step": 0.1,
+            "format": "db"
+          },
+          {
+            "type": "range",
+            "key": "downRatio",
+            "label": "Downward ratio",
+            "min": 1,
+            "max": 100,
+            "step": 0.01,
+            "scale": "log",
+            "format": "ratio"
+          },
+          {
+            "type": "range",
+            "key": "upRatio",
+            "label": "Upward ratio",
+            "min": 1,
+            "max": 16,
+            "step": 0.01,
+            "scale": "log",
+            "format": "ratio"
+          },
+          {
+            "type": "range",
+            "key": "downKnee",
+            "label": "Downward knee",
+            "min": 0,
+            "max": 72,
+            "step": 0.1,
+            "format": "db"
+          },
+          {
+            "type": "range",
+            "key": "upKnee",
+            "label": "Upward knee",
+            "min": 0,
+            "max": 72,
+            "step": 0.1,
+            "format": "db"
+          }
+        ],
+        "steps": [
+          {
+            "title": "Target",
+            "state": {
+              "target": -18,
+              "range": 12,
+              "downRatio": 4,
+              "downKnee": 24,
+              "upRatio": 2,
+              "upKnee": 40
+            },
+            "demo": {
+              "sweep": "target",
+              "from": -30,
+              "to": -12,
+              "period": 5200
+            },
+            "text": "The target moves the whole window up and down. Set it to the level you want the track to sit around: whatever goes above the window is pulled down towards it, whatever falls below is pulled up."
+          },
+          {
+            "title": "Range",
+            "state": {
+              "target": -18,
+              "range": 12,
+              "downRatio": 4,
+              "downKnee": 24,
+              "upRatio": 2,
+              "upKnee": 40
+            },
+            "demo": {
+              "sweep": "range",
+              "from": 6,
+              "to": 30,
+              "period": 5200
+            },
+            "text": "The range sets how wide the window is. A narrow window holds the level tightly, for a dense, even sound; a wide one lets more of the natural dynamics through and only steps in at the extremes."
+          },
+          {
+            "title": "Downward Ratio",
+            "state": {
+              "target": -18,
+              "range": 12,
+              "downRatio": 4,
+              "downKnee": 24,
+              "upRatio": 2,
+              "upKnee": 40
+            },
+            "demo": {
+              "sweep": "downRatio",
+              "from": 1.5,
+              "to": 20,
+              "period": 5200
+            },
+            "text": "The downward ratio sets how flat the curve gets above the window. At 4:1 every 4 dB over the upper threshold come out as 1 dB; push it higher and the loud parts hardly rise above the window at all."
+          },
+          {
+            "title": "Upward Ratio",
+            "state": {
+              "target": -18,
+              "range": 12,
+              "downRatio": 4,
+              "downKnee": 24,
+              "upRatio": 2,
+              "upKnee": 40
+            },
+            "demo": {
+              "sweep": "upRatio",
+              "from": 1.2,
+              "to": 6,
+              "period": 5200
+            },
+            "text": "The upward ratio does the same below the window: the higher it is, the closer the quiet parts are pulled up to the lower threshold, and the more detail and sustain come forward."
+          },
+          {
+            "title": "Knees and the Noise Floor",
+            "state": {
+              "target": -18,
+              "range": 12,
+              "downRatio": 4,
+              "downKnee": 24,
+              "upRatio": 4,
+              "upKnee": 40
+            },
+            "demo": {
+              "sweep": "upKnee",
+              "from": 0,
+              "to": 72,
+              "period": 5600
+            },
+            "text": "The knees round off the corners of the window. The upward knee also decides how the very quiet parts are treated: with a hard knee everything below the window is lifted, noise included; the softer it gets, the more the bottom of the curve returns to the diagonal, leaving noise and silence where they are."
+          }
+        ]
+      },
+      {
+        "type": "scope",
+        "id": "timing",
+        "title": "Attack and Release",
+        "scope": "fieldTime",
+        "manual": "attack",
+        "intro": "How both sections move in time, computed from the plugin’s own detector and smoothing: a quiet note gets loud for 300 ms and quiet again. In the quiet parts the gain rises above the line, in green; in the loud part it drops below, in purple.",
+        "controls": [
+          {
+            "type": "choice",
+            "key": "detector",
+            "label": "Detector",
+            "values": [
+              "RMS",
+              "PEAK",
+              "LOUD"
+            ]
+          },
+          {
+            "type": "range",
+            "key": "attack",
+            "label": "Attack",
+            "min": 0.005,
+            "max": 250,
+            "step": 0.005,
+            "scale": "log",
+            "format": "msfine"
+          },
+          {
+            "type": "range",
+            "key": "release",
+            "label": "Release",
+            "min": 10,
+            "max": 2500,
+            "step": 0.1,
+            "scale": "log",
+            "format": "ms"
+          },
+          {
+            "type": "range",
+            "key": "lookahead",
+            "label": "Lookahead",
+            "min": 0,
+            "max": 20,
+            "step": 0.1,
+            "format": "msfine"
+          }
+        ],
+        "steps": [
+          {
+            "title": "Attack",
+            "state": {
+              "detector": "PEAK",
+              "target": -18,
+              "range": 12,
+              "downRatio": 4,
+              "downKnee": 24,
+              "upRatio": 2,
+              "upKnee": 40,
+              "attack": 3,
+              "release": 144,
+              "lookahead": 0,
+              "lfBias": 60,
+              "view": "attack"
+            },
+            "demo": {
+              "sweep": "attack",
+              "from": 0.2,
+              "to": 30,
+              "period": 5000
+            },
+            "text": "When the loud part arrives, the attack sets how quickly the gain comes down: first the boost of the quiet part is taken away, then the loud part is turned down. A fast attack catches the start straight away; a slow one lets it through, for punch."
+          },
+          {
+            "title": "Release",
+            "state": {
+              "detector": "PEAK",
+              "target": -18,
+              "range": 12,
+              "downRatio": 4,
+              "downKnee": 24,
+              "upRatio": 2,
+              "upKnee": 40,
+              "attack": 1,
+              "release": 144,
+              "lookahead": 0,
+              "lfBias": 60,
+              "view": "full"
+            },
+            "demo": {
+              "sweep": "release",
+              "from": 40,
+              "to": 900,
+              "period": 5400
+            },
+            "text": "When the loud part ends, the release brings the gain back up, all the way to the boost of the quiet part. A short release lifts the quiet part again straight away; a long one lets it come back gradually, more transparent but less dense."
+          },
+          {
+            "title": "Lookahead",
+            "state": {
+              "detector": "PEAK",
+              "target": -18,
+              "range": 12,
+              "downRatio": 4,
+              "downKnee": 24,
+              "upRatio": 2,
+              "upKnee": 40,
+              "attack": 3,
+              "release": 144,
+              "lookahead": 8,
+              "lfBias": 60,
+              "view": "attack"
+            },
+            "demo": {
+              "sweep": "lookahead",
+              "from": 0,
+              "to": 20,
+              "period": 5000
+            },
+            "text": "With lookahead, KrystalField sees the signal before it plays, so the gain starts coming down before the loud part arrives, and is held for the same time so it lasts through the peak."
+          },
+          {
+            "title": "Detector",
+            "state": {
+              "detector": "PEAK",
+              "target": -18,
+              "range": 12,
+              "downRatio": 4,
+              "downKnee": 24,
+              "upRatio": 2,
+              "upKnee": 40,
+              "attack": 1,
+              "release": 144,
+              "lookahead": 0,
+              "lfBias": 60,
+              "view": "full"
+            },
+            "demo": {
+              "cycle": "detector",
+              "values": [
+                "RMS",
+                "PEAK",
+                "LOUD"
+              ],
+              "every": 2600
+            },
+            "text": "PEAK follows every peak instantly, RMS follows the average over a short window, and LOUD the perceived loudness over a longer one. The slower the detector, the smoother the gain moves, and the later it reacts to a change."
+          }
+        ]
+      },
+      {
+        "type": "feature",
+        "id": "noise-floor",
+        "title": "Upward Compression That Spares the Noise",
+        "manual": "upward",
+        "intro": "A regular upward compressor lifts everything below its threshold, and the quieter the signal, the more it lifts it: hiss, hum and room tone come up along with the details you wanted. In KrystalField the upward KNEE does more than round off the curve. It also sets where the lifting stops, so the quietest parts of your track are left where they are, like a gate built into the curve.",
+        "focus": [
+          64.1,
+          52.8,
+          16.9,
+          40.8
+        ],
+        "crop": true,
+        "views": [
+          {
+            "label": "MEDIUM",
+            "image": 1,
+            "pins": [
+              {
+                "x": 70.85,
+                "y": 65,
+                "label": "Ratio",
+                "side": "left"
+              },
+              {
+                "x": 70.85,
+                "y": 84.7,
+                "label": "Knee",
+                "side": "left"
+              }
+            ]
+          },
+          {
+            "label": "SOFT",
+            "image": 0,
+            "pins": [
+              {
+                "x": 70.85,
+                "y": 65,
+                "label": "Ratio",
+                "side": "left"
+              },
+              {
+                "x": 70.85,
+                "y": 84.7,
+                "label": "Knee",
+                "side": "left"
+              }
+            ]
+          }
+        ],
+        "columns": [
+          {
+            "title": "Hard",
+            "text": "Works like a regular upward compressor: everything below the window is lifted, all the way down to the noise. Use it on clean sources with nothing to hide, such as synths and samples."
+          },
+          {
+            "title": "Medium",
+            "text": "Lifts the details under the window in full, then eases off further down, so only the deepest noise is left alone."
+          },
+          {
+            "title": "Soft",
+            "text": "The most protective setting: the lifting fades out closer to the window, and hiss, hum and room tone stay where they are while the details above them come forward."
+          },
+          {
+            "title": "Ratio and Knee Together",
+            "text": "RATIO sets how much the quiet parts are lifted, KNEE how far down the lifting reaches. Raise the ratio with a soft knee for a dense sound that still keeps its silences."
+          }
+        ],
+        "pair": {
+          "plot": "fieldUpward",
+          "left": {
+            "label": "Hard knee, like a regular upward compressor",
+            "state": {
+              "upKnee": 0
+            }
+          },
+          "right": {
+            "MEDIUM": {
+              "label": "Medium knee",
+              "state": {
+                "upKnee": 24
+              }
+            },
+            "SOFT": {
+              "label": "Soft knee",
+              "state": {
+                "upKnee": 48
+              }
+            }
+          },
+          "caption": "The upward part of the curve, computed from the plugin’s own gain computer, with a 3:1 ratio and the window between −24 and −12 dB. With a hard knee, the curve keeps climbing as the input gets quieter, and the noise floor on the left comes up by almost 30 dB. With a medium knee, the lifting fades out well below the window; with a soft knee, the curve is back on the dotted line before it reaches the noise. Switch between MEDIUM and SOFT above to compare."
+        }
+      },
+      {
+        "type": "feature",
+        "id": "lf-bias",
+        "title": "Low Frequency Bias",
+        "manual": "lf-bias",
+        "intro": "Kick and bass carry most of the energy in a mix, so they are usually what drives a compressor: every kick pulls the gain down, and the rest of the track pumps with it. LF BIAS makes KrystalField listen less to the low end when it decides how much to turn up or down, without taking any of it out of the sound you hear.",
+        "focus": [
+          50,
+          52,
+          50,
+          48
+        ],
+        "crop": true,
+        "views": [
+          {
+            "label": "60 HZ",
+            "image": 0,
+            "pins": [
+              {
+                "x": 81.4,
+                "y": 97.5,
+                "label": "Frequency",
+                "side": "top"
+              },
+              {
+                "x": 93.8,
+                "y": 97.4,
+                "label": "LF bias",
+                "side": "top"
+              }
+            ]
+          },
+          {
+            "label": "100 HZ",
+            "image": 3,
+            "pins": [
+              {
+                "x": 81.4,
+                "y": 97.5,
+                "label": "Frequency",
+                "side": "top"
+              },
+              {
+                "x": 93.8,
+                "y": 97.4,
+                "label": "LF bias",
+                "side": "top"
+              }
+            ]
+          }
+        ],
+        "columns": [
+          {
+            "title": "20 Hz",
+            "text": "The lowest setting: KrystalField hears the full range, like any other compressor. Use it on single instruments, or when you want the low end to lead."
+          },
+          {
+            "title": "60 to 100 Hz",
+            "text": "Kick and bass stop driving the gain, so a full mix or a drum bus holds steady instead of pumping on every beat."
+          },
+          {
+            "title": "Up to 250 Hz",
+            "text": "Lets the mids and highs decide on their own: useful on a bass-heavy mix, or on a vocal with plosives."
+          },
+          {
+            "title": "Only What It Hears",
+            "text": "The filter works only on the signal KrystalField listens to. Your low end is never cut, only kept out of the decisions."
+          }
+        ],
+        "pair": {
+          "plot": "fieldLfBias",
+          "left": {
+            "label": "LF bias at 20 Hz",
+            "state": {
+              "lfBias": 20
+            }
+          },
+          "right": {
+            "60 HZ": {
+              "label": "LF bias at 60 Hz",
+              "state": {
+                "lfBias": 60
+              }
+            },
+            "100 HZ": {
+              "label": "LF bias at 100 Hz",
+              "state": {
+                "lfBias": 100
+              }
+            }
+          },
+          "caption": "The same mix through the same settings, computed from the plugin’s own detector: a kick every quarter of a second under a sustained voice. At 20 Hz, every kick pulls the gain down by about 6 dB, and the voice dips with it. As LF BIAS rises, KrystalField hears less of the kick and the dips get shallower, about 3 dB at 100 Hz. The filter is gentle, so the kick still has a say: raise it further for a steadier sound. Switch between 60 HZ and 100 HZ above to compare."
+        }
+      },
+      {
+        "type": "start",
+        "id": "get-started",
+        "title": "Getting Started",
+        "steps": [
+          {
+            "title": "Download",
+            "text": "Pay what you want on itch.io, or enter 0 to get the full version for free. Free for personal and commercial use.",
+            "action": "download"
+          },
+          {
+            "title": "Install",
+            "text": "Run the installer, or copy the plugin files yourself: VST3 on Windows, AU and VST3 on macOS.",
+            "link": {
+              "label": "Installation guide",
+              "page": "install"
+            }
+          },
+          {
+            "title": "Read the Manual",
+            "text": "Every control in detail, with tips, ranges and defaults.",
+            "link": {
+              "label": "Open the manual",
+              "page": "manual"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "install": {
+    "title": "Install",
+    "intro": "KrystalField is available on itch.io as pay what you want: enter 0 to download the full version for free. The download contains both the installer and the plugin files, so you can choose how to install it."
+  },
+  "manual": {
+    "title": "Manual",
+    "intro": "KrystalField is a dynamics processor that turns the loud parts down and brings the quiet parts up at the same time, keeping a track inside the level range you choose. This manual covers every control, with tips, ranges and defaults.",
+    "chapters": [
+      {
+        "id": "getting-around",
+        "title": "Getting Around",
+        "intro": [
+          "Start here if you are new to KrystalField. The Quick Start gets you to a good result in a few steps, and the topics that follow explain how the signal moves through the plugin and how to find your way around the plugin window."
+        ],
+        "topics": [
+          {
+            "id": "quick-start",
+            "title": "Quick Start",
+            "body": [
+              "If you just want to start shaping your dynamics, this is the fastest way to a good result:",
+              {
+                "steps": [
+                  "Pick a <strong>preset</strong> from the bar at the bottom of the display, or start from Default Settings.",
+                  "Set <strong>TARGET</strong> to the level you want the track to sit around, and <strong>RANGE</strong> to how far it may move around it. The two dashed lines in the display show where the loud parts start being turned down and the quiet parts start being brought up.",
+                  "Use the <strong>RATIO</strong> knobs of the DOWN-WARD and UP-WARD sections to decide how firmly each side holds the level.",
+                  "Shape the response with <strong>ATTACK</strong> and <strong>RELEASE</strong>.",
+                  "Turn on <strong>AUTO</strong> for Automatic Loudness Matching, and set <strong>CLIP</strong> to SOFT or HARD to keep the output below 0 dB."
+                ]
+              },
+              "Use the MIX slider to blend some of the original back in, and watch the GR, GI and LU readouts at the top to see how much the plugin is working."
+            ]
+          },
+          {
+            "id": "signal-path",
+            "title": "Signal Path",
+            "body": [
+              "Processing always follows the same order:",
+              {
+                "steps": [
+                  "The <strong>detector</strong> listens to the input, after the input gain, with the low end reduced by <strong>LF bias</strong>.",
+                  "From the same level, the <strong>downward</strong> section works out how much to turn down the parts above the upper threshold, and the <strong>upward</strong> section how much to bring up the parts below the lower threshold. The two are combined into a single gain change, smoothed by the <strong>attack</strong> and <strong>release</strong>.",
+                  "The audio is delayed by the <strong>lookahead</strong>, so the gain change can start before the signal it reacts to, and the <strong>input gain</strong> is applied. The input meters read the signal at this point, and the dry signal for the mix is taken here.",
+                  "The gain change, the <strong>makeup gain</strong> and the gain from <strong>Automatic Loudness Matching</strong> are applied, followed by the <strong>clipper</strong>, at a higher sample rate with <strong>oversampling</strong> on.",
+                  "The <strong>dry/wet mix</strong> blends the result with the dry signal. The output meters and the loudness readout read the final signal."
+                ]
+              },
+              {
+                "note": "The same gain change is applied to both channels, so the stereo image never shifts."
+              }
+            ]
+          },
+          {
+            "id": "layout",
+            "title": "User Interface",
+            "body": [
+              {
+                "figure": {
+                  "image": 0,
+                  "crop": false,
+                  "caption": "The KrystalField user interface.",
+                  "pins": [
+                    {
+                      "x": 45,
+                      "y": 5.6,
+                      "label": "Top bar",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 62,
+                      "y": 28,
+                      "label": "Display",
+                      "side": "top"
+                    },
+                    {
+                      "x": 37,
+                      "y": 47,
+                      "label": "Presets",
+                      "side": "top"
+                    },
+                    {
+                      "x": 6,
+                      "y": 72,
+                      "label": "Input",
+                      "side": "top"
+                    },
+                    {
+                      "x": 27.3,
+                      "y": 62,
+                      "label": "Downward",
+                      "side": "top"
+                    },
+                    {
+                      "x": 50,
+                      "y": 62,
+                      "label": "Levels and timing",
+                      "side": "top"
+                    },
+                    {
+                      "x": 72.5,
+                      "y": 62,
+                      "label": "Upward",
+                      "side": "top"
+                    },
+                    {
+                      "x": 94,
+                      "y": 72,
+                      "label": "Makeup",
+                      "side": "top"
+                    },
+                    {
+                      "x": 30,
+                      "y": 97.3,
+                      "label": "Bottom",
+                      "side": "top"
+                    }
+                  ]
+                }
+              },
+              {
+                "table": {
+                  "head": [
+                    "Area",
+                    "What it holds"
+                  ],
+                  "rows": [
+                    [
+                      "Top bar",
+                      "Detector, clipper and oversampling selectors (MODE, CLIP, OS), the GR, LU and GI readouts, the bypass button and the Krystal Dynamics logo for information and updates"
+                    ],
+                    [
+                      "Display",
+                      "Real-time display with the threshold lines, the legend, the zoom button and the display settings (gear)"
+                    ],
+                    [
+                      "Presets",
+                      "The preset bar: Save, previous, preset list, next, Delete"
+                    ],
+                    [
+                      "Left",
+                      "INPUT knob and MIX slider, input meters (IN) with their peak hold readout"
+                    ],
+                    [
+                      "Centre",
+                      "DOWN-WARD section with RATIO and KNEE; TARGET and RANGE with the link button, ATTACK and RELEASE; UP-WARD section with RATIO and KNEE"
+                    ],
+                    [
+                      "Right",
+                      "Output meters (OUT) with their peak hold readout, MAKEUP knob and the AUTO button with its gain readout"
+                    ],
+                    [
+                      "Bottom",
+                      "LOOKAHEAD slider, help bar, LF BIAS slider"
+                    ]
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "controls",
+            "title": "Adjusting Controls",
+            "body": [
+              "Drag knobs and sliders up and down, or use the mouse wheel. Knobs show their value below: click it to type a new one. The MIX, LOOKAHEAD and LF BIAS sliders fill up with their value, which is shown next to them.",
+              "MODE, CLIP and OS change with each click, moving to the next value. AUTO, bypass and the link button switch on and off."
+            ],
+            "more": [
+              {
+                "title": "What You Can Automate",
+                "body": [
+                  "Every control that affects the sound can be automated from your DAW (see Parameter Reference). TARGET and RANGE write two parameters together, the upper threshold and the range, so their automation follows exactly what you do on the knobs. The display zoom, the link button and the settings belong to the user interface and can’t be automated."
+                ]
+              }
+            ]
+          },
+          {
+            "id": "help-bar",
+            "title": "Help Bar",
+            "body": [
+              "The bar along the bottom of the plugin window gives a short description of whatever control you are hovering over. Otherwise it reads <em>Hover any control for details</em>."
+            ]
+          },
+          {
+            "id": "window-size",
+            "title": "Resizing the Plugin Window",
+            "body": [
+              "Drag the lower-right corner to resize the plugin window, in 5% steps from 50% to 115% of the original 1000 × 750. A popup shows the current scale while you drag, and the size is saved with the session."
+            ]
+          },
+          {
+            "id": "latency",
+            "title": "Latency",
+            "body": [
+              "With lookahead and oversampling off, KrystalField adds no latency. Lookahead adds a fixed 20 ms whatever its value, and oversampling adds the latency of its filters. The total is reported to your DAW and compensated automatically, so KrystalField stays sample-aligned with the rest of your tracks."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dynamics",
+        "title": "Dynamics",
+        "intro": [
+          "KrystalField keeps a track inside a window of levels. Above the upper threshold it works as a downward compressor, turning the loud parts down; below the lower threshold it works as an upward compressor, bringing the quiet parts up. Between the two, the signal passes untouched."
+        ],
+        "topics": [
+          {
+            "id": "target",
+            "title": "Target and Range",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Target",
+                    "Upper threshold −30 to 0 dB"
+                  ],
+                  [
+                    "Range",
+                    "3 to 60 dB"
+                  ],
+                  [
+                    "Default",
+                    "−18 dB target, 12 dB range"
+                  ]
+                ]
+              },
+              "TARGET sets the level you want the track to sit around, and RANGE how far it may move around it. The upper threshold, where downward compression starts, sits half the range above the target; the lower threshold, where upward compression starts, half the range below. With the defaults, the window goes from −24 to −12 dB.",
+              {
+                "figure": {
+                  "image": 0,
+                  "crop": true,
+                  "focus": [
+                    36.7,
+                    52.8,
+                    26.4,
+                    40.8
+                  ],
+                  "caption": "TARGET and RANGE with the link button between them, and the timing controls below.",
+                  "pins": [
+                    {
+                      "x": 42.9,
+                      "y": 65,
+                      "label": "Target",
+                      "side": "top"
+                    },
+                    {
+                      "x": 49.9,
+                      "y": 64.5,
+                      "label": "Link",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 56.9,
+                      "y": 65,
+                      "label": "Range",
+                      "side": "top"
+                    },
+                    {
+                      "x": 43,
+                      "y": 84.7,
+                      "label": "Attack",
+                      "side": "top"
+                    },
+                    {
+                      "x": 56.9,
+                      "y": 84.7,
+                      "label": "Release",
+                      "side": "top"
+                    }
+                  ]
+                }
+              },
+              "Click the link button between the two knobs to set the thresholds separately instead: the knobs become UPPER and LOWER, and each moves its own threshold. The thresholds always stay at least 3 dB apart. Both are drawn as dashed lines in the display, with the target between them while the knobs are linked.",
+              {
+                "note": "A narrow range holds the level tightly, for a dense, even sound; a wide range lets more of the natural dynamics through."
+              }
+            ]
+          },
+          {
+            "id": "downward",
+            "title": "Downward Compression",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Ratio",
+                    "1:1 to 100:1, 4:1 by default"
+                  ],
+                  [
+                    "Knee",
+                    "0 to 72 dB, 24 dB by default"
+                  ]
+                ]
+              },
+              "The DOWN-WARD section turns down whatever goes above the upper threshold. RATIO sets how firmly: at 4:1, a signal 8 dB over the threshold comes out only 2 dB over it, and from 20:1 up the section behaves like a limiter. KNEE decides how gradually it starts around the threshold, and reads Hard, Medium or Soft."
+            ]
+          },
+          {
+            "id": "upward",
+            "title": "Upward Compression",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Ratio",
+                    "1:1 to 16:1, 2:1 by default"
+                  ],
+                  [
+                    "Knee",
+                    "0 to 72 dB, 40 dB by default"
+                  ]
+                ]
+              },
+              "The UP-WARD section brings up whatever falls below the lower threshold. RATIO sets how firmly: at 2:1, a signal 10 dB under the threshold comes out only 5 dB under it. Quiet details, room sound and tails come forward, while the loud parts are left to the downward section.",
+              "KNEE decides how gradually it starts around the lower threshold, and also how the noise floor is treated. With a hard knee everything below the threshold is brought up, however quiet; the softer the knee, the more the very quiet parts, such as noise and silence, are left where they are."
+            ]
+          },
+          {
+            "id": "attack",
+            "title": "Attack and Release",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Attack",
+                    "0.005 to 250 ms, 1 ms by default"
+                  ],
+                  [
+                    "Release",
+                    "10 to 2500 ms, 144 ms by default"
+                  ]
+                ]
+              },
+              "Both sections share one gain change, so the attack and release work for both. ATTACK sets how quickly the gain comes down, when a loud part needs turning down or the boost of a quiet part needs taking away. RELEASE sets how quickly it comes back up, when a loud part ends or a quiet part needs bringing up.",
+              "A fast attack catches transients, a slower one lets them through for punch. A short release makes the processing more audible and energetic, a long one smoother and more transparent."
+            ]
+          },
+          {
+            "id": "lookahead",
+            "title": "Lookahead",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "0 to 20 ms"
+                  ],
+                  [
+                    "Default",
+                    "5.1 ms"
+                  ]
+                ]
+              },
+              "The LOOKAHEAD slider lets KrystalField react before the signal arrives: the audio is delayed, so the gain change can start up to 20 ms ahead of a peak, and is held for the same time so it lasts through it. Transients are caught cleanly even with a fast attack.",
+              "Any value above 0 ms adds a fixed 20 ms latency, compensated by your DAW."
+            ]
+          },
+          {
+            "id": "detector",
+            "title": "Detector",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "RMS, PEAK, LOUD"
+                  ],
+                  [
+                    "Default",
+                    "PEAK"
+                  ]
+                ]
+              },
+              "The MODE button chooses how KrystalField reads the level:",
+              {
+                "table": {
+                  "head": [
+                    "Mode",
+                    "Character"
+                  ],
+                  "rows": [
+                    [
+                      "RMS",
+                      "Follows the average level over a short window: a smoother, more musical response"
+                    ],
+                    [
+                      "PEAK",
+                      "Follows the peaks instantly: a sharper, faster response that catches every transient"
+                    ],
+                    [
+                      "LOUD",
+                      "Follows the perceived loudness, weighted like the human ear, the same way LUFS is measured: the processing follows how loud the music sounds rather than its peaks"
+                    ]
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "lf-bias",
+            "title": "LF Bias",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "20 to 250 Hz"
+                  ],
+                  [
+                    "Default",
+                    "60 Hz"
+                  ]
+                ]
+              },
+              "The LF BIAS slider reduces the low end in the signal the detector listens to, with a high-pass filter. Raise it so kick and bass stop driving the processing of a full mix; at 20 Hz the detector hears the full range. The sound of the track itself is not filtered."
+            ]
+          },
+          {
+            "id": "oversampling",
+            "title": "Oversampling",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Off, 2×, 4×, 8×"
+                  ],
+                  [
+                    "Default",
+                    "Off"
+                  ]
+                ]
+              },
+              "Fast gain changes and clipping create harmonics, and at normal sample rates some of them fold back into the audible range as aliasing. The OS button applies the gain change and the clipper at 2, 4 or 8 times the session sample rate, so the result stays clean with fast settings and with the clipper on. Higher factors use more CPU and add some latency, compensated automatically."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gain",
+        "title": "Gain, Mix and Clipper",
+        "intro": [
+          "Input gain drives the signal into the processing, makeup gain sets the level coming out. The dry/wet mix blends the original back in, Automatic Loudness Matching keeps the output matched to the input, and the clipper keeps it below 0 dB."
+        ],
+        "topics": [
+          {
+            "id": "input",
+            "title": "Input Gain",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "−36.0 to +36.0 dB"
+                  ],
+                  [
+                    "Default",
+                    "0.0 dB"
+                  ]
+                ]
+              },
+              "Set with the INPUT knob. With the thresholds fixed, more input gain pushes more of the signal above the upper threshold and less of it below the lower one. The dry signal used by the mix includes the input gain."
+            ]
+          },
+          {
+            "id": "makeup",
+            "title": "Makeup Gain",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "−36.0 to +36.0 dB"
+                  ],
+                  [
+                    "Default",
+                    "0.0 dB"
+                  ]
+                ]
+              },
+              "Set with the MAKEUP knob and applied after the processing, before the clipper and the dry/wet mix."
+            ]
+          },
+          {
+            "id": "mix",
+            "title": "Dry/Wet Mix",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Range",
+                    "0 to 100%"
+                  ],
+                  [
+                    "Default",
+                    "100%"
+                  ]
+                ]
+              },
+              "Set with the MIX slider, it blends the processed signal with the original, kept in time with it. Values below 100% give parallel processing: the density of heavy compression with the natural dynamics of the original."
+            ]
+          },
+          {
+            "id": "auto",
+            "title": "Automatic Loudness Matching",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "Off, On"
+                  ],
+                  [
+                    "Default",
+                    "Off"
+                  ],
+                  [
+                    "Range of compensation",
+                    "±24 dB"
+                  ]
+                ]
+              },
+              "Processing changes the loudness, and a louder signal tends to win a comparison even when it doesn’t sound better. Automatic Loudness Matching measures the loudness of the input and of the output and compensates the difference, so you can judge each setting at the same level. Turn it on with the AUTO button; the gain it applies is shown below it."
+            ],
+            "more": [
+              {
+                "title": "When the Loudness Is Measured",
+                "body": [
+                  "Loudness is measured with K-weighting, the same weighting used for LUFS, over a window of about 3 seconds. After you change a parameter that affects loudness, the measurement starts again once the window has been refreshed. Changes to makeup gain, dry/wet mix, the clipper, oversampling and bypass don’t restart it.",
+                  "The applied gain is saved with the session."
+                ]
+              }
+            ]
+          },
+          {
+            "id": "clipper",
+            "title": "Clipper",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "OFF, SOFT, HARD"
+                  ],
+                  [
+                    "Default",
+                    "OFF"
+                  ]
+                ]
+              },
+              "The CLIP button keeps the processed signal below 0 dB after the makeup gain:",
+              {
+                "table": {
+                  "head": [
+                    "Mode",
+                    "What it does"
+                  ],
+                  "rows": [
+                    [
+                      "OFF",
+                      "No clipping: the output can go above 0 dB"
+                    ],
+                    [
+                      "SOFT",
+                      "Rounds the peaks off smoothly as they approach 0 dB, with a touch of saturation"
+                    ],
+                    [
+                      "HARD",
+                      "Cuts everything above 0 dB cleanly"
+                    ]
+                  ]
+                }
+              },
+              {
+                "note": "The clipper works on the processed signal before the dry/wet mix: with MIX below 100%, the dry signal is not clipped."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "presets",
+        "title": "Presets",
+        "intro": [
+          "Presets store every setting of KrystalField, so you can start from a sound that already works and save your own."
+        ],
+        "topics": [
+          {
+            "id": "factory",
+            "title": "Factory Presets",
+            "body": [
+              "The preset bar at the bottom of the display opens the list of presets. Click the name to open it, type in the search box to filter it, and use the arrows on either side to step through the presets one by one. Factory presets and your own are listed in separate groups.",
+              {
+                "table": {
+                  "head": [
+                    "Factory preset",
+                    ""
+                  ],
+                  "rows": [
+                    [
+                      "Default Settings",
+                      "The starting point, with every control at its default"
+                    ],
+                    [
+                      "Maximizer",
+                      "A limiter-like downward section with the full 20 ms of lookahead and a gentle lift of the quiet parts, for maximum loudness"
+                    ],
+                    [
+                      "Mastering Gentle Glue",
+                      "Low ratios on both sides and the LOUD detector, for transparent control of a full mix"
+                    ],
+                    [
+                      "Dynamic Density",
+                      "Moderate downward and gentle upward compression with the RMS detector, for a denser, more even sound"
+                    ],
+                    [
+                      "Loud Master",
+                      "Firm downward compression over a wide range, for a loud, dense master"
+                    ],
+                    [
+                      "Parallel Punch",
+                      "Heavy processing on both sides blended with 40% of the original"
+                    ],
+                    [
+                      "Vocal Leveler",
+                      "A narrow 8 dB window and the LOUD detector, to keep a vocal at a steady level"
+                    ],
+                    [
+                      "Drum Bus Enhancer",
+                      "Punchy downward compression with LF bias at 80 Hz, so the kick doesn’t drive the whole bus"
+                    ]
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "user-presets",
+            "title": "Saving Your Own",
+            "body": [
+              "Click Save, give the preset a name, and it joins the list under your own presets; saving with the name of an existing preset asks before overwriting it. Delete removes the selected preset of your own; factory presets can’t be deleted.",
+              "Your presets are stored in <code>Documents/Krystal Dynamics/KrystalField/Presets</code>, one file per preset, so you can back them up or move them to another computer."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "monitoring",
+        "title": "Monitoring",
+        "intro": [
+          "The readouts at the top show how hard each section is working and how loud the output is, and the meters show the level on both sides of the processing."
+        ],
+        "topics": [
+          {
+            "id": "readouts",
+            "title": "GR, LU and GI Readouts",
+            "body": [
+              "The readouts in the top bar show, from left to right, the gain reduction of the downward section (GR), the short-term loudness of the output (LU) and the gain increase of the upward section (GI). GR and GI hold their highest value for a moment before falling back, and turn orange above 6 dB and red above 9 dB. LU turns orange above −14 LUFS and red above −11 LUFS."
+            ]
+          },
+          {
+            "id": "meters",
+            "title": "Input and Output Meters",
+            "body": [
+              {
+                "aside": {
+                  "body": [
+                    "The input meters, labelled IN, show the level after the input gain; the output meters, labelled OUT, show the final output. Each has a bar for the left and the right channel: the bar shows the RMS level, with the peak level drawn on top.",
+                    "The readouts below hold the highest peak of either channel until you click them to reset. Output peaks above 0 dB are shown in red."
+                  ],
+                  "figures": [
+                    {
+                      "image": 0,
+                      "crop": true,
+                      "focus": [
+                        12.4,
+                        54,
+                        6.5,
+                        39.8
+                      ],
+                      "label": "Input meters"
+                    },
+                    {
+                      "image": 0,
+                      "crop": true,
+                      "focus": [
+                        81.2,
+                        54,
+                        6.5,
+                        39.8
+                      ],
+                      "label": "Output meters"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "bypass",
+            "title": "Bypass",
+            "body": [
+              "The power button in the top bar bypasses all processing so you hear the original signal. It keeps the same latency, so switching never shifts the timing, and the change is ramped to avoid clicks. While bypassed, the meters, the readouts, the display and the AUTO value stay frozen until you switch back."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "display",
+        "title": "Real-Time Display",
+        "intro": [
+          "The real-time display shows the last 6 seconds of signal against the two thresholds, with the gain reduction from the top and the gain increase from the bottom, so you can see exactly what both sections are doing."
+        ],
+        "topics": [
+          {
+            "id": "traces",
+            "title": "Display Traces",
+            "body": [
+              {
+                "figure": {
+                  "image": 1,
+                  "crop": true,
+                  "focus": [
+                    0,
+                    5.8,
+                    100,
+                    44.6
+                  ],
+                  "caption": "The display with the Drum Bus Enhancer preset.",
+                  "pins": [
+                    {
+                      "x": 4,
+                      "y": 33.7,
+                      "label": "Legend",
+                      "side": "right"
+                    },
+                    {
+                      "x": 30,
+                      "y": 9,
+                      "label": "Gain reduction",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 75,
+                      "y": 18.5,
+                      "label": "Upper threshold",
+                      "side": "bottom"
+                    },
+                    {
+                      "x": 45,
+                      "y": 36,
+                      "label": "Lower threshold",
+                      "side": "top"
+                    },
+                    {
+                      "x": 70,
+                      "y": 46.5,
+                      "label": "Gain increase",
+                      "side": "top"
+                    },
+                    {
+                      "x": 96.5,
+                      "y": 47,
+                      "label": "Zoom",
+                      "side": "left"
+                    }
+                  ]
+                }
+              },
+              {
+                "table": {
+                  "head": [
+                    "Trace",
+                    "What it shows"
+                  ],
+                  "rows": [
+                    [
+                      "Input (IN)",
+                      "The level of the signal after the input gain"
+                    ],
+                    [
+                      "Gain reduction (GR)",
+                      "How much the downward section turns the signal down, drawn from the top"
+                    ],
+                    [
+                      "Loudness (LUFS)",
+                      "The short-term loudness of the output, with its value in LU"
+                    ],
+                    [
+                      "Gain increase (GI)",
+                      "How much the upward section brings the signal up, drawn from the bottom"
+                    ],
+                    [
+                      "Output (OUT)",
+                      "The level of the final output"
+                    ]
+                  ]
+                }
+              },
+              "The upper and lower thresholds are drawn as dashed lines, with the target between them while TARGET and RANGE are linked. Click an entry in the legend to hide or show its trace."
+            ]
+          },
+          {
+            "id": "zoom",
+            "title": "Zoom",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Values",
+                    "−18, −36, −72 dB"
+                  ],
+                  [
+                    "Default",
+                    "−36 dB"
+                  ]
+                ]
+              },
+              "The button at the lower right of the display sets how far down the scale goes, and changes with each click."
+            ]
+          }
+        ],
+        "after": [
+          {
+            "note": "The display zoom is saved as a preference and with the session."
+          }
+        ]
+      },
+      {
+        "id": "settings",
+        "title": "Settings and Updates",
+        "intro": [
+          "Choose light or dark themes and set how much CPU the user interface uses. The Krystal Dynamics logo gives you the version, updates and credits."
+        ],
+        "topics": [
+          {
+            "id": "display-settings",
+            "title": "Display Settings",
+            "body": [
+              "The gear in the lower-left corner of the display opens the settings.",
+              {
+                "table": {
+                  "head": [
+                    "Setting",
+                    "Values"
+                  ],
+                  "rows": [
+                    [
+                      "Knobs",
+                      "Light, Dark"
+                    ],
+                    [
+                      "Background",
+                      "Light, Dark"
+                    ],
+                    [
+                      "Display",
+                      "Light, Dark"
+                    ],
+                    [
+                      "GUI FPS",
+                      "60, 30, 20 fps"
+                    ],
+                    [
+                      "Graphics",
+                      "Full, Low"
+                    ]
+                  ]
+                }
+              },
+              "Set the knobs, the background and the display to light or dark independently. If you are short on CPU, a lower frame rate and Low graphics, which leaves out the shadows, lighten the load of the user interface. The sound is not affected.",
+              {
+                "figures": [
+                  {
+                    "image": 1,
+                    "crop": false,
+                    "caption": "Light, with a dark display"
+                  },
+                  {
+                    "image": 2,
+                    "crop": false,
+                    "caption": "Dark"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "saved",
+            "title": "What Is Saved Where",
+            "body": [
+              {
+                "table": {
+                  "head": [
+                    "Saved with the session",
+                    "Saved as preferences"
+                  ],
+                  "rows": [
+                    [
+                      "All parameters",
+                      "Themes"
+                    ],
+                    [
+                      "Linked or separate thresholds",
+                      "GUI FPS and graphics"
+                    ],
+                    [
+                      "Plugin window size",
+                      "Display zoom"
+                    ],
+                    [
+                      "Automatic Loudness Matching gain",
+                      ""
+                    ]
+                  ]
+                }
+              },
+              "Preferences apply to every instance and are stored in <code>Documents/Krystal Dynamics/KrystalField/preferences.xml</code>."
+            ]
+          },
+          {
+            "id": "updates",
+            "title": "Updates and Information",
+            "body": [
+              "Click the Krystal Dynamics logo in the top-right corner for the version, credits and links. KrystalField checks the website for new versions: when one is out, the logo lets you know and the plugin window shows what’s new, with a download link. The check only reads the latest version number and sends no personal data."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "parameters",
+        "title": "Parameter Reference",
+        "intro": [
+          "All automatable parameters, in the order they appear in your DAW."
+        ],
+        "after": [
+          {
+            "table": {
+              "head": [
+                "Parameter",
+                "Range",
+                "Default"
+              ],
+              "rows": [
+                [
+                  "Input Level",
+                  "−36.0 to +36.0 dB",
+                  "0.0 dB"
+                ],
+                [
+                  "Mix",
+                  "0 to 100%",
+                  "100%"
+                ],
+                [
+                  "Target Level (upper threshold)",
+                  "−30.0 to 0.0 dB",
+                  "−12.0 dB"
+                ],
+                [
+                  "Range",
+                  "3 to 60 dB",
+                  "12 dB"
+                ],
+                [
+                  "Attack",
+                  "0.005 to 250 ms",
+                  "1 ms"
+                ],
+                [
+                  "Release",
+                  "10 to 2500 ms",
+                  "144 ms"
+                ],
+                [
+                  "Detector Mode",
+                  "RMS, Peak, LOUD",
+                  "Peak"
+                ],
+                [
+                  "Upward Ratio",
+                  "1:1 to 16:1",
+                  "2:1"
+                ],
+                [
+                  "Upward Knee",
+                  "0 to 72 dB",
+                  "40 dB"
+                ],
+                [
+                  "Downward Ratio",
+                  "1:1 to 100:1",
+                  "4:1"
+                ],
+                [
+                  "Downward Knee",
+                  "0 to 72 dB",
+                  "24 dB"
+                ],
+                [
+                  "Makeup",
+                  "−36.0 to +36.0 dB",
+                  "0.0 dB"
+                ],
+                [
+                  "Clipper Mode",
+                  "Off, Soft, Hard",
+                  "Off"
+                ],
+                [
+                  "Auto Gain",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Bypass",
+                  "Off, On",
+                  "Off"
+                ],
+                [
+                  "Lookahead",
+                  "0 to 20 ms",
+                  "5.1 ms"
+                ],
+                [
+                  "LF Bias",
+                  "20 to 250 Hz",
+                  "60 Hz"
+                ],
+                [
+                  "Oversampling",
+                  "Off, 2x, 4x, 8x",
+                  "Off"
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "history": {
+    "title": "Version History",
+    "intro": "Everything new in each release. KrystalField checks for updates on its own and lets you know in the plugin window when a new version is out."
+  }
+}

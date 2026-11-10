@@ -20,14 +20,14 @@
         "type": "tour",
         "id": "interface",
         "title": "Interface",
-        "intro": "KrystalPeak puts the real-time display at the centre, with every control within reach below it. Scroll to go through each part.",
+        "intro": "KrystalPeak puts the real-time display at the centre, so you can always see what the limiter is doing, with every control within reach below it. Here's a breakdown of each section:",
         "steps": [
           {
             "title": "User Interface",
             "manual": "layout",
             "image": 0,
             "focus": null,
-            "text": "The real-time display fills most of the window, so you can always see what the limiter is doing. Below it, three panels hold the controls in the order the signal meets them: input gain and upward compression on the left, attack, release, stereo linking and saturation in the centre, output gain on the right. The limiting mode and the oversampling factor are set along the top, next to bypass, Delta monitoring and the settings, while the gain reduction and output meters run down the right edge.",
+            "text": "The real-time display fills most of the window, so you can always see what the limiter is doing. Below it, three panels hold the main controls: input gain and upward compression on the left, attack, release, stereo linking and saturation in the centre, output gain on the right. The limiting mode and the oversampling factor are set along the top, next to bypass, delta monitoring and the settings, while the gain reduction and output meters run down the right edge.",
             "pins": [
               {
                 "x": 34.6,
@@ -74,7 +74,7 @@
             ]
           },
           {
-            "title": "Limiting Modes and Oversampling",
+            "title": "Limiting Mode and Oversampling",
             "manual": "mode",
             "image": 2,
             "focus": [
@@ -119,7 +119,7 @@
               50,
               12
             ],
-            "text": "The ceiling is the highest level that comes out of KrystalPeak, from −12 to 0 dB. Drag the dashed line or its CEIL handle directly in the display, and watch the gain reduction follow as you move it. Combined with true peak detection, it keeps your master safe from the peaks that hide between samples too.",
+            "text": "The ceiling is the highest level that comes out of KrystalPeak, from 0 to -12 dB. Drag the CEIL handle directly in the display, and watch the gain reduction follow as you move it. Combined with true peak detection, it keeps your master safe from the peaks that hide between samples too.",
             "specs": [
               [
                 "Range",
@@ -163,7 +163,7 @@
                 27.1
               ]
             ],
-            "text": "The INPUT knob drives the signal into the limiter: the more you raise it, the louder the track gets while the peaks stay at the ceiling. The OUTPUT knob sets the final level after the limiter, useful to compare the result with the original at the same loudness.",
+            "text": "The INPUT knob drives the signal into the limiter: the more you raise it, the louder the track gets while the peaks stay at the ceiling. The OUTPUT knob sets the final level after the limiter, useful to adjust the level after the ceiling.",
             "specs": [
               [
                 "Input, Output",
@@ -203,7 +203,7 @@
                 8.4
               ]
             ],
-            "text": "Upward compression brings up the quiet passages instead of turning down the loud ones. Raise the UPWARD slider and soft details, reverb tails and quieter sections come forward, while the noise floor stays where it is. The added gain is drawn in yellow along the bottom of the display and of the gain reduction meters, so you always see how much is being lifted.",
+            "text": "Upward compression brings up the quiet passages instead of turning down the loud ones. Raise the UPWARD slider and quieter sections come forward, while the noise floor stays where it is. The added gain is drawn in yellow along the bottom of the display and of the gain reduction meters, so you always see how much is being lifted.",
             "specs": [
               [
                 "Range",
@@ -239,7 +239,7 @@
               19.5,
               27.8
             ],
-            "text": "The attack decides how quickly the limiter catches a peak: Fast keeps every transient clean, Slow lets the start of each hit run into the ceiling for extra punch and edge. The release sets how quickly the gain recovers afterwards, from 10 ms to 3 seconds. Turn on AUTO, above the RELEASE knob, and the release adapts to the music on its own, as here.",
+            "text": "The attack decides how quickly the limiter catches a peak: Fast keeps every transient clean, Slow lets the start of each hit run into the ceiling for extra punch and edge. The release sets how quickly the gain recovers afterwards, from 10 ms to 3 seconds. Turn on AUTO, above the RELEASE knob, to enable automatic release that adapts to the music on its own.",
             "specs": [
               [
                 "Attack",
@@ -281,7 +281,7 @@
               19.6,
               27
             ],
-            "text": "Stereo linking sets how much the two channels share their gain reduction: at 100% the stereo image never moves, lower values give more loudness with a freer image. The L/R – M/S switch below lets the limiter work on mid and side instead of left and right. Next to it, SATURATE adds warmth and density as the peaks approach the ceiling, for a fuller, more analogue sound.",
+            "text": "Stereo linking sets how much independently the gain reduction is applied to each channel: at 100% the gain reduction is applied equally on both channels. The L/R - M/S switch below lets the limiter work on left/right or mid/side channels. Next to it, SATURATE adds warmth and density as the peaks approach the ceiling, for a fuller, more analogue sound.",
             "specs": [
               [
                 "Linking",

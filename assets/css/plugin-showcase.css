@@ -115,6 +115,7 @@
 
 
 /* ── The row of floating cards ─────────────────────────────────────────── */
+.showcase-spacer { display: none; }
 .showcase-track {
   --card-w: clamp(180px, 22vw, 370px);
   --overlap: calc(var(--card-w) * -0.15);
@@ -268,11 +269,14 @@
 
   .showcase-track::-webkit-scrollbar { display: none; }
 
-  /* Spacers so the first and last cards can reach the centre */
-  .showcase-track::before,
-  .showcase-track::after {
-    content: '';
-    flex: 0 0 calc(50vw - var(--card-w) / 2 - var(--overlap));
+  /* Spacers so the first and last cards can reach the centre: real elements, as wide as half the
+     scroller minus half a card, and as tall as the row so every browser counts them in the scroll width */
+  .showcase-spacer {
+    display: block;
+    flex: none;
+    align-self: stretch;
+    width: calc(50% - var(--card-w) / 2 - var(--overlap));
+    min-height: 1px;
   }
 
   .showcase-item {
