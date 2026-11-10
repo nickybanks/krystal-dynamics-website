@@ -53,6 +53,22 @@
       ],
       "history": [
         {
+          "version": "1.2.1",
+          "date": "2026-11-13",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Fixed Normalize: the clipping curve now keeps its shape and reaches the threshold exactly",
+                "Fixed invalid readings in the loudness (LUFS) trace",
+                "Fixed Delta monitoring with oversampling on",
+                "Automatic Loudness Matching now ignores silence",
+                "Minor bug fixes and graphics improvements"
+              ]
+            }
+          ]
+        },
+        {
           "version": "1.2.0",
           "date": "2026-11-03",
           "groups": [
@@ -192,6 +208,24 @@
         }
       ],
       "history": [
+        {
+          "version": "1.2.1",
+          "date": "2026-11-13",
+          "groups": [
+            {
+              "title": "Improvements",
+              "items": [
+                "Redesigned interface",
+                "Bypass now keeps the same latency, so switching it never shifts the timing",
+                "Sidechain monitoring is now kept in time with your other tracks",
+                "Peak hold readouts now hold their value until you click them",
+                "Fixed clicks when automating the lookahead or switching between Downward and Upward mode",
+                "Fixed attack and release in Upward mode after reopening the plugin window",
+                "Fixed oversampling and loudness (LUFS) issues"
+              ]
+            }
+          ]
+        },
         {
           "version": "1.2.0",
           "date": "2026-10-16",
@@ -452,15 +486,15 @@
       "history": [
         {
           "version": "1.1.0",
-          "date": "2026-11-10",
+          "date": "2026-11-13",
           "groups": [
             {
               "title": "Improvements",
               "items": [
-                "Redesigned interface, with the same look and feel as KrystalClip 1.2.0",
+                "Redesigned interface",
                 "Added Upward mode to bring up quiet passages",
                 "Added Ceiling control, draggable in the display",
-                "Added three limiting modes: Clean, Punch and Brick"
+                "Added different limiting modes: Clean, Punch and Brick"
               ]
             }
           ]

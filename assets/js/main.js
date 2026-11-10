@@ -51,8 +51,17 @@ function getReleaseHighlights(plugins) {
   return {
     upcoming: newest(plugins.filter(plugin => plugin.isEarlyAccess), plugin => -Date.parse(plugin.launchDate)),
     latestRelease: newest(launched, plugin => plugin.launchDate),
-    latestUpdate: newest(launched.filter(plugin => plugin.latestUpdate), plugin => plugin.latestUpdate.date),
+    // Several updates on the same day: a major one (new first or second digit) leads
+    latestUpdate: newest(launched.filter(plugin => plugin.latestUpdate),
+      plugin => `${plugin.latestUpdate.date}${isMajorUpdate(plugin.history) ? 1 : 0}`),
   };
+}
+
+// 1 for an update that changes the first or second digit of the version, 0 otherwise
+function majorRank(event) {
+  if (event.type !== 'update') return 0;
+  const history = event.plugin.history, i = history.indexOf(event.release);
+  return isMajorUpdate(history.slice(i)) ? 1 : 0;
 }
 
 // Every history entry of every plugin, newest first
@@ -83,7 +92,8 @@ function getRecentActivity(plugins, limit) {
         { plugin, release, date: plugin.publicRelease, type: 'release' },
       ];
     })
-    .sort((a, b) => b.date.localeCompare(a.date))
+    // Newest first; on the same day, major updates before minor ones
+    .sort((a, b) => b.date.localeCompare(a.date) || majorRank(b) - majorRank(a))
     .slice(0, limit);
 }
 
