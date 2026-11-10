@@ -59,8 +59,7 @@
             {
               "title": "Improvements",
               "items": [
-                "Fixed Normalize: the clipping curve now keeps its shape and reaches the threshold exactly",
-                "Fixed invalid readings in the loudness (LUFS) trace",
+                "Fixed Normalization algorithm so the clipping curve now keeps its shape",
                 "Fixed Delta monitoring with oversampling on",
                 "Automatic Loudness Matching now ignores silence",
                 "Minor bug fixes and graphics improvements"
@@ -219,9 +218,7 @@
                 "Bypass now keeps the same latency, so switching it never shifts the timing",
                 "Sidechain monitoring is now kept in time with your other tracks",
                 "Peak hold readouts now hold their value until you click them",
-                "Fixed clicks when automating the lookahead or switching between Downward and Upward mode",
-                "Fixed attack and release in Upward mode after reopening the plugin window",
-                "Fixed oversampling and loudness (LUFS) issues"
+                "Fixed clicks when automating the lookahead or switching between Downward and Upward mode"
               ]
             }
           ]
