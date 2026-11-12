@@ -17,6 +17,22 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- End User License Agreement -->
+  <url>
+    <loc>https://krystaldynamics.com/license.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://krystaldynamics.com/privacy.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
   <!-- About Krystal Dynamics -->
   <url>
     <loc>https://krystaldynamics.com/about.html</loc>

@@ -146,7 +146,7 @@ async function loadComponent(id, url) {
 
 async function loadComponents() {
   await loadComponent('header', '/assets/includes/header.html');
-  await loadComponent('footer', '/assets/includes/footer.html?v=20261007-svgfix');
+  await loadComponent('footer', '/assets/includes/footer.html?v=20261112-2');
   initMobileNav();
   initHeaderScroll();
   initNavHighlight();

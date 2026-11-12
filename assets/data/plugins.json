@@ -320,7 +320,7 @@
       "id": "krystal-field",
       "name": "KrystalField",
       "description": "KrystalField keeps a track inside the level window you choose: it turns the loud parts down and brings the quiet parts up at the same time, for mastering, bus processing and vocals. Set a target and a range, shape each side with its own ratio and knee, and watch both at work in a real-time display, with presets, lookahead, a clipper and automatic loudness matching built in.",
-      "catalogDescription": "Downward and upward compression in one, keeping a track inside the level window you choose.",
+      "catalogDescription": "Downward and upward compression simultaneously, keep a track inside the chosen target range.",
       "page": "/plugins/krystal-field.html",
       "museHub": "https://www.musehub.com/plugin/krystalfield",
       "images": [
@@ -431,7 +431,7 @@
       "id": "krystal-peak",
       "name": "KrystalPeak",
       "description": "KrystalPeak is a transparent digital limiter designed to suppress peaks and maximize loudness. Three limiting modes take you from smooth, transparent loudness to tight, punchy peak control, with true peak detection, upward compression and saturation built in.",
-      "catalogDescription": "A look-ahead peak limiter with three limiting modes, from transparent loudness to punchy peak control.",
+      "catalogDescription": "A transparent peak limiter for shaping transients and maximizing loudness",
       "page": "/plugins/krystal-peak.html",
       "museHub": "https://www.musehub.com/plugin/krystalpeak",
       "images": [

@@ -39,33 +39,33 @@
                 "side": "bottom"
               },
               {
-                "x": 23.5,
-                "y": 50,
+                "x": 15,
+                "y": 65.6,
                 "label": "Sidechain EQ",
                 "side": "right"
               },
               {
                 "x": 54.6,
                 "y": 30,
-                "label": "Display",
+                "label": "Waveform Display",
                 "side": "top"
               },
               {
-                "x": 88.4,
-                "y": 30,
-                "label": "Meters",
+                "x": 89.7,
+                "y": 31,
+                "label": "Gain meters",
                 "side": "left"
               },
               {
                 "x": 54.6,
                 "y": 77,
-                "label": "Compressor",
+                "label": "Main controls",
                 "side": "top"
               },
               {
                 "x": 89.8,
                 "y": 69,
-                "label": "Gain and mix",
+                "label": "Gain stage",
                 "side": "left"
               }
             ]
@@ -105,13 +105,13 @@
               {
                 "x": 48.7,
                 "y": 7.2,
-                "label": "Mode",
+                "label": "Compression mode",
                 "side": "bottom"
               },
               {
                 "x": 61.7,
                 "y": 7.2,
-                "label": "Oversampling",
+                "label": "Oversampling factor",
                 "side": "bottom"
               }
             ]
@@ -148,30 +148,30 @@
             "pins": [
               {
                 "x": 10.7,
-                "y": 27.3,
-                "label": "Bell",
+                "y": 24.3,
+                "label": "Bell frequency",
                 "side": "top"
               },
               {
-                "x": 20.2,
-                "y": 31.2,
-                "label": "Gain",
+                "x": 20.3,
+                "y": 28.3,
+                "label": "Bell gain",
                 "side": "bottom"
               },
               {
                 "x": 10.7,
                 "y": 50.4,
-                "label": "HPF",
+                "label": "Highpass freq.",
                 "side": "top"
               },
               {
                 "x": 20.2,
                 "y": 54.2,
-                "label": "LPF",
+                "label": "Lowpass freq.",
                 "side": "bottom"
               },
               {
-                "x": 25.2,
+                "x": 22.6,
                 "y": 71.5,
                 "label": "Monitoring",
                 "side": "left"
@@ -203,14 +203,14 @@
                 "side": "right"
               },
               {
-                "x": 56,
-                "y": 49.5,
+                "x": 52.6,
+                "y": 48.8,
                 "label": "Legend",
                 "side": "top"
               },
               {
-                "x": 76.5,
-                "y": 49.5,
+                "x": 74.1,
+                "y": 48.6,
                 "label": "Zoom",
                 "side": "left"
               }
@@ -235,8 +235,8 @@
                 "side": "bottom"
               },
               {
-                "x": 54.8,
-                "y": 30,
+                "x": 55,
+                "y": 29.9,
                 "label": "CURVE tab",
                 "side": "right"
               }
@@ -274,7 +274,7 @@
             "pins": [
               {
                 "x": 36.2,
-                "y": 72.5,
+                "y": 71.3,
                 "label": "Threshold",
                 "side": "top"
               },
@@ -329,27 +329,27 @@
             ],
             "pins": [
               {
-                "x": 60.8,
-                "y": 72.5,
-                "label": "Attack",
+                "x": 61.1,
+                "y": 70.8,
+                "label": "Attack time",
                 "side": "top"
               },
               {
-                "x": 77.2,
-                "y": 61,
-                "label": "Lookahead",
+                "x": 69.5,
+                "y": 60.7,
+                "label": "Lookahead delay",
                 "side": "left"
               },
               {
-                "x": 73.3,
-                "y": 80.2,
-                "label": "Release",
+                "x": 73.5,
+                "y": 78.6,
+                "label": "Release time",
                 "side": "top"
               },
               {
-                "x": 64.9,
-                "y": 87.3,
-                "label": "Hold",
+                "x": 64.6,
+                "y": 87.7,
+                "label": "Hold time",
                 "side": "right"
               }
             ]
@@ -377,19 +377,19 @@
             ],
             "pins": [
               {
-                "x": 85.8,
-                "y": 72.1,
-                "label": "Input",
+                "x": 86,
+                "y": 70.1,
+                "label": "Input gain",
                 "side": "top"
               },
               {
-                "x": 93.7,
-                "y": 72.1,
-                "label": "Makeup",
+                "x": 93.9,
+                "y": 70.5,
+                "label": "Output gain",
                 "side": "top"
               },
               {
-                "x": 94.2,
+                "x": 87.2,
                 "y": 83.9,
                 "label": "Mix",
                 "side": "left"
@@ -411,19 +411,19 @@
               {
                 "x": 84.5,
                 "y": 18,
-                "label": "Input",
+                "label": "Input meter",
                 "side": "top"
               },
               {
                 "x": 89.8,
                 "y": 34,
-                "label": "Gain increase",
+                "label": "Gain reduction/increase",
                 "side": "top"
               },
               {
                 "x": 95.1,
                 "y": 18,
-                "label": "Output",
+                "label": "Output meter",
                 "side": "top"
               },
               {

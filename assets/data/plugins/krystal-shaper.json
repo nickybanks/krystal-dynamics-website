@@ -39,39 +39,39 @@
                 "side": "bottom"
               },
               {
-                "x": 30,
+                "x": 39.5,
                 "y": 30,
-                "label": "Display",
+                "label": "Waveform Display",
                 "side": "top"
               },
               {
                 "x": 2.6,
                 "y": 29.3,
-                "label": "Advanced",
+                "label": "Advanced panel",
                 "side": "right"
               },
               {
                 "x": 97.4,
                 "y": 29.3,
-                "label": "Sidechain",
+                "label": "Sidechain panel",
                 "side": "left"
               },
               {
                 "x": 6.3,
                 "y": 72.6,
-                "label": "Input",
+                "label": "Input gain",
                 "side": "top"
               },
               {
-                "x": 49.7,
-                "y": 70.7,
-                "label": "Shaping",
+                "x": 49.9,
+                "y": 71.3,
+                "label": "Main controls",
                 "side": "top"
               },
               {
                 "x": 93.5,
                 "y": 72.6,
-                "label": "Output",
+                "label": "Output gain",
                 "side": "top"
               }
             ]
@@ -107,27 +107,27 @@
             ],
             "pins": [
               {
-                "x": 45.4,
-                "y": 3.2,
-                "label": "Mode",
+                "x": 41.3,
+                "y": 6,
+                "label": "Detection mode",
                 "side": "bottom"
               },
               {
-                "x": 57.7,
-                "y": 3.2,
-                "label": "Link",
+                "x": 55.2,
+                "y": 6.1,
+                "label": "Channel linking",
                 "side": "bottom"
               },
               {
-                "x": 68.3,
-                "y": 3.2,
+                "x": 66.2,
+                "y": 6.2,
                 "label": "Clipper",
                 "side": "bottom"
               },
               {
-                "x": 79.7,
-                "y": 3.2,
-                "label": "Lookahead",
+                "x": 78.1,
+                "y": 6.2,
+                "label": "Lookahead delay",
                 "side": "bottom"
               }
             ]
@@ -157,13 +157,13 @@
               {
                 "x": 27.9,
                 "y": 73.7,
-                "label": "Transient",
+                "label": "Transient gain",
                 "side": "top"
               },
               {
                 "x": 72.8,
                 "y": 73.7,
-                "label": "Sustain",
+                "label": "Sustain gain",
                 "side": "top"
               }
             ]
@@ -196,20 +196,20 @@
             "pins": [
               {
                 "x": 39.6,
-                "y": 77.1,
-                "label": "Hold",
+                "y": 76.5,
+                "label": "Hold time",
                 "side": "top"
               },
               {
                 "x": 49.7,
                 "y": 70.7,
-                "label": "Pump",
+                "label": "Pump amount",
                 "side": "top"
               },
               {
-                "x": 60.7,
-                "y": 77.1,
-                "label": "Release",
+                "x": 60.3,
+                "y": 76.7,
+                "label": "Release time",
                 "side": "top"
               }
             ]
@@ -227,26 +227,26 @@
             "text": "The display shows the last 3 seconds of signal, input and output, with the transient and sustain curves on top: the transient curve jumps up at every hit KrystalShaper detects, and the sustain curve takes over as it falls. Click the legend to hide or show each trace.",
             "pins": [
               {
-                "x": 17.6,
-                "y": 20,
-                "label": "Transient",
+                "x": 14.9,
+                "y": 17.7,
+                "label": "Transient (green)",
                 "side": "top"
               },
               {
-                "x": 38,
-                "y": 8.4,
-                "label": "Sustain",
+                "x": 24.3,
+                "y": 52.2,
+                "label": "Sustain (orange)",
                 "side": "bottom"
               },
               {
-                "x": 26,
-                "y": 24.5,
+                "x": 25.2,
+                "y": 25,
                 "label": "Waveform",
                 "side": "bottom"
               },
               {
-                "x": 50,
-                "y": 49.8,
+                "x": 49.9,
+                "y": 50.3,
                 "label": "Legend",
                 "side": "top"
               }
@@ -329,27 +329,27 @@
             ],
             "pins": [
               {
-                "x": 89.4,
-                "y": 16.7,
-                "label": "Source",
+                "x": 79.1,
+                "y": 16.4,
+                "label": "Sidechain source",
                 "side": "left"
               },
               {
-                "x": 94,
-                "y": 16.7,
+                "x": 96.7,
+                "y": 16.6,
                 "label": "Listen",
                 "side": "bottom"
               },
               {
-                "x": 81.8,
+                "x": 81.9,
                 "y": 31.8,
-                "label": "HPF",
+                "label": "Highpass freq",
                 "side": "bottom"
               },
               {
-                "x": 93.3,
-                "y": 31.8,
-                "label": "LPF",
+                "x": 93.6,
+                "y": 31.9,
+                "label": "Lowpass freq",
                 "side": "bottom"
               }
             ]
@@ -387,19 +387,19 @@
               {
                 "x": 6.3,
                 "y": 72.6,
-                "label": "Input",
+                "label": "Input gain",
                 "side": "right"
               },
               {
-                "x": 6.3,
-                "y": 88.6,
+                "x": 9.5,
+                "y": 88.8,
                 "label": "Mix",
                 "side": "right"
               },
               {
                 "x": 16.7,
-                "y": 63,
-                "label": "Transient meters",
+                "y": 74.8,
+                "label": "Transient gain meters",
                 "side": "right"
               }
             ]
@@ -431,21 +431,21 @@
             ],
             "pins": [
               {
-                "x": 83.5,
-                "y": 63,
-                "label": "Sustain meters",
+                "x": 83.7,
+                "y": 75.1,
+                "label": "Sustain gain meters",
                 "side": "left"
               },
               {
                 "x": 93.5,
                 "y": 72.6,
-                "label": "Output",
+                "label": "Output gain",
                 "side": "left"
               },
               {
-                "x": 93.6,
-                "y": 88.7,
-                "label": "Auto",
+                "x": 89.2,
+                "y": 88.9,
+                "label": "Automatic loudness matching",
                 "side": "left"
               }
             ]

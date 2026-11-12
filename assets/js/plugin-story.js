@@ -126,7 +126,9 @@
     return pins.map((p, i) => {
       const [left, top] = place(p.x, p.y);
       if (left < 1 || left > 99 || top < 1 || top > 99) return '';
-      return `<span class="ks-pin ks-pin--${esc(p.side || 'top')}" style="left:${left.toFixed(2)}%;top:${top.toFixed(2)}%;--i:${i}"><b>${i + 1}</b><em>${esc(p.label)}</em></span>`;
+      // data-k: % of the frame per % of the screenshot (lets the local text editor move a pin)
+      const [ox, oy] = place(0, 0), [kx, ky] = place(1, 1);
+      return `<span class="ks-pin ks-pin--${esc(p.side || 'top')}" style="left:${left.toFixed(2)}%;top:${top.toFixed(2)}%;--i:${i}" data-k="${(kx - ox).toFixed(4)} ${(ky - oy).toFixed(4)}"><b>${i + 1}</b><em>${esc(p.label)}</em></span>`;
     }).join('');
   }
 
@@ -577,7 +579,9 @@
       const twoColumn = ['tour', 'curves', 'scope', 'feature'].includes(section.type);
       const left = twoColumn && side++ % 2 === 1;
       const spec = section.type === 'feature' ? { ...section, reverse: !left } : section;
-      let markup = RENDERERS[section.type](plugin, data, spec, i + 1, parts);
+      // Numbers only help when there are several sections to tell apart (not just the tour and Getting Started)
+      const numbered = sections.filter(x => x.type !== 'start').length > 1;
+      let markup = RENDERERS[section.type](plugin, data, spec, numbered ? i + 1 : 0, parts);
       if (left && section.type !== 'feature') markup = markup.replace('class="ks ', 'class="ks is-flip ');
       // Alternate the background from one section to the next, as on the About page
       return i % 2 ? markup.replace('class="ks ', 'class="ks ks--alt ') : markup;

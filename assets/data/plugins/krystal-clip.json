@@ -33,9 +33,9 @@
             "text": "The user interface follows the signal from left to right. The input meters and the threshold fader come first, the real-time display sits in the centre, and the knee and gain controls lead to the output meters on the far right. The clipping mode and the oversampling factor are set along the top, while bypass, Delta monitoring and Automatic Loudness Matching sit along the bottom, next to a help bar that describes every control you hover over.",
             "pins": [
               {
-                "x": 40,
+                "x": 40.6,
                 "y": 5.7,
-                "label": "Clipping mode",
+                "label": "Clipping algorithm",
                 "side": "bottom"
               },
               {
@@ -47,25 +47,25 @@
               {
                 "x": 44.5,
                 "y": 50,
-                "label": "Display",
+                "label": "Waveform Display",
                 "side": "top"
               },
               {
                 "x": 79,
                 "y": 34,
-                "label": "Knee",
+                "label": "Slope",
                 "side": "left"
               },
               {
                 "x": 79,
                 "y": 66,
-                "label": "Gain and mix",
+                "label": "Gain stage",
                 "side": "left"
               },
               {
                 "x": 48.5,
                 "y": 95.4,
-                "label": "Monitoring",
+                "label": "Help bar",
                 "side": "top"
               }
             ]
@@ -165,14 +165,14 @@
             ],
             "pins": [
               {
-                "x": 79,
-                "y": 31,
+                "x": 79.3,
+                "y": 29.7,
                 "label": "Curve preview",
                 "side": "left"
               },
               {
-                "x": 79,
-                "y": 50,
+                "x": 74.9,
+                "y": 50.3,
                 "label": "Slope Value",
                 "side": "left"
               }
@@ -197,20 +197,20 @@
                 "side": "bottom"
               },
               {
-                "x": 44.5,
+                "x": 49.8,
                 "y": 23,
                 "label": "Ceiling handle",
                 "side": "bottom"
               },
               {
-                "x": 59.8,
-                "y": 70.5,
-                "label": "Loudness",
+                "x": 55.1,
+                "y": 70.7,
+                "label": "LUFS",
                 "side": "top"
               },
               {
-                "x": 43.5,
-                "y": 85.6,
+                "x": 44.8,
+                "y": 85.7,
                 "label": "Legend",
                 "side": "top"
               }
@@ -261,9 +261,9 @@
             "text": "The ADVANCED tab opens three more controls over the display, for when you want more than clean peak control. Wavefolding reflects the peaks back toward zero instead of cutting them, for a bright, aggressive edge, with a triangle or a sine fold shape. The ceiling lets the small overshoot from oversampling through instead of clipping it a second time, and normalization brings the softer curves up to full level.",
             "pins": [
               {
-                "x": 38.3,
-                "y": 31.3,
-                "label": "Normalize",
+                "x": 42.8,
+                "y": 30.8,
+                "label": "Normalization",
                 "side": "bottom"
               },
               {
@@ -309,9 +309,9 @@
             ],
             "pins": [
               {
-                "x": 73,
-                "y": 66,
-                "label": "Input",
+                "x": 73.3,
+                "y": 65.9,
+                "label": "Input gain",
                 "side": "top"
               },
               {
@@ -323,7 +323,7 @@
               {
                 "x": 84.9,
                 "y": 66,
-                "label": "Output",
+                "label": "Output gain",
                 "side": "top"
               },
               {
@@ -419,8 +419,8 @@
             ],
             "pins": [
               {
-                "x": 91.2,
-                "y": 95.2,
+                "x": 91.8,
+                "y": 95.3,
                 "label": "Applied gain",
                 "side": "top"
               }

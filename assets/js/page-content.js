@@ -41,13 +41,18 @@
     const homeCopy = document.getElementById('homeAboutCopy');
     if (homeCopy && about.home) {
       const home = about.home;
-      const heading = document.querySelector('.about-story h2');
-      if (heading) heading.textContent = home.title;
+      const heading = document.getElementById('homeAboutTitle') || document.querySelector('.about-story h2');
+      if (heading) {
+        heading.textContent = home.title;
+        delete heading.dataset.ksSplitDone;
+        window.KDSiteStory?.split(heading);   // the title rises word by word (assets/js/site-story.js)
+      }
       homeCopy.innerHTML = home.paragraphs.map(paragraph => `<p>${escapeHTML(paragraph)}</p>`).join('');
       const link = document.getElementById('homeAboutLink');
       if (link) {
         link.href = home.link.href;
-        link.textContent = home.link.label;
+        const label = link.querySelector('span');
+        if (label) label.textContent = home.link.label; else link.textContent = home.link.label;
       }
     }
 

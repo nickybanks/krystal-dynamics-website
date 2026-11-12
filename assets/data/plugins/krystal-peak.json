@@ -20,14 +20,14 @@
         "type": "tour",
         "id": "interface",
         "title": "Interface",
-        "intro": "KrystalPeak puts the real-time display at the centre, so you can always see what the limiter is doing, with every control within reach below it. Here's a breakdown of each section:",
+        "intro": "In KrystalPeak, the real-time display is placed at the centre, allowing you to always see what the limiter is doing. All controls are within easy reach below it. Here’s a breakdown of each section:",
         "steps": [
           {
             "title": "User Interface",
             "manual": "layout",
             "image": 0,
             "focus": null,
-            "text": "The real-time display fills most of the window, so you can always see what the limiter is doing. Below it, three panels hold the main controls: input gain and upward compression on the left, attack, release, stereo linking and saturation in the centre, output gain on the right. The limiting mode and the oversampling factor are set along the top, next to bypass, delta monitoring and the settings, while the gain reduction and output meters run down the right edge.",
+            "text": "The real-time display fills most of the window, so you can always see what the limiter is doing. Below the display, three panels display the primary controls: input gain and upward compression on the left, attack, release, stereo linking, and saturation in the centre, and output gain on the right. The limiting mode and oversampling factor are set along the top, adjacent to bypass, delta monitoring, and the settings. Gain reduction and output meters extend along the right edge, including the true peak button for accurate peak monitoring.",
             "pins": [
               {
                 "x": 34.6,
@@ -44,25 +44,25 @@
               {
                 "x": 30,
                 "y": 40,
-                "label": "Display",
+                "label": "Waveform Display",
                 "side": "top"
               },
               {
-                "x": 16.6,
+                "x": 19.5,
                 "y": 70,
-                "label": "Input",
+                "label": "Input gain",
                 "side": "top"
               },
               {
                 "x": 46.8,
                 "y": 70,
-                "label": "Limiter",
+                "label": "Main controls",
                 "side": "top"
               },
               {
                 "x": 74.2,
                 "y": 70,
-                "label": "Output",
+                "label": "Output gain",
                 "side": "top"
               },
               {
@@ -83,7 +83,7 @@
               32,
               7
             ],
-            "text": "Three limiting modes decide how each peak is caught: Clean for smooth, transparent limiting, Punch to let more of every transient through, Brick for the tightest control. Click the MODE button to switch between them: they all share the same latency, so you can compare them while the track plays. Next to it, the OVERSAMPLE button runs the limiter at 4 or 8 times the sample rate, for a cleaner top end when you push hard.",
+            "text": "Three limiting modes let you decide how the gain reduction is applied: Clean for smooth, transparent limiting, Punch to let more of every transient through, Brick for the tightest control. Click the MODE button to switch between them: they all share the same latency, so you can compare them while the track plays. Next to it, the OVERSAMPLE button runs the limiter at 4 or 8 times the sample rate, for a cleaner top end when pushing hard.",
             "specs": [
               [
                 "Modes",
@@ -119,7 +119,7 @@
               50,
               12
             ],
-            "text": "The ceiling is the highest level that comes out of KrystalPeak, from 0 to -12 dB. Drag the CEIL handle directly in the display, and watch the gain reduction follow as you move it. Combined with true peak detection, it keeps your master safe from the peaks that hide between samples too.",
+            "text": "The ceiling is the limiting threshold of KrystalPeak, from 0 to -12 dB. Drag the CEIL handle directly in the display, and watch the gain reduction follow as you move it. Combined with true peak detection, it keeps your master safe from the peaks that hide between samples too. You can always adjust the volume using the output knob to have additional control after the limiting.",
             "specs": [
               [
                 "Range",
@@ -140,7 +140,7 @@
               {
                 "x": 50.6,
                 "y": 21.2,
-                "label": "CEIL handle",
+                "label": "Ceiling handle",
                 "side": "right"
               }
             ]
@@ -172,15 +172,15 @@
             ],
             "pins": [
               {
-                "x": 19.9,
-                "y": 72.4,
-                "label": "Input",
+                "x": 20,
+                "y": 70.5,
+                "label": "Input gain",
                 "side": "top"
               },
               {
-                "x": 74.1,
-                "y": 72.4,
-                "label": "Output",
+                "x": 74.3,
+                "y": 70.4,
+                "label": "Output gain",
                 "side": "top"
               }
             ]
@@ -203,7 +203,7 @@
                 8.4
               ]
             ],
-            "text": "Upward compression brings up the quiet passages instead of turning down the loud ones. Raise the UPWARD slider and quieter sections come forward, while the noise floor stays where it is. The added gain is drawn in yellow along the bottom of the display and of the gain reduction meters, so you always see how much is being lifted.",
+            "text": "Upward compression brings up the quiet passages instead of turning down the loud ones. Raise the UPWARD slider and quieter sections come forward, without bringing noises or reverb tails up. The added gain is drawn in yellow along the bottom of the display and of the gain reduction meters, so you always see how much is being lifted.",
             "specs": [
               [
                 "Range",
@@ -216,15 +216,15 @@
             ],
             "pins": [
               {
-                "x": 10.4,
-                "y": 70.5,
-                "label": "UPWARD",
+                "x": 10.7,
+                "y": 68.4,
+                "label": "UPWARD amount",
                 "side": "right"
               },
               {
                 "x": 60,
                 "y": 90.5,
-                "label": "Upward gain",
+                "label": "Gain increase",
                 "side": "top"
               }
             ]
@@ -254,19 +254,19 @@
               {
                 "x": 31.8,
                 "y": 72,
-                "label": "Attack",
+                "label": "Attack time",
                 "side": "top"
               },
               {
                 "x": 45.3,
                 "y": 57.6,
-                "label": "AUTO",
+                "label": "Adaptive release",
                 "side": "right"
               },
               {
                 "x": 41.8,
                 "y": 72.7,
-                "label": "Release",
+                "label": "Release time",
                 "side": "top"
               }
             ]
@@ -295,8 +295,8 @@
             "pins": [
               {
                 "x": 51.8,
-                "y": 71.3,
-                "label": "Linking",
+                "y": 69.9,
+                "label": "Channel linking",
                 "side": "top"
               },
               {
@@ -306,9 +306,9 @@
                 "side": "left"
               },
               {
-                "x": 61.8,
-                "y": 72,
-                "label": "Saturation",
+                "x": 61.9,
+                "y": 70.6,
+                "label": "Saturation amount",
                 "side": "top"
               }
             ]
@@ -332,20 +332,20 @@
                 "side": "right"
               },
               {
-                "x": 34,
-                "y": 17,
+                "x": 21.8,
+                "y": 21.8,
                 "label": "Gain reduction",
                 "side": "bottom"
               },
               {
-                "x": 79.5,
-                "y": 60.6,
-                "label": "Loudness",
+                "x": 86.4,
+                "y": 60.2,
+                "label": "LUFS",
                 "side": "top"
               },
               {
-                "x": 83.6,
-                "y": 87.4,
+                "x": 80.6,
+                "y": 87.3,
                 "label": "Zoom",
                 "side": "left"
               }
@@ -374,24 +374,24 @@
               {
                 "x": 89.6,
                 "y": 4.2,
-                "label": "TP",
+                "label": "True Peak monitoring",
                 "side": "left"
               },
               {
-                "x": 90.8,
-                "y": 50,
-                "label": "Gain reduction",
+                "x": 90.9,
+                "y": 31.9,
+                "label": "Gain reduction meter",
                 "side": "left"
               },
               {
-                "x": 96.2,
-                "y": 45,
-                "label": "Output",
+                "x": 96.4,
+                "y": 65.3,
+                "label": "Output meter",
                 "side": "left"
               },
               {
-                "x": 96.2,
-                "y": 96.8,
+                "x": 94,
+                "y": 96.5,
                 "label": "Peak hold",
                 "side": "left"
               }

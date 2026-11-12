@@ -1143,3 +1143,75 @@
 @media (prefers-reduced-motion: reduce) {
   .news-hero-card img { animation: none; }
 }
+/* ============================================================
+   HOME IN THE STYLE OF THE PLUGIN PAGES
+   Section heads, indexes, titles and entrance animations come from
+   plugin-story.css (.ks, .ks-head) and assets/js/site-story.js.
+   ============================================================ */
+
+/* ── Home · Plugins: the showcase keeps its own background, with a centred head ── */
+.home-plugins .showcase-head .ks-head { max-width: 640px; margin: 0 auto; text-align: center; }
+.home-plugins .showcase-head .ks-intro { color: #c3c6cc; }
+
+/* ── Home · About: the story on the left, the ways to support it on the right, divided by a line ── */
+.home-about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  align-items: start;
+  gap: clamp(2.5rem, 6vw, 6rem);
+}
+
+.home-about-story .ks-title { margin-bottom: 1.75rem; }
+.home-about-text p { margin: 0 0 1.1rem; color: var(--text-secondary); font-size: clamp(0.98rem, 1.35vw, 1.06rem); line-height: 1.8; }
+.home-about-text p:first-child { color: var(--text-primary); }
+.home-about-story .ks-link { margin-top: 0.6rem; }
+
+.home-support {
+  position: sticky;
+  top: calc(var(--ks-header, 76px) + 2rem);
+  padding-left: clamp(2rem, 4vw, 3.5rem);
+  border-left: 1px solid var(--border-color);
+}
+
+.home-support-title { display: flex; align-items: center; gap: 0.6rem; }
+.home-support-icon {
+  /* Same glyph, size and weight as the original support card: the bold title would swap in a heavier heart */
+  display: block;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font: 400 2rem/1 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  letter-spacing: 0;
+}
+
+.home-support h3 { margin: 0 0 0.75rem; font: 700 clamp(1.4rem, 2vw, 1.75rem)/1.25 'DM Sans', sans-serif; letter-spacing: -0.03em; }
+.home-support > p { margin: 0 0 1.6rem; color: var(--text-secondary); font-size: 0.97rem; line-height: 1.75; }
+.home-support-links { display: grid; gap: 0.75rem; }
+.home-support-links .btn-patreon,
+.home-support-links .btn-paypal { width: 100%; margin: 0; }
+.home-support .home-support-note { margin: 1.1rem 0 0; color: var(--text-secondary); font-size: 0.82rem; }
+
+@media (max-width: 959px) {
+  .home-about-grid { grid-template-columns: minmax(0, 1fr); }
+  .home-support { position: static; padding: clamp(2rem, 6vw, 2.5rem) 0 0; border-top: 1px solid var(--border-color); border-left: 0; }
+}
+
+/* ============================================================
+   LEGAL: license (EULA) and privacy pages
+   ============================================================ */
+.legal-page { padding: clamp(3.5rem, 8vw, 6rem) 0 clamp(4rem, 8vw, 6rem); background: var(--bg-primary); }
+.legal-doc { max-width: 760px; }
+.legal-doc h1 { margin: 0 0 1.5rem; font: 700 clamp(2rem, 4.5vw, 3rem)/1.15 'DM Sans', sans-serif; letter-spacing: -0.04em; }
+.legal-doc h2 { margin: 2rem 0 0.5rem; font: 600 1.1rem/1.35 'DM Sans', sans-serif; letter-spacing: -0.01em; }
+.legal-doc p { margin: 0 0 1rem; color: var(--text-secondary); font-size: 0.97rem; line-height: 1.75; }
+.legal-doc .legal-date { margin-top: 2.5rem; font-size: 0.85rem; }
+.legal-doc ul { margin: 0 0 1rem; padding-left: 1.25rem; }
+.legal-doc li { color: var(--text-secondary); font-size: 0.97rem; line-height: 1.75; }
+.legal-doc li + li { margin-top: 0.3rem; }
+.legal-doc a { color: var(--accent-secondary); border-bottom: 1px solid color-mix(in srgb, var(--accent-secondary) 40%, transparent); }
+.legal-doc a:hover { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
+
+.footer-legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 1.25rem; margin-top: 0.5rem; }
+.footer-legal a { color: var(--text-secondary); font-size: 0.78rem; }
+.footer-legal a:hover { color: var(--text-primary); }

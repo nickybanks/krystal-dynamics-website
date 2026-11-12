@@ -41,37 +41,37 @@
               {
                 "x": 62,
                 "y": 28,
-                "label": "Display",
+                "label": "Waveform Display",
                 "side": "top"
               },
               {
-                "x": 6,
-                "y": 72,
-                "label": "Input",
+                "x": 6.1,
+                "y": 69.8,
+                "label": "Input gain",
                 "side": "top"
               },
               {
-                "x": 27.3,
-                "y": 62,
-                "label": "Downward",
+                "x": 22.1,
+                "y": 57.1,
+                "label": "Downward controls",
                 "side": "top"
               },
               {
-                "x": 50,
-                "y": 62,
-                "label": "Level window",
+                "x": 49.9,
+                "y": 57,
+                "label": "Main controls",
                 "side": "top"
               },
               {
-                "x": 72.5,
-                "y": 62,
-                "label": "Upward",
+                "x": 77.7,
+                "y": 56.1,
+                "label": "Upward controls",
                 "side": "top"
               },
               {
-                "x": 94,
-                "y": 72,
-                "label": "Makeup",
+                "x": 93.8,
+                "y": 69.5,
+                "label": "Makeup gain",
                 "side": "top"
               }
             ]
@@ -111,13 +111,13 @@
               {
                 "x": 46.2,
                 "y": 4.2,
-                "label": "Clipper",
+                "label": "Clipper mode",
                 "side": "bottom"
               },
               {
                 "x": 56.2,
                 "y": 4.2,
-                "label": "Oversampling",
+                "label": "Oversampling factor",
                 "side": "bottom"
               }
             ]
@@ -146,20 +146,20 @@
             "pins": [
               {
                 "x": 42.9,
-                "y": 65,
-                "label": "Target",
+                "y": 64.3,
+                "label": "Target/Upper threshold",
                 "side": "top"
               },
               {
                 "x": 49.9,
-                "y": 64.5,
+                "y": 64.8,
                 "label": "Link",
                 "side": "bottom"
               },
               {
                 "x": 56.9,
-                "y": 65,
-                "label": "Range",
+                "y": 64.2,
+                "label": "Range/Lower threshold",
                 "side": "top"
               }
             ]
@@ -188,14 +188,14 @@
             "pins": [
               {
                 "x": 29,
-                "y": 65,
-                "label": "Ratio",
+                "y": 64,
+                "label": "Downward Ratio",
                 "side": "right"
               },
               {
-                "x": 29,
-                "y": 84.7,
-                "label": "Knee",
+                "x": 29.1,
+                "y": 83.8,
+                "label": "Downward Knee",
                 "side": "right"
               }
             ]
@@ -223,15 +223,15 @@
             ],
             "pins": [
               {
-                "x": 70.85,
-                "y": 65,
-                "label": "Ratio",
+                "x": 70.8,
+                "y": 64,
+                "label": "Upward Ratio",
                 "side": "left"
               },
               {
-                "x": 70.85,
-                "y": 84.7,
-                "label": "Knee",
+                "x": 70.6,
+                "y": 83.8,
+                "label": "Upward Knee",
                 "side": "left"
               }
             ]
@@ -259,15 +259,15 @@
             ],
             "pins": [
               {
-                "x": 42.9,
-                "y": 84.7,
-                "label": "Attack",
+                "x": 43,
+                "y": 84,
+                "label": "Attack time",
                 "side": "top"
               },
               {
                 "x": 56.9,
-                "y": 84.7,
-                "label": "Release",
+                "y": 84,
+                "label": "Release time",
                 "side": "top"
               }
             ]
@@ -285,8 +285,8 @@
             "text": "The display shows the last 6 seconds of signal against the two thresholds, drawn as dashed lines with the target between them. The gain reduction of the downward section hangs from the top in purple, the gain increase of the upward section rises from the bottom in green, and the loudness runs across with its value in LU.",
             "pins": [
               {
-                "x": 75,
-                "y": 18.5,
+                "x": 59.8,
+                "y": 18.3,
                 "label": "Upper threshold",
                 "side": "bottom"
               },
@@ -303,8 +303,8 @@
                 "side": "bottom"
               },
               {
-                "x": 70,
-                "y": 46.5,
+                "x": 77.1,
+                "y": 45.1,
                 "label": "Gain increase",
                 "side": "top"
               }
@@ -325,19 +325,19 @@
               {
                 "x": 26.5,
                 "y": 47.2,
-                "label": "Save",
+                "label": "Save preset",
                 "side": "top"
               },
               {
-                "x": 58,
-                "y": 47.2,
-                "label": "Preset list",
+                "x": 50.6,
+                "y": 47.1,
+                "label": "Current preset",
                 "side": "top"
               },
               {
                 "x": 73.5,
                 "y": 47.2,
-                "label": "Delete",
+                "label": "Delete preset",
                 "side": "top"
               }
             ]
@@ -377,9 +377,9 @@
             ],
             "pins": [
               {
-                "x": 6.1,
-                "y": 71.5,
-                "label": "Input",
+                "x": 6.2,
+                "y": 70.1,
+                "label": "Input gain",
                 "side": "right"
               },
               {
@@ -427,21 +427,21 @@
             ],
             "pins": [
               {
-                "x": 94,
-                "y": 71.5,
-                "label": "Makeup",
+                "x": 93.8,
+                "y": 70.3,
+                "label": "Makeup gain",
                 "side": "left"
               },
               {
-                "x": 97.8,
-                "y": 81,
-                "label": "Auto",
+                "x": 90.3,
+                "y": 81.3,
+                "label": "Automatic loudness matching",
                 "side": "left"
               },
               {
-                "x": 94.8,
-                "y": 96.3,
-                "label": "LF bias",
+                "x": 83.1,
+                "y": 97.3,
+                "label": "Low-frequency bias",
                 "side": "top"
               }
             ]
@@ -467,7 +467,7 @@
               {
                 "x": 72.1,
                 "y": 4.2,
-                "label": "Loudness",
+                "label": "LUFS",
                 "side": "bottom"
               },
               {
@@ -501,13 +501,13 @@
               {
                 "x": 15.6,
                 "y": 62,
-                "label": "Input",
+                "label": "Input meter",
                 "side": "right"
               },
               {
                 "x": 84.4,
                 "y": 62,
-                "label": "Output",
+                "label": "Output meter",
                 "side": "left"
               }
             ]
