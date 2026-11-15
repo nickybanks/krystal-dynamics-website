@@ -1212,6 +1212,3 @@
 .legal-doc a { color: var(--accent-secondary); border-bottom: 1px solid color-mix(in srgb, var(--accent-secondary) 40%, transparent); }
 .legal-doc a:hover { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
 
-.footer-legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 1.25rem; margin-top: 0.5rem; }
-.footer-legal a { color: var(--text-secondary); font-size: 0.78rem; }
-.footer-legal a:hover { color: var(--text-primary); }

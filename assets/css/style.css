@@ -2016,6 +2016,18 @@ footer .footer-support { margin: 0; text-align: center; }
 
 .footer-bottom p { color: var(--text-secondary); font-size: 0.78rem; }
 
+/* Copyright on the left, EULA and Privacy on the right (stacked on phones, aligned left like the columns above) */
+.footer-bottom { display: flex !important; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1.5rem; text-align: left; }
+.footer-bottom p { margin: 0; }
+.footer-legal { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.4rem 1.25rem; }
+.footer-legal a { color: var(--text-secondary); font-size: 0.78rem; }
+.footer-legal a:hover { color: var(--text-primary); }
+
+@media (max-width: 600px) {
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .footer-legal { justify-content: flex-start; }
+}
+
 @media (min-width: 768px) {
     .footer-main {
         grid-template-columns: repeat(5, minmax(0, 1fr));
