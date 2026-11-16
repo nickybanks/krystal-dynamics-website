@@ -217,7 +217,17 @@ function escapeNewsMarkup(value) {
 function renderNewsAction(action, primary = false) {
   const href = escapeNewsMarkup(action.href);
   const external = /^https?:\/\//i.test(action.href);
-  return `<a class="${primary ? 'btn btn-primary' : 'news-secondary-link'}" href="${href}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>${escapeNewsMarkup(action.label)}</a>`;
+  if (primary) {
+    return `<a class="btn btn-primary" href="${href}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>${escapeNewsMarkup(action.label)}</a>`;
+  }
+  // External links carry the diagonal arrow; MuseHub ones take its purple
+  const classes = ['news-secondary-link'];
+  if (external) classes.push('is-external');
+  if (/musehub\.com/i.test(action.href)) classes.push('is-musehub');
+  const arrow = external
+    ? '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    : '';
+  return `<a class="${classes.join(' ')}" href="${href}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}><span>${escapeNewsMarkup(action.label)}</span>${arrow}</a>`;
 }
 
 const NEWS_INTERVAL_MS = 6500;

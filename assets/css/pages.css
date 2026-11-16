@@ -351,6 +351,11 @@
 
 .news-secondary-link:hover { color: var(--accent-primary); }
 
+.news-secondary-link.is-external { display: inline-flex; align-items: center; gap: 0.35em; }
+.news-secondary-link.is-external svg { width: 1.15em; height: 1.15em; flex: none; transition: translate 180ms ease; }
+.news-secondary-link.is-external:hover svg { translate: 0.12em -0.12em; }
+.news-secondary-link.is-musehub:hover { color: #b388ff; }
+
 .news-loading {
   position: absolute;
   inset: 0;

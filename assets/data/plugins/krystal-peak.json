@@ -1,7 +1,7 @@
 {
   "aspect": [
-    2742,
-    1370
+    2746,
+    1374
   ],
   "shots": [
     {
@@ -30,44 +30,44 @@
             "text": "The real-time display fills most of the window, so you can always see what the limiter is doing. Below the display, three panels display the primary controls: input gain and upward compression on the left, attack, release, stereo linking, and saturation in the centre, and output gain on the right. The limiting mode and oversampling factor are set along the top, adjacent to bypass, delta monitoring, and the settings. Gain reduction and output meters extend along the right edge, including the true peak button for accurate peak monitoring.",
             "pins": [
               {
-                "x": 34.6,
-                "y": 6.3,
+                "x": 34.62,
+                "y": 6.43,
                 "label": "Limiting mode",
                 "side": "bottom"
               },
               {
-                "x": 79.6,
-                "y": 3.6,
+                "x": 79.56,
+                "y": 3.74,
                 "label": "Monitoring",
                 "side": "bottom"
               },
               {
-                "x": 30,
-                "y": 40,
+                "x": 30.03,
+                "y": 40.03,
                 "label": "Waveform Display",
                 "side": "top"
               },
               {
-                "x": 19.5,
-                "y": 70,
+                "x": 19.54,
+                "y": 69.94,
                 "label": "Input gain",
                 "side": "top"
               },
               {
                 "x": 46.8,
-                "y": 70,
+                "y": 69.94,
                 "label": "Main controls",
                 "side": "top"
               },
               {
-                "x": 74.2,
-                "y": 70,
+                "x": 74.16,
+                "y": 69.94,
                 "label": "Output gain",
                 "side": "top"
               },
               {
-                "x": 93.5,
-                "y": 50,
+                "x": 93.44,
+                "y": 50.0,
                 "label": "Meters",
                 "side": "left"
               }
@@ -78,10 +78,10 @@
             "manual": "mode",
             "image": 0,
             "focus": [
-              25.5,
-              0.4,
-              32,
-              7
+              25.54,
+              0.54,
+              31.95,
+              6.98
             ],
             "text": "Three limiting modes let you decide how the gain reduction is applied: Clean for smooth, transparent limiting, Punch to let more of every transient through, Brick for the tightest control. Click the MODE button to switch between them: they all share the same latency, so you can compare them while the track plays. Next to it, the OVERSAMPLE button runs the limiter at 4 or 8 times the sample rate, for a cleaner top end when pushing hard.",
             "specs": [
@@ -96,14 +96,14 @@
             ],
             "pins": [
               {
-                "x": 34.6,
-                "y": 6.3,
+                "x": 34.62,
+                "y": 6.43,
                 "label": "Limiting mode",
                 "side": "bottom"
               },
               {
-                "x": 46.5,
-                "y": 6.3,
+                "x": 46.51,
+                "y": 6.43,
                 "label": "Oversampling factor",
                 "side": "bottom"
               }
@@ -114,10 +114,10 @@
             "manual": "ceiling",
             "image": 1,
             "focus": [
-              20,
-              14.5,
-              50,
-              12
+              20.04,
+              14.6,
+              49.93,
+              11.97
             ],
             "text": "The ceiling is the limiting threshold of KrystalPeak, from 0 to -12 dB. Drag the CEIL handle directly in the display, and watch the gain reduction follow as you move it. Combined with true peak detection, it keeps your master safe from the peaks that hide between samples too. You can always adjust the volume using the output knob to have additional control after the limiting.",
             "specs": [
@@ -132,14 +132,14 @@
             ],
             "pins": [
               {
-                "x": 26,
-                "y": 16.6,
+                "x": 26.03,
+                "y": 17.5,
                 "label": "Ceiling line",
                 "side": "bottom"
               },
               {
-                "x": 51,
-                "y": 19.3,
+                "x": 51.0,
+                "y": 19.39,
                 "label": "Ceiling handle",
                 "side": "right"
               }
@@ -151,16 +151,16 @@
             "image": 0,
             "focus": [
               [
-                7.6,
-                56.5,
-                17.9,
-                27.1
+                7.66,
+                56.48,
+                17.87,
+                27.02
               ],
               [
-                68.4,
-                56.5,
-                11.5,
-                27.1
+                68.37,
+                56.48,
+                11.48,
+                27.02
               ]
             ],
             "text": "The INPUT knob drives the signal into the limiter: the more you raise it, the louder the track gets while the peaks stay at the ceiling. The OUTPUT knob sets the final level after the limiter, useful to adjust the level after the ceiling.",
@@ -172,14 +172,14 @@
             ],
             "pins": [
               {
-                "x": 20,
-                "y": 70.5,
+                "x": 20.04,
+                "y": 70.44,
                 "label": "Input gain",
                 "side": "top"
               },
               {
-                "x": 74.3,
-                "y": 70.4,
+                "x": 74.26,
+                "y": 70.34,
                 "label": "Output gain",
                 "side": "top"
               }
@@ -191,16 +191,16 @@
             "image": 1,
             "focus": [
               [
-                8,
-                57.6,
-                6.6,
-                25.5
+                8.06,
+                57.58,
+                6.59,
+                25.43
               ],
               [
-                1.8,
-                85.2,
-                85,
-                8.4
+                1.87,
+                85.1,
+                84.88,
+                8.38
               ]
             ],
             "text": "Upward compression brings up the quiet passages instead of turning down the loud ones. Raise the UPWARD slider and quieter sections come forward, without bringing noises or reverb tails up. The added gain is drawn in yellow along the bottom of the display and of the gain reduction meters, so you always see how much is being lifted.",
@@ -216,14 +216,14 @@
             ],
             "pins": [
               {
-                "x": 10.7,
-                "y": 68.4,
+                "x": 10.76,
+                "y": 68.35,
                 "label": "UPWARD amount",
                 "side": "right"
               },
               {
-                "x": 60,
-                "y": 90.5,
+                "x": 59.99,
+                "y": 90.38,
                 "label": "Gain increase",
                 "side": "top"
               }
@@ -234,10 +234,10 @@
             "manual": "attack",
             "image": 1,
             "focus": [
-              27.1,
-              55.5,
-              19.5,
-              27.8
+              27.13,
+              55.48,
+              19.47,
+              27.72
             ],
             "text": "The attack decides how quickly the limiter catches a peak: Fast keeps every transient clean, Slow lets the start of each hit run into the ceiling for extra punch and edge. The release sets how quickly the gain recovers afterwards, from 10 ms to 3 seconds. Turn on AUTO, above the RELEASE knob, to enable automatic release that adapts to the music on its own.",
             "specs": [
@@ -252,20 +252,20 @@
             ],
             "pins": [
               {
-                "x": 31.8,
-                "y": 72,
+                "x": 31.83,
+                "y": 71.94,
                 "label": "Attack time",
                 "side": "top"
               },
               {
-                "x": 45.3,
-                "y": 57.6,
+                "x": 45.31,
+                "y": 57.58,
                 "label": "Adaptive release",
                 "side": "right"
               },
               {
-                "x": 41.8,
-                "y": 72.7,
+                "x": 41.81,
+                "y": 72.63,
                 "label": "Release time",
                 "side": "top"
               }
@@ -276,10 +276,10 @@
             "manual": "linking",
             "image": 2,
             "focus": [
-              47,
-              58.5,
-              19.6,
-              27
+              47.0,
+              58.48,
+              19.57,
+              26.92
             ],
             "text": "Stereo linking sets how much independently the gain reduction is applied to each channel: at 100% the gain reduction is applied equally on both channels. The L/R - M/S switch below lets the limiter work on left/right or mid/side channels. Next to it, SATURATE adds warmth and density as the peaks approach the ceiling, for a fuller, more analogue sound.",
             "specs": [
@@ -295,19 +295,19 @@
             "pins": [
               {
                 "x": 51.8,
-                "y": 69.9,
+                "y": 69.84,
                 "label": "Channel linking",
                 "side": "top"
               },
               {
-                "x": 47,
-                "y": 83.1,
+                "x": 47.0,
+                "y": 83.0,
                 "label": "L/R – M/S",
                 "side": "left"
               },
               {
-                "x": 61.9,
-                "y": 70.6,
+                "x": 61.88,
+                "y": 70.54,
                 "label": "Saturation amount",
                 "side": "top"
               }
@@ -318,34 +318,34 @@
             "manual": "traces",
             "image": 0,
             "focus": [
-              1.8,
-              7.3,
-              85,
-              86.4
+              1.87,
+              7.42,
+              84.88,
+              86.15
             ],
             "text": "The display shows the last 5 seconds of input, output, gain reduction, upward gain and loudness, with the loudness value in LU. Click any entry in the legend to hide its trace, and use the zoom button at the lower right to switch between −18, −36 and −72 dB: focus on the peaks, or see the quieter parts of the track.",
             "pins": [
               {
-                "x": 5,
+                "x": 5.07,
                 "y": 50.5,
                 "label": "Legend",
                 "side": "right"
               },
               {
-                "x": 21.8,
-                "y": 21.8,
+                "x": 21.84,
+                "y": 21.88,
                 "label": "Gain reduction",
                 "side": "bottom"
               },
               {
                 "x": 82.5,
-                "y": 52.6,
+                "y": 57.8,
                 "label": "LUFS",
                 "side": "top"
               },
               {
-                "x": 83.8,
-                "y": 87.7,
+                "x": 83.75,
+                "y": 87.59,
                 "label": "Zoom",
                 "side": "left"
               }
@@ -357,47 +357,47 @@
             "image": 2,
             "focus": [
               [
-                88,
-                1,
-                10.5,
-                98.2
+                87.94,
+                1.14,
+                10.48,
+                97.91
               ],
               [
-                74.6,
-                93.6,
-                11.6,
-                5.8
+                74.56,
+                93.47,
+                11.58,
+                5.78
               ]
             ],
             "text": "The gain reduction meters show how hard the limiter is working on each channel, with the upward gain in yellow from the bottom. The output meters show the final RMS and peak level. Turn on TP for true peak detection: the limiter catches the peaks between samples too, and the output meters switch to true peak, with green peak markers. The readouts below hold the highest values until you click them. Next to the help bar, the PSR shows how far the peaks stand above the short-term loudness: the lower it is, the denser and more limited the sound.",
             "pins": [
               {
-                "x": 89.6,
-                "y": 4.2,
+                "x": 89.54,
+                "y": 4.33,
                 "label": "True Peak monitoring",
                 "side": "left"
               },
               {
-                "x": 90.9,
-                "y": 31.9,
+                "x": 90.84,
+                "y": 31.95,
                 "label": "Gain reduction meter",
                 "side": "left"
               },
               {
-                "x": 96.4,
-                "y": 65.3,
+                "x": 96.33,
+                "y": 65.26,
                 "label": "Output meter",
                 "side": "left"
               },
               {
-                "x": 91,
-                "y": 96.8,
+                "x": 90.94,
+                "y": 96.66,
                 "label": "Peak hold",
                 "side": "top"
               },
               {
-                "x": 80.4,
-                "y": 96.8,
+                "x": 80.36,
+                "y": 96.0,
                 "label": "PSR",
                 "side": "left"
               }
@@ -409,16 +409,16 @@
             "image": 1,
             "focus": [
               [
-                87.4,
-                1,
-                12.4,
-                98
+                87.35,
+                1.14,
+                12.38,
+                97.71
               ],
               [
-                74.6,
-                93.6,
-                11.6,
-                5.8
+                74.56,
+                93.47,
+                11.58,
+                5.78
               ]
             ],
             "text": "Click OUT above the output meters to switch them to loudness meters, measured as in the EBU R128 standard: short-term (S), integrated (I) and momentary (M). The integrated meter also shows the loudness range of what you have played, and the readout next to the help bar switches from the PSR to the loudness range (LRA). Click any readout to start a new measurement, and LUFS to switch back.",
@@ -434,32 +434,32 @@
             ],
             "pins": [
               {
-                "x": 96.2,
-                "y": 4,
+                "x": 96.13,
+                "y": 4.13,
                 "label": "Loudness view",
                 "side": "left"
               },
               {
-                "x": 89.2,
-                "y": 30,
+                "x": 89.14,
+                "y": 30.06,
                 "label": "Short-term",
                 "side": "left"
               },
               {
                 "x": 93.5,
-                "y": 50,
+                "y": 57.5,
                 "label": "Integrated and range",
                 "side": "left"
               },
               {
-                "x": 97.8,
-                "y": 70,
+                "x": 97.73,
+                "y": 69.94,
                 "label": "Momentary",
                 "side": "left"
               },
               {
-                "x": 80.4,
-                "y": 96.8,
+                "x": 80.36,
+                "y": 96.66,
                 "label": "Loudness range",
                 "side": "top"
               }
@@ -470,24 +470,24 @@
             "manual": "bypass",
             "image": 1,
             "focus": [
-              75.6,
-              0.2,
-              7.2,
-              7.1
+              75.56,
+              0.34,
+              7.19,
+              7.08
             ],
             "text": "The bypass button switches to the original signal, perfectly in time with the processed one, for an instant before-and-after comparison. Delta monitoring, on the headphones button, lets you hear only what the limiter is removing: the quickest way to check that a setting is taming the peaks and taking nothing more.",
             "pins": [
               {
-                "x": 77.4,
-                "y": 3.6,
+                "x": 77.36,
+                "y": 3.74,
                 "label": "Bypass",
-                "side": "bottom"
+                "side": "left"
               },
               {
-                "x": 81.1,
-                "y": 3.6,
+                "x": 81.05,
+                "y": 3.74,
                 "label": "Delta",
-                "side": "bottom"
+                "side": "right"
               }
             ]
           }
@@ -588,50 +588,50 @@
                   "caption": "The KrystalPeak user interface in Clean mode.",
                   "pins": [
                     {
-                      "x": 38.9,
-                      "y": 3.6,
+                      "x": 38.92,
+                      "y": 3.74,
                       "label": "Top",
                       "side": "bottom"
                     },
                     {
-                      "x": 79.6,
-                      "y": 3.6,
+                      "x": 79.56,
+                      "y": 3.74,
                       "label": "Buttons",
                       "side": "bottom"
                     },
                     {
-                      "x": 30,
-                      "y": 40,
+                      "x": 30.03,
+                      "y": 40.03,
                       "label": "Display",
                       "side": "top"
                     },
                     {
-                      "x": 16.6,
-                      "y": 70,
+                      "x": 16.65,
+                      "y": 69.94,
                       "label": "Left panel",
                       "side": "top"
                     },
                     {
                       "x": 46.8,
-                      "y": 70,
+                      "y": 69.94,
                       "label": "Centre panel",
                       "side": "top"
                     },
                     {
-                      "x": 74.2,
-                      "y": 70,
+                      "x": 74.16,
+                      "y": 69.94,
                       "label": "Right panel",
                       "side": "top"
                     },
                     {
-                      "x": 93.5,
-                      "y": 50,
+                      "x": 93.44,
+                      "y": 50.0,
                       "label": "Meters",
                       "side": "left"
                     },
                     {
-                      "x": 45,
-                      "y": 96.9,
+                      "x": 45.01,
+                      "y": 96.76,
                       "label": "Bottom",
                       "side": "top"
                     }
@@ -754,12 +754,12 @@
                   "image": 1,
                   "crop": true,
                   "focus": [
-                    24,
-                    9.8,
-                    48,
-                    24
+                    24.04,
+                    9.92,
+                    47.93,
+                    23.93
                   ],
-                  "caption": "The ceiling line and its CEIL handle in the display, at −0.9 dB."
+                  "caption": "The ceiling line and its CEIL handle in the display, at −1.0 dB."
                 }
               },
               "Set the ceiling by dragging the dashed line, or its CEIL handle, up and down in the display. Double-click the handle to return to −0.1 dB.",
@@ -1071,10 +1071,10 @@
                       "image": 2,
                       "crop": true,
                       "focus": [
-                        88.6,
-                        7.6,
-                        4.8,
-                        91.6
+                        88.54,
+                        7.72,
+                        4.79,
+                        91.33
                       ],
                       "label": "Gain reduction meters"
                     },
@@ -1082,10 +1082,10 @@
                       "image": 2,
                       "crop": true,
                       "focus": [
-                        93.8,
-                        1.6,
-                        4.8,
-                        97.6
+                        93.74,
+                        1.74,
+                        4.79,
+                        97.32
                       ],
                       "label": "Output meters"
                     }
@@ -1122,10 +1122,10 @@
                       "image": 1,
                       "crop": true,
                       "focus": [
-                        87.4,
-                        1,
-                        12.4,
-                        98
+                        87.35,
+                        1.14,
+                        12.38,
+                        97.71
                       ],
                       "label": "Loudness meters",
                       "widen": 2.4
@@ -1166,32 +1166,32 @@
                   "caption": "The display in Punch mode, with upward compression.",
                   "pins": [
                     {
-                      "x": 5,
+                      "x": 5.07,
                       "y": 50.5,
                       "label": "Legend",
                       "side": "right"
                     },
                     {
-                      "x": 34,
-                      "y": 17,
+                      "x": 34.02,
+                      "y": 17.1,
                       "label": "Gain reduction",
                       "side": "bottom"
                     },
                     {
-                      "x": 60,
-                      "y": 90.5,
+                      "x": 59.99,
+                      "y": 90.38,
                       "label": "Upward gain",
                       "side": "top"
                     },
                     {
-                      "x": 82.3,
-                      "y": 47.1,
+                      "x": 82.5,
+                      "y": 55.2,
                       "label": "Loudness value",
                       "side": "top"
                     },
                     {
-                      "x": 83.6,
-                      "y": 87.4,
+                      "x": 83.55,
+                      "y": 87.29,
                       "label": "Zoom",
                       "side": "left"
                     }
