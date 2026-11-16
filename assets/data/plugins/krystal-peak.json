@@ -1,7 +1,7 @@
 {
   "aspect": [
-    2636,
-    1320
+    2742,
+    1370
   ],
   "shots": [
     {
@@ -76,7 +76,7 @@
           {
             "title": "Limiting Mode and Oversampling",
             "manual": "mode",
-            "image": 2,
+            "image": 0,
             "focus": [
               25.5,
               0.4,
@@ -133,13 +133,13 @@
             "pins": [
               {
                 "x": 26,
-                "y": 19.2,
+                "y": 16.6,
                 "label": "Ceiling line",
                 "side": "bottom"
               },
               {
-                "x": 50.6,
-                "y": 21.2,
+                "x": 51,
+                "y": 19.3,
                 "label": "Ceiling handle",
                 "side": "right"
               }
@@ -188,7 +188,7 @@
           {
             "title": "Upward Compression",
             "manual": "upward",
-            "image": 0,
+            "image": 1,
             "focus": [
               [
                 8,
@@ -274,7 +274,7 @@
           {
             "title": "Stereo Linking and Saturation",
             "manual": "linking",
-            "image": 0,
+            "image": 2,
             "focus": [
               47,
               58.5,
@@ -338,14 +338,14 @@
                 "side": "bottom"
               },
               {
-                "x": 86.4,
-                "y": 60.2,
+                "x": 82.5,
+                "y": 52.6,
                 "label": "LUFS",
                 "side": "top"
               },
               {
-                "x": 80.6,
-                "y": 87.3,
+                "x": 83.8,
+                "y": 87.7,
                 "label": "Zoom",
                 "side": "left"
               }
@@ -359,17 +359,17 @@
               [
                 88,
                 1,
-                5.6,
-                98
+                10.5,
+                98.2
               ],
               [
-                93.9,
-                1.6,
-                4.6,
-                97.6
+                74.6,
+                93.6,
+                11.6,
+                5.8
               ]
             ],
-            "text": "The gain reduction meters show how hard the limiter is working on each channel, with the upward gain in yellow from the bottom. The output meters show the final RMS and peak level. Turn on TP for true peak detection: the limiter catches the peaks between samples too, and the output meters switch to true peak, with green peak markers as here. The readouts below hold the highest values until you click them.",
+            "text": "The gain reduction meters show how hard the limiter is working on each channel, with the upward gain in yellow from the bottom. The output meters show the final RMS and peak level. Turn on TP for true peak detection: the limiter catches the peaks between samples too, and the output meters switch to true peak, with green peak markers. The readouts below hold the highest values until you click them. Next to the help bar, the PSR shows how far the peaks stand above the short-term loudness: the lower it is, the denser and more limited the sound.",
             "pins": [
               {
                 "x": 89.6,
@@ -390,10 +390,78 @@
                 "side": "left"
               },
               {
-                "x": 94,
-                "y": 96.5,
+                "x": 91,
+                "y": 96.8,
                 "label": "Peak hold",
+                "side": "top"
+              },
+              {
+                "x": 80.4,
+                "y": 96.8,
+                "label": "PSR",
                 "side": "left"
+              }
+            ]
+          },
+          {
+            "title": "Loudness Meters",
+            "manual": "loudness-meters",
+            "image": 1,
+            "focus": [
+              [
+                87.4,
+                1,
+                12.4,
+                98
+              ],
+              [
+                74.6,
+                93.6,
+                11.6,
+                5.8
+              ]
+            ],
+            "text": "Click OUT above the output meters to switch them to loudness meters, measured as in the EBU R128 standard: short-term (S), integrated (I) and momentary (M). The integrated meter also shows the loudness range of what you have played, and the readout next to the help bar switches from the PSR to the loudness range (LRA). Click any readout to start a new measurement, and LUFS to switch back.",
+            "specs": [
+              [
+                "Meters",
+                "Short-term, integrated, momentary"
+              ],
+              [
+                "Readout",
+                "Loudness range"
+              ]
+            ],
+            "pins": [
+              {
+                "x": 96.2,
+                "y": 4,
+                "label": "Loudness view",
+                "side": "left"
+              },
+              {
+                "x": 89.2,
+                "y": 30,
+                "label": "Short-term",
+                "side": "left"
+              },
+              {
+                "x": 93.5,
+                "y": 50,
+                "label": "Integrated and range",
+                "side": "left"
+              },
+              {
+                "x": 97.8,
+                "y": 70,
+                "label": "Momentary",
+                "side": "left"
+              },
+              {
+                "x": 80.4,
+                "y": 96.8,
+                "label": "Loudness range",
+                "side": "top"
               }
             ]
           },
@@ -501,7 +569,7 @@
                   "With <strong>oversampling</strong> on, the signal is upsampled; the gain reduction, <strong>saturation</strong> and, with <strong>true peak</strong> on, a final hold at the ceiling run at the higher rate.",
                   "The signal is downsampled, converted back to left and right, and held at the ceiling.",
                   "With <strong>Delta monitoring</strong> on, you hear the difference between the input and the limited signal.",
-                  "<strong>Output gain</strong> is applied. The output meters and the loudness trace read the final signal."
+                  "<strong>Output gain</strong> is applied, except to the Delta signal. The output meters, the loudness meters and the loudness trace read the final signal."
                 ]
               },
               {
@@ -603,11 +671,11 @@
                     ],
                     [
                       "Meters",
-                      "Gain reduction meters (GR) and output meters (OUT), each with a peak hold readout"
+                      "Gain reduction meters (GR) and output meters (OUT), each with a peak hold readout. Click OUT to switch to the loudness meters (LUFS)"
                     ],
                     [
                       "Bottom",
-                      "Krystal Dynamics logo for information and updates, help bar"
+                      "Krystal Dynamics logo for information and updates, help bar, PSR or loudness range readout"
                     ]
                   ]
                 }
@@ -619,7 +687,7 @@
             "title": "Adjusting Controls",
             "body": [
               "Drag knobs and sliders up and down, or use the mouse wheel. INPUT, RELEASE, LINKING, SATURATE and OUTPUT show their value below the knob: click it to type a new one. ATTACK reads Fast, Medium or Slow, and the UPWARD value appears in the help bar while you adjust it.",
-              "MODE and OVERSAMPLE change with each click: they move to the next value and wrap around after the last one. AUTO, L/R – M/S, TP, bypass and Delta monitoring switch on and off."
+              "MODE and OVERSAMPLE change with each click: they move to the next value and wrap around after the last one. AUTO, L/R – M/S, TP, bypass and Delta monitoring switch on and off, and OUT above the output meters switches them to the loudness meters and back."
             ],
             "more": [
               {
@@ -691,7 +759,7 @@
                     48,
                     24
                   ],
-                  "caption": "The ceiling line and its CEIL handle in the display, at −1.4 dB."
+                  "caption": "The ceiling line and its CEIL handle in the display, at −0.9 dB."
                 }
               },
               "Set the ceiling by dragging the dashed line, or its CEIL handle, up and down in the display. Double-click the handle to return to −0.1 dB.",
@@ -964,7 +1032,7 @@
             "id": "bypass",
             "title": "Bypass",
             "body": [
-              "The power button bypasses all processing so you hear the original signal. It keeps the same latency, so switching never shifts the timing, and the change is ramped to avoid clicks. While bypassed, the meters, the peak hold readouts and the display stay frozen until you switch back."
+              "The power button bypasses all processing so you hear the original signal. It is linked to your DAW’s own bypass, and it keeps the same latency, so switching never shifts the timing; the change is ramped to avoid clicks, and while bypassed KrystalPeak uses almost no CPU. While bypassed, the meters, the peak hold readouts and the display stay frozen until you switch back."
             ]
           },
           {
@@ -983,7 +1051,7 @@
                   ]
                 ]
               },
-              "Delta monitoring lets you hear only what the limiter is removing: the difference between the signal after the input gain and the processed signal. With OUTPUT at 0 dB and UPWARD at 0%, that is the limiting alone. It’s the quickest way to hear whether a setting is taking away more than the peaks. Turn it on with the headphones button.",
+              "Delta monitoring lets you hear only what the limiter is removing: the difference between the signal after the input gain and the processed signal. With UPWARD at 0%, that is the limiting alone. OUTPUT doesn’t change the Delta signal, so you hear it at its real level. It’s the quickest way to hear whether a setting is taking away more than the peaks. Turn it on with the headphones button.",
               "During Delta monitoring the limiter runs without oversampling. The result stays in time with the rest of your tracks."
             ]
           },
@@ -995,12 +1063,12 @@
                 "aside": {
                   "body": [
                     "The gain reduction meters, labelled GR, show how much the limiter is turning the signal down, from the top, for the left and right channel, or mid and side in Mid/Side. The gain added by upward compression is drawn in yellow from the bottom.",
-                    "The output meters, labelled OUT, show the final level of each channel: the bar is the RMS level, with the peak level drawn on top. With true peak on, they show the true peak level and the peak markers turn green.",
+                    "The output meters, labelled OUT, show the final level of each channel: the bar is the RMS level, with the peak level drawn on top and held for 3 seconds. With true peak on, they show the true peak level and the peak markers turn green.",
                     "Both meters follow the zoom of the display."
                   ],
                   "figures": [
                     {
-                      "image": 0,
+                      "image": 2,
                       "crop": true,
                       "focus": [
                         88.6,
@@ -1011,7 +1079,7 @@
                       "label": "Gain reduction meters"
                     },
                     {
-                      "image": 0,
+                      "image": 2,
                       "crop": true,
                       "focus": [
                         93.8,
@@ -1023,6 +1091,51 @@
                     }
                   ]
                 }
+              },
+              "Next to the help bar, the PSR shows how far the peaks stand above the short-term loudness. It is explained with the loudness meters below."
+            ]
+          },
+          {
+            "id": "loudness-meters",
+            "title": "Loudness Meters, PSR and Loudness Range",
+            "body": [
+              {
+                "specs": [
+                  [
+                    "Meters",
+                    "Short-term (S), integrated (I), momentary (M)"
+                  ],
+                  [
+                    "Standard",
+                    "EBU R128"
+                  ]
+                ]
+              },
+              {
+                "aside": {
+                  "body": [
+                    "Click OUT above the output meters to switch them to loudness meters, and click LUFS to switch back. S shows the short-term loudness (3 seconds), I the integrated loudness since the last reset, and M the momentary loudness (400 ms). Their scale matches the display.",
+                    "On the integrated meter, the bar spans the loudness range (LRA), from the quieter to the louder parts of what you have played, with a marker at the integrated loudness. The readouts below show the current values, turning orange above −14 LUFS and red above −11 LUFS. Click any of them to start a new measurement."
+                  ],
+                  "figures": [
+                    {
+                      "image": 1,
+                      "crop": true,
+                      "focus": [
+                        87.4,
+                        1,
+                        12.4,
+                        98
+                      ],
+                      "label": "Loudness meters",
+                      "widen": 2.4
+                    }
+                  ]
+                }
+              },
+              "Next to the help bar, a readout shows the PSR with the output meters, and the loudness range with the loudness meters. The PSR (peak to short-term loudness ratio) is the highest peak of the last 3 seconds minus the short-term loudness, measured as true peak with TP on: the lower it is, the denser and more limited the sound. Click the loudness range to reset the measurement.",
+              {
+                "note": "The view you choose, output or loudness meters, is saved with the session."
               }
             ]
           },
@@ -1048,9 +1161,9 @@
             "body": [
               {
                 "figure": {
-                  "image": 0,
+                  "image": 1,
                   "crop": false,
-                  "caption": "The display in Clean mode, with upward compression.",
+                  "caption": "The display in Punch mode, with upward compression.",
                   "pins": [
                     {
                       "x": 5,
@@ -1071,8 +1184,8 @@
                       "side": "top"
                     },
                     {
-                      "x": 79.5,
-                      "y": 60.6,
+                      "x": 82.3,
+                      "y": 47.1,
                       "label": "Loudness value",
                       "side": "top"
                     },
@@ -1148,7 +1261,7 @@
             "id": "loudness",
             "title": "Loudness Trace",
             "body": [
-              "The loudness trace measures the final output with K-weighting, the same weighting used for LUFS, over about 3 seconds, like short-term loudness. Its value is shown in LU next to the end of the trace."
+              "The loudness trace shows the short-term loudness of the final output, measured over 3 seconds as in the EBU R128 standard and lightly smoothed. Its value is shown in LU next to the end of the trace."
             ]
           }
         ],
@@ -1237,7 +1350,7 @@
                       "GUI FPS and graphics"
                     ],
                     [
-                      "",
+                      "Output or loudness meters",
                       "Display zoom"
                     ]
                   ]

@@ -23,7 +23,7 @@
       label: f.label || (f.caption ? f.caption.replace(/<[^>]+>/g, '') : `${ctx.plugin.name} interface`), pins: f.pins || null,
     });
     return `
-      <figure class="kg-figure${crop ? ' is-crop' : ''}" style="--ks-color:${color}">
+      <figure class="kg-figure${crop ? ' is-crop' : ''}" style="--ks-color:${color}${f.widen ? `;--kg-widen:${Number(f.widen)}` : ''}">
         ${visual}
         ${S().pinLegend(f.pins)}
         ${f.caption ? `<figcaption>${f.caption}</figcaption>` : ''}

@@ -1573,12 +1573,12 @@
                   {
                     "image": 0,
                     "crop": false,
-                    "caption": "Light theme"
+                    "caption": "Light, with a dark display"
                   },
                   {
                     "image": 1,
                     "crop": false,
-                    "caption": "Dark theme"
+                    "caption": "Dark"
                   }
                 ]
               }

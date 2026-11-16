@@ -491,7 +491,8 @@
                 "Redesigned interface",
                 "Added Upward mode to bring up quiet passages",
                 "Added Ceiling control, draggable in the display",
-                "Added different limiting modes: Clean, Punch and Brick"
+                "Added different limiting modes: Clean, Punch and Brick",
+                "Added loudness meters (short-term, integrated, momentary) with loudness range and PSR"
               ]
             }
           ]
