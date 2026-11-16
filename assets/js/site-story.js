@@ -12,7 +12,6 @@
   function split(el) {
     if (el.dataset.ksSplitDone) return;
     el.dataset.ksSplitDone = '1';
-    if (el.textContent.includes('\u2062')) return;   // local edit mode (_text-editor) keeps the text whole
     const words = el.textContent.trim().split(/\s+/);
     el.textContent = '';
     words.forEach((word, i) => {

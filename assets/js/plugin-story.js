@@ -126,9 +126,7 @@
     return pins.map((p, i) => {
       const [left, top] = place(p.x, p.y);
       if (left < 1 || left > 99 || top < 1 || top > 99) return '';
-      // data-k: % of the frame per % of the screenshot (lets the local text editor move a pin)
-      const [ox, oy] = place(0, 0), [kx, ky] = place(1, 1);
-      return `<span class="ks-pin ks-pin--${esc(p.side || 'top')}" style="left:${left.toFixed(2)}%;top:${top.toFixed(2)}%;--i:${i}" data-k="${(kx - ox).toFixed(4)} ${(ky - oy).toFixed(4)}"><b>${i + 1}</b><em>${esc(p.label)}</em></span>`;
+      return `<span class="ks-pin ks-pin--${esc(p.side || 'top')}" style="left:${left.toFixed(2)}%;top:${top.toFixed(2)}%;--i:${i}"><b>${i + 1}</b><em>${esc(p.label)}</em></span>`;
     }).join('');
   }
 
