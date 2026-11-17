@@ -214,12 +214,9 @@
             {
               "title": "Improvements",
               "items": [
-                "Redesigned interface",
-                "Latency-compensated bypass",
-                "Sidechain monitoring now stays in sync",
                 "Peak readouts now hold until clicked",
-                "Fixed clicks on lookahead and mode changes",
                 "Fixed loudness matching cancelling makeup",
+                "Redesigned interface",
                 "Minor bug fixes"
               ]
             }
@@ -491,14 +488,12 @@
             {
               "title": "Improvements",
               "items": [
-                "Redesigned interface",
                 "Added Upward mode for quiet passages",
                 "Added Ceiling control",
                 "Added Clean, Punch and Brick limiting modes",
                 "Added LUFS meters with LRA and PSR",
-                "Delta now plays what the limiter removes",
-                "Latency-compensated bypass",
                 "Peak readouts now hold until clicked",
+                "Redesigned interface",
                 "Minor bug fixes"
               ]
             }
