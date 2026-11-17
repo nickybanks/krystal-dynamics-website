@@ -164,10 +164,10 @@
       "page": "/plugins/krystal-comp.html",
       "museHub": "https://www.musehub.com/plugin/krystalcomp",
       "images": [
-        "/assets/images/interfaces/k-comp-interface-1.webp",
-        "/assets/images/interfaces/k-comp-interface-2.webp",
-        "/assets/images/interfaces/k-comp-interface-3.webp",
-        "/assets/images/interfaces/k-comp-interface-4.webp"
+        "/assets/images/interfaces/k-comp-interface-1.webp?v=20261117",
+        "/assets/images/interfaces/k-comp-interface-2.webp?v=20261117",
+        "/assets/images/interfaces/k-comp-interface-3.webp?v=20261117",
+        "/assets/images/interfaces/k-comp-interface-4.webp?v=20261117"
       ],
       "formats": [
         "VST3",
@@ -435,9 +435,9 @@
       "page": "/plugins/krystal-peak.html",
       "museHub": "https://www.musehub.com/plugin/krystalpeak",
       "images": [
-        "/assets/images/interfaces/k-peak-interface-1.webp",
-        "/assets/images/interfaces/k-peak-interface-2.webp",
-        "/assets/images/interfaces/k-peak-interface-3.webp"
+        "/assets/images/interfaces/k-peak-interface-1.webp?v=20261117",
+        "/assets/images/interfaces/k-peak-interface-2.webp?v=20261117",
+        "/assets/images/interfaces/k-peak-interface-3.webp?v=20261117"
       ],
       "formats": [
         "VST3",
