@@ -67,7 +67,9 @@
       `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`;
   }
 
-  const manualLink = (plugin, id, label) => plugin.guide?.manual && id
+  // guide.manualStatus "coming-soon" in plugins.json: the manual page shows a placeholder, so no links point into it
+  const manualReady = plugin => !!plugin.guide?.manual && plugin.guide.manualStatus !== 'coming-soon';
+  const manualLink = (plugin, id, label) => manualReady(plugin) && id
     ? textLink(`${plugin.guide.manual}#${id}`, label) : '';
 
   // ── Screenshot frame that can zoom on a region ───────────────────────────────
@@ -548,12 +550,16 @@
       const href = step.link && plugin.guide?.[step.link.page];
       return href ? textLink(href, step.link.label) : '';
     };
+    // Manual not published yet: the step says so instead of linking to it
+    const steps = section.steps.map(step => step.link?.page === 'manual' && !manualReady(plugin)
+      ? { title: 'Manual Coming Soon', text: 'The full manual is on its way. Until then, the tour above and the help bar inside the plugin explain every control.' }
+      : step);
     return `
       <section class="ks ks-start" id="${esc(section.id)}">
         <div class="container">
           ${head(section, index)}
           <ol class="ks-start-steps">
-            ${section.steps.map((step, i) => `
+            ${steps.map((step, i) => `
               <li data-ks-reveal style="--d:${i * 100}ms">
                 <span class="ks-start-num">${i + 1}</span>
                 <h3>${esc(step.title)}</h3>
@@ -833,6 +839,7 @@
   }
 
   window.KDStory = {
+    manualReady,
     load, render, init, nav, frame, head, esc, splitWords, textLink, initReveal, initOffsets, shotColor, pinLegend,
   };
 })();

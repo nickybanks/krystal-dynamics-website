@@ -194,8 +194,9 @@
             </div>
             <div data-ks-reveal style="--d:200ms">
               <h2>Next</h2>
-              <p>Every control in detail, with tips, ranges and defaults.</p>
-              ${S().textLink(plugin.guide.manual, 'Open the manual')}
+              ${S().manualReady(plugin)
+                ? `<p>Every control in detail, with tips, ranges and defaults.</p>${S().textLink(plugin.guide.manual, 'Open the manual')}`
+                : `<p>A tour of the interface, part by part.</p>${S().textLink(plugin.page, 'Take the tour')}`}
             </div>
           </div>
         </section>
@@ -236,7 +237,21 @@
   }
 
   // ── Manual ──────────────────────────────────────────────────────────────────
+  // Placeholder while the manual is being written (guide.manualStatus "coming-soon" in plugins.json)
+  function renderManualComingSoon(plugin) {
+    return S().nav(plugin, 'manual', window.KDPageContent.downloadAction(plugin)) + `
+      <div class="kg-page">
+        ${hero('Manual', `The ${plugin.name} manual is a work in progress and will be published soon.`, `
+          <p class="kg-meta kg-hero-meta" data-ks-reveal style="--d:200ms">In the meantime, the tour on the plugin page explains each part of the interface, and the help bar inside the plugin describes every control as you hover over it.</p>
+          <div class="kg-hero-actions" data-ks-reveal style="--d:280ms">
+            ${S().textLink(plugin.page, 'Take the tour')}
+            ${S().textLink(plugin.guide.install, 'Install')}
+          </div>`)}
+      </div>`;
+  }
+
   function renderManual(plugin, guide) {
+    if (!S().manualReady(plugin)) return renderManualComingSoon(plugin);
     const esc = S().esc;
     const manual = guide.manual;
     const chapters = manual.chapters || [];
@@ -428,7 +443,7 @@
         : kind === 'history' ? renderHistory(plugin, guide)
         : renderInstall(plugin, guide);
       S().initOffsets(root);
-      if (kind === 'manual') initManual();
+      if (kind === 'manual' && S().manualReady(plugin)) initManual();
       else if (kind === 'install') initInstall();
       else openHash(true);
       S().initReveal(root);

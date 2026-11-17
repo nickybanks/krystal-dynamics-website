@@ -460,7 +460,7 @@
               12,
               10.4
             ],
-            "text": "The power button bypasses the plugin, perfectly in time. The headphones next to it turn on Delta monitoring, so you hear only what KrystalShaper is adding or taking away.",
+            "text": "The power button bypasses the plugin. The headphones next to it turn on Delta monitoring, so you hear only what KrystalShaper is adding or taking away.",
             "pins": [
               {
                 "x": 2.8,
@@ -687,7 +687,7 @@
             "id": "window-size",
             "title": "Resizing the Plugin Window",
             "body": [
-              "Drag the lower-right corner to resize the plugin window, in 5% steps from 75% to 150% of the original 780 × 460. A popup shows the current scale while you drag, and the size is saved with the session."
+              "Drag the lower-right corner to resize the plugin window, anywhere from 75% to 150% of the original 780 × 460. A popup shows the current scale while you drag, and the size is saved with the session."
             ]
           },
           {
@@ -1274,8 +1274,8 @@
               {
                 "title": "When the Loudness Is Measured",
                 "body": [
-                  "Loudness is measured with K-weighting, the same weighting used for LUFS, and not continuously: after you change a parameter that affects the shaping, it is measured for under a second and then the gain is held. Changes to output gain, dry/wet mix, the clipper and bypass don’t restart it, and it is paused while you monitor.",
-                  "Silence and very quiet passages (below −60 dBFS RMS), such as a stopped transport, are ignored. The applied gain is saved with the session."
+                  "Loudness is measured with K-weighting, the same weighting used for LUFS, and not continuously: after you change the input gain, TRANSIENT, SUSTAIN, HOLD, RELEASE, PUMP, the threshold, the mode or the transient and sustain filters, it is measured for under a second and then the gain is held. Other controls don’t restart it, and it is paused while you monitor.",
+                  "The applied gain is saved with the session."
                 ]
               }
             ]
@@ -1422,7 +1422,7 @@
             "id": "bypass",
             "title": "Bypass",
             "body": [
-              "The power button in the lower-left corner of the display bypasses all processing so you hear the original signal. It keeps the same latency, so switching never shifts the timing, and the change is ramped to avoid clicks. While bypassed, the meters, the display and the AUTO value stay frozen until you switch back."
+              "The power button in the lower-left corner of the display bypasses all processing so you hear the original signal."
             ]
           }
         ]
@@ -1542,15 +1542,11 @@
                     [
                       "GUI FPS",
                       "60, 30, 20 fps"
-                    ],
-                    [
-                      "Graphics",
-                      "Full, Low"
                     ]
                   ]
                 }
               },
-              "Set the knobs, the background and the display to light or dark independently. If you are short on CPU, a lower frame rate and Low graphics, which leaves out the shadows and gradients, lighten the load of the user interface. The sound is not affected.",
+              "Set the knobs, the background and the display to light or dark independently. If you are short on CPU, a lower frame rate lightens the load of the user interface. The sound is not affected.",
               {
                 "figures": [
                   {
@@ -1584,7 +1580,7 @@
                     ],
                     [
                       "Plugin window size",
-                      "GUI FPS and graphics"
+                      "GUI FPS"
                     ],
                     [
                       "Automatic Loudness Matching gain",

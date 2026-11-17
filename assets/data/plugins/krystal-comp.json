@@ -756,7 +756,7 @@
                 }
               },
               "Each mode remembers its own threshold, ratio, knee, range, attack, hold, release and lookahead, so you can switch back and forth without losing your settings. The first time you switch to upward, it starts from settings made for it: −30 dB threshold, 2:1 ratio and an 18 dB range.",
-              "In upward mode the attack and release knobs swap places, so the first knob is always the one that reacts to the signal rising, and some ranges are narrower, matched to upward compression.",
+              "In upward mode the attack and release knobs swap places, so the first knob is always the one that sets how quickly the compression comes in: the attack in downward mode, the release in upward mode. Some ranges are also narrower, matched to upward compression.",
               "The colour of the interface follows the mode and the detector: blue for downward with RMS, orange-red for downward with Peak, teal for upward with RMS, amber for upward with Peak."
             ]
           },

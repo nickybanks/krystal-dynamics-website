@@ -496,7 +496,7 @@
                 39.8
               ]
             ],
-            "text": "The input and output meters show the level going in and coming out, with RMS and peak level for each channel, and the readouts below hold the highest peak until you click them. The power button in the top bar bypasses the plugin, perfectly in time.",
+            "text": "The input and output meters show the level going in and coming out, with RMS and peak level for each channel, and the readouts below hold the highest peak until you click them. The power button in the top bar bypasses the plugin.",
             "pins": [
               {
                 "x": 15.6,
@@ -729,7 +729,7 @@
             "id": "window-size",
             "title": "Resizing the Plugin Window",
             "body": [
-              "Drag the lower-right corner to resize the plugin window, in 5% steps from 50% to 115% of the original 1000 × 750. A popup shows the current scale while you drag, and the size is saved with the session."
+              "Drag the lower-right corner to resize the plugin window, anywhere from 50% to 115% of the original 1000 × 750. A popup shows the current scale while you drag, and the size is saved with the session."
             ]
           },
           {
@@ -895,7 +895,7 @@
                   ]
                 ]
               },
-              "The LOOKAHEAD slider lets KrystalField react before the signal arrives: the audio is delayed, so the gain change can start up to 20 ms ahead of a peak, and is held for the same time so it lasts through it. Transients are caught cleanly even with a fast attack.",
+              "The LOOKAHEAD slider lets KrystalField react before the signal arrives: the audio is delayed, so the gain change can start up to 20 ms ahead of a peak, and is held long enough to last through it. Transients are caught cleanly even with a fast attack.",
               "Any value above 0 ms adds a fixed 20 ms latency, compensated by your DAW."
             ]
           },
@@ -1070,7 +1070,7 @@
               {
                 "title": "When the Loudness Is Measured",
                 "body": [
-                  "Loudness is measured with K-weighting, the same weighting used for LUFS, over a window of about 3 seconds. After you change a parameter that affects loudness, the measurement starts again once the window has been refreshed. Changes to makeup gain, dry/wet mix, the clipper, oversampling and bypass don’t restart it.",
+                  "Loudness is measured with K-weighting, the same weighting used for LUFS, over a window of about 3 seconds. After you change a parameter that affects loudness, the measurement starts again once the window has been refreshed. Changes to makeup gain, dry/wet mix, the clipper and bypass don’t restart it.",
                   "The applied gain is saved with the session."
                 ]
               }
@@ -1244,7 +1244,7 @@
             "id": "bypass",
             "title": "Bypass",
             "body": [
-              "The power button in the top bar bypasses all processing so you hear the original signal. It keeps the same latency, so switching never shifts the timing, and the change is ramped to avoid clicks. While bypassed, the meters, the readouts, the display and the AUTO value stay frozen until you switch back."
+              "The power button in the top bar bypasses all processing so you hear the original signal. While bypassed, the meters, the readouts, the display and the AUTO value stay frozen until you switch back."
             ]
           }
         ]
@@ -1363,11 +1363,6 @@
               "The button at the lower right of the display sets how far down the scale goes, and changes with each click."
             ]
           }
-        ],
-        "after": [
-          {
-            "note": "The display zoom is saved as a preference and with the session."
-          }
         ]
       },
       {
@@ -1404,15 +1399,11 @@
                     [
                       "GUI FPS",
                       "60, 30, 20 fps"
-                    ],
-                    [
-                      "Graphics",
-                      "Full, Low"
                     ]
                   ]
                 }
               },
-              "Set the knobs, the background and the display to light or dark independently. If you are short on CPU, a lower frame rate and Low graphics, which leaves out the shadows, lighten the load of the user interface. The sound is not affected.",
+              "Set the knobs, the background and the display to light or dark independently. If you are short on CPU, a lower frame rate lightens the load of the user interface. The sound is not affected.",
               {
                 "figures": [
                   {
@@ -1446,11 +1437,11 @@
                     ],
                     [
                       "Linked or separate thresholds",
-                      "GUI FPS and graphics"
+                      "GUI FPS"
                     ],
                     [
                       "Plugin window size",
-                      "Display zoom"
+                      ""
                     ],
                     [
                       "Automatic Loudness Matching gain",
@@ -1498,7 +1489,7 @@
                 ],
                 [
                   "Target Level (upper threshold)",
-                  "−30.0 to 0.0 dB",
+                  "−45.0 to 0.0 dB",
                   "−12.0 dB"
                 ],
                 [
@@ -1578,6 +1569,9 @@
                 ]
               ]
             }
+          },
+          {
+            "note": "On the TARGET and UPPER knobs, the upper threshold stays between −30 and 0 dB; automation can take it down to −45 dB. Your DAW also lists Upward Protection, a parameter that has no effect in this version."
           }
         ]
       }

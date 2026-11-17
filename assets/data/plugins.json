@@ -54,7 +54,7 @@
       "history": [
         {
           "version": "1.2.1",
-          "date": "2026-11-13",
+          "date": "2026-11-17",
           "groups": [
             {
               "title": "Improvements",
@@ -209,7 +209,7 @@
       "history": [
         {
           "version": "1.2.1",
-          "date": "2026-11-13",
+          "date": "2026-11-17",
           "groups": [
             {
               "title": "Improvements",
@@ -424,7 +424,8 @@
         "data": "/assets/data/plugins/krystal-field.json",
         "install": "/plugins/krystal-field/install.html",
         "manual": "/plugins/krystal-field/manual.html",
-        "history": "/plugins/krystal-field/history.html"
+        "history": "/plugins/krystal-field/history.html",
+        "manualStatus": "coming-soon"
       }
     },
     {
@@ -483,7 +484,7 @@
       "history": [
         {
           "version": "1.1.0",
-          "date": "2026-11-13",
+          "date": "2026-11-17",
           "groups": [
             {
               "title": "Improvements",
@@ -599,7 +600,8 @@
         "data": "/assets/data/plugins/krystal-shaper.json",
         "install": "/plugins/krystal-shaper/install.html",
         "manual": "/plugins/krystal-shaper/manual.html",
-        "history": "/plugins/krystal-shaper/history.html"
+        "history": "/plugins/krystal-shaper/history.html",
+        "manualStatus": "coming-soon"
       }
     }
   ],

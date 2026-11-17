@@ -700,7 +700,7 @@
                   ]
                 ]
               },
-              "Click the MODE button to cycle through the four clipping modes. Each gives the clipped signal a different harmonic colour, and the accent colour of the interface changes with it: blue for Softer, yellow for Warmer, red for Harder, purple for Darker. With normalization off, quiet signals pass through unchanged, or almost unchanged, in every mode.",
+              "Click the MODE button to cycle through the four clipping modes. Each gives the clipped signal a different harmonic colour, and the accent colour of the interface changes with it: cyan for Softer, yellow for Warmer, red for Harder, purple for Darker. With normalization off, quiet signals pass through unchanged, or almost unchanged, in every mode.",
               {
                 "plot": {
                   "kind": "transfer",
@@ -1115,8 +1115,8 @@
                   ]
                 ]
               },
-              "With oversampling on, a limiter after the clipper holds the output at the threshold plus the ceiling, never above 0 dBFS. Raising the CEILING knob lets the small overshoot from oversampling through instead of clipping it a second time, at the cost of peaks just above the threshold.",
-              "The ceiling only applies with oversampling on and Delta monitoring off; otherwise the limiter sits at the threshold and the CEILING knob is disabled.",
+              "With oversampling on, a limiter after the clipper holds the output at the threshold plus the ceiling, never above 0 dBFS. Raising the CEILING slider lets the small overshoot from oversampling through instead of clipping it a second time, at the cost of peaks just above the threshold.",
+              "The ceiling only applies with oversampling on and Delta monitoring off; otherwise the limiter sits at the threshold and the CEILING slider is disabled.",
               "In the display the ceiling is a second line with a CEIL handle, and the band between the two lines shows where overshoot can pass. Drag the handle to set the value."
             ]
           }
@@ -1280,7 +1280,7 @@
               {
                 "title": "When the Loudness Is Measured",
                 "body": [
-                  "Loudness is measured with K-weighting, the same weighting used for LUFS, and not continuously: after you change a parameter that affects loudness, it is measured for under a second and then the gain is held. Changes to output gain, dry/wet mix, clipping mode, Delta monitoring, bypass and oversampling don’t restart it.",
+                  "Loudness is measured with K-weighting, the same weighting used for LUFS, and not continuously: after you change a parameter that affects loudness, it is measured for a little under two seconds and then the gain is held. Changes to output gain, dry/wet mix, clipping mode, Delta monitoring, bypass and oversampling don’t restart it.",
                   "Silence and very quiet passages (below −60 dBFS RMS), such as a stopped transport, are ignored. The applied gain is saved with the session, and turning AUTO off resets it to 0 dB."
                 ]
               }
@@ -1346,7 +1346,7 @@
                   ]
                 ]
               },
-              "Delta monitoring lets you hear only what the clipper is removing: the difference between the signal after the input gain and the processed signal after the output gain. With OUTPUT at 0 dB, that is the clipping alone. It’s the quickest way to check that a setting isn’t taking away more than you want. Turn it on with the headphones button. Automatic Loudness Matching is paused while Delta monitoring is on, since it would make the difference misleading.",
+              "Delta monitoring lets you hear only what the clipper is removing: the difference between the signal after the input gain and the processed signal before the output gain, that is, the clipping alone. The output gain doesn’t change it. It’s the quickest way to check that a setting isn’t taking away more than you want. Turn it on with the headphones button. Automatic Loudness Matching is paused while Delta monitoring is on, since it would make the difference misleading.",
               "During Delta monitoring the clipper runs without oversampling and the ceiling is disabled. The result stays in time with the dry signal and with your other tracks, and the dry/wet mix still applies."
             ]
           },
@@ -1515,7 +1515,7 @@
             "id": "loudness",
             "title": "Loudness Trace",
             "body": [
-              "The loudness trace uses K-weighting over a 0.5 s window with light smoothing. That is shorter than the 3 s of standard short-term loudness, so the reading follows the music more closely."
+              "The loudness trace shows the short-term loudness, measured with K-weighting over a 3 s window as in the EBU R128 standard, with light smoothing so the line moves without jumps."
             ]
           }
         ],
