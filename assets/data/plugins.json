@@ -59,9 +59,9 @@
             {
               "title": "Improvements",
               "items": [
-                "Fixed Normalization algorithm so the clipping curve now keeps its shape",
-                "Fixed Delta monitoring with oversampling on",
-                "Automatic Loudness Matching now ignores silence",
+                "Normalization now keeps the curve shape",
+                "Fixed Delta with oversampling on",
+                "Loudness matching now ignores silence",
                 "Minor bug fixes and graphics improvements"
               ]
             }
@@ -215,10 +215,12 @@
               "title": "Improvements",
               "items": [
                 "Redesigned interface",
-                "Bypass now keeps the same latency, so switching it never shifts the timing",
-                "Sidechain monitoring is now kept in time with your other tracks",
-                "Peak hold readouts now hold their value until you click them",
-                "Fixed clicks when automating the lookahead or switching between Downward and Upward mode"
+                "Latency-compensated bypass",
+                "Sidechain monitoring now stays in sync",
+                "Peak readouts now hold until clicked",
+                "Fixed clicks on lookahead and mode changes",
+                "Fixed loudness matching cancelling makeup",
+                "Minor bug fixes"
               ]
             }
           ]
@@ -490,10 +492,14 @@
               "title": "Improvements",
               "items": [
                 "Redesigned interface",
-                "Added Upward mode to bring up quiet passages",
-                "Added Ceiling control, draggable in the display",
-                "Added different limiting modes: Clean, Punch and Brick",
-                "Added loudness meters (short-term, integrated, momentary) with loudness range and PSR"
+                "Added Upward mode for quiet passages",
+                "Added Ceiling control",
+                "Added Clean, Punch and Brick limiting modes",
+                "Added LUFS meters with LRA and PSR",
+                "Delta now plays what the limiter removes",
+                "Latency-compensated bypass",
+                "Peak readouts now hold until clicked",
+                "Minor bug fixes"
               ]
             }
           ]
